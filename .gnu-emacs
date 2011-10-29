@@ -1,0 +1,154 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; File name: ` ~/.gnu-emacs '
+;;; ---------------------
+;;;
+;;; Note: This file is for GNU-Emacs only ...
+;;;       GNU-Emacs is incompatible to X-Emacs. Therefore your
+;;;       personal ~/.emacs should load this file if your runnning
+;;;       the good old GNU-emacs.
+;; Specials for X Window System
+;; -------------------------
+(if (not window-system)
+      ;; ispell
+      ;; ----------------------
+      ;; (A few changes on ispell)
+      (setq ispell-highlight-face 'underline)
+  ;;
+  ;; Some fonts
+  ;; -----------------------
+  ;;  (if (> emacs-major-version 20) (require 'xfonts))
+  ;;
+  ;; New in Emacs 21: tool bar menu, you may switch it of
+  ;; ----------------------------------------------------
+; (if (fboundp 'tool-bar-mode) (tool-bar-mode 0))
+  ;;
+  ;; mouse as arrow
+  ;; --------------
+;;  (setq x-pointer-shape x-pointer-left-ptr)
+  (if (x-display-color-p)
+      (set-mouse-color "RoyalBlue")
+    (set-mouse-color (cdr (assq 'mouse-color (frame-parameters)))))
+  ;;
+  ;;   Automatically replacing of fore- and background.
+  (if (not (x-display-color-p))
+    (progn
+      (set-face-background 'region
+	       (cdr (assq 'foreground-color (frame-parameters ))))
+      (set-face-foreground 'region
+	       (cdr (assq 'background-color (frame-parameters ))))
+      ;; ispell
+      ;; ----------------------
+      ;; (A few changes on ispell)
+      (setq ispell-highlight-face 'underline)))
+  ;;
+  ;; Highlighting of special emacs modes
+  ;; -----------------------------------
+  ;; We use font lock mode
+
+  ;; Darken greyed strings in font lock mode
+  (custom-declare-face 'font-lock-string-face
+    '((((class grayscale) (background light)) (:foreground "gray37"    :italic t))
+      (((class grayscale) (background dark))  (:foreground "LightGray" :italic t))
+      (((class color) (background light)) (:foreground "gray37"))
+      (((class color) (background dark))  (:foreground "LightGray"))
+      (t (:italic t)))
+    "Font Lock mode face used to highlight strings."
+    :group 'font-lock-highlighting-faces)
+
+  ;; Enable font lock support
+;  (setq font-lock-support-mode '((latex-mode . fast-lock-mode) (t . lazy-lock-mode)))
+  (add-hook 'after-init-hook '(lambda () (global-font-lock-mode 1)))
+  ;(require 'font-lock)
+
+  ;;
+  ;; Some dialog
+  ;; ------------------
+  (setq use-dialog-box t)
+  ;;
+  ;; less  dialog
+  ;; -----------
+  ;(menu-prompting nil)
+  ;; 
+  ;; Set X synchrone
+  ;; ---------------
+  ;; Speed up
+   (setq mouse-scroll-delay 0)
+   (setq x-selection-timeout 0)
+  ;;
+  ;; We use a wrapper script for netscape
+  ;;
+  (if (file-executable-p "/usr/X11R6/bin/Netscape")
+      (setq browse-url-netscape-program "/usr/X11R6/bin/Netscape"))
+)
+;;
+
+;; Common to all C modes
+;; ---------------------
+(add-hook 'c-mode-common-hook
+   '(lambda () (c-set-style "linux")
+	(c-set-offset 'case-label 4)
+	(setq c-basic-offset 4)))
+
+;;
+;; Auto fill mode
+;; --------------
+;; (add-hook 'text-mode-hook 'turn-on-auto-fill)
+;;
+;; Fill-column
+;; -----------
+;;    Fill-column ist hier auf 78 Charakter gesetzt, nach Wunsch "andern!
+(setq-default fill-column 78)
+(add-hook 'TeX-mode-hook '(lambda () (setq fill-column 78)))
+;;
+;; AUC-TeX
+;; ----------------------------
+;; 2011-09-07: <mhs>  Deleted </mhs>
+
+;;
+;; Brace macros
+;; ------------
+;; 2011-09-07: <mhs>  Deleted </mhs>
+;;
+
+;; Provide some usefull function keys
+;; ----------------------------------
+;; Have a look on /usr/share/emacs/site-lisp/function-keys.el
+;; Extensions or changes of the keymap
+;; original definitions will found in loaddefs.el.
+;;(global-set-key [escape] [?\e]) ; Escape
+;;
+  (global-set-key [M-left]  'backward-word)
+  (global-set-key [M-right] 'forward-word)
+  (global-set-key [M-up]    'beginning-of-line)
+  (global-set-key [M-down]  'end-of-line)
+;;
+; (global-set-key [C-left]  'backward-char)
+; (global-set-key [C-right] 'forward-char)
+; (global-set-key [C-up]    'previous-line)
+; (global-set-key [C-down]  'next-line)
+;;
+  (global-set-key [S-left]  'backward-char)
+  (global-set-key [S-right] 'forward-char)
+  (global-set-key [S-up]    'previous-line)
+  (global-set-key [S-down]  'next-line)
+;;
+  (global-set-key [find]   'isearch-forward) ; Search
+  (global-set-key [select] 'set-mark-command) ; Mark
+;;
+  (global-set-key [S-next]   'end-of-buffer)
+  (global-set-key [S-prior]  'beginning-of-buffer)
+  (global-set-key [S-find]   'find-file)
+  (global-set-key [S-select] 'switch-to-buffer)
+  (global-set-key [S-insert] 'insert-file)
+
+;;
+;;
+;;
+;;
+;; Translate `C-h' to DEL.
+; (keyboard-translate ?\C-h ?\C-?)
+;;
+;; Translate DEL to `C-h'.
+; (keyboard-translate ?\C-? ?\C-h)
+;;;;;;;;;;
+;; the end

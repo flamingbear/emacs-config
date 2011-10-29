@@ -1,0 +1,1 @@
+2011-09-17 This is where all of my emacs customizations go now.  This direcory is linked to ~/.emacs.d and then EMACS_HOME must be set to that directory.
