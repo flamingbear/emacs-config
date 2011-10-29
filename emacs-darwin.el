@@ -26,7 +26,7 @@
 ;; LCD Archive Entry:
 ;; .emacs-darwin|Matt Savoie|<savoie@nsidc.org>
 ;; |Emacs customizations for Darwin only 
-;; |$Date$|$Revision: 19566 $|~/packages/.emacs-darwin.el
+;; |$Date$|$Revision: 19643 $|~/packages/.emacs-darwin.el
 
 ;;; Commentary:
 
@@ -36,8 +36,8 @@
 
 ;;; Code:
 
-(defconst emacs-darwin-version (substring "$Revision: 19566 $" 11 -2)
-  "$Id: emacs-darwin.el 19566 2011-10-10 21:56:19Z savoie $
+(defconst emacs-darwin-version (substring "$Revision: 19643 $" 11 -2)
+  "$Id: emacs-darwin.el 19643 2011-10-29 21:07:05Z savoie $
 Report bugs to: Matt Savoie <savoie@nsidc.org>")
 
 (defalias 'my-browse-url-program 'browse-url-default-macosx-browser)
@@ -65,6 +65,7 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
 (when running-macos
   (setenv "PATH" (concat "/opt/local/bin:/usr/local/bin:" (getenv "PATH")))
   (push "/opt/local/bin" exec-path))
+
 ;; 2011-10-29: <mhs> This doesn't work yet, but might be a solutionon mac...</mhs>
 ;; (when (not (getenv "TERM_PROGRAM"))
 ;;   (setenv "PATH" (shell-command-to-string "source $HOME/.profile && printf $PATH" ))
