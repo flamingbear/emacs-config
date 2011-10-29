@@ -1,0 +1,15 @@
+.TH %B 1 "%d" "%o"
+.SH NAME
+%b \- %[Brief description: %]
+.SH SYNOPSIS
+.B %b [options] [files]
+.SH DESCRIPTION
+.SH OPTIONS
+.SH ENVIRONMENT
+.SH EXAMPLES
+.SH FILES
+.SH AUTHOR
+%U %a
+.SH SEE ALSO
+.SH DIAGNOSTICS
+.SH BUGS

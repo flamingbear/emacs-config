@@ -1,0 +1,187 @@
+			     AUTO INSERT
+
+		A File Template Package for GNU Emacs
+
+			    Kevin Davidson
+			  Copyright (C) 1994
+
+
+This file includes a brief run-down of auto-insert and an idiot's guide
+to installation.
+
+What is auto-insert ?
+Auto insertion allows you to set up skeletons for the files you commonly
+create (C source files, TeX documents or whatever).
+The idea is to give all your files a common layout.
+
+Please comment on it. Does it work ? Does it do what you want ?
+Is the code really badly written ? :-)
+
+Differences from distributed autoinsert.el:
+1) Files to insert are searched for in a list of directories, rather than just
+   a single directory. This can optionally include the current directory.
+2) Auto insertion can be run interactively: 
+   M-x insert-auto-insert-type will prompt for the type of insert file to
+   insert in the current buffer.
+   M-x insert-auto-insert-file will ask for a file to be inserted into
+   the current buffer.
+3) During insertion a variety of %-escapes are expanded to common strings:
+    %u is replaced by user's login name
+    %U is user's full name
+    %h is the name of the user's machine
+    %a is the user's mail address (from the variable mail-self-address)
+    %f is the file name (without directory part)
+    %F is the file name capitalised
+    %b is the base file name, without suffix
+    %B is the base file name capitalised
+    %e is the file's suffix (extension)
+    %E is the file's suffix capitalised
+    %p is the full path name of the file
+    %P is the directory part of the file name
+    %d is the current date
+    %y is the current year
+    %Y is the last two digits of the current year (without the century)
+    %D is the day of the month
+    %M is the number (1-12) of the month
+	(i.e. if you prefer dd/mm/yyyy or yyyy-mm-dd you can do it)
+    %m is the month in words
+    %o is the user's organisation (from the env var ORGANI[SZ]ATION)
+    %{ and %} bound a comment which will be removed.
+    %[ and %] bound a string which will be used to prompt user for 
+       a replacement.
+    %1 - %9 re-insert the nth prompted-for string
+    %( and %) bound an ELisp form that is evalled and deleted.
+    %< and %> bound a value for fill-prefix
+    %^ centres the current line
+    %+ fills the current paragraph
+    %= justifies the current paragraph
+    %% is a %
+    %@ sets the initial position of `point'. (If you use this, then the whole
+       buffer is not marked, so ^W will not remove the insertion)
+  For instance a common C programming idiom in include files to prevent 
+multiple inclusions is:
+	#ifndef _FILENAME_H
+	#define _FILENAME_H
+	/* File contents here */
+	#endif
+  This can be created automatically from a .h insert file containing
+	#ifndef _%B_%E
+	#define _%B_%E
+	%@
+	#endif	
+  Note that this will work correctly if two similarly named C and C++
+include files are used in a program  as one will define _FILE_H and the
+other _FILE_HPP, although I am not suggesting this is a smart thing to do :-)
+
+How to install:
+First of all unshar the distribution with `sh' or an unshar package to get
+the separate files, if you haven't already done so.
+Decide where your Emacs Lisp and insert files are going to live.
+(My personal Elisp lives in ~/lib/lisp and my insert files in ~/lib/insert)
+Check the paths in the Makefile are correct, and type `make' at
+the command line. If everything goes well, you can type `make install'
+to put things in their proper places.
+
+If you have other Emacs Lisp packages installed you've probably already
+altered Emacs' load-path so that your directory is searched. 
+If you haven't, you'll need a line like this in your .emacs file:
+
+(setq load-path (cons (expand-file-name "~/lib/lisp") load-path))
+[Yes, this is from my .emacs file]
+
+If you've put the insert files anywhere other than ~/insert or ~/lib/insert
+you will also now need a line like this:
+
+(setq auto-insert-path (cons "~/my/insert/path/" auto-insert-path))
+
+Now you will need to put two more lines into your .emacs file:
+
+(require 'auto-insert-tkld)	; This will make auto-insert part of Emacs
+(setq mail-self-address "<me@host.my.domain>")	; The default is only <me@host>
+
+Now you can save your .emacs file.
+
+Now kill emacs [^X^C] and start up a new one. [Or load auto-insert-tkld if
+you know how]
+Try creating some new files.
+
+Customising auto-insert
+
+First off, if you don't like the template files I've given you, change them.
+You can test out a new one by typing
+M-x insert-auto-insert-file
+and giving the name of the file to insert, whilst editing an empty file.
+
+If you create a new one (ie for Prolog, ML, TeX, Pascal etc.) you will
+need to change the variables auto-insert-alist and auto-insert-type-alist.
+Create your insert file and put it with the others, then add something like
+this to your .emacs:
+
+(setq auto-insert-alist (append '(("\\.sml$" . "SML")
+				  ("\\.p$" . "Pascal"))
+				auto-insert-alist))
+(setq auto-insert-type-alist (append '(("SML" . "sml-insert.sml")
+				       ("Pascal" . "pascal-insert.p"))
+				     auto-insert-type-alist))
+
+[The first part is a regular expression to match the file name, the second
+is the name of the file to auto insert]
+
+Please send me a copy of any interesting ones.
+
+Date formats:
+ People around the world like to write their dates in a variety
+of weird and wonderful formats. I *hope* auto-insert-tkld can cope with your
+favourite layout. Common ones would be %D/%M/%y (UK), %M/%D/%y (USA) or
+%y-%M-%D. However, it's not that simple, some people like to have leading
+zeros, spaces or nothing, so you may want to change the value of
+auto-insert-num-prefix to the string you want in your .emacs file. 
+The default is leading zeros, so if you would prefer to have nothing, the line
+	(setq auto-insert-num-prefix "") 
+would cause numbers less than ten to be represented as a single figure.
+Using a %Y instead of %y means just the last two digits of the year will
+be used - you'll just have to guess which century the date is for !
+
+Random elisp code:
+The %( and %) magic sequences can surround any *single* Emacs Lisp form
+(ie a progn for complex operations). Anything you can do in ELisp, you can do
+here. Be careful though - you may confuse auto-insert.
+Suggested uses might be conditional insertion of %-escapes or re-formatting
+text after auto-insertion (by calling center-line or fill-paragraph).
+
+Prompted replacements:
+There are bound to be times when you want something automatically inserted,
+but you won't know what it is until you create the buffer. For instance,
+you may want the name of the package you are writing inserted into the
+header of a file, but the package name can't be inferred from the name
+of any of the files (or the author's name or any of the other things Auto
+Insert knows about). For these occasions you'll want to ask the person
+creating the buffer what they think should go there. Just surround
+your prompt with %[ and %], like this:
+Package-name: %[Package: %]
+
+Comments:
+Suppose you've set up an incredibly baroque template file and you'd like to
+make notes to yourself (or others) about what it's supposed to achieve.
+You can't just stick it in the file, because then it'll get inserted
+into every new buffer that uses it. What you need to do is surround
+your descriptive text with %{ and %}:  This is not a comment %{but this is%}.
+
+Filling, Centring and Justifying:
+You can make sure that the text in a buffer will be neatly formatted, however 
+long the text that's been inserted is by using one of these:
+%^  centre the current line.
+%+  fill the current paragraoh (put this at the end of the paragraph).
+%=  justify the current paragraph.
+If the paragraph you want to fill or justify has a fill prefix (ie it's
+a comment line that begins with ;;; , // or whatever) you should
+specify that first, using %<;;;%> where ;;; is the sequence of characters
+that begins each line.
+
+
+If this seems too simple or you need more interactive templates, you probably
+want to be using Wayne Mesard's Dmacro package.
+
+	.Kevin.
+Kevin.Davidson@ed.ac.uk | tkld@cogsci.ed.ac.uk | tkld@festival.ed.ac.uk
+  ``You are what you drink, and I'm a bitter man'' -- The Macc Lads
