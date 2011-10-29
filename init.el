@@ -30,9 +30,6 @@ Normally this points to: $HOME/.emacs.d/")
 
 (add-to-list 'load-path emacs-top)
 
-;; 2011-10-18: <mhs> sometime you should look at this...</mhs>
-;; (normal-top-level-add-subdirs-to-load-path)
-
 
 
 ;; Attempt to load a feature/library, But don't bail out of the load if it's

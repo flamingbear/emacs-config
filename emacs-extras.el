@@ -129,6 +129,7 @@ I generally choose ($EMACS_HOME)/lisp for my custom files:
   (warn "Could't load psvn.el there is no subversion support. You may want to look at this. "))
 
 
+
 ;;--------------------------------------------------------------------------
 ;; GIT has some quirks and normally, I don't want to do a regular diff when
 ;; looking at revisions.
@@ -136,6 +137,10 @@ I generally choose ($EMACS_HOME)/lisp for my custom files:
 (eval-after-load "vc-hooks"
   '(define-key vc-prefix-map "=" 'ediff-revision))
 
+(defvar mhs-egg-dir (expand-file-name (concat mhs-external-lisp-dir '"egg")))
+(when (file-accessible-directory-p mhs-egg-dir)
+  (add-to-list 'load-path mhs-egg-dir)
+  (try-require 'egg))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ediff cutomizations
