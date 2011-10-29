@@ -42,6 +42,7 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
 
 (defalias 'my-browse-url-program 'browse-url-default-macosx-browser)
 
+;; This was pulled directly from www.emacswiki.org/emacs/CopyAndPaste
 (setq interprogram-cut-function nil)
 (setq interprogram-paste-function nil)
 (defun paste-from-pasteboard ()
