@@ -137,10 +137,10 @@ I generally choose ($EMACS_HOME)/lisp for my custom files:
 (eval-after-load "vc-hooks"
   '(define-key vc-prefix-map "=" 'ediff-revision))
 
-(defvar mhs-egg-dir (expand-file-name (concat mhs-external-lisp-dir '"egg")))
-(when (file-accessible-directory-p mhs-egg-dir)
-  (add-to-list 'load-path mhs-egg-dir)
-  (try-require 'egg))
+(defvar mhs-git-helpers (expand-file-name (concat mhs-external-lisp-dir '"magit")))
+(when (file-accessible-directory-p mhs-git-helpers)
+  (add-to-list 'load-path mhs-git-helpers)
+  (try-require 'magit))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ediff cutomizations
