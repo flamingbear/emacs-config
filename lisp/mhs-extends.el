@@ -418,7 +418,7 @@ following the prefix character"
                              :background "gray12" :foreground "gray89" 
                              :inverse-video nil :box nil 
                              :strike-through nil :overline nil 
-                             :underline nil  :height 130 
+                             :underline nil  :height 145 
                              :foundry "apple" :family "Monaco")))
 
 (defun mhs-use-normal-face ()
