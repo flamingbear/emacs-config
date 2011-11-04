@@ -95,7 +95,7 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
 (try-require 'gnus)
 (try-require 'mhs-mail)
 
-(setq mm-text-html-renderer 'w3m)
+(setq mm-text-html-renderer 'gnus-w3m)
 
 ;; R-language support.  
 (try-require 'ess-site)
