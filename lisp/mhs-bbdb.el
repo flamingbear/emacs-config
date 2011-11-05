@@ -55,7 +55,10 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
 (when (file-accessible-directory-p mhs-bbdb-dir )
   (add-to-list 'load-path mhs-bbdb-dir))
 (when (try-require 'bbdb)
-  (bbdb-initialize 'gnus 'message 'sc))
+  (if running-macos
+      (bbdb-initialize 'gnus 'message)
+    (bbdb-initialize 'gnus 'message 'sc)))
+
 ;; This 'sc = supercite and causes beep in loading this file on macosx
 
 (provide 'mhs-bbdb)
