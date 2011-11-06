@@ -31,7 +31,6 @@ Normally this points to: $HOME/.emacs.d/")
 (add-to-list 'load-path emacs-top)
 
 
-
 ;; Attempt to load a feature/library, But don't bail out of the load if it's
 ;; not around, go ahead and report it to the message buffer.
 ;-----------------------------------------------------------

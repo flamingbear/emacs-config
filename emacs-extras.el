@@ -20,7 +20,7 @@
 ;; General Lisp directory
 ;;----------------------------------------------------------------
 (defvar mhs-lisp-dir (expand-file-name (concat emacs-top '"lisp"))
-  "Directory for possible private *.el & *.elc files for customization when you 
+  "Directory for possible private *.el & *.elc files for customization when you
 cannot put them directly in /usr/local/share/emacs/site-lisp
 
 I generally choose ($EMACS_HOME)/lisp for my custom files:
@@ -33,14 +33,14 @@ I generally choose ($EMACS_HOME)/lisp for my custom files:
 ;;;; IDLWAVE Customizations
 ;; Load this before ruby because we want the jds history search.
 (try-require 'emacs-idlwave-support)
-  
+
 
 
 ;; 2011-08-09: <mhs> i've changed my python loading and now you have to have a
 ;; virtual environment set up before you start emacs if you want to use it
 ;; </mhs>
-(setq mhs-pymacs-dir (getenv "VIRTUAL_ENV")) 
-(when mhs-pymacs-dir 
+(setq mhs-pymacs-dir (getenv "VIRTUAL_ENV"))
+(when mhs-pymacs-dir
     (setenv "PYMACS_DIR" mhs-pymacs-dir)
     (setenv "PYMACS_PYTHON" (concat (getenv "PYMACS_DIR") "/bin/python"))
     (require 'bcr-python))
@@ -53,11 +53,22 @@ I generally choose ($EMACS_HOME)/lisp for my custom files:
 (defvar mhs-external-lisp-dir  (expand-file-name (concat emacs-top '"external-lisp-files/"))
   "Directory where lispy things I didn't write are put" )
 
-(if (file-accessible-directory-p mhs-external-lisp-dir)
-    (add-to-list 'load-path mhs-external-lisp-dir))
+;; Add all subdirectories of the external lisp dir to the load path.
+(when (file-accessible-directory-p mhs-external-lisp-dir)
+  (add-to-list 'load-path mhs-external-lisp-dir)
+  (let ((default-directory  mhs-external-lisp-dir))
+    (normal-top-level-add-subdirs-to-load-path)))
+
+
 
 ;; Try to set up a ruby on rails environment.
 (try-require 'mhs-ruby-stuff)
+
+(when (try-require 'yaml-mode)
+  (add-hook 'yaml-mode-hook
+            '(lambda ()
+               (define-key yaml-mode-map "\C-m" 'newline-and-indent))))
+
 
 ;; if external-lisp-dir has a slime directory, we will set up that
 (try-require 'mhs-clisp-stuff)
@@ -80,8 +91,8 @@ I generally choose ($EMACS_HOME)/lisp for my custom files:
 ;; Add a local site-lisp site.  2011-09-07: I'm not exactly sure why this is.
 ;; /home/savoie/local/share/emacs/site-lisp
 (defvar mhs-local-site-lisp  (expand-file-name "~savoie/local/share/emacs/site-lisp"))
-(if (file-accessible-directory-p mhs-local-site-lisp)
-    (add-to-list 'load-path mhs-local-site-lisp t))
+(when (file-accessible-directory-p mhs-local-site-lisp)
+  (add-to-list 'load-path mhs-local-site-lisp t))
 
 
 
@@ -92,7 +103,7 @@ I generally choose ($EMACS_HOME)/lisp for my custom files:
 (server-start)
 
 
-;; requires  
+;; requires
 ;;----------
 (try-require 'force-space)
 
@@ -149,7 +160,7 @@ I generally choose ($EMACS_HOME)/lisp for my custom files:
 
 
 ;; 2009-08-12: Actually I don't like this on by default... Just remember you
-;; can customize this variable. 
+;; can customize this variable.
 
 ;;  (ediff-diff-options "--ignore-matching-lines=^.*\\$.*\\$.*$")
 
@@ -193,7 +204,7 @@ I generally choose ($EMACS_HOME)/lisp for my custom files:
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;  Emacs-Lisp stuff
-;; 
+;;
 (add-to-list 'auto-mode-alist '("\\.emacs" . emacs-lisp-mode))
 (add-to-list 'auto-mode-alist '("_emacs" . emacs-lisp-mode))
 (add-to-list 'auto-mode-alist '("\\.gnus" . emacs-lisp-mode))
@@ -309,4 +320,3 @@ I generally choose ($EMACS_HOME)/lisp for my custom files:
 (set-register
  (string-to-char "p")
  "ftp://sidads.colorado.edu/pub/incoming/savoie")
-
