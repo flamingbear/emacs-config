@@ -71,6 +71,9 @@
       '(| 
 	("X-Gnus-Mail-Source" "flamingbear" "flamingmail")
         ("subject" "Build failed in Hudson" "nsidc-notices")
+        (from "www@nsidc.org" "nsidc-notices")
+        (from "Pivotal Tracker" "nsidc-notices")
+        (from "scm\@scm\.nsidc\.org" "nsidc-notices")
         ("subject" "status reports reminder" "nsidc-notices")
         ("subject" "Searchlight status reminder" "nsidc-notices")
         (from "majordomo@kryos" "nsidc-notices")
@@ -253,7 +256,7 @@
 
 (setq nnmail-expiry-wait-function
       (lambda (group)
-	(cond ((string= group "nsidc-notices") 90)
+        (cond ((string= group "nsidc-notices") 90)
 	      ((string= group "glas_requests") 10)
 	      ((string= group "spam") 7)
 	      ((string= group "clojure-mail") 7)
@@ -261,9 +264,9 @@
 	      ((string= group "lists") 200)
 	      ((string= group "cf-metadata") 10)
 	      ((string= group "saved") 'never)
-	      (t 60))))
+	      (t 'never))))
 
 
-(setq gnus-auto-expirable-newsgroups "\\(.*lists\\|mail.misc\\|.*spam\\|.*metadata\\|.*nsidc-notices.*\\|.*mylists\\|glas\\|clojure\\|.*exchange:INBOX\\)")
+(setq gnus-auto-expirable-newsgroups "\\(.*lists\\|.*exchange:INBOX\\)")
 
 
