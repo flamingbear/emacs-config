@@ -1,3 +1,4 @@
+*~
 /eshell/history
 /eshell/lastdir
 /ac-comphist.dat
@@ -7,10 +8,13 @@
 /elpa/archives/gnu/archive-contents~
 /external-lisp-files/rinari*
 /external-lisp-files/auto-complete*
+/external-lisp-files/ruby-debug*
+/external-lisp-files/slime*
 /external-lisp-files/bbdb*
 /external-lisp-files/fuzzy.el
 /external-lisp-files/magit*
 /external-lisp-files/nxhtml*
 /external-lisp-files/popup.el
+maybe_not_used
 /tramp
 /external-lisp-files/yaml-mode/
