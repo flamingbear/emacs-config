@@ -264,6 +264,6 @@
 	      (t 60))))
 
 
-(setq gnus-auto-expirable-newsgroups "\\(.*lists\\|mail.misc\\|.*spam\\|.*metadata\\|.*nsidc-notices.*\\|.*mylists\\|glas\\|clojure\\|.*exchange:INBOX\\)")
+(setq gnus-auto-expirable-newsgroups "\\(.*lists\\|.*exchange:INBOX\\)")
 
 
