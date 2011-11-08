@@ -2,10 +2,15 @@
 /eshell/lastdir
 /ac-comphist.dat
 /.emacs.bmk
-/auto-save-list/.saves-3248-nsidc-icetime~
+/auto-save-list/.saves*
 /elpa/archives/gnu/archive-contents
 /elpa/archives/gnu/archive-contents~
 /external-lisp-files/rinari*
+/external-lisp-files/ac-dict*
+/external-lisp-files/anything*
+/external-lisp-files/emacs-eclim*
+/external-lisp-files/old_tars*
+/external-lisp-files/ruby-debug*
 /external-lisp-files/auto-complete*
 /external-lisp-files/bbdb*
 /external-lisp-files/fuzzy.el
