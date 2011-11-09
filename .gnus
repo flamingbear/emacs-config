@@ -3,12 +3,12 @@
 ;; ---------------------------
 ;; What do I do with old mail?
 (defvar mhs-imap-archive-group)
-(setq mhs-imap-archive-group  "nnimap+kryos:maild/Sent")
+(setq mhs-imap-archive-group  "nnimap+kryos:Sent")
 (setq gnus-message-archive-group mhs-imap-archive-group)
 
 ;; Where should expired articles end up?
 ;;---------------------------------------
-(defvar mhs-expired-group "nnimap+kryos:maild/Trash")
+(defvar mhs-expired-group "nnimap+kryos:Trash")
 (setq nnmail-expiry-target mhs-expired-group)
 
 
