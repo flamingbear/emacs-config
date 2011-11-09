@@ -18,10 +18,6 @@
   (interactive)
   (browse-url (concat "file://" (buffer-file-name))))
 
-(defun mhs-arctic3-font ()
-  (interactive)
-  (set-default-font 
-   "-adobe-courier-medium-r-normal--18-180-75-75-m-110-iso10646-1" nil))
 
 (defun mhs-home-font ()
   (interactive)
