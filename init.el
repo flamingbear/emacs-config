@@ -21,8 +21,16 @@ Normally this points to: $HOME/.emacs.d/")
 (defvar running-on-popsicle
   (string-match "popsicle" (prin1-to-string system-name)))
 
-;; Things that will get overwritten in Darwin custom file
-(defalias 'my-browse-url-function 'browse-url-firefox)
+;; Browser settings
+(setq browse-url-browser-function (if running-macos 
+                                      (quote browse-url-default-macosx-browser)
+                                      (quote browse-url-firefox))
+      browse-url-firefox-new-window-is-tab t
+      browse-url-generic-program "firefox"
+      browse-url-netscape-program "netscape"
+      browse-url-new-window-flag t
+      browse-url-new-window-p t
+      browse-url-of-file-hook (quote (browse-url-generic-reload)))
 
 (when running-macos 
   (if (file-readable-p (concat emacs-top '"emacs-darwin.el"))

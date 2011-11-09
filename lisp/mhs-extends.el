@@ -16,7 +16,7 @@
 (defun mhs-browse-buffer-in-firefox ()
   "* load the current file into firefox"
   (interactive)
-  (my-browse-url-function (concat "file://" (buffer-file-name))))
+  (browse-url (concat "file://" (buffer-file-name))))
 
 (defun mhs-arctic3-font ()
   (interactive)
@@ -87,7 +87,7 @@ point."
 (defun mhs-browse-current-filename ()
   "* Fires up firefox on the filename currently stored in register a"
   (interactive)
-  (my-browse-url-function (get-register ?a) 't))
+  (browse-url (get-register ?a) 't))
 
 
 

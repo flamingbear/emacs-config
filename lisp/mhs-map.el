@@ -32,7 +32,7 @@
 (define-key mhs-map [(control c)]             'clipboard-copy-region)
 (define-key mhs-map "f"                           'mhs-save-filename)
 ;(define-key mhs-map "b"                             'mhs-mark-block)
-(define-key mhs-map "b"                      'my-browse-url-function)
+(define-key mhs-map "b"                                  'browse-url)
 (define-key mhs-map "B"                'mhs-browse-buffer-in-firefox)
 (define-key mhs-map "w"                  'delete-trailing-whitespace)
 (define-key mhs-map "s"                               'mhs-searchmap)

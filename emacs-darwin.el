@@ -40,7 +40,7 @@
   "$Id: emacs-darwin.el 19643 2011-10-29 21:07:05Z savoie $
 Report bugs to: Matt Savoie <savoie@nsidc.org>")
 
-(defalias 'my-browse-url-program 'browse-url-default-macosx-browser)
+
 
 ;; This was pulled directly from www.emacswiki.org/emacs/CopyAndPaste
 (setq interprogram-cut-function nil)
