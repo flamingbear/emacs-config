@@ -70,6 +70,9 @@
 (setq nnimap-split-fancy
       '(| 
         ("subject" "Build failed in Hudson" "maild/nsidc-notices")
+        ("subject" "NISE PROBLEM on nusnow" "maild/nsidc-notices")
+        ("subject" "NISE PROBLEM on snow" "maild/nsidc-notices")
+        ("subject" "NISE FAILURE on snow" "maild/nsidc-notices")
         (from "www@nsidc.org" "maild/nsidc-notices")
         (from "Pivotal Tracker" "maild/nsidc-notices")
         (from "scm\@scm\.nsidc\.org" "maild/nsidc-notices")
@@ -253,9 +256,9 @@
 	      ((string= group "lists") 200)
 	      ((string= group "cf-metadata") 10)
 	      ((string= group "saved") 'never)
-	      (t 'never))))
+	      (t 200))))
 
 
-(setq gnus-auto-expirable-newsgroups "\\(.*lists\\|.*exchange:INBOX\\)")
+(setq gnus-auto-expirable-newsgroups "\\(.*lists\\|.*nsidc-notices\\|.*exchange:INBOX\\)")
 
 

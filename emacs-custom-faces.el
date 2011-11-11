@@ -87,6 +87,7 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
 (if  (or (not (string= nx-env nil))
          (not (string-match "snow[^s]" (system-name)))
          (string-match "masie" (user-login-name))
+         (string-match "nise" (user-login-name))
          (string-match "cdr" (user-login-name)))
     (setq use-inconsolata nil))
 
@@ -114,19 +115,19 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
        (progn
          (cond ((string-match build  "F17_prod") 
                 (setq my-menu-fg-color "red")
-                (setq my-menu-bg-color "#483d8b"));darkslateblue
+                (setq my-menu-bg-color "#483d8b")) ;darkslateblue
                ((string-match build  "F17_test") 
                 (setq my-menu-fg-color "moccasin")
                 (setq my-menu-bg-color "#483d8b")) ; darkslateblue
                )))
 
       ((string-match (system-name) "nuicemaker.colorado.edu")
-       (progn (setq my-menu-fg-color "#191970");midnightblue
-              (setq my-menu-bg-color "#6495ed")));cornflowerblue
+       (progn (setq my-menu-fg-color "#191970")   ;midnightblue
+              (setq my-menu-bg-color "#6495ed"))) ;cornflowerblue
 
       ((string-match (system-name) "wuzzles.colorado.edu")
-       (progn (setq my-menu-fg-color "#2f4f4f");dark slate gray 
-              (setq my-menu-bg-color "#c0ff3e")));olivedrab1 
+       (progn (setq my-menu-fg-color "#2f4f4f")   ;dark slate gray 
+              (setq my-menu-bg-color "#c0ff3e"))) ;olivedrab1 
 
 
       ((string-match (user-login-name) "archive")
@@ -151,17 +152,26 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
 
       ((string-match build "MASIE_prod")
        (progn ;;(setq idlwave-shell-explicit-file-name "my_idl.7.0.sh")
-       (setq idlwave-shell-explicit-file-name "my_idl.6.4.sh")
-       (setq my-menu-bg-color "#7a378b") ; mediumOrchid4
-       (setq my-menu-fg-color "palevioletred3")))
+         (setq idlwave-shell-explicit-file-name "my_idl.6.4.sh")
+         (setq my-menu-bg-color "#7a378b") ; mediumOrchid4
+         (setq my-menu-fg-color "palevioletred3")))
 
+      ;; We're back to nusnow...
+      ((string-match "nusnow.colorado" (system-name))
+       (progn
+         (setq my-menu-fg-color "greenyellow")
+         (setq my-menu-bg-color "darkolivegreen")
+         (when (string-match user-login-name "nise")
+           (setq my-menu-fg-color "darkorange3"))))
 
-      ;; Works with nusnow.colo... as well as snow.col...
-      ((string-match "snow.colorado.edu" (system-name))
+      ;; Works with snow.colo only now...
+      ((string-match "^snow.colorado.edu" (system-name))
        (progn 
-         (setq idlwave-shell-explicit-file-name "my_idl.7.0.sh")
+         (setq idlwave-shell-explicit-file-name "my_idl.8.1.sh")
          (setq my-menu-bg-color "moccasin")
          (setq my-menu-fg-color "black")
+         (cond ((string-match (user-login-name) "nise")
+                (setq my-menu-fg-color "dodgerblue")))
          (cond ((string-match build  "development")
                 (setq my-menu-fg-color "darkmagenta")
                 )
@@ -172,16 +182,16 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
                 (setq my-menu-fg-color "red")
                 )
                ((string-match build  "F17_dev")
-                ;(setq idlwave-shell-explicit-file-name "my_special_idl.8.1.sh")
+                                        ;(setq idlwave-shell-explicit-file-name "my_special_idl.8.1.sh")
                 (setq idlwave-shell-explicit-file-name "my_idl.8.1.sh")
                 (setq my-menu-fg-color "mediumvioletred")
                 (setq my-menu-bg-color "burlywood")
                 )
-               ((string-match build  "F17_snow")
-                (setq idlwave-shell-explicit-file-name "my_idl.7.0.sh")
-                (setq my-menu-fg-color "blue")
-                (setq my-menu-bg-color "burlywood")
-                )
+               ;; ((string-match build  "F17_snow")
+               ;;  (setq idlwave-shell-explicit-file-name "my_idl.7.0.sh")
+               ;;  (setq my-menu-fg-color "blue")
+               ;;  (setq my-menu-bg-color "burlywood")
+               ;;  )
                ((string-match build  "cdr_dev")
                 (setq idlwave-shell-explicit-file-name "my_idl.8.1.sh")
                 (setq my-menu-fg-color "greenyellow")
@@ -215,7 +225,7 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
               (setq idlwave-shell-explicit-file-name "my_idl.8.1.sh")))
       
       ((string-match (system-name) "sidads.colorado.edu")
-       (progn (setq my-menu-fg-color "#8b3a3a") ; indianred4
+       (progn (setq my-menu-fg-color "#8b3a3a")   ; indianred4
               (setq my-menu-bg-color "#ffdab9"))) ;peachpuff
       
       ((string-match (system-name) "arctic3.colorado.edu")
@@ -234,8 +244,8 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
 
 
       ((string-match (system-name) "arctic4.colorado.edu")
-       (progn (setq my-menu-fg-color "#00bfff") ; deep sky blue
-              (setq my-menu-bg-color "#adff2f")));green yellow
+       (progn (setq my-menu-fg-color "#00bfff")   ; deep sky blue
+              (setq my-menu-bg-color "#adff2f"))) ;green yellow
 
       ;; POPSICLE only one to start.
       ((string-match "popsicle" (system-name))
