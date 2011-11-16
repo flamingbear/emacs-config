@@ -92,9 +92,18 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Use the gnus news reader  
-(try-require 'gnus)
-(try-require 'mhs-mail)
 
+(defvar mhs-bleeding-gnus (concat emacs-top "external-lisp-files/bleeding-gnus/lisp")
+  "Location of the git repository of gnus for testing")
+(if (file-accessible-directory-p mhs-bleeding-gnus)
+    (progn (add-to-list 'load-path mhs-bleeding-gnus 'nil)
+           (require 'gnus-load))
+  (try-require 'gnus))
+
+
+;(try-require 'mhs-mail)
+
+;; Proper gnuse reader
 (if (try-require 'gnus-w3m)
     (setq mm-text-html-renderer 'gnus-w3m)
   (setq mm-text-html-renderer 'w3m))

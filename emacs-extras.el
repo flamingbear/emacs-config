@@ -92,7 +92,7 @@ I generally choose ($EMACS_HOME)/lisp for my custom files:
 ;; /home/savoie/local/share/emacs/site-lisp
 (defvar mhs-local-site-lisp  (expand-file-name "~savoie/local/share/emacs/site-lisp"))
 (when (file-accessible-directory-p mhs-local-site-lisp)
-  (add-to-list 'load-path mhs-local-site-lisp t))
+  (add-to-list 'load-path mhs-local-site-lisp))
 
 
 
@@ -113,7 +113,6 @@ I generally choose ($EMACS_HOME)/lisp for my custom files:
 ;; NCL mode
 (when (try-require 'ncl)
   (add-to-list 'auto-mode-alist '("\\.ncl$" . ncl-mode)))
-
 
 
 
@@ -208,6 +207,9 @@ I generally choose ($EMACS_HOME)/lisp for my custom files:
 (add-to-list 'auto-mode-alist '("\\.emacs" . emacs-lisp-mode))
 (add-to-list 'auto-mode-alist '("_emacs" . emacs-lisp-mode))
 (add-to-list 'auto-mode-alist '("\\.gnus" . emacs-lisp-mode))
+
+;; Sh mode for some common files
+(add-to-list 'auto-mode-alist '("\\.alias$" . sh-mode))
 
 ;; show time in mode line
 (display-time)
