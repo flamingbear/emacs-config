@@ -283,7 +283,10 @@ I generally choose ($EMACS_HOME)/lisp for my custom files:
 (try-require 'if-jump)
 
 
-
+;; Handle multiple locations for aspell.
+(if (file-exists-p "/usr/bin/aspell")
+    (setq ispell-program-name "/usr/bin/aspell")
+  (setq ispell-program-name "~savoie/local/bin/aspell"))
 
 
 
