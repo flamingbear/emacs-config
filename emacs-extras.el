@@ -126,10 +126,9 @@ I generally choose ($EMACS_HOME)/lisp for my custom files:
 
 ;; Cyclical Marking
 ;------------------
-(when (require 'thing-cmds)
+(when (try-require 'thing-cmds)
   (global-set-key [(control meta ? )] 'mark-thing) ; vs `mark-sexp'
-  (global-set-key [(meta ?@)] 'cycle-thing-region) ; vs `mark-word'
-  )
+  (global-set-key [(meta ?@)] 'cycle-thing-region)) ; vs `mark-word'
 
 
 
