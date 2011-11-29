@@ -106,7 +106,9 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
 ;; Proper gnuse reader
 (if (try-require 'gnus-w3m)
     (setq mm-text-html-renderer 'gnus-w3m)
-  (setq mm-text-html-renderer 'w3m))
+   (progn                                ;macosx mainly
+     (setq mm-text-html-renderer 'gnus-article-html)
+     (setq mm-inline-text-html-with-images 't) ))
 
 ;; R-language support.  
 (try-require 'ess-site)
