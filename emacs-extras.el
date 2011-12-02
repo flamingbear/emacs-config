@@ -10,6 +10,7 @@
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
+(setq split-width-threshold '1600)
 
 (ansi-color-for-comint-mode-on)
 
