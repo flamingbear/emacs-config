@@ -154,7 +154,7 @@
 	("subject" "ECS Notification" "maild/nsidc-notices")
 	("subject" "pl Warning" "maild/nsidc-notices")
 	(from "World Wide Web" "maild/nsidc-notices")
-	(from "geospatial" "lists")
+	(from "geospatial" "maild/lists")
 	(from "rscf" "maild/nsidc-notices")
 	("subject" "glas-scfweb" "maild/lists")
 	(from "webadmin@rose.gsfc.nasa.gov" "maild/lists")
