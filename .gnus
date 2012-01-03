@@ -173,7 +173,7 @@
 	(to "ecs-mo" "maild/lists")
         (to "savoie@tundra.colorado.edu" "spam")
         ("subject" "^No new Files on sidads" "maild/nsidc-notices")
-        "maild/mail-2011"))
+        "maild/mail-2012"))
 
 (defadvice message-send-mail (around gmail-message-send-mail protect activate)
   "Set up SMTP settings to use Gmail's server when mail is from a gmail.com address."
