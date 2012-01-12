@@ -102,6 +102,10 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
    indent-region-mode t
    rng-nxml-auto-validate-flag nil
    nxml-degraded t)
+  ;; mumamo-background-chunk-major, - dark blue
+  (set-face-background 'mumamo-background-chunk-major "#1C2138")
+  ;;mumamo-background-chunk-submode1 - dark green
+  (set-face-background 'mumamo-background-chunk-submode1 "#0B3621")
   ;; (add-to-list 'auto-mode-alist '("\\.erb" . eruby-nxhtml-mumamo) )
   )
 
