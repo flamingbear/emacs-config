@@ -117,7 +117,7 @@
  '(mail-source-delete-incoming t)
  '(mail-user-agent (quote message-user-agent))
  '(message-cite-function (quote message-cite-original-without-signature))
- '(message-mode-hook (quote (turn-on-flyspell)))
+ '(message-mode-hook (quote (turn-on-flyspell turn-off-auto-fill turn-on-visual-line-mode)))
  '(message-send-mail-partially-limit nil)
  '(message-setup-hook (quote (bbdb-define-all-aliases bbdb-insinuate-message)))
  '(mm-verify-option (quote always))

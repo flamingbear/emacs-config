@@ -89,19 +89,21 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
   (add-to-list 'auto-mode-alist '("\\.xml$" . nxml-mode)))
 
 (defvar nxhtml-dir (concat emacs-top "external-lisp-files/nxhtml/"))
-;;  this all causes problems with INFO paths.
-;; (when (and nil 
-;;            (file-accessible-directory-p nxhtml-dir))
-;;   (add-to-list 'load-path nxhtml-dir) ; <- this causes info problems.
-;;   (load (expand-file-name (concat nxhtml-dir "autostart.el")))
-;;   (setq
-;;    nxhtml-global-minor-mode t
-;;    mumamo-chunk-coloring 'submode-colored
-;;    nxhtml-skip-welcome t
-;;    indent-region-mode t
-;;    rng-nxml-auto-validate-flag nil
-;;    nxml-degraded t)
-;;   (add-to-list 'auto-mode-alist '("\\.erb" . eruby-nxhtml-mumamo)))
+
+
+(when (file-accessible-directory-p nxhtml-dir)
+  ;;  this nex line causes problems with INFO paths, but it might not be necessary.
+  ;; (add-to-list 'load-path nxhtml-dir) ; <- this causes info problems.
+  (load (expand-file-name (concat nxhtml-dir "autostart.el")))
+  (setq
+   nxhtml-global-minor-mode t
+   mumamo-chunk-coloring 'submode-colored
+   nxhtml-skip-welcome t
+   indent-region-mode t
+   rng-nxml-auto-validate-flag nil
+   nxml-degraded t)
+  ;; (add-to-list 'auto-mode-alist '("\\.erb" . eruby-nxhtml-mumamo) )
+  )
 
 
 

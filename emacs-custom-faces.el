@@ -266,4 +266,11 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
 (set-face-foreground 'menu my-menu-fg-color)
 (set-face-background 'menu my-menu-bg-color)
 
+;; These are ruby things for editing view files.
+;; mumamo-background-chunk-major, - dark blue
+(set-face-background 'mumamo-background-chunk-major "#1C2138")
+;;mumamo-background-chunk-submode1 - dark green
+(set-face-background 'mumamo-background-chunk-submode1 "#0B3621")
+
+
 ;;; .EMACS-CUSTOM-FACES ends here
