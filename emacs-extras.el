@@ -192,7 +192,7 @@ I generally choose ($EMACS_HOME)/lisp for my custom files:
 
 
 
-(add-hook 'text-mode-hook 'turn-on-auto-fill)
+;;(add-hook 'text-mode-hook 'turn-on-auto-fill)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Makefile mode stuff
