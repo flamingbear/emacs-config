@@ -12,6 +12,9 @@
 (setq nnmail-expiry-target mhs-expired-group)
 
 
+;; Do we really want the auto-fill turned on.  I dont' think so
+(setq message-fill-column 'nil)
+
 
 
 
