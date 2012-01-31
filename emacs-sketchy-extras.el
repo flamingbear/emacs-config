@@ -124,5 +124,13 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
 
 
 
+;;;
+;;; Chrome editing.
+(when (require 'edit-server nil t)
+  (setq edit-server-new-frame nil)
+  (edit-server-start))
+
+
+
 
 ;;; EMACS-SKETCHY-EXTRAS.EL ends here
