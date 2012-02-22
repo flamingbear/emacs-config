@@ -123,9 +123,10 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
                 (setq my-menu-bg-color "#483d8b")) ; darkslateblue
                )))
 
-      ((string-match (system-name) "nuicemaker.colorado.edu")
-       (progn (setq my-menu-fg-color "#191970")   ;midnightblue
-              (setq my-menu-bg-color "#6495ed"))) ;cornflowerblue
+      ;; NOAA Combined
+      ((string-match build "n0046_dev")
+       (progn (setq my-menu-fg-color "turquoise")   ;midnightblue
+              (setq my-menu-bg-color "darkgreen"))) ;cornflowerblue
 
       ((string-match (system-name) "wuzzles.colorado.edu")
        (progn (setq my-menu-fg-color "#2f4f4f")   ;dark slate gray 
