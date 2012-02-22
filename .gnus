@@ -76,6 +76,7 @@
         ("subject" "NISE PROBLEM on nusnow" "maild/nsidc-notices")
         ("subject" "NISE PROBLEM on snow" "maild/nsidc-notices")
         ("subject" "NISE FAILURE on snow" "maild/nsidc-notices")
+        (any "Honeybadger" "maild/honeybadger")
         (from "www@nsidc.org" "maild/nsidc-notices")
         (from "Pivotal Tracker" "maild/nsidc-notices")
         (from "scm\@scm\.nsidc\.org" "maild/nsidc-notices")
