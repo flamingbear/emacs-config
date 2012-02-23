@@ -57,6 +57,7 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
 
 (autoload 'ruby-mode "ruby-mode" "Major mode for ruby files" t)
 (add-to-list 'auto-mode-alist '("\\.rb$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Rakefile" . ruby-mode))
 (add-to-list 'interpreter-mode-alist '("ruby" . ruby-mode))
 
 (autoload 'run-ruby "inf-ruby" "Run an inferior Ruby process")
