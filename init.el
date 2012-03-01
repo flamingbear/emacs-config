@@ -18,8 +18,8 @@ Normally this points to: $HOME/.emacs.d/")
   "Boolean to determine if we are running on a macintosh laptop" )
 
 ;; Sometimes we don't want all of our options.
-(defvar running-on-popsicle
-  (string-match "popsicle" (prin1-to-string system-name)))
+(defvar running-on-dev-vm
+  (string-match "icebadger" (prin1-to-string system-name)))
 
 ;; Browser settings
 (setq browse-url-browser-function (if running-macos 

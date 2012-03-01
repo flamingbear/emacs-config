@@ -94,7 +94,7 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
     (setq use-inconsolata nil))
 
 ;; special case
-(if running-on-popsicle (setq use-inconsolata 't))
+(if running-on-dev-vm (setq use-inconsolata 't))
 
 (cond (use-inconsolata (mhs-use-inconsolata))
       (running-macos (mhs-use-monaco) )
@@ -251,7 +251,7 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
               (setq my-menu-bg-color "#adff2f"))) ;green yellow
 
       ;; POPSICLE only one to start.
-      ((string-match "popsicle" (system-name))
+      (running-on-dev-vm
        (progn (setq my-menu-fg-color "palevioletred1")
               (setq my-menu-bg-color "darkred")))
 
