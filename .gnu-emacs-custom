@@ -1,12 +1,12 @@
 
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
  '(Info-additional-directory-list (quote ("~savoie/local/info/")))
  '(abbrev-file-name "~savoie/.abbrev_defs")
- '(abbrev-mode t t)
+ '(abbrev-mode t)
  '(auto-compression-mode t nil (jka-compr))
  '(auto-insert-path (quote ("~savoie/.emacs.d/external-lisp-files/autoinsert/insert/")) t)
  '(bbdb-use-pop-up nil)
@@ -22,7 +22,6 @@
  '(cperl-electric-parens nil)
  '(cperl-font-lock t)
  '(cperl-highlight-variables-indiscriminately t)
- '(cperl-indent-level 4)
  '(cperl-indent-parens-as-block t)
  '(cperl-info-on-command-no-prompt t)
  '(cperl-info-page "perl")
@@ -109,6 +108,7 @@
  '(inhibit-eol-conversion t)
  '(inhibit-startup-screen t)
  '(jde-global-classpath (quote (".")))
+ '(js-indent-level 2)
  '(large-file-warning-threshold nil)
  '(longlines-show-hard-newlines t)
  '(lpr-command "/usr/bin/lpr")
@@ -175,6 +175,7 @@
  '(spam-whitelist "~savoie/News/spam/whitelist")
  '(starttls-gnutls-program "/usr/local/bin/gnutls-cli")
  '(tab-always-indent (quote complete))
+ '(tab-width 4)
  '(tool-bar-mode nil nil (tool-bar))
  '(transient-mark-mode t)
  '(type-break-mode nil nil (type-break))
@@ -191,10 +192,10 @@
 
 
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
  '(cperl-array ((t (:background "navy" :foreground "yellow"))))
  '(cperl-hash ((t (:background "navy" :foreground "Red" :slant italic))))
  '(cursor ((t (:background "orange1"))))
