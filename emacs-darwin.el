@@ -64,6 +64,7 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
 
 (when running-macos
   (setenv "PATH" (concat "/opt/local/bin:/usr/local/bin:" (getenv "PATH")))
+  (setenv "NODE_PATH" (concat (getenv "HOME") "/node_modules"))
   (push "/opt/local/bin" exec-path))
 
 ;; 2011-10-29: <mhs> This doesn't work yet, but might be a solutionon mac...</mhs>

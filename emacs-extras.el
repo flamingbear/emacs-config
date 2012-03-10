@@ -62,6 +62,12 @@ I generally choose ($EMACS_HOME)/lisp for my custom files:
     (normal-top-level-add-subdirs-to-load-path)))
 
 
+;; Javascript stuff
+(try-require 'mhs-javascript)
+
+(when (try-require 'markdown-mode)
+  (setq auto-mode-alist
+        (cons '("\\.md" . markdown-mode) auto-mode-alist)))
 
 ;; Try to set up a ruby on rails environment.
 (try-require 'mhs-ruby-stuff)
