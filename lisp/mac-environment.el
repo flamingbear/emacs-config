@@ -39,6 +39,8 @@
 ;; Call this code before running the app to update environment., but need to restart too...
 ;; #!/bin/bash
 ;; bash -l -c "/Applications/Emacs.app/Contents/MacOS/Emacs --batch -l ~/lib/emacs/elisp/macosx/environment-support.el -f generate-env-plist"
+;; Then after you've done this, go delete any SSH key stuff...SSH_AUTH_SOCK
+
 
 (defconst mac-environment-version "0.1.0"
   "$Id$
