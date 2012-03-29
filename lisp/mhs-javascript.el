@@ -45,14 +45,24 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
 
 ;; JS HINT stuff
 (when (try-require 'flymake-jshint)
+  (add-hook 'js2-mode-hook
+            (lambda () (flymake-mode t)))
   (add-hook 'js-mode-hook
-            (lambda () (flymake-mode t))))
-
-
+            (lambda () (flymake-mode t))) )
 
 
 ;; Use linum-mode in javascript
 (add-hook 'js-mode-hook (lambda () (linum-mode)))
+(add-hook 'js2-mode-hook 
+          (lambda () 
+            (linum-mode)
+            (local-set-key [(control meta q)] 'prog-indent-sexp) ))
+
+(autoload 'js2-mode "js2-mode" nil t)
+(setq js2-basic-offset 2)
+
+(add-to-list 'auto-mode-alist '("\\.js" . js2-mode) nil)
+
 
 (provide 'mhs-javascript)
 

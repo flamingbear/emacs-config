@@ -62,9 +62,6 @@ I generally choose ($EMACS_HOME)/lisp for my custom files:
     (normal-top-level-add-subdirs-to-load-path)))
 
 
-;; Javascript stuff
-(try-require 'mhs-javascript)
-
 (when (try-require 'markdown-mode)
   (setq auto-mode-alist
         (cons '("\\.md" . markdown-mode) auto-mode-alist)))
@@ -76,6 +73,10 @@ I generally choose ($EMACS_HOME)/lisp for my custom files:
   (add-hook 'yaml-mode-hook
             '(lambda ()
                (define-key yaml-mode-map "\C-m" 'newline-and-indent))))
+
+;; Javascript stuff
+(try-require 'mhs-javascript)
+
 
 
 ;; if external-lisp-dir has a slime directory, we will set up that
