@@ -64,6 +64,32 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
 (add-to-list 'auto-mode-alist '("\\.js" . js2-mode) nil)
 
 
+
+(when (try-require 'js-comint)
+  ;; Use node as our repl
+  (setq inferior-js-program-command "node")
+ 
+  (setq inferior-js-mode-hook
+        (lambda ()
+          ;; We like nice colors
+          (ansi-color-for-comint-mode-on)
+          ;; Deal with some prompt nonsense
+           (add-to-list 'comint-preoutput-filter-functions
+                        (lambda (output)
+                          (replace-regexp-in-string ".*1G\.\.\..*5G" "..."
+                                                    (replace-regexp-in-string ".*1G.*3G" "node>" output)))) ))
+
+;  (setq inferior-js-program-command "/usr/bin/java org.mozilla.javascript.tools.shell.Main")
+  (add-hook 'js2-mode-hook '(lambda () 
+                              (local-set-key "\C-x\C-e" 'js-send-last-sexp)
+                              (local-set-key "\C-\M-x" 'js-send-last-sexp-and-go)
+                              (local-set-key "\C-cb" 'js-send-buffer)
+                              (local-set-key "\C-c\C-b" 'js-send-buffer-and-go)
+                              (local-set-key "\C-cl" 'js-load-file-and-go)
+                              )) )
+
+
+
 (provide 'mhs-javascript)
 
 ;;; MHS-JAVASCRIPT.EL ends here

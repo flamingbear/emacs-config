@@ -40,3 +40,4 @@ maybe_not_used
 /external-lisp-files/jshint-mode/
 /external-lisp-files/markdown-mode/
 /external-lisp-files/js2-mode/
+/external-lisp-files/js-comint.el
