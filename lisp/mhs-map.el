@@ -50,6 +50,8 @@
 (define-key mhs-map "p"            'mhs-idlwave-insert-do_ps-keyword)
 (define-key mhs-map "k"                         'mhs-setdefaultvalue)
 (define-key mhs-map ";"                  'mhs-idlwave-insert-comment)
+(define-key mhs-map "j"                     'mhs-insert-jshint-lines)
+(define-key mhs-map "J"                     'mhs-remove-jshint-lines)
 
 
 (if (or running-macos
