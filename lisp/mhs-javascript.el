@@ -92,7 +92,7 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
 (defvar mhs-jshint-lines
   (list nil
         "/*jshint forin:true, noarg:true, noempty:true, eqeqeq:true, bitwise:true, undef:true, curly:true, browser:true, onevar:true, immed:true, latedef:true, newcap:true */
-/*global nsidc: true, jQuery, _, Backbone, it, expect, describe, beforeEach, runs, waitsFor */
+/*global nsidc: true, $, jQuery, _, sinon, Backbone, it, expect, describe, beforeEach, runs, waitsFor */
 
 ")
   "*A string to insert at the top of javascript files to make jshint work" )
