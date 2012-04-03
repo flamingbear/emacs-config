@@ -97,7 +97,8 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
 (if running-on-dev-vm (setq use-inconsolata 't))
 
 (cond (use-inconsolata (mhs-use-inconsolata))
-      (running-macos (mhs-use-monaco) )
+      (running-macos (progn (mhs-use-inconsolata)
+                            (set-face-attribute 'default nil :height 195)))
       (t (mhs-use-normal-face)))
 
 ;; This was the stuff below in my .gnu-emacs-custom but I've updated to use

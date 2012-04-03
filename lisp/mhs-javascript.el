@@ -89,6 +89,29 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
                               )) )
 
 
+(defvar mhs-jshint-lines
+  (list nil
+        "/*jshint forin:true, noarg:true, noempty:true, eqeqeq:true, bitwise:true, undef:true, curly:true, browser:true, onevar:true, immed:true, latedef:true, newcap:true */
+/*global nsidc: true, jQuery, _, Backbone, it, expect, describe, beforeEach, runs, waitsFor */
+")
+  "*A string to insert at the top of javascript files to make jshint work" )
+
+(defun mhs-add-jshint-lines ()
+  "Add text to the top of a js file"
+  (interactive)
+  (save-excursion 
+    (goto-char (point-min))
+    (insert (car (cdr mhs-jshint-lines)))))
+
+
+(defun mhs-remove-jshint-lines ()
+  "Remove the jshint information fromt the top of a javascript file"
+  (interactive)
+  (save-excursion
+    (goto-char (point-min))
+    (while (search-forward (car (cdr mhs-jshint-lines)) nil t)
+      (replace-match "" t t))))
+
 
 (provide 'mhs-javascript)
 

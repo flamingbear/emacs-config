@@ -417,6 +417,33 @@ following the prefix character"
                              :underline nil  :height 145 
                              :foundry "apple" :family "Monaco")))
 
+
+(defun mhs-use-menlo ()
+  "Switch from the current face to a nice coding font for macintosh machines"
+  (interactive)
+  (progn (set-face-attribute 'default nil :inherit nil :stipple nil
+                             :background "gray12" :foreground "gray89" 
+                             :inverse-video nil :box nil 
+                             :strike-through nil :overline nil 
+                             :underline nil  :height 145 
+                             :foundry "apple" :family "Menlo")))
+
+
+(defun mhs-make-font-bigger ()
+  "Increase the font height by 10"
+  (interactive)
+  (progn 
+    (set-face-attribute 'default nil :height (+ (face-attribute 'default :height) 10) )))
+
+
+(defun mhs-make-font-smaller ()
+  "Decrease the font height by 10"
+  (interactive)
+  (progn 
+    (set-face-attribute 'default nil :height (- (face-attribute 'default :height) 10) )))
+
+
+
 (defun mhs-use-normal-face ()
   (interactive)
   (progn (set-face-attribute 'default nil :font "10x20" :inherit nil :stipple nil 
