@@ -55,6 +55,8 @@
             (font-lock-add-keywords 
              nil '(("^[^\n]\\{90\\}\\(.*\\)$" 1 font-lock-warning-face t)))))
 
+(add-hook 'python-mode-hook (lambda () (linum-mode)))
+
 
 
 ; 2011-08-09: <mhs> I don't think we need this anymore, if we activate before
