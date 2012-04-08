@@ -53,6 +53,7 @@
 (define-key mhs-map "j"                     'mhs-insert-jshint-lines)
 (define-key mhs-map "J"                     'mhs-remove-jshint-lines)
 (define-key mhs-map "u"                   'underscore-previous-camel)
+(define-key mhs-map "U"                     'camelize-previous-snake)
 
 
 (if (or running-macos
