@@ -429,14 +429,14 @@ following the prefix character"
                              :foundry "apple" :family "Menlo")))
 
 
-(defun mhs-make-font-bigger ()
+(defun mhs-increase-font-size ()
   "Increase the font height by 10"
   (interactive)
   (progn 
     (set-face-attribute 'default nil :height (+ (face-attribute 'default :height) 10) )))
 
 
-(defun mhs-make-font-smaller ()
+(defun mhs-decrease-font-size ()
   "Decrease the font height by 10"
   (interactive)
   (progn 
@@ -450,6 +450,54 @@ following the prefix character"
                              :background "gray12" :foreground "gray89" 
                              :inverse-video nil :box nil :strike-through nil 
                              :overline nil :underline nil )))
+
+
+
+(defun un-camelcase-string (s &optional sep start)
+  "Convert CamelCase string S to lower case with word separator SEP.
+    Default for SEP is a hyphen \"-\".
+    If third argument START is non-nil, convert words after that
+    index in STRING."
+  (let ((case-fold-search nil))
+    (while (string-match "[A-Z]" s (or start 1))
+      (setq s (replace-match (concat (or sep "-") 
+                                     (downcase (match-string 0 s))) 
+                             t nil s)))
+    (downcase s)))
+
+;;Sample EmacsLisp code to convert a string from underscore  CamelCase:
+(defun mapcar-head (fn-head fn-rest list)
+  "Like MAPCAR, but applies a different function to the first element."
+  (if list
+      (cons (funcall fn-head (car list)) (mapcar fn-rest (cdr list)))))
+
+(defun camelize (s)
+  "Convert under_score string S to CamelCase string."
+  (mapconcat 'identity (mapcar
+                        '(lambda (word) (capitalize (downcase word)))
+                        (split-string s "_")) ""))
+
+(defun camelize-method (s)
+  "Convert under_score string S to camelCase string."
+  (mapconcat 'identity (mapcar-head
+                        '(lambda (word) (downcase word))
+                        '(lambda (word) (capitalize (downcase word)))
+                        (split-string s "_")) ""))
+
+
+(defun camelize-previous-snake (&optional beg end)
+  "Camelize the previous snake cased string.
+    If transient-mark-mode is active and a region is activated,
+    camelize the region."
+  (interactive "r")
+  (unless (and (boundp 'transient-mark-mode) transient-mark-mode mark-active)
+    (setq end (point)
+          beg (+ (point) (skip-chars-backward "[:alnum:]_"))))
+  (save-excursion
+    (let ((c (camelize-method (buffer-substring-no-properties beg end))))
+      (delete-region beg end)
+      (goto-char beg)
+      (insert c))))
 
 
 
