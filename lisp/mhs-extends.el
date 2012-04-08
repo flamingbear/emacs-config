@@ -460,7 +460,7 @@ following the prefix character"
     index in STRING."
   (let ((case-fold-search nil))
     (while (string-match "[A-Z]" s (or start 1))
-      (setq s (replace-match (concat (or sep "-") 
+      (setq s (replace-match (concat (or sep "_") 
                                      (downcase (match-string 0 s))) 
                              t nil s)))
     (downcase s)))
@@ -483,6 +483,21 @@ following the prefix character"
                         '(lambda (word) (downcase word))
                         '(lambda (word) (capitalize (downcase word)))
                         (split-string s "_")) ""))
+
+
+(defun underscore-previous-camel (&optional beg end)
+  "unCamelize the previous camelCased string.
+    If transient-mark-mode is active and a region is activated,
+    camelize the region."
+  (interactive "r")
+  (unless (and (boundp 'transient-mark-mode) transient-mark-mode mark-active)
+    (setq end (point)
+          beg (+ (point) (skip-chars-backward "[:alnum:]_"))))
+  (save-excursion
+    (let ((c (un-camelcase-string (buffer-substring-no-properties beg end))))
+      (delete-region beg end)
+      (goto-char beg)
+      (insert c))))
 
 
 (defun camelize-previous-snake (&optional beg end)
