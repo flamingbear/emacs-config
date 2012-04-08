@@ -52,6 +52,7 @@
 (define-key mhs-map ";"                  'mhs-idlwave-insert-comment)
 (define-key mhs-map "j"                     'mhs-insert-jshint-lines)
 (define-key mhs-map "J"                     'mhs-remove-jshint-lines)
+(define-key mhs-map "u"                   'underscore-previous-camel)
 
 
 (if (or running-macos
