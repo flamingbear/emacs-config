@@ -133,13 +133,6 @@ I generally choose ($EMACS_HOME)/lisp for my custom files:
                       ;; (setq dired-guess-shell-gnutar "gtar")
                       )))
 
-;; Cyclical Marking
-;------------------
-(when (try-require 'thing-cmds)
-  (global-set-key [(control meta ? )] 'mark-thing) ; vs `mark-sexp'
-  (global-set-key [(meta ?@)] 'cycle-thing-region)) ; vs `mark-word'
-
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; PSVN for subversion integration

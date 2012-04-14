@@ -75,8 +75,19 @@
 (global-set-key "\C-c]"                'mhs-sqbracket-region)
 (global-set-key "\C-c<"                'mhs-anglebracket-region)
 (global-set-key "\C-c>"                'mhs-anglebracket-region)
+(global-set-key (kbd "C-c p") 'perldb)
+(global-set-key (kbd "C-x SPC") 'push-mark-command)
 
-(global-set-key "\C-cp"                'perldb)
+;; Ace Jumping mode.
+(when (try-require 'ace-jump-mode)
+  (define-key global-map (kbd "C-c x") 'ace-jump-mode))
+
+
+;; Cyclical Marking
+;------------------
+(when (try-require 'thing-cmds)
+  (global-set-key [(control meta ? )] 'mark-thing) ; vs `mark-sexp'
+  (global-set-key [(meta ?@)] 'cycle-thing-region)) ; vs `mark-word'
 
 
 ;; Options for Macintosh Laptop
