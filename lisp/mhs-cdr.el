@@ -79,6 +79,11 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
   (interactive)
   (dired (proj-top-subdir "src")))
 
+(defun cdr-output ()
+  "go to the src directory of the current build"
+  (interactive)
+  (dired (proj-top-subdir "output")))
+
 (defun cdr-work ()
   "go to the work directory of the current build"
   (interactive)

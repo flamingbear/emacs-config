@@ -50,19 +50,26 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
   "Set the build to F17 development"
   (interactive)
   (setenv "BUILD" "F17_dev" )
-  (setq sii-current-build "F17_dev"))
+  (setenv "NRTSI_WEBBASE" "/projects/NRTSI-G/F17_dev/website_base")
+  (setq sii-current-build (getenv "BUILD"))
+  (setq sii-current-web (getenv "NRTSI_WEBBASE")))
 
 (defun tf17 ()
   "Set the build to F17 testing"
   (interactive)
   (setenv "BUILD" "F17_test" )
-  (setq sii-current-build "F17_test"))
+  (setenv "NRTSI_WEBBASE" "/disks/testsnowtest/live/data/seaice_index/")
+  (setq sii-current-build (getenv "BUILD"))
+  (setq sii-current-web (getenv "NRTSI_WEBBASE")))
 
 (defun pf17 ()
   "Set the build to F17 production"
   (interactive)
   (setenv "BUILD" "F17_prod" )
-  (setq sii-current-build "F17_prod"))
+  (setenv "NRTSI_WEBBASE" "/disks/production/live/data/seaice_index/")
+  (setq sii-current-build (getenv "BUILD"))
+  (setq sii-current-web (getenv "NRTSI_WEBBASE")))
+
 
 
 ;; Functions for moving around the environment
@@ -102,7 +109,6 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
   (interactive)
   (nrtsi-proj-top-subdir "seaice_index/idl/one_off_specials/regenerate_data"))
 
-
 (defun sii-top ()
   "Jump to current project top"
   (interactive)
@@ -112,6 +118,12 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
   "Jump to the nrtsi results directory"
   (interactive)
   ( nrtsitop-subdir "results" ))
+
+(defun sii-website ()
+  "Jump to the nrtsi results directory"
+  (interactive)
+  (dired sii-current-web))
+
 
 (defun sii-ancillary ()
   "Jump to the nrtsi results directory"
