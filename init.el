@@ -75,15 +75,15 @@ of an error, just add the package to a list of missing packages."
     (load gnu-emacs-file nil t))
 
 
-;; My Settings for keybinds/maps
-(if (file-readable-p (concat emacs-top '"emacs-keybinds.el"))
-    (load (concat emacs-top '"emacs-keybinds.el") nil t))
-
 
 ;; add load paths to custom files, load special packages, load the
 ;; mhs-idlwave-extras file.
 (if (file-readable-p (concat emacs-top '"emacs-extras.el"))
     (load (concat emacs-top '"emacs-extras.el") nil t))
+
+;; My Settings for keybinds/maps
+(if (file-readable-p (concat emacs-top '"emacs-keybinds.el"))
+    (load (concat emacs-top '"emacs-keybinds.el") nil t))
 
 
 

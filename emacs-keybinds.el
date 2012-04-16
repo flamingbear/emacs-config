@@ -27,6 +27,9 @@
 (global-set-key [f6]              'gud-break) ; F7
 (global-set-key [M-f6]            'gud-remove) ; F7
 
+
+
+
 ;; My Mapping Stuff, this is a prefix key that allows me access to more
 ;; functions.  These are defined in ~/lisp/mhs-map.el
 (global-set-key [f7]              'mhs-map) ; F7
@@ -86,8 +89,8 @@
 ;; Cyclical Marking
 ;------------------
 (when (try-require 'thing-cmds)
-  (global-set-key [(control meta ? )] 'mark-thing) ; vs `mark-sexp'
-  (global-set-key [(meta ?@)] 'cycle-thing-region)) ; vs `mark-word'
+  (global-set-key (kbd "C-M-?") 'mark-thing) ; vs `mark-sexp'
+  (global-set-key (kbd "M-@") 'cycle-thing-region)) ; vs `mark-word'
 
 
 ;; Options for Macintosh Laptop
