@@ -86,6 +86,10 @@
   (define-key global-map (kbd "C-c x") 'ace-jump-mode))
 
 
+;; Find-name-dired
+(global-set-key (kbd "M-s f") 'find-name-dired)
+
+
 ;; Cyclical Marking
 ;------------------
 (when (try-require 'thing-cmds)

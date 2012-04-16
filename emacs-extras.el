@@ -62,12 +62,19 @@ I generally choose ($EMACS_HOME)/lisp for my custom files:
     (normal-top-level-add-subdirs-to-load-path)))
 
 
+;; Use the fancy rgrep if available. from magnus
+(if (try-require 'startup-rgrep)
+    (global-set-key (kbd "M-s s") 'rgrep-fullscreen)
+  (global-set-key (kbd "M-s s") 'rgrep))
+
+
 (when (try-require 'markdown-mode)
   (setq auto-mode-alist
         (cons '("\\.md" . markdown-mode) auto-mode-alist)))
 
 ;; Try to set up a ruby on rails environment.
 (try-require 'mhs-ruby-stuff)
+
 
 (when (try-require 'yaml-mode)
   (add-hook 'yaml-mode-hook
