@@ -44,3 +44,6 @@ maybe_not_used
 /external-lisp-files/ace-jump-mode/
 /external-lisp-files/magnars/expand-region.el/
 /external-lisp-files/magnars/mark-multiple.el/
+/external-lisp-files/expand-region/
+/external-lisp-files/make-multiple/
+/external-lisp-files/markdown-mode.el

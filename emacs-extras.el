@@ -62,8 +62,15 @@ I generally choose ($EMACS_HOME)/lisp for my custom files:
     (normal-top-level-add-subdirs-to-load-path)))
 
 
-;; Use the fancy rgrep if available. from magnus
-(if (try-require 'startup-rgrep)
+
+;; Set up Magnars' subdirs.
+(defvar magnars-stuff (concat mhs-external-lisp-dir "magnars/"))
+(when (file-accessible-directory-p magnars-stuff)
+  (add-to-list 'load-path magnars-stuff))
+
+
+;; Use the fancy rgrep if available. from magnars
+(if (try-require 'setup-rgrep)
     (global-set-key (kbd "M-s s") 'rgrep-fullscreen)
   (global-set-key (kbd "M-s s") 'rgrep))
 
