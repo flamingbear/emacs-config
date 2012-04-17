@@ -67,10 +67,14 @@ I generally choose ($EMACS_HOME)/lisp for my custom files:
     (global-set-key (kbd "M-s s") 'rgrep-fullscreen)
   (global-set-key (kbd "M-s s") 'rgrep))
 
-
+;; (autoload 'markdown-mode "markdown-mode.el"
+;;         "Major mode for editing Markdown files" t)
+;; (setq auto-mode-alist
+;;       (cons '("\\.md" . markdown-mode) auto-mode-alist))
+;; 2012-04-17: <mhs> need to look at these options</mhs>
 (when (try-require 'markdown-mode)
   (setq auto-mode-alist
-        (cons '("\\.md" . markdown-mode) auto-mode-alist)))
+         (cons '("\\.md" . markdown-mode) auto-mode-alist)))
 
 ;; Try to set up a ruby on rails environment.
 (try-require 'mhs-ruby-stuff)

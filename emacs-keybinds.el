@@ -81,6 +81,25 @@
 (global-set-key (kbd "C-c p") 'perldb)
 (global-set-key (kbd "C-x SPC") 'push-mark-command)
 
+
+
+;; Stuff from EmacsRocks guy Magnars.
+
+(when (try-require 'inline-string-rectangle)
+  (global-set-key (kbd "C-x r t") 'inline-string-rectangle))
+
+(when (try-require 'mark-more-like-this)
+  (global-set-key (kbd "C-<") 'mark-previous-like-this)
+  (global-set-key (kbd "C->") 'mark-next-like-this)
+  (global-set-key (kbd "C-M-m") 'mark-more-like-this) ; like the other two, but takes an argument (negative is previous)
+  (global-set-key (kbd "C-*") 'mark-all-like-this))
+
+(when (try-require 'rename-sgml-tag)
+  (define-key sgml-mode-map (kbd "C-c C-r") 'rename-sgml-tag))
+
+(when (try-require 'js2-rename-var)
+  (define-key js2-mode-map (kbd "C-c C-r") 'js2-rename-var))
+
 ;; Ace Jumping mode.
 (when (try-require 'ace-jump-mode)
   (define-key global-map (kbd "C-c x") 'ace-jump-mode))
