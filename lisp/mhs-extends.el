@@ -58,6 +58,9 @@
 ;; (add-hook 'emacs-lisp-mode-hook 'my-tab-fix)
 ;; (add-hook 'idlwave-mode-hook    'my-tab-fix)
 
+(defun mhs-insert-todo ()
+  (interactive)
+  (insert (concat "TODO [MHS, " (format-time-string "%Y-%m-%d") "] ")))
   
   
 (defun mhs-insert-date ()

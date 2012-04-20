@@ -94,7 +94,8 @@
   (global-set-key (kbd "C-M-m") 'mark-more-like-this) ; like the other two, but takes an argument (negative is previous)
   (global-set-key (kbd "C-*") 'mark-all-like-this))
 
-(when (try-require 'rename-sgml-tag)
+(when (and (try-require 'rename-sgml-tag)
+	   (try-require 'sgml-mode))
   (define-key sgml-mode-map (kbd "C-c C-r") 'rename-sgml-tag))
 
 (when (try-require 'js2-rename-var)

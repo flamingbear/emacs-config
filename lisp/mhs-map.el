@@ -25,7 +25,7 @@
 ;(define-key mhs-map "g"                             'gnus-no-server)
 (define-key mhs-map " "                            'mhs-region-word)
 ;(define-key mhs-map [(f8)]                      'delete-blank-lines)
-(define-key mhs-map "t"                            'mhs-recurse-tags)
+
 (define-key mhs-map [(f7)]                         'copy-to-register)
 (define-key mhs-map [(S-f7)]                         'append-to-register)
 (define-key mhs-map [(f6)]                          'insert-register)
@@ -66,5 +66,7 @@
 (define-key mhs-searchmap "I"                          'mhs-grep-these)
 (define-key mhs-searchmap "r"            'mhs-nocase-grep-these-prompt)
 (define-key mhs-searchmap "R"            'mhs-nocase-grep-these-prompt)
+
+(define-key mhs-map "t"                            'mhs-insert-todo)
 
 (provide 'mhs-map)
