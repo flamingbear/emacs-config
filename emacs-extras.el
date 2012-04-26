@@ -69,11 +69,6 @@ I generally choose ($EMACS_HOME)/lisp for my custom files:
   (add-to-list 'load-path magnars-stuff))
 
 
-;; Use the fancy rgrep if available. from magnars
-(if (try-require 'setup-rgrep)
-    (global-set-key (kbd "M-s s") 'rgrep-fullscreen)
-  (global-set-key (kbd "M-s s") 'rgrep))
-
 ;; (autoload 'markdown-mode "markdown-mode.el"
 ;;         "Major mode for editing Markdown files" t)
 ;; (setq auto-mode-alist

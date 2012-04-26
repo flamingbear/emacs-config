@@ -85,6 +85,16 @@
 
 ;; Stuff from EmacsRocks guy Magnars.
 
+;; Use the fancy rgrep if available. from magnars
+(if (try-require 'setup-rgrep)
+    (global-set-key (kbd "M-s s") 'rgrep-fullscreen)
+  (global-set-key (kbd "M-s s") 'rgrep))
+
+
+(when (boundp 'mhs-searchmap)
+  (define-key mhs-searchmap "s" 'rgrep-fullscreen))
+
+
 (when (try-require 'inline-string-rectangle)
   (global-set-key (kbd "C-x r t") 'inline-string-rectangle))
 
