@@ -27,7 +27,6 @@ Normally this points to: $HOME/.emacs.d/")
                                       (quote browse-url-firefox))
       browse-url-firefox-new-window-is-tab t
       browse-url-generic-program "firefox"
-      browse-url-netscape-program "netscape"
       browse-url-new-window-flag t
       browse-url-new-window-p t
       browse-url-of-file-hook (quote (browse-url-generic-reload)))

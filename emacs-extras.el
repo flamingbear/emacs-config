@@ -286,6 +286,7 @@ I generally choose ($EMACS_HOME)/lisp for my custom files:
 (try-require 'mhs-sii)
 (try-require 'mhs-cdr)
 (try-require 'mhs-masie)
+(try-require 'mhs-acadis)
 
 (try-require 'mhs-reindent)
 
