@@ -69,5 +69,6 @@
 (define-key mhs-codemap "s" 'acadis-spec)
 (define-key mhs-codemap "c" 'acadis-src)
 (define-key mhs-codemap "t" 'acadis-top)
+(define-key mhs-codemap "a" 'jump-to-spec-or-code)
 
 (provide 'mhs-map)
