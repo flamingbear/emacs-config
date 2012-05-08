@@ -1,16 +1,16 @@
 ;;;
 ;;; This is a file where I extend my current emacs into separate little
-;;; functions.  
+;;; functions.
 ;;;
 
 
-;; This function is old and people shouldn't use it, mhs-dblstuff replaces it. 
+;; This function is old and people shouldn't use it, mhs-dblstuff replaces it.
 (require 'mhs-dblstuff)
 
 (defun mhs-base-name ()
   "* inserts the current buffer's name where the mark is."
   (interactive)
-  (setq str (buffer-name)) 
+  (setq str (buffer-name))
   (insert (substring str 0 (- (string-width str) 4))))
 
 (defun mhs-browse-buffer-in-firefox ()
@@ -52,7 +52,7 @@
 
 ;; (defun my-tab-fix ()
 ;;   (local-set-key [tab] 'indent-or-expand))
- 
+
 ;; (add-hook 'c-mode-hook          'my-tab-fix)
 ;; (add-hook 'sh-mode-hook         'my-tab-fix)
 ;; (add-hook 'emacs-lisp-mode-hook 'my-tab-fix)
@@ -61,8 +61,8 @@
 (defun mhs-insert-todo ()
   (interactive)
   (insert (concat "TODO [MHS, " (format-time-string "%Y-%m-%d") "] ")))
-  
-  
+
+
 (defun mhs-insert-date ()
   (interactive)
   (insert (format-time-string "%Y-%m-%d")))
@@ -162,7 +162,7 @@
   (set-face-foreground 'modeline "black") )
 
 
-;; (defadvice x-create-frame-with-faces 
+;; (defadvice x-create-frame-with-faces
 ;;   (after mhs-modeline-update activate)
 ;;   "Updates the Modeline automagically when you create a new frame."
 ;;   (mhs-mycolors))
@@ -177,22 +177,22 @@
 (defun mhs-lineup ()
   "*aligns lines of code according to the character after the point"
   (interactive)
-  (save-excursion 
+  (save-excursion
     (let ((tok (buffer-substring (point) (+ 1 (point))))
 	  (cur (current-column))
 	  (dif nil))
       (forward-line)
-      (while (search-forward tok (save-excursion 
-				   (end-of-line) 
+      (while (search-forward tok (save-excursion
+				   (end-of-line)
 				   (point)) 't)
-	(progn 	 
-	  (move-to-column (1+ cur)) 
-	  (if (search-backward tok (save-excursion 
-				     (beginning-of-line) 
+	(progn
+	  (move-to-column (1+ cur))
+	  (if (search-backward tok (save-excursion
+				     (beginning-of-line)
 				     (point)) 't)
-	      (progn 
+	      (progn
 		(goto-char (point) )
-		(setq dif (- cur (current-column) ))	 
+		(setq dif (- cur (current-column) ))
 		(insert (make-string dif (string-to-char " ")))))
 	  (forward-line)))
       "Completed Lineup")))
@@ -203,14 +203,14 @@
     (let ((insstr nil)
 	  (fail-p 't))
       (backward-char)
-      (while  (looking-at "[ \t\n]") 
+      (while  (looking-at "[ \t\n]")
 	(progn
 	  (setq fail-p nil)
 	  (delete-char 1)
 	  (setq insstr (concat insstr " "))
 	  (backward-char)))
-      (if (not fail-p) 
-	  (progn 
+      (if (not fail-p)
+	  (progn
 	    (while (not (looking-at "[ \t\n]"))
 	      (backward-char))
 	    (insert insstr))))))
@@ -227,7 +227,7 @@
 	  (cur (current-column))
 	  (dif nil))
       (while (looking-at tok)
-	(progn 
+	(progn
 	  (mhs-shift-left-to-the-right)
 	  (forward-line)
 	  (move-to-column cur)
@@ -251,12 +251,12 @@
 	(end-of-line)
 	(narrow-to-region (mark) (point))
 	)
-      (setq start-col 
-	    (min (current-column) 
+      (setq start-col
+	    (min (current-column)
 		 (save-excursion (goto-char (mark))
 				 (current-column))))
-      (setq finish-col 
-	    (max (current-column) 
+      (setq finish-col
+	    (max (current-column)
 		 (save-excursion (goto-char (mark))
 				 (current-column))))
       (goto-char (point-min))
@@ -273,20 +273,20 @@
 (defun mhs-occur-this-word-maybe (n) "\t
     If the mark is active, do Occur on the region.
     If the mark is inactive, do Occur on the word under point.
-    A prefix argument calls the normal occur."  
+    A prefix argument calls the normal occur."
   (interactive "p")
   (if (not (= n 1)) (command-execute 'occur)
     (save-excursion
       (let ((start nil)
 	    (finish nil)
 	    (tok nil))
-	(if (not mark-active) 
+	(if (not mark-active)
 	    ;; mark the current word
 	    (progn (forward-word -1)
 		   (set-mark (point))
 		   (forward-word 1)))
-      
-	(progn 
+
+	(progn
 	  ;; set the start and finish of the region
 	  (setq start (min (mark) (point)))
 	  (setq finish (max (mark) (point))))
@@ -299,7 +299,7 @@
   (interactive "@e")
   (save-excursion
     (mouse-set-point event)
-    (fixup-whitespace))) 
+    (fixup-whitespace)))
 
 
 (defun mhs-under-this-line (tok)
@@ -324,7 +324,7 @@
 
 
 
-(defun mhs-underline-comment-maybe (j) 
+(defun mhs-underline-comment-maybe (j)
 "underine the current line putting the character in column 1 in column
 1 and changing the other characters to be either `-' or the character
 following the prefix character"
@@ -337,7 +337,7 @@ following the prefix character"
 
 
 
-(defun mhs-underline-c++-comment (j) 
+(defun mhs-underline-c++-comment (j)
 "underine the current line putting the character in column 1 in column
 1 and changing the other characters to be either `-' or the character
 following the prefix character"
@@ -395,18 +395,18 @@ following the prefix character"
 (defun mhs-convert-to-ftp-loc ()
 (interactive)
 (save-excursion)
-(replace- 
- "/disks/sidads_incoming/savoie/" 
+(replace-
+ "/disks/sidads_incoming/savoie/"
  "ftp://sidads.colorado.edu/pub/incoming/savoie/"))
 
 
 (defun mhs-use-inconsolata ()
   (interactive)
-  (progn (set-face-attribute 'default nil :inherit nil :stipple nil 
-                               :background "gray12" :foreground "gray89" 
-                               :inverse-video nil :box nil 
-                               :strike-through nil :overline nil 
-                               :underline nil  :height 150 
+  (progn (set-face-attribute 'default nil :inherit nil :stipple nil
+                               :background "gray12" :foreground "gray89"
+                               :inverse-video nil :box nil
+                               :strike-through nil :overline nil
+                               :underline nil  :height 150
                                :foundry "unknown" :family "Inconsolata")))
 
 
@@ -414,10 +414,10 @@ following the prefix character"
   "Switch from the current face to a nice coding font for macintosh machines"
   (interactive)
   (progn (set-face-attribute 'default nil :inherit nil :stipple nil
-                             :background "gray12" :foreground "gray89" 
-                             :inverse-video nil :box nil 
-                             :strike-through nil :overline nil 
-                             :underline nil  :height 145 
+                             :background "gray12" :foreground "gray89"
+                             :inverse-video nil :box nil
+                             :strike-through nil :overline nil
+                             :underline nil  :height 145
                              :foundry "apple" :family "Monaco")))
 
 
@@ -425,33 +425,33 @@ following the prefix character"
   "Switch from the current face to a nice coding font for macintosh machines"
   (interactive)
   (progn (set-face-attribute 'default nil :inherit nil :stipple nil
-                             :background "gray12" :foreground "gray89" 
-                             :inverse-video nil :box nil 
-                             :strike-through nil :overline nil 
-                             :underline nil  :height 145 
+                             :background "gray12" :foreground "gray89"
+                             :inverse-video nil :box nil
+                             :strike-through nil :overline nil
+                             :underline nil  :height 145
                              :foundry "apple" :family "Menlo")))
 
 
 (defun mhs-increase-font-size ()
   "Increase the font height by 10"
   (interactive)
-  (progn 
+  (progn
     (set-face-attribute 'default nil :height (+ (face-attribute 'default :height) 10) )))
 
 
 (defun mhs-decrease-font-size ()
   "Decrease the font height by 10"
   (interactive)
-  (progn 
+  (progn
     (set-face-attribute 'default nil :height (- (face-attribute 'default :height) 10) )))
 
 
 
 (defun mhs-use-normal-face ()
   (interactive)
-  (progn (set-face-attribute 'default nil :font "10x20" :inherit nil :stipple nil 
-                             :background "gray12" :foreground "gray89" 
-                             :inverse-video nil :box nil :strike-through nil 
+  (progn (set-face-attribute 'default nil :font "10x20" :inherit nil :stipple nil
+                             :background "gray12" :foreground "gray89"
+                             :inverse-video nil :box nil :strike-through nil
                              :overline nil :underline nil )))
 
 
@@ -463,8 +463,8 @@ following the prefix character"
     index in STRING."
   (let ((case-fold-search nil))
     (while (string-match "[A-Z]" s (or start 1))
-      (setq s (replace-match (concat (or sep "_") 
-                                     (downcase (match-string 0 s))) 
+      (setq s (replace-match (concat (or sep "_")
+                                     (downcase (match-string 0 s)))
                              t nil s)))
     (downcase s)))
 
