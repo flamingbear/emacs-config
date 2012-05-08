@@ -8,16 +8,15 @@
 (defvar mhs-map (make-keymap)
 "Make A keymap for Matt's personal functions")
 
-
-
 (defvar mhs-searchmap (make-keymap)
   "make a keymap for different grep options")
 
-;(defvar mhs-bbdb-map (make-keymap)
-;  "make a keymap for different bbdb options")
+(defvar mhs-codemap (make-keymap)
+  "make a keymap for different coding options")
 
 
 (define-prefix-command 'mhs-searchmap)
+(define-prefix-command 'mhs-codemap)
 ;;;
 ;;; mhs-map key definitions
 ;;;
@@ -30,31 +29,31 @@
 (define-key mhs-map [(S-f7)]                         'append-to-register)
 (define-key mhs-map [(f6)]                          'insert-register)
 (define-key mhs-map [(control c)]             'clipboard-copy-region)
-(define-key mhs-map "f"                           'mhs-save-filename)
-;(define-key mhs-map "b"                             'mhs-mark-block)
-(define-key mhs-map "b"                                  'browse-url)
-(define-key mhs-map "B"                'mhs-browse-buffer-in-firefox)
-(define-key mhs-map "w"                  'delete-trailing-whitespace)
-(define-key mhs-map "s"                               'mhs-searchmap)
-(define-key mhs-map "d"                             'mhs-insert-date)
-(define-key mhs-map "D"                         'mhs-bracket-comment)
-(define-key mhs-map "q"                             'gnus-group-exit)
-(define-key mhs-map "y"                              'clipboard-yank)
-(define-key mhs-map "l"                                  'mhs-lineup)
-(define-key mhs-map "c"                          'ctypes-define-type)
-(define-key mhs-map "e"                                   'mhs-ediff)
-(define-key mhs-map "m"                             'gnus-group-mail)
-(define-key mhs-map "i"                               'idlwave-shell)
-(define-key mhs-map "o"                              'org-clock-goto)
-(define-key mhs-map "P"                             'perltidy-region)
-(define-key mhs-map "p"            'mhs-idlwave-insert-do_ps-keyword)
-(define-key mhs-map "k"                         'mhs-setdefaultvalue)
 (define-key mhs-map ";"                  'mhs-idlwave-insert-comment)
-(define-key mhs-map "j"                     'mhs-insert-jshint-lines)
+(define-key mhs-map "B"                'mhs-browse-buffer-in-firefox)
+(define-key mhs-map "D"                         'mhs-bracket-comment)
 (define-key mhs-map "J"                     'mhs-remove-jshint-lines)
-(define-key mhs-map "u"                   'underscore-previous-camel)
+(define-key mhs-map "P"                             'perltidy-region)
 (define-key mhs-map "U"                     'camelize-previous-snake)
-
+(define-key mhs-map "a"                                 'mhs-codemap)
+(define-key mhs-map "b"                                  'browse-url)
+(define-key mhs-map "c"                          'ctypes-define-type)
+(define-key mhs-map "d"                             'mhs-insert-date)
+(define-key mhs-map "e"                                   'mhs-ediff)
+(define-key mhs-map "f"                           'mhs-save-filename)
+(define-key mhs-map "i"                               'idlwave-shell)
+(define-key mhs-map "j"                     'mhs-insert-jshint-lines)
+(define-key mhs-map "k"                         'mhs-setdefaultvalue)
+(define-key mhs-map "l"                                  'mhs-lineup)
+(define-key mhs-map "m"                             'gnus-group-mail)
+(define-key mhs-map "o"                              'org-clock-goto)
+(define-key mhs-map "p"            'mhs-idlwave-insert-do_ps-keyword)
+(define-key mhs-map "q"                             'gnus-group-exit)
+(define-key mhs-map "s"                               'mhs-searchmap)
+(define-key mhs-map "t"                            'mhs-insert-todo)
+(define-key mhs-map "u"                   'underscore-previous-camel)
+(define-key mhs-map "w"                  'delete-trailing-whitespace)
+(define-key mhs-map "y"                              'clipboard-yank)
 
 (if (or running-macos
         (string-match "snowblower" (system-name)))
@@ -67,6 +66,8 @@
 (define-key mhs-searchmap "r"            'mhs-nocase-grep-these-prompt)
 (define-key mhs-searchmap "R"            'mhs-nocase-grep-these-prompt)
 
-(define-key mhs-map "t"                            'mhs-insert-todo)
+(define-key mhs-codemap "s" 'acadis-spec)
+(define-key mhs-codemap "c" 'acadis-src)
+(define-key mhs-codemap "t" 'acadis-top)
 
 (provide 'mhs-map)
