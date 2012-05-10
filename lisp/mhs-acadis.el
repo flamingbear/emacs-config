@@ -34,6 +34,8 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
 (defun acadis-proj-top ()
   (let (acadis-proj-top-dir)
     (setq acadis-proj-top-dir (getenv "ACADIS_TOPDIR"))
+    (if (eq acadis-proj-top-dir 'nil)
+        (dacadis))
     acadis-proj-top-dir))
 
 (defun acadis-subdir (subdir)
