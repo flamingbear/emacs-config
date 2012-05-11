@@ -34,8 +34,9 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
 (defun acadis-proj-top ()
   (let (acadis-proj-top-dir)
     (setq acadis-proj-top-dir (getenv "ACADIS_TOPDIR"))
-    (if (eq acadis-proj-top-dir 'nil)
-        (dacadis))
+    (when (eq acadis-proj-top-dir 'nil)
+      (dacadis)
+      (setq acadis-proj-top-dir (getenv "ACADIS_TOPDIR")) )
     acadis-proj-top-dir))
 
 (defun acadis-subdir (subdir)
@@ -59,30 +60,30 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
   (dired (acadis-subdir "src/scripts/nsidc/acadis_search")))
 
 
-(defun buffer-is-a-spec-file ()
+(defun acadis-buffer-is-a-spec-file ()
   (interactive)
   (string-match "spec.js"  (buffer-name)))
 
 
-(defun jump-to-matching-spec ()
+(defun acadis-jump-to-matching-spec ()
   "jump to the spec file for this js source file"
   (interactive)
   (let ((filename (buffer-file-name))
         (matching-spec))
-    (setq matching-spec (convert-src-to-spec-fn (buffer-file-name)))
+    (setq matching-spec (acadis-convert-src-to-spec-fn (buffer-file-name)))
     (find-file matching-spec)))
 
 
-(defun jump-to-matching-src ()
+(defun acadis-jump-to-matching-src ()
   "jump to the spec file for this js source file"
   (interactive)
   (let ((filename (buffer-file-name))
         (matching-src))
-    (setq matching-src (convert-spec-to-src-fn (buffer-file-name)))
+    (setq matching-src (acadis-convert-spec-to-src-fn (buffer-file-name)))
     (find-file matching-src)))
 
 
-(defun convert-spec-to-src-fn (spec-file)
+(defun acadis-convert-spec-to-src-fn (spec-file)
   "Take the input spec file and generate the matching src file."
   (let ((spec-base  (file-name-nondirectory spec-file))
         (src-dir (acadis-subdir "src/scripts/nsidc/acadis_search/"))
@@ -91,7 +92,7 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
     (concat src-dir src-file)))
 
 
-(defun convert-src-to-spec-fn (src-file)
+(defun acadis-convert-src-to-spec-fn (src-file)
   "change the input filename into a spec filename"
   (interactive) 
   (let ((src-base (file-name-nondirectory src-file))
@@ -101,12 +102,18 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
     (concat spec-dir spec-file)))
 
 
-(defun jump-to-spec-or-code ()
+(defun acadis-jump-to-spec-or-code ()
   "jump to the code, or the spec for the current file"
   (interactive)
-  (if (buffer-is-a-spec-file)
-      (jump-to-matching-src)
-    (jump-to-matching-spec)))
+  (if (acadis-buffer-is-a-spec-file)
+      (acadis-jump-to-matching-src)
+    (acadis-jump-to-matching-spec)))
+
+(defun acadis-split-window-and-show-match ()
+  "split the current window and open the spec"
+  (interactive)
+  (split-window)
+  (acadis-jump-to-spec-or-code))
 
 (provide 'mhs-acadis)
 
