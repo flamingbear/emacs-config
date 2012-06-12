@@ -220,7 +220,7 @@
 (add-hook 'idlwave-mode-hook
           (lambda ()
             (font-lock-add-keywords 
-             nil '(("^[^\n]\\{80\\}\\(.*\\)$" 1 font-lock-warning-face t)))))
+             nil '(("^[^\n]\\{90\\}\\(.*\\)$" 1 font-lock-warning-face t)))))
 
 
 (add-hook 'idlwave-mode-hook

@@ -45,36 +45,45 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
 (defvar sii-current-build (getenv "BUILD")
   "Currently active build")
 
+(defvar sii-current-proj-top (getenv "NRTSI_PROJ_TOP")
+  "Current Project Top Dir")
+
 ;; Functions to set the environment.
 (defun df17 ()
   "Set the build to F17 development"
   (interactive)
   (setenv "BUILD" "F17_dev" )
+  (setenv "NRTSI_PROJ_TOP" "/projects/NRTSI-G/F17_dev" )
   (setenv "NRTSI_WEBBASE" "/projects/NRTSI-G/F17_dev/website_base")
   (setq sii-current-build (getenv "BUILD"))
+  (setq sii-current-proj-top (getenv "NRTSI_PROJ_TOP"))
   (setq sii-current-web (getenv "NRTSI_WEBBASE")))
 
 (defun tf17 ()
   "Set the build to F17 testing"
   (interactive)
   (setenv "BUILD" "F17_test" )
+  (setenv "NRTSI_PROJ_TOP" "/projects/NRTSI-G/F17_test" )
   (setenv "NRTSI_WEBBASE" "/disks/testsnowtest/live/data/seaice_index/")
   (setq sii-current-build (getenv "BUILD"))
+  (setq sii-current-proj-top (getenv "NRTSI_PROJ_TOP"))
   (setq sii-current-web (getenv "NRTSI_WEBBASE")))
 
 (defun pf17 ()
   "Set the build to F17 production"
   (interactive)
   (setenv "BUILD" "F17_prod" )
+  (setenv "NRTSI_PROJ_TOP" "/projects/NRTSI-G/F17_prod" )
   (setenv "NRTSI_WEBBASE" "/disks/production/live/data/seaice_index/")
   (setq sii-current-build (getenv "BUILD"))
+  (setq sii-current-proj-top (getenv "NRTSI_PROJ_TOP"))
   (setq sii-current-web (getenv "NRTSI_WEBBASE")))
 
 
 
 ;; Functions for moving around the environment
 (defun nrtsi-proj-top ()
-  (setq nrtsi-proj-top-dir (concat '"/projects/NRTSI-G/" sii-current-build ))
+  (setq nrtsi-proj-top-dir sii-current-proj-top)
   nrtsi-proj-top-dir )
 
 
