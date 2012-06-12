@@ -62,7 +62,7 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
                    ((>= (x-display-pixel-height) 1050)
                     '(height . 47))
                    ((>= (x-display-pixel-height) 900)
-                    '(height . 40))
+                    '(height . 36))
                    (t '(height . 30))))
 
 (add-to-list 'default-frame-alist 
