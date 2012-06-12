@@ -95,7 +95,7 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
     (setq use-inconsolata nil))
 
 ;; special case
-(if running-on-dev-vm (setq use-inconsolata 't))
+(if running-on-dev-vm (setq use-inconsolata 'nil))
 
 (cond (use-inconsolata (mhs-use-inconsolata))
       (running-macos (progn (mhs-use-inconsolata)
