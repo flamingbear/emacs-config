@@ -34,6 +34,11 @@
 ;; functions.  These are defined in ~/lisp/mhs-map.el
 (global-set-key [f7]              'mhs-map) ; F7
 
+;; This is so that I can get used to copy-paste in eclipse with mulgaSoft emacs+
+(global-set-key (kbd "C-x x") 'copy-to-register)
+(global-set-key (kbd "C-x g") 'insert-register)
+
+
 
 (global-set-key [f8]              'force-space) ; F8
 (global-set-key [f9]              'gud-step) ; F9

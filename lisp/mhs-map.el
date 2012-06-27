@@ -11,12 +11,12 @@
 (defvar mhs-searchmap (make-keymap)
   "make a keymap for different grep options")
 
-(defvar mhs-acadis-map (make-keymap)
+(defvar mhs-workspace-map (make-keymap)
   "make a keymap for different coding options")
 
 
 (define-prefix-command 'mhs-searchmap)
-(define-prefix-command 'mhs-acadis-map)
+(define-prefix-command 'mhs-workspace-map)
 ;;;
 ;;; mhs-map key definitions
 ;;;
@@ -26,7 +26,7 @@
 ;(define-key mhs-map [(f8)]                      'delete-blank-lines)
 
 (define-key mhs-map [(f7)]                         'copy-to-register)
-(define-key mhs-map [(S-f7)]                         'append-to-register)
+(define-key mhs-map [(S-f7)]                     'append-to-register)
 (define-key mhs-map [(f6)]                          'insert-register)
 (define-key mhs-map [(control c)]             'clipboard-copy-region)
 (define-key mhs-map ";"                  'mhs-idlwave-insert-comment)
@@ -35,7 +35,7 @@
 (define-key mhs-map "J"                     'mhs-remove-jshint-lines)
 (define-key mhs-map "P"                             'perltidy-region)
 (define-key mhs-map "U"                     'camelize-previous-snake)
-(define-key mhs-map "a"                                 'mhs-acadis-map)
+(define-key mhs-map "a"                              'mhs-workspace-map)
 (define-key mhs-map "b"                                  'browse-url)
 (define-key mhs-map "c"                          'ctypes-define-type)
 (define-key mhs-map "d"                             'mhs-insert-date)
@@ -66,10 +66,13 @@
 (define-key mhs-searchmap "r"            'mhs-nocase-grep-these-prompt)
 (define-key mhs-searchmap "R"            'mhs-nocase-grep-these-prompt)
 
-(define-key mhs-acadis-map "s" 'acadis-spec)
-(define-key mhs-acadis-map "c" 'acadis-src)
-(define-key mhs-acadis-map "t" 'acadis-top)
-(define-key mhs-acadis-map "a" 'acadis-jump-to-spec-or-code)
-(define-key mhs-acadis-map "A" 'acadis-split-window-and-show-match)
+(define-key mhs-workspace-map "s" 'acadis-spec)
+(define-key mhs-workspace-map "c" 'acadis-src)
+(define-key mhs-workspace-map "t" 'acadis-top)
+(define-key mhs-workspace-map "a" 'acadis-jump-to-spec-or-code)
+(define-key mhs-workspace-map "A" 'acadis-split-window-and-show-match)
+
+(define-key mhs-workspace-map "w" 'mhs-workspace-action)
+
 
 (provide 'mhs-map)

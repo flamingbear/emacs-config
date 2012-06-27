@@ -132,6 +132,10 @@ I generally choose ($EMACS_HOME)/lisp for my custom files:
 ;; Do binary diff in hexl-mode if files are binary format
 (try-require 'binary-diff)
 
+
+;; jump-to and set workspaces.
+(try-require 'mhs-workspace)
+
 ;; NCL mode
 (when (try-require 'ncl)
   (add-to-list 'auto-mode-alist '("\\.ncl$" . ncl-mode)))

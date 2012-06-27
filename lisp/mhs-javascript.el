@@ -8,30 +8,9 @@
 ;; Version: 1.0
 ;; Keywords:
 
- 
-;; This program is free software; you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation; either version 1, or (at your option)
-;; any later version.
-
-;; This program is distributed in the hope that it will be useful,
-;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;; GNU General Public License for more details.
-
-;; A copy of the GNU General Public License can be obtained from this
-;; program's author (send electronic mail to <savoie@nsidc.org>) or from the
-;; Free Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
-;; LCD Archive Entry:
-;; mhs-javascript|Matt Savoie|<savoie@nsidc.org>
-;; |Tweaks for Javascript coding in Emacs.
-;; |$Date$|$Revision$|~/packages/mhs-javascript.el
-
 ;;; Commentary:
 
 ;;; Change log:
-;; $Log$
 ;;
 
 ;;; Code:
@@ -77,7 +56,7 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
            (add-to-list 'comint-preoutput-filter-functions
                         (lambda (output)
                           (replace-regexp-in-string ".*1G\.\.\..*5G" "..."
-                                                    (replace-regexp-in-string ".*1G.*3G" "node>" output)))) ))
+                                                    (replace-regexp-in-string ".*1G.*3G" "node> " output)))) ))
 
 ;  (setq inferior-js-program-command "/usr/bin/java org.mozilla.javascript.tools.shell.Main")
   (add-hook 'js2-mode-hook '(lambda () 
