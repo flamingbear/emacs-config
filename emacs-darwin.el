@@ -14,26 +14,29 @@
   "$Id: emacs-darwin.el 19643 2011-10-29 21:07:05Z savoie $
 Report bugs to: Matt Savoie <savoie@nsidc.org>")
 
+;;  [MHS, 2012-06-28] This was what you needed to do before version 24 of
+;;  emacs. and to keep the kill-ring and pasteboard separate.
+;; TODO [MHS, 2012-07-02]  After further testing, this is needed?  
+  ;; This was pulled directly from www.emacswiki.org/emacs/CopyAndPaste
+(when (< emacs-major-version 24)
+  (setq interprogram-cut-function nil)
+  (setq interprogram-paste-function nil)
+  (defun paste-from-pasteboard ()
+    (interactive)
+    (and mark-active (filter-buffer-substring (region-beginning) (region-end) t))
+    (insert (ns-get-pasteboard))
+    )
+  (defun copy-to-pasteboard (p1 p2)
+    (interactive "r*")
+    (ns-set-pasteboard (buffer-substring p1 p2))
+    (message "Copied selection to pasteboard")
+    )
 
-
-;; This was pulled directly from www.emacswiki.org/emacs/CopyAndPaste
-(setq interprogram-cut-function nil)
-(setq interprogram-paste-function nil)
-(defun paste-from-pasteboard ()
-  (interactive)
-  (and mark-active (filter-buffer-substring (region-beginning) (region-end) t))
-  (insert (ns-get-pasteboard))
+  (defun cut-to-pasteboard (p1 p2) (interactive "r*") (ns-set-pasteboard (filter-buffer-substring p1 p2 t)) )
+  (global-set-key (kbd "s-v") 'paste-from-pasteboard)
+  (global-set-key (kbd "s-c") 'copy-to-pasteboard)
+  (global-set-key (kbd "s-x") 'cut-to-pasteboard)
   )
-(defun copy-to-pasteboard (p1 p2)
-  (interactive "r*")
-  (ns-set-pasteboard (buffer-substring p1 p2))
-  (message "Copied selection to pasteboard")
-  )
-
-(defun cut-to-pasteboard (p1 p2) (interactive "r*") (ns-set-pasteboard (filter-buffer-substring p1 p2 t)) )
-(global-set-key (kbd "s-v") 'paste-from-pasteboard)
-(global-set-key (kbd "s-c") 'copy-to-pasteboard)
-(global-set-key (kbd "s-x") 'cut-to-pasteboard)
 
 
 (when running-macos
@@ -41,13 +44,5 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
   (setenv "NODE_PATH" (concat (getenv "HOME") "/node_modules"))
   (push "/opt/local/bin" exec-path))
 
-;; 2011-10-29: <mhs> This doesn't work yet, but might be a solutionon mac...</mhs>
-;; (when (not (getenv "TERM_PROGRAM"))
-;;   (setenv "PATH" (shell-command-to-string "source $HOME/.profile && printf $PATH" ))
-;;   (setenv "PATH" (shell-command-to-string "source $HOME/.bashrc && printf $PATH")))
-;; (getenv "PATH")
-;; http://www.emacswiki.org/emacs/EmacsApp#toc2
-;;     (setenv "PATH" (shell-command-to-string "source $HOME/.profile && printf $PATH" ))
-;; also paste-from-pasteboard
 
 ;;; .EMACS-DARWIN.EL ends here
