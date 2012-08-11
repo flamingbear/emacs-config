@@ -29,7 +29,7 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
 (defun dacadis ()
   "Set the Build environment"
   (interactive)
-  (setenv "ACADIS_TOPDIR" "/Users/savoie/workspace/acadis/acadis_search"))
+  (setenv "ACADIS_TOPDIR" "/Users/savoie/projects/acadis/acadis_search"))
 
 (defun acadis-proj-top ()
   (let (acadis-proj-top-dir)

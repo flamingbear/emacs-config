@@ -20,14 +20,12 @@
 
 Report bugs to: Matt Savoie <savoie@nsidc.org>")
 
-
-
-;; JS HINT stuff
-(when (try-require 'flymake-jshint)
-  (add-hook 'js2-mode-hook
-            (lambda () (flymake-mode t)))
-  (add-hook 'js-mode-hook
-            (lambda () (flymake-mode t))) )
+;; [MHS, 2012-08-11] I found this trying to fix the old jshint-mode and this
+;; works with node-jshint and allows configuration.
+(when (try-require 'flymake-node-jshint)
+;  (setq flymake-node-jshint-config "/Users/savoie/.jshintrc") ; optional
+  (add-hook 'js-mode-hook (lambda () (flymake-mode 1)))
+  (add-hook 'js2-mode-hook (lambda () (flymake-mode 1))))
 
 
 ;; Use linum-mode in javascript
