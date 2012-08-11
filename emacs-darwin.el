@@ -14,10 +14,11 @@
   "$Id: emacs-darwin.el 19643 2011-10-29 21:07:05Z savoie $
 Report bugs to: Matt Savoie <savoie@nsidc.org>")
 
-
-(when (< emacs-major-version 24)
-
+;;  [MHS, 2012-06-28] This was what you needed to do before version 24 of
+;;  emacs. and to keep the kill-ring and pasteboard separate.
+;; TODO [MHS, 2012-07-02]  After further testing, this is needed?  
   ;; This was pulled directly from www.emacswiki.org/emacs/CopyAndPaste
+(when (< emacs-major-version 24)
   (setq interprogram-cut-function nil)
   (setq interprogram-paste-function nil)
   (defun paste-from-pasteboard ()
@@ -36,6 +37,7 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
   (global-set-key (kbd "s-c") 'copy-to-pasteboard)
   (global-set-key (kbd "s-x") 'cut-to-pasteboard)
   )
+
 
 (when running-macos
   (setenv "PATH" (concat "/opt/local/bin:/usr/local/bin:" (getenv "PATH")))
