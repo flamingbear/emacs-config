@@ -90,7 +90,8 @@ I generally choose ($EMACS_HOME)/lisp for my custom files:
 ;; Javascript stuff
 (try-require 'mhs-javascript)
 
-
+;; If there's a clojure setup, use it.
+(try-require 'mhs-clojure)
 
 ;; if external-lisp-dir has a slime directory, we will set up that
 (try-require 'mhs-clisp-stuff)
@@ -307,6 +308,8 @@ I generally choose ($EMACS_HOME)/lisp for my custom files:
        (setq ispell-program-name "/usr/bin/aspell"))
       ((file-exists-p "/usr/local/bin/aspell")
       (setq ispell-program-name "/usr/local/bin/aspell"))
+      ((file-exists-p "/opt/local/bin/aspell")
+      (setq ispell-program-name "/opt/local/bin/aspell"))
       (t (setq ispell-program-name "~savoie/local/bin/aspell")))
 
 

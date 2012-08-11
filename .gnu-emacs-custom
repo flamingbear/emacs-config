@@ -173,7 +173,7 @@
  '(spam-use-stat nil)
  '(spam-use-whitelist t)
  '(spam-whitelist "~savoie/News/spam/whitelist")
- '(starttls-gnutls-program "/usr/local/bin/gnutls-cli")
+ '(starttls-gnutls-program "gnutls-cli")
  '(tab-always-indent (quote complete))
  '(tab-width 4)
  '(tool-bar-mode nil nil (tool-bar))
