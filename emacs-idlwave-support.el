@@ -137,8 +137,8 @@
 ;; I like to use alt-s to complete anything I'm typing.
 (defun my-common-idlwave-hook ()
   (local-set-key [(meta .)] 'idlwave-find-module)
-  (local-set-key [s-z] 'mhs-idlwave-shell-reset)
-  (local-set-key [(meta s)] 'idlwave-complete))
+  (local-set-key [(super z)] 'mhs-idlwave-shell-reset)
+  (local-set-key [(meta s)] 'idlwave-complete)  )
 
 
 ;; set up commands whenever you enter and idlwave buffer
@@ -228,8 +228,8 @@
             (font-lock-add-keywords 
              nil '(("\\(<mhs>.*</mhs>\\)" 1 font-lock-warning-face t)))))
 ;;  Add my common hooks to both modes shell and mode.
-(add-hook 'idlwave-mode-hook 'my-common-idlwave-hook 'append)
-(add-hook 'idlwave-shell-mode-hook 'my-common-idlwave-hook 'append)
+(add-hook 'idlwave-mode-hook 'my-common-idlwave-hook 't)
+(add-hook 'idlwave-shell-mode-hook 'my-common-idlwave-hook 't)
 
 
 (defvar mhs-idlwave-header
