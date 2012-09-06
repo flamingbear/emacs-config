@@ -151,7 +151,7 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
       ((string-match build "MASIE_test")
        ;;(setq idlwave-shell-explicit-file-name "my_idl.7.0.sh")
        (progn (setq idlwave-shell-explicit-file-name 
-                    "/home/savoie/local/bin/my_idl.6.4.sh")
+                    (expand-file-name "~savoie/local/bin/my_idl.6.4.sh"))
               (setq my-menu-bg-color "#7a378b") ; turquoise1
               (setq my-menu-fg-color "gold")))
 
