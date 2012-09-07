@@ -139,6 +139,10 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
   (interactive)
   ( nrtsitop-subdir "ancillary" ))
 
+(defun sii-movies ()
+  "jump to the movie dir"
+  (interactive)
+  (nrtsi-proj-top-subdir "seaice_index/idl/animations/movies"))
 
 (defun sii-lib ()
   "Jump to the nrtsi results directory"
@@ -160,6 +164,10 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
   (interactive)
   (nrtsitop-subdir "comm"))
 
+(defun sii-libs ()
+  "jump to library locs"
+  (interactive)
+  (nrtsi-proj-top-subdir "seaice_index/idl/sii_libs"))
 
 (defun sii-idl ()
   "Jump to the nrtsi IDL directory"
