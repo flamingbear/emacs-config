@@ -22,16 +22,18 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
 
 ;; [MHS, 2012-08-11] I found this trying to fix the old jshint-mode and this
 ;; works with node-jshint and allows configuration.
+;; Requires you to install node-jshint first
+
 (when (try-require 'flymake-node-jshint)
-;  (setq flymake-node-jshint-config "/Users/savoie/.jshintrc") ; optional
+  (setq flymake-node-jshint-config "/Users/savoie/.jshintrc.json") ; optional
   (add-hook 'js-mode-hook (lambda () (flymake-mode 1)))
   (add-hook 'js2-mode-hook (lambda () (flymake-mode 1))))
 
 
 ;; Use linum-mode in javascript
 (add-hook 'js-mode-hook (lambda () (linum-mode)))
-(add-hook 'js2-mode-hook 
-          (lambda () 
+(add-hook 'js2-mode-hook
+          (lambda ()
             (linum-mode)
             (local-set-key [(control meta q)] 'prog-indent-sexp) ))
 
@@ -45,7 +47,7 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
 (when (try-require 'js-comint)
   ;; Use node as our repl
   (setq inferior-js-program-command "node")
- 
+
   (setq inferior-js-mode-hook
         (lambda ()
           ;; We like nice colors
@@ -57,7 +59,7 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
                                                     (replace-regexp-in-string ".*1G.*3G" "node> " output)))) ))
 
 ;  (setq inferior-js-program-command "/usr/bin/java org.mozilla.javascript.tools.shell.Main")
-  (add-hook 'js2-mode-hook '(lambda () 
+  (add-hook 'js2-mode-hook '(lambda ()
                               (local-set-key "\C-x\C-e" 'js-send-last-sexp)
                               (local-set-key "\C-\M-x" 'js-send-last-sexp-and-go)
                               (local-set-key "\C-cb" 'js-send-buffer)
@@ -77,7 +79,7 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
 (defun mhs-insert-jshint-lines ()
   "Add text to the top of a js file"
   (interactive)
-  (save-excursion 
+  (save-excursion
     (goto-char (point-min))
     (insert (car (cdr mhs-jshint-lines)))))
 
