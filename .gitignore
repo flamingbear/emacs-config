@@ -48,3 +48,12 @@ maybe_not_used
 /external-lisp-files/make-multiple/
 /external-lisp-files/markdown-mode.el
 /external-lisp-files/mark-multiple/
+/external-lisp-files/clojure-mode/
+/external-lisp-files/paredit.el
+/swank/slime-eldoc-d8b3cf74.el
+/swank/slime-fbbb883a.el
+/swank/slime-frame-colors-a24dd450.el
+/swank/slime-repl-79b38c83.el
+/external-lisp-files/flymake-node-jshint/
+/external-lisp-files/nrepl/
+/rainbow-delimiters.el
