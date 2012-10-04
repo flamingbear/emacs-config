@@ -7,9 +7,6 @@
 
 (add-to-list 'load-path (expand-file-name (concat emacs-top '"python-mode/")))
 
-;; Couldn't get completion working quickly.
-;; (add-to-list 'load-path (expand-file-name (concat emacs-top '"/python-mode/completion/")))
-
 
 (autoload 'pymacs-apply "pymacs")
 (autoload 'pymacs-call "pymacs")
