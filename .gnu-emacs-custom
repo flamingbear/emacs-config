@@ -116,6 +116,7 @@
  '(mail-self-address "<savoie@nsidc.org>" t)
  '(mail-source-delete-incoming t)
  '(mail-user-agent (quote message-user-agent))
+ '(markdown-command "Markdown.pl")
  '(message-cite-function (quote message-cite-original-without-signature))
  '(message-mode-hook (quote (turn-on-flyspell turn-off-auto-fill turn-on-visual-line-mode)))
  '(message-send-mail-partially-limit nil)
