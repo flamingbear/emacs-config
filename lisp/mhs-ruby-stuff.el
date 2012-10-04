@@ -60,10 +60,13 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
 (add-to-list 'auto-mode-alist '("Rakefile" . ruby-mode))
 (add-to-list 'interpreter-mode-alist '("ruby" . ruby-mode))
 
+
 (autoload 'run-ruby "inf-ruby" "Run an inferior Ruby process")
 (autoload 'inf-ruby-keys "inf-ruby" "Set local key defs for inf-ruby in ruby-mode")
 (add-hook 'ruby-mode-hook
           '(lambda ()
+             (rinari-minor-mode 1)
+             (linum-mode 1)
              (inf-ruby-keys) ))
 
 ;; This is my regex seach for interactive shells, lets you search for anything
