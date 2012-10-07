@@ -63,8 +63,8 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
 (autoload 'inf-ruby "inf-ruby" "Run an inferior Ruby process" t)
 (autoload 'inf-ruby-setup-keybindings "inf-ruby" "" t)
 (eval-after-load 'ruby-mode
-  '(add-hook 'ruby-mode-hook 'inf-ruby-setup-keybindings)
-  '(add-hook 'ruby-mode-hook '(linum-mode 1)))
+  '(add-hook 'ruby-mode-hook 'inf-ruby-setup-keybindings))
+
 
 ;; This is my regex seach for interactive shells, lets you search for anything
 ;; old commands by regex
@@ -76,7 +76,8 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
 (add-hook 'ruby-mode-hook
           (lambda ()
             (local-set-key [(super E)] 'ruby-send-region-and-go)
-            (local-set-key [(super e)] 'ruby-send-region)))
+            (local-set-key [(super e)] 'ruby-send-region)
+            (linum-mode t)))
 
 
 

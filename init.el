@@ -1,5 +1,6 @@
-;; First read mostly default values from an generic file that is mostly
-;; overwritten later.
+;; This file is the default file that is loaded when emacs is started
+;;--------------------------------------------------------------------
+
 
 ;; Set the BASE of the emacs file locations.
 (defvar emacs-top (getenv "EMACS_HOME")
@@ -7,10 +8,24 @@
 I generally set the EMACS_HOME environmental variable before starting and this is picked up.
 Normally this points to: $HOME/.emacs.d/")
 
-
-;; Read the emacs home directly out of the .profile file. This is a workaround on Darwin systems
+;; Read the emacs home directly out of the .profile file. This is a workaround
+;; on Darwin systems to allow us to continue
 (when (not emacs-top) 
   (setq emacs-top (shell-command-to-string "source $HOME/.profile && printf $EMACS_HOME")))
+
+(add-to-list 'load-path emacs-top)
+
+;; Custom Settings
+;; ===============
+;; To avoid any trouble with the customization system of GNU emacs
+;; we set the default file ~/.gnu-emacs-custom
+(setq custom-file (concat emacs-top ".gnu-emacs-custom"))
+(load custom-file t t)
+
+
+
+
+;; TODO [MHS, 2012-10-03] Remove to an environments file?
 
 ;; Check to see if we're running Darwin
 (defvar running-macos
@@ -21,6 +36,8 @@ Normally this points to: $HOME/.emacs.d/")
 (defvar running-on-dev-vm
   (string-match "icebadger" (prin1-to-string system-name)))
 
+
+;; TODO [MHS, 2012-10-03] put this somewhere else
 ;; Browser settings
 (setq browse-url-browser-function (if running-macos 
                                       (quote browse-url-default-macosx-browser)
@@ -31,17 +48,16 @@ Normally this points to: $HOME/.emacs.d/")
       browse-url-new-window-p t
       browse-url-of-file-hook (quote (browse-url-generic-reload)))
 
+
 (when running-macos 
   (if (file-readable-p (concat emacs-top '"emacs-darwin.el"))
       (load (concat emacs-top '"emacs-darwin.el") nil t)))
 
-(add-to-list 'load-path emacs-top)
 
 
 ;; Attempt to load a feature/library, But don't bail out of the load if it's
 ;; not around, go ahead and report it to the message buffer.
 ;-----------------------------------------------------------
-
 ;; Set up a list of packages that weren't loaded for multiple machine set-up.
 (defvar missing-packages-list nil
   "List of packages that `try-require' can't find.")
@@ -65,25 +81,16 @@ of an error, just add the package to a list of missing packages."
        (add-to-list 'missing-packages-list feature 'append))
      nil)))
 
-
-
-;; Read the old default emacs file, really only included for the some times
-;; that you don't have an window-system 
-(setq gnu-emacs-file (concat emacs-top '".gnu-emacs"))
-(if (file-readable-p gnu-emacs-file)
-    (load gnu-emacs-file nil t))
-
-
-
 ;; add load paths to custom files, load special packages, load the
 ;; mhs-idlwave-extras file.
 (if (file-readable-p (concat emacs-top '"emacs-extras.el"))
     (load (concat emacs-top '"emacs-extras.el") nil t))
 
-
 ;; My Settings for keybinds/maps
 (if (file-readable-p (concat emacs-top '"emacs-keybinds.el"))
     (load (concat emacs-top '"emacs-keybinds.el") nil t))
+
+
 
 
 
@@ -92,12 +99,6 @@ of an error, just add the package to a list of missing packages."
     (load (concat emacs-top '"emacs-sketchy-extras.el")))
 
 
-;; Custom Settings
-;; ===============
-;; To avoid any trouble with the customization system of GNU emacs
-;; we set the default file ~/.gnu-emacs-custom
-(setq custom-file (concat emacs-top ".gnu-emacs-custom"))
-(load custom-file t t)
 
 ;; load custom faces in separate file.
 (if (file-readable-p (concat emacs-top '"emacs-custom-faces.el"))

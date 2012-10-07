@@ -2,40 +2,18 @@
 
 ;; Copyright (C) 2011 Matt Savoie
 
-;; Author: Matt Savoie <savoie@nsidc.org>
-;; Maintainer: Matt Savoie <savoie@nsidc.org>
+;; Author: Matt Savoie <emacs@flamingbear.com>
+;; Maintainer: Matt Savoie <emacs@flamingbear.com>
 ;; Created: 14 Jan 2011
 ;; Version: 1.0
 ;; Keywords:
 
  
-;; This program is free software; you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation; either version 1, or (at your option)
-;; any later version.
-
-;; This program is distributed in the hope that it will be useful,
-;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;; GNU General Public License for more details.
-
-;; A copy of the GNU General Public License can be obtained from this
-;; program's author (send electronic mail to <savoie@nsidc.org>) or from the
-;; Free Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
-;; LCD Archive Entry:
-;; |Matt Savoie|<savoie@nsidc.org>
-;; |Just a place to put things that work only with the very latest emacs so that it can be ignored when needed.
-;; |$Date: 2011-10-20 14:59:03 -0600 (Thu, 20 Oct 2011) $|$Revision: 19610 $|~/packages/emacs-sketchy-extras.el
-
-;;; Commentary:
-
-
 ;;; Code:
 
 (defconst emacs-sketchy-extras-version (substring "$Revision: 19610 $" 11 -2)
   "$Id: emacs-sketchy-extras.el 19610 2011-10-20 20:59:03Z savoie $
-Report bugs to: Matt Savoie <savoie@nsidc.org>")
+Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 
 
 ;; See if you can run orgmode from this computer.
@@ -78,8 +56,6 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
 
 
 
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Use Secure Shell for Remote access
 ;; To use:
@@ -92,7 +68,6 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Use the gnus news reader  
-
 (defvar mhs-bleeding-gnus (concat emacs-top "external-lisp-files/bleeding-gnus/lisp")
   "Location of the git repository of gnus for testing")
 (if (file-accessible-directory-p mhs-bleeding-gnus)
@@ -101,9 +76,7 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
   (try-require 'gnus))
 
 
-;(try-require 'mhs-mail)
-
-;; Proper gnuse reader
+;; Proper gnus reader
 (if (try-require 'gnus-w3m)
     (setq mm-text-html-renderer 'gnus-w3m)
    (progn                                ;macosx mainly
@@ -117,19 +90,14 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
 (when (try-require 'ctypes)
   (setq ctypes-file-name "~savoie/.ctypes")
   (setq ctypes-write-types-at-exit t)
-
   (ctypes-read-file nil nil t t)
   (ctypes-auto-parse-mode 1))
 
 
-
-
-;;;
 ;;; Chrome editing.
 (when (require 'edit-server nil t)
   (setq edit-server-new-frame nil)
   (edit-server-start))
-
 
 
 

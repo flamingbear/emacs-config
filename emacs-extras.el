@@ -25,7 +25,7 @@
   "Directory for possible private *.el & *.elc files for customization when you
 cannot put them directly in /usr/local/share/emacs/site-lisp
 
-I generally choose ($EMACS_HOME)/lisp for my custom files:
+I choose for my custom files:
 $HOME/.emacs.d/lisp" )
 (if (file-accessible-directory-p mhs-lisp-dir)
     (add-to-list 'load-path mhs-lisp-dir))

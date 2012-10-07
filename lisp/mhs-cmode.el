@@ -9,43 +9,6 @@
 ;; Keywords:
 
 
-;; This program is free software; you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation; either version 1, or (at your option)
-;; any later version.
-
-;; This program is distributed in the hope that it will be useful,
-;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;; GNU General Public License for more details.
-
-;; A copy of the GNU General Public License can be obtained from this
-;; program's author (send electronic mail to <savoie@fsl.noaa.gov>) or
-;; from the Free Software Foundation, Inc., 675 Mass Ave, Cambridge,
-;; MA 02139, USA.
-
-;; LCD Archive Entry:
-;; |Matthew H. Savoie|<savoie@fsl.noaa.gov>
-;; |customization package for c/cpp/java coding
-;; |$Date: 2011-09-18 10:23:58 -0600 (Sun, 18 Sep 2011) $|$Revision: 19387 $|~/packages/.emacs_mycmode
-
-;;; Commentary:
-
-;;; Change log:
-;; $Log: not supported by cvs2svn $
-;; Revision 1.1.1.1  2002/02/28 18:00:54  savoie
-;; imported sources
-;;
-;; Revision 1.3  1997/09/18 14:53:43  savoie
-;; last before emacs 20.1
-;;
-;; Revision 1.2  1997/03/26 18:16:50  savoie
-;; original version before I screw it up.
-;;
-;; Revision 1.1  1997/03/26 18:11:15  savoie
-;; Initial revision
-;;
-
 ;;; Code:
 
 (defconst -version (substring "$Revision: 19387 $" 11 -2)
@@ -57,6 +20,15 @@ Report bugs to: Matthew H. Savoie <mattie@innocent.com>")
 (setq c-style-variables-are-local-p t)
 (setq c-basic-offset 4)
 (setq c-hanging-comment-ender-p nil)
+
+
+;; Common to all C modes pulled from .gnu-emacs
+;; ---------------------
+(add-hook 'c-mode-common-hook
+   '(lambda () (c-set-style "linux")
+	(c-set-offset 'case-label 4)
+	(setq c-basic-offset 4)))
+
 
 (setq auto-mode-alist
      (append

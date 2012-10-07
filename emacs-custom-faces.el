@@ -2,44 +2,18 @@
 
 ;; Copyright (C) 2011 Matt Savoie
 
-;; Author: Matt Savoie <savoie@nsidc.org>
-;; Maintainer: Matt Savoie <savoie@nsidc.org>
+;; Author: Matt Savoie <emacs@flamingbear.com>
+;; Maintainer: Matt Savoie <emacs@flamingbear.com>
 ;; Created: 07 Sep 2011
 ;; Version: 1.0
 ;; Keywords:
-
- 
-;; This program is free software; you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation; either version 1, or (at your option)
-;; any later version.
-
-;; This program is distributed in the hope that it will be useful,
-;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;; GNU General Public License for more details.
-
-;; A copy of the GNU General Public License can be obtained from this
-;; program's author (send electronic mail to <savoie@nsidc.org>) or from the
-;; Free Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
-;; LCD Archive Entry:
-;; |Matt Savoie|<savoie@nsidc.org>
-;; |customize the modeline display based on machine, user and BUILD environment.
-;; |$Date$|$Revision: 19611 $|~/packages/.emacs-custom-faces
-
-;;; Commentary:
-
-;;; Change log:
-;; $Log$
-;;
 
 ;;; Code:
 
 (defconst -version (substring "$Revision: 19611 $" 11 -2)
   "$Id: emacs-custom-faces.el 19611 2011-10-20 21:09:37Z savoie $
 
-Report bugs to: Matt Savoie <savoie@nsidc.org>")
+Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 
 
 ;; Set up the  default values for frame creation
@@ -71,7 +45,6 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
                    (t '(width . 93))))
 
 ;;-------------------------------------------
-
 
 
 

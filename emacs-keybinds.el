@@ -1,5 +1,11 @@
 ;; File for keybindings for emacs
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(global-set-key [M-left]  'backward-word)
+(global-set-key [M-right] 'forward-word)
+(global-set-key [M-up]    'beginning-of-line)
+(global-set-key [M-down]  'end-of-line)
+
 (global-set-key [home]       'beginning-of-line)
 (global-set-key [end]              'end-of-line)
 (global-set-key [\C-home]  'beginning-of-buffer)

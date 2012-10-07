@@ -2,37 +2,16 @@
 
 ;; Copyright (C) 2008 Matt Savoie
 
-;; Author: Matt Savoie <savoie@nsidc.org>
-;; Maintainer: Matt Savoie <savoie@nsidc.org>
+;; Author: Matt Savoie <emacs@flamingbear.com>
+;; Maintainer: Matt Savoie <emacs@flamingbear.com>
 ;; Created: 14 May 2008
 ;; Version: 1.0
 ;; Keywords:
 
- 
-;; This program is free software; you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation; either version 1, or (at your option)
-;; any later version.
-
-;; This program is distributed in the hope that it will be useful,
-;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;; GNU General Public License for more details.
-
-;; A copy of the GNU General Public License can be obtained from this
-;; program's author (send electronic mail to <savoie@nsidc.org>) or from the
-;; Free Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
-;; LCD Archive Entry:
-;; |Matt Savoie|<savoie@nsidc.org>
-;; |Quick Extraction of stuff I use for IDLWAVE and emacs at NSIDC.
-;; |$Date: 2011-10-20 14:59:03 -0600 (Thu, 20 Oct 2011) $|$Revision: 19610 $|~/packages/emacs-idlwave-support.el
-
-
 ;;; Code:
 
 (defconst -version (substring "$Revision: 19610 $" 11 -2)
-  "$Id: emacs-idlwave-support.el 19610 2011-10-20 20:59:03Z savoie $ Report bugs to: Matt Savoie <savoie@nsidc.org>")
+  "$Id: emacs-idlwave-support.el 19610 2011-10-20 20:59:03Z savoie $ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; IDLWAVE Customizations
