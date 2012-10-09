@@ -107,7 +107,6 @@
         ("subject" "endevor_team" "maild/endevor_list")
         (to ".*opensearch@googlegroups.com.*" "maild/opensearch-mail")
         (any ".*esip-federatedsearch.*" "maild/esip-mail")
-        ("subject" "jdee-users" "maild/lists")
         ("subject" "Minutes and Questions" "maild/nsidc-notices")
         ("subject" "Server Status" "maild/nsidc-notices")
         ("subject" "General News & Discussion" "maild/nsidc-notices")

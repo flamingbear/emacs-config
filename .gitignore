@@ -57,3 +57,4 @@ maybe_not_used
 /external-lisp-files/flymake-node-jshint/
 /external-lisp-files/nrepl/
 /rainbow-delimiters.el
+/.org-id-locations
