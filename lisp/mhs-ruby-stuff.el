@@ -65,7 +65,6 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
 (eval-after-load 'ruby-mode
   '(add-hook 'ruby-mode-hook 'inf-ruby-setup-keybindings))
 
-
 ;; This is my regex seach for interactive shells, lets you search for anything
 ;; old commands by regex
 (add-hook 'inferior-ruby-mode-hook
