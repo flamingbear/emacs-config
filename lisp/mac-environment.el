@@ -37,8 +37,9 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
     (while list
       (setq pair (split-string (car list) "=")
             list (cdr list))
-      (insert "  <key>" (nth 0 pair) "</key>\n")
-      (insert "  <string>" (nth 1 pair) "</string>\n"))
+      (when (not (string-match "SSH" (nth 0 pair)))
+        (insert "  <key>" (nth 0 pair) "</key>\n")
+        (insert "  <string>" (nth 1 pair) "</string>\n")))
     ;; Save the buffer.
     (save-buffer)))
 
