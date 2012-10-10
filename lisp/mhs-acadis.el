@@ -21,7 +21,7 @@
 
 ;;; Code:
 
-(defconst mhs-acadis-version 
+(defconst mhs-acadis-version
   "$Id$
 
 Report bugs to: Matt Savoie <savoie@nsidc.org>")
@@ -50,19 +50,19 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
   (dired (acadis-subdir "")))
 
 (defun acadis-spec ()
-  "Jump to acadis spec directory"
+  "Jump to acadis top level spec directory"
   (interactive)
   (dired (acadis-subdir "src/test/spec/nsidc/acadis_search")))
 
 (defun acadis-src ()
-  "Jump to acadis source directory"
+  "Jump to acadis top level source directory"
   (interactive)
   (dired (acadis-subdir "src/scripts/nsidc/acadis_search")))
 
 
 (defun acadis-buffer-is-a-spec-file ()
   (interactive)
-  (string-match "spec.js"  (buffer-name)))
+  (string-match "spec.js" (buffer-name)))
 
 
 (defun acadis-jump-to-matching-spec ()
@@ -86,19 +86,19 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
 (defun acadis-convert-spec-to-src-fn (spec-file)
   "Take the input spec file and generate the matching src file."
   (let ((spec-base  (file-name-nondirectory spec-file))
-        (src-dir (acadis-subdir "src/scripts/nsidc/acadis_search/"))
+        (src-dir (replace-regexp-in-string "test/spec" "scripts" (file-name-directory spec-file)))
         (src-file))
-    (setq src-file  (concat (substring spec-base 0 -8) ".js"))
+    (setq src-file  (replace-regexp-in-string "_spec" "" spec-base))
     (concat src-dir src-file)))
 
 
 (defun acadis-convert-src-to-spec-fn (src-file)
   "change the input filename into a spec filename"
-  (interactive) 
+  (interactive)
   (let ((src-base (file-name-nondirectory src-file))
-        (spec-dir (acadis-subdir "src/test/spec/nsidc/acadis_search/"))
+        (spec-dir (replace-regexp-in-string "scripts" "test/spec" (file-name-directory src-file)))
         (spec-file))
-    (setq spec-file (concat (substring src-base 0 -3) "_spec.js"))
+    (setq spec-file (replace-regexp-in-string ".js" "_spec.js" src-base))
     (concat spec-dir spec-file)))
 
 
