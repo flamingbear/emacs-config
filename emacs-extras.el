@@ -4,7 +4,7 @@
 
 ;; Override having to type Yes or No with just Y or N
 (fset 'yes-or-no-p 'y-or-n-p)
-(set-scroll-bar-mode 'right)
+(set-scroll-bar-mode 'nil)
 (put 'scroll-left 'disabled nil)
 (put 'eval-expression 'disabled nil)
 (put 'upcase-region 'disabled nil)
@@ -15,6 +15,22 @@
 
 (ansi-color-for-comint-mode-on)
 
+
+;; stolen from KWB-emacs
+
+;; show empty lines at the end of the file
+(set-default 'indicate-empty-lines t)
+
+;; automatically sync up external changes to files
+(global-auto-revert-mode t)
+(defalias 'auto-revert-tail-mode 'tail-mode)
+
+;; delete trailing whitespace
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+
+;; Better file and buffer searching.
+(require 'ido)
 
 
 
@@ -29,6 +45,20 @@ I choose for my custom files:
 $HOME/.emacs.d/lisp" )
 (if (file-accessible-directory-p mhs-lisp-dir)
     (add-to-list 'load-path mhs-lisp-dir))
+
+
+
+
+;; External lisp files
+(defvar mhs-external-lisp-dir  (expand-file-name (concat emacs-top '"external-lisp-files/"))
+  "Directory where lispy things I didn't write are put" )
+
+;; Add all subdirectories of the external lisp dir to the load path.
+(when (file-accessible-directory-p mhs-external-lisp-dir)
+  (add-to-list 'load-path mhs-external-lisp-dir)
+  (let ((default-directory  mhs-external-lisp-dir))
+    (normal-top-level-add-subdirs-to-load-path)))
+
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -48,18 +78,12 @@ $HOME/.emacs.d/lisp" )
     (require 'bcr-python))
 
 
-;; Better file and buffer searching.
-(require 'ido)
 
-;; External lisp files
-(defvar mhs-external-lisp-dir  (expand-file-name (concat emacs-top '"external-lisp-files/"))
-  "Directory where lispy things I didn't write are put" )
 
-;; Add all subdirectories of the external lisp dir to the load path.
-(when (file-accessible-directory-p mhs-external-lisp-dir)
-  (add-to-list 'load-path mhs-external-lisp-dir)
-  (let ((default-directory  mhs-external-lisp-dir))
-    (normal-top-level-add-subdirs-to-load-path)))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; PSVN for subversion integration
+(unless (try-require 'psvn)
+  (warn "Could't load psvn.el there is no subversion support. You may want to look at this. "))
 
 
 
@@ -86,6 +110,7 @@ $HOME/.emacs.d/lisp" )
   (add-hook 'yaml-mode-hook
             '(lambda ()
                (define-key yaml-mode-map "\C-m" 'newline-and-indent))))
+
 
 ;; Javascript stuff
 (try-require 'mhs-javascript)
@@ -151,11 +176,6 @@ $HOME/.emacs.d/lisp" )
                       ;; (setq dired-guess-shell-gnutar "gtar")
                       )))
 
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; PSVN for subversion integration
-(unless (try-require 'psvn)
-  (warn "Could't load psvn.el there is no subversion support. You may want to look at this. "))
 
 
 
@@ -265,9 +285,6 @@ $HOME/.emacs.d/lisp" )
   (add-to-list 'auto-insert-type-alist '("python-file" . "python-insert.py")))
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; This allows me to use these normally disabled functions with out having to
-;; tell emacs, "Yes, I really want to do this"
 
 
 ;; Allows you to separate out the parens and see them for what they are, and
