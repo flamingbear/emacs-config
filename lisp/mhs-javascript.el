@@ -23,11 +23,23 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
 ;; [MHS, 2012-08-11] I found this trying to fix the old jshint-mode and this
 ;; works with node-jshint and allows configuration.
 ;; Requires you to install node-jshint first
+(defun mhs-search-project-for-jshintrc ()
+  (interactive)
+   (let* ((current-loc (buffer-file-name))
+          (jshintrc-name ".jshintrc.json")
+          (path-to-file (locate-dominating-file current-loc jshintrc-name)))
+     (when path-to-file
+       (setq flymake-node-jshint-config  (expand-file-name (concat path-to-file jshintrc-name))))))
+
 
 (when (try-require 'flymake-node-jshint)
   (setq flymake-node-jshint-config "/Users/savoie/.jshintrc.json") ; optional
-  (add-hook 'js-mode-hook (lambda () (flymake-mode 1)))
-  (add-hook 'js2-mode-hook (lambda () (flymake-mode 1))))
+  (add-hook 'js-mode-hook (lambda ()
+                            (mhs-search-project-for-jshintrc)
+                            (flymake-mode 1)))
+  (add-hook 'js2-mode-hook (lambda ()
+                             (mhs-search-project-for-jshintrc)
+                             (flymake-mode 1))))
 
 
 ;; Use linum-mode in javascript
@@ -67,30 +79,6 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
                               (local-set-key "\C-cl" 'js-load-file-and-go)
                               )) )
 
-
-(defvar mhs-jshint-lines
-  (list nil
-        "/*jshint forin:true, noarg:true, noempty:true, white:false, maxlen:160, indent:2, eqeqeq:true, bitwise:true, undef:true, curly:true, browser:true, onevar:true, immed:true, newcap:true */
-/*global nsidc: true, jQuery, $, _, Backbone, it, expect, describe, beforeEach, afterEach, sinon, debug, runs, waitsFor, waits */
-"
-)
-  "*A string to insert at the top of javascript files to make jshint work" )
-
-(defun mhs-insert-jshint-lines ()
-  "Add text to the top of a js file"
-  (interactive)
-  (save-excursion
-    (goto-char (point-min))
-    (insert (car (cdr mhs-jshint-lines)))))
-
-
-(defun mhs-remove-jshint-lines ()
-  "Remove the jshint information fromt the top of a javascript file"
-  (interactive)
-  (save-excursion
-    (goto-char (point-min))
-    (while (search-forward (car (cdr mhs-jshint-lines)) nil t)
-      (replace-match "" t t))))
 
 
 (provide 'mhs-javascript)
