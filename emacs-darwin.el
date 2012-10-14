@@ -1,4 +1,4 @@
-;;; .EMACS-DARWIN.EL --- Emacs customizations for Darwin only 
+;;; .EMACS-DARWIN.EL --- Emacs customizations for Darwin only
 ;; Copyright (C) 2011 Matt Savoie
 ;; Author: Matt Savoie <emacs@flamingbear.com>
 ;; Created: 21 Sep 2011

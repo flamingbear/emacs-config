@@ -20,8 +20,8 @@
 ;;
 
 ;;; Code:
- 
-(defconst mhs-cdr-version 
+
+(defconst mhs-cdr-version
   "$Id$
 
 Report bugs to: Matt Savoie <savoie@nsidc.org>")

@@ -1,4 +1,4 @@
-;;; BCR_PYTHON.EL --- 
+;;; BCR_PYTHON.EL ---
 ;; Brandon Craig Rhodes's Emacs initialization
 ;; (Or, at least, the excerpts from it relevant to using the
 ;;  Python packages Rope, Ropemacs, Pymacs, and PyFlakes.)
@@ -31,7 +31,7 @@
                         temp-file
                         (file-name-directory buffer-file-name))))
       (list (concat (getenv "PYMACS_DIR") "/bin/pyflakes") (list local-file))))
-  
+
   (add-to-list 'flymake-allowed-file-name-masks
                '("\\.py\\'" flymake-pyflakes-init)))
 
@@ -46,10 +46,10 @@
 (autoload 'python-mode "python-mode" "Python editing mode." t)
 
 
-;; pink anything over 90 characters 
+;; pink anything over 90 characters
 (add-hook 'python-mode-hook
           (lambda ()
-            (font-lock-add-keywords 
+            (font-lock-add-keywords
              nil '(("^[^\n]\\{90\\}\\(.*\\)$" 1 font-lock-warning-face t)))))
 
 (add-hook 'python-mode-hook (lambda () (linum-mode)))
@@ -57,7 +57,7 @@
 
 
 ; 2011-08-09: <mhs> I don't think we need this anymore, if we activate before
-; starting emacs. </mhs> 
+; starting emacs. </mhs>
 ; (load-library "virtualenv")
 
 (provide 'bcr-python)

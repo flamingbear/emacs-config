@@ -150,5 +150,3 @@
 ;; switch C-h a from command-apropos to apropos This is so you have every
 ;; option that matches your string when you call it.
 (define-key help-map "a" 'apropos)
-
-

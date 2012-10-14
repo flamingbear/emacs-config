@@ -1,4 +1,4 @@
-;; Shamelessly stolen from 
+;; Shamelessly stolen from
 ;; http://trey-jackson.blogspot.com/2010/10/emacs-tip-38-automatically-diff-binary.html
 
 (defvar ediff-do-hexl-diff nil
@@ -18,7 +18,7 @@ isn't there and triggers an error"
         (progn
           ad-do-it)
       (error
-       (if ediff-do-hexl-diff 
+       (if ediff-do-hexl-diff
            (let ((buf-A (find-file-noselect file-A))
                  (buf-B (find-file-noselect file-B)))
              (with-current-buffer buf-A
@@ -48,4 +48,3 @@ isn't there and triggers an error"
 (provide 'binary-diff)
 
 ;; ends here
-

@@ -18,17 +18,17 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 
 ;; Set up the  default values for frame creation
 ;;-------------------------------------------
-(setq default-frame-alist 
+(setq default-frame-alist
       (quote ((mouse-color . "sky blue")
-              (cursor-color . "orange1") 
-              (tool-bar-lines . 0) 
-              (top . 25) 
-              (left . 54) 
-              (menu-bar-lines . 1) 
-              (background-color . "gray12") 
+              (cursor-color . "orange1")
+              (tool-bar-lines . 0)
+              (top . 25)
+              (left . 54)
+              (menu-bar-lines . 1)
+              (background-color . "gray12")
               (foreground-color . "gray89"))))
 
-(add-to-list 'default-frame-alist 
+(add-to-list 'default-frame-alist
              (cond ((>= (x-display-pixel-height) 1578)
                     '(height . 62))
                    ((>= (x-display-pixel-height) 1200)
@@ -39,7 +39,7 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
                     '(height . 36))
                    (t '(height . 30))))
 
-(add-to-list 'default-frame-alist 
+(add-to-list 'default-frame-alist
              (cond ((>= (x-display-pixel-width) 1280)
                     '(width . 120))
                    (t '(width . 93))))
@@ -84,16 +84,16 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 ;; up according to your build.
 (setq build (getenv "BUILD"))
 
-(if (eq build nil) 
+(if (eq build nil)
     (setq build "unknown"))
 
 
 (cond ((string-match (user-login-name) "nrtsig")
        (progn
-         (cond ((string-match build  "F17_prod") 
+         (cond ((string-match build  "F17_prod")
                 (setq my-menu-fg-color "red")
                 (setq my-menu-bg-color "#483d8b")) ;darkslateblue
-               ((string-match build  "F17_test") 
+               ((string-match build  "F17_test")
                 (setq my-menu-fg-color "moccasin")
                 (setq my-menu-bg-color "#483d8b")) ; darkslateblue
                )))
@@ -104,8 +104,8 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
               (setq my-menu-bg-color "darkgreen"))) ;cornflowerblue
 
       ((string-match (system-name) "wuzzles.colorado.edu")
-       (progn (setq my-menu-fg-color "#2f4f4f")   ;dark slate gray 
-              (setq my-menu-bg-color "#c0ff3e"))) ;olivedrab1 
+       (progn (setq my-menu-fg-color "#2f4f4f")   ;dark slate gray
+              (setq my-menu-bg-color "#c0ff3e"))) ;olivedrab1
 
 
       ((string-match (user-login-name) "archive")
@@ -116,14 +116,14 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
       ;; You'll get the same colors for MASIE emacs sessions for any
       ;; machine... Set the title.
       ((string-match build "MASIE_dev")
-       (progn 
+       (progn
          (setq idlwave-shell-explicit-file-name "my_idl.7.0.sh")
          (setq my-menu-bg-color "#7a378b") ; mediumOrchid4
          (setq my-menu-fg-color "spring green")))
 
       ((string-match build "MASIE_test")
        ;;(setq idlwave-shell-explicit-file-name "my_idl.7.0.sh")
-       (progn (setq idlwave-shell-explicit-file-name 
+       (progn (setq idlwave-shell-explicit-file-name
                     (expand-file-name "~savoie/local/bin/my_idl.6.4.sh"))
               (setq my-menu-bg-color "#7a378b") ; turquoise1
               (setq my-menu-fg-color "gold")))
@@ -144,7 +144,7 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 
       ;; Works with snow.colo only now...
       ((string-match "^snow.colorado.edu" (system-name))
-       (progn 
+       (progn
          (setq idlwave-shell-explicit-file-name "my_idl.8.1.sh")
          (setq my-menu-bg-color "moccasin")
          (setq my-menu-fg-color "black")
@@ -217,11 +217,11 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
               (setq my-menu-bg-color "#9f79ee") ; mediumpurple2
               ;; (setq idlwave-shell-explicit-file-name "my_idl.6.4.sh")
               (setq idlwave-shell-explicit-file-name "my_idl.8.1.sh")))
-      
+
       ((string-match (system-name) "sidads.colorado.edu")
        (progn (setq my-menu-fg-color "#8b3a3a")   ; indianred4
               (setq my-menu-bg-color "#ffdab9"))) ;peachpuff
-      
+
       ((string-match (system-name) "arctic3.colorado.edu")
        (progn (setq my-menu-fg-color "blue4")
               (setq my-menu-bg-color "salmon")
@@ -250,7 +250,7 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
        (progn
          (setq my-menu-fg-color "#baf257")
          (setq my-menu-bg-color "#738466")))
-      
+
       ;; Default values
       (t (progn (setq my-menu-fg-color "gold")
                 (setq my-menu-bg-color "olive drab"))))

@@ -8,7 +8,7 @@
 ;; Version: 1.0
 ;; Keywords:
 
- 
+
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
 ;; the Free Software Foundation; either version 1, or (at your option)
@@ -62,7 +62,7 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
 
     ;; Send buffer to output file with the above vars set.
     (ps-print-buffer-with-faces mhs-out-ps-file)
-  
+
     (set-face-foreground 'default mhs-face-foreground)
     (set-face-background 'default mhs-face-background)))
 

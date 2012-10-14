@@ -29,7 +29,7 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
   "Location of the bbdb install")
 
 ;; Location on macintosh machines.
-(when running-macos 
+(when running-macos
   (setq mhs-bbdb-dir (expand-file-name (concat mhs-external-lisp-dir '"bbdb/lisp"))))
 
 

@@ -20,25 +20,28 @@
 
 Report bugs to: Matt Savoie <savoie@nsidc.org>")
 
-;; [MHS, 2012-08-11] I found this trying to fix the old jshint-mode and this
-;; works with node-jshint and allows configuration.
-;; Requires you to install node-jshint first
-(defun mhs-search-project-for-jshintrc ()
+;; [MHS, 2012-08-11] I found flymake-node-jshint when trying to fix the old
+;; jshint-mode and this works with node-jshint and allows configuration via a
+;; .json file It requires you to install node-jshint first
+
+;; Load a .jshintrc.json file as the default settings to jshint  This search
+(defun mhs-set-flymake-node-jshint-config-file ()
+  "Search upward in directories looking for a .jshintrc.json file and set it to be the file used in flymake-node-jshint"
   (interactive)
-   (let* ((current-loc (buffer-file-name))
-          (jshintrc-name ".jshintrc.json")
-          (path-to-file (locate-dominating-file current-loc jshintrc-name)))
-     (when path-to-file
-       (setq flymake-node-jshint-config  (expand-file-name (concat path-to-file jshintrc-name))))))
+  (let* ((current-loc (buffer-file-name))
+         (jshintrc-name ".jshintrc.json")
+         (path-to-file (locate-dominating-file current-loc jshintrc-name)))
+    (when path-to-file
+      (setq flymake-node-jshint-config  (expand-file-name (concat path-to-file jshintrc-name))))))
 
 
 (when (try-require 'flymake-node-jshint)
   (setq flymake-node-jshint-config "/Users/savoie/.jshintrc.json") ; optional
   (add-hook 'js-mode-hook (lambda ()
-                            (mhs-search-project-for-jshintrc)
+                            (mhs-set-flymake-node-jshint-config-file)
                             (flymake-mode 1)))
   (add-hook 'js2-mode-hook (lambda ()
-                             (mhs-search-project-for-jshintrc)
+                             (mhs-set-flymake-node-jshint-config-file)
                              (flymake-mode 1))))
 
 

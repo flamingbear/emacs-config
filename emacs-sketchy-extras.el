@@ -8,7 +8,7 @@
 ;; Version: 1.0
 ;; Keywords:
 
- 
+
 ;;; Code:
 
 (defconst emacs-sketchy-extras-version (substring "$Revision: 19610 $" 11 -2)
@@ -24,13 +24,13 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
            (try-require 'mhs-org-mode))
   (set-variable 'comment-start 'nil)
   (setq org-agenda-custom-commands
-        '(("Q" . "Custom queries") ;; gives label to "Q" 
+        '(("Q" . "Custom queries") ;; gives label to "Q"
           ("Qa" "Archive search" search ""
-           ((org-agenda-files (file-expand-wildcards "~/Dropbox/orgs/*.org_archive")))) 
+           ((org-agenda-files (file-expand-wildcards "~/Dropbox/orgs/*.org_archive"))))
           ("Qb" "Projects and Archive" search ""
            ((org-agenda-text-search-extra-files (file-expand-wildcards "~/Dropbox/orgs/*.org_archive"))))
           ;; searches both projects and archive directories
-          ("QA" "Archive tags search" org-tags-view "" 
+          ("QA" "Archive tags search" org-tags-view ""
            ((org-agenda-files (file-expand-wildcards "~/Dropbox/orgs/*.org_archive"))))))
   "mhs-org mode loaded"  )
 
@@ -61,13 +61,13 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 ;; To use:
 ;;  /[<machine name>]/path/to/file
 ;;  /[<machine name>]~/expanded/homedir/file
-;; /[<machine name>].emacs 
+;; /[<machine name>].emacs
 ;; or assume home directory
 (when (try-require 'tramp)
   (setq tramp-default-method "scp"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Use the gnus news reader  
+; Use the gnus news reader
 (defvar mhs-bleeding-gnus (concat emacs-top "external-lisp-files/bleeding-gnus/lisp")
   "Location of the git repository of gnus for testing")
 (if (file-accessible-directory-p mhs-bleeding-gnus)
@@ -83,7 +83,7 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
      (setq mm-text-html-renderer 'gnus-article-html)
      (setq mm-inline-text-html-with-images 't) ))
 
-;; R-language support.  
+;; R-language support.
 (try-require 'ess-site)
 
 ;; Ctypes support

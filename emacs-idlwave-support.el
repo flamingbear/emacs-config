@@ -36,7 +36,7 @@
 ;; Set up some functions that we need to define before we can use them.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; the actual author is 
+;; the actual author is
 ;;  JD Smith <jdsmith@as.arizona.edu>
 ;; I'm just putting it together for anyone to use.
 
@@ -45,7 +45,7 @@
 
 ;; So if you did a plot command ten commands ago, you would put plot on the
 ;; shell line.
-;;  IDL> plot, 
+;;  IDL> plot,
 ;; and then hit the up arrow* to get to the commane
 ;; *(if you bind this commmand to it like we do later in this file)
 (defvar jds-search-regexp nil)
@@ -80,14 +80,14 @@
 ;; This inserts the normal fanning enhanced function template into the buffer
 (defun mhs-idlwave-function ()
   (interactive)
-  (idlwave-template 
+  (idlwave-template
    (idlwave-rw-case "function" )
    (idlwave-rw-case "\ncompile_opt idl2, logical_predicate\n\n \nreturn\n\nend")
    "Function name"))
 
 (defun mhs-idlwave-function-with-error ()
   (interactive)
-  (idlwave-template 
+  (idlwave-template
    (idlwave-rw-case "function")
    (idlwave-rw-case "\ncompile_opt idl2, logical_predicate\n\n ;;Error Handling\ncatch,  theError\nif theError ne 0 then begin\nCatch, /cancel\nok =  Error_Message(!Error_State.Msg)\nreturn,  0\nendif\nreturn\n\nend")
    "Function name"))
@@ -96,21 +96,21 @@
 ;; This inserts the normal fanning enhanced procedure template into the buffer
 (defun mhs-idlwave-procedure-with-error ()
   (interactive)
-  (idlwave-template 
+  (idlwave-template
    (idlwave-rw-case "pro")
    (idlwave-rw-case "\ncompile_opt idl2, logical_predicate\n\n ;;Error Handling\ncatch,  theError\nif theError ne 0 then begin\nCatch, /cancel\nok =  Error_Message(!Error_State.Msg)\nreturn\nendif\n\nend")
    "Procedure name"))
 
 (defun mhs-idlwave-procedure ()
   (interactive)
-  (idlwave-template 
+  (idlwave-template
    (idlwave-rw-case "pro")
    (idlwave-rw-case "\ncompile_opt idl2, logical_predicate\n\n\nend")
    "Procedure name"))
 
 
 
-(setq comint-input-ring-size 1024) 
+(setq comint-input-ring-size 1024)
 
 
 ;; I like to use alt-s to complete anything I'm typing.
@@ -139,7 +139,7 @@
 	    ;; (idlwave-action-and-binding "+"  '(idlwave-surround -1 'nil 1))
 	    ;;(idlwave-action-and-binding "-"  '(idlwave-surround -1 'nil 1))
 
-	    
+
             ;; Set a couple of different bindings for the idlwave-complete.
             ;; *everyone* should learn how to complete things they are typing.
 	    (local-set-key [s-tab] 'idlwave-complete)
@@ -154,18 +154,18 @@
 
             ;; There are a bunch of other predefined versions, that you can
             ;; discover with "M-x list-abbrevs" in a buffer in idlwave mode
-            
+
 	    (idlwave-define-abbrev "wb" "Widget_Base()"
 				   (idlwave-keyword-abbrev 1))
 	    (idlwave-define-abbrev "pn" "Ptr_New()"
 				   (idlwave-keyword-abbrev 1))
-	    (idlwave-define-abbrev "fun"  "" 
+	    (idlwave-define-abbrev "fun"  ""
 				   (idlwave-code-abbrev mhs-idlwave-function-with-error))
-	    (idlwave-define-abbrev "prn"  "" 
+	    (idlwave-define-abbrev "prn"  ""
 				   (idlwave-code-abbrev mhs-idlwave-procedure-with-error))
-            (idlwave-define-abbrev "fu"  "" 
+            (idlwave-define-abbrev "fu"  ""
 				   (idlwave-code-abbrev mhs-idlwave-function))
-	    (idlwave-define-abbrev "pr"  "" 
+	    (idlwave-define-abbrev "pr"  ""
 				   (idlwave-code-abbrev mhs-idlwave-procedure))
 	    (idlwave-define-abbrev "on" "Obj_New()"
 				   (idlwave-keyword-abbrev 1))
@@ -179,8 +179,8 @@
 
 ;;  I set comments to start on line 1 because idlwave will refuse to move them
 ;;  if they are in the 0th column
-(add-hook 'idlwave-mode-hook 
-          (lambda () 
+(add-hook 'idlwave-mode-hook
+          (lambda ()
             (set (make-local-variable 'comment-add) 1)))
 
 
@@ -198,13 +198,13 @@
 ;; Pink everything after 80 columms
 (add-hook 'idlwave-mode-hook
           (lambda ()
-            (font-lock-add-keywords 
+            (font-lock-add-keywords
              nil '(("^[^\n]\\{90\\}\\(.*\\)$" 1 font-lock-warning-face t)))))
 
 
 (add-hook 'idlwave-mode-hook
           (lambda ()
-            (font-lock-add-keywords 
+            (font-lock-add-keywords
              nil '(("\\(<mhs>.*</mhs>\\)" 1 font-lock-warning-face t)))))
 ;;  Add my common hooks to both modes shell and mode.
 (add-hook 'idlwave-mode-hook 'my-common-idlwave-hook 't)
@@ -223,7 +223,7 @@
 ; :Keywords:
 ;    keyword1 : in|out, required|optional, type=type
 ;       Description of keyword
-;   
+;
 ; :Returns: <return info>
 ;
 ;-
@@ -239,7 +239,7 @@
 
 
 
-(defvar mhs-idlwave-do_ps-keyword 
+(defvar mhs-idlwave-do_ps-keyword
 ";    do_ps : in, optional, type=boolean, default=true()
 ;        if true(), then generate the images in postscript and use
 ;        imagemagick to convert after the fact")
@@ -252,7 +252,7 @@
 
 ;; This takes the place of what is below and does the same thing
 ;; If you surround  a word on a blank line with the point and mark
-;;  <<point>>keyword<<mark>> 
+;;  <<point>>keyword<<mark>>
 
 ;; and type mhs-setdefaultvalue, the following will be replaced and the point will be
 ;; ready to take the default value.  I use this for generating default values
@@ -280,7 +280,7 @@
 ;; I would bind this to a key that you can use easily.
 
 ;; If you surround  a word on a blank line with the point and mark
-;;  <<point>>keyword<<mark>> 
+;;  <<point>>keyword<<mark>>
 
 ;; and type mhs-keywords, the following will be replaced and the point will be
 ;; ready to take the default value.  I use this for generating default values
@@ -291,7 +291,7 @@
 (defun mhs-keywords (beg end)
   "Inserts keyword initialization for idl"
   (interactive "r")
-  (let (input-string) 
+  (let (input-string)
     (setq input-string (buffer-substring beg end))
     (kill-region beg end)
     (push-mark)
@@ -310,14 +310,14 @@
 ;; I put this here to override the new .full_reset_session behavior.
 (defun mhs-idlwave-shell-reset (&optional hidden)
   "Reset IDL.  Return to main level and destroy the leftover variables.
-This issues the following commands:  
+This issues the following commands:
 RETALL
 WIDGET_CONTROL,/RESET
 CLOSE, /ALL
 HEAP_GC, /VERBOSE"
   ;; OBJ_DESTROY, OBJ_VALID()  FIXME: should this be added?
   (interactive "P")
-  (when (or idlwave-shell-reset-no-prompt 
+  (when (or idlwave-shell-reset-no-prompt
 	    (yes-or-no-p "Really Reset IDL and discard current session? "))
     (message "Resetting IDL")
     (setq idlwave-shell-calling-stack-index 0)

@@ -10,7 +10,7 @@ Normally this points to: $HOME/.emacs.d/")
 
 ;; Read the emacs home directly out of the .profile file. This is a workaround
 ;; on Darwin systems to allow us to continue
-(when (not emacs-top) 
+(when (not emacs-top)
   (setq emacs-top (shell-command-to-string "source $HOME/.profile && printf $EMACS_HOME")))
 
 (add-to-list 'load-path emacs-top)
@@ -21,9 +21,6 @@ Normally this points to: $HOME/.emacs.d/")
 ;; we set the default file ~/.gnu-emacs-custom
 (setq custom-file (concat emacs-top ".gnu-emacs-custom"))
 (load custom-file t t)
-
-
-
 
 ;; TODO [MHS, 2012-10-03] Remove to an environments file?
 
@@ -39,7 +36,7 @@ Normally this points to: $HOME/.emacs.d/")
 
 ;; TODO [MHS, 2012-10-03] put this somewhere else
 ;; Browser settings
-(setq browse-url-browser-function (if running-macos 
+(setq browse-url-browser-function (if running-macos
                                       (quote browse-url-default-macosx-browser)
                                       (quote browse-url-firefox))
       browse-url-firefox-new-window-is-tab t
@@ -49,7 +46,7 @@ Normally this points to: $HOME/.emacs.d/")
       browse-url-of-file-hook (quote (browse-url-generic-reload)))
 
 
-(when running-macos 
+(when running-macos
   (if (file-readable-p (concat emacs-top '"emacs-darwin.el"))
       (load (concat emacs-top '"emacs-darwin.el") nil t)))
 
@@ -108,3 +105,4 @@ of an error, just add the package to a list of missing packages."
 ;; If we found some packages that didn't load..Print them out.
 (if missing-packages-list
     (progn (message "Packages not found: %S" missing-packages-list)))
+(put 'dired-find-alternate-file 'disabled nil)
