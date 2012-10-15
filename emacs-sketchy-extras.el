@@ -46,13 +46,14 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 
 ;; Yasnippet
 ;;-----------
-(add-to-list 'load-path
-             (concat emacs-top "external-lisp-files/yasnippet"))
+;; [MHS, 2012-10-14]  I think this is all taken care of with el-get?
+;; (add-to-list 'load-path
+;;              (concat emacs-top "external-lisp-files/yasnippet"))
 
-(when (try-require 'yasnippet) ;; not yasnippet-bundle
-  (progn (yas/initialize)
-         (setq yas/root-directory (concat emacs-top "external-lisp-files/yasnippet/snippets"))
-         (yas/load-directory yas/root-directory)))
+;; (when (try-require 'yasnippet) ;; not yasnippet-bundle
+;;   (progn (yas/initialize)
+;;          (setq yas/root-directory (concat emacs-top "external-lisp-files/yasnippet/snippets"))
+;;          (yas/load-directory yas/root-directory)))
 
 
 

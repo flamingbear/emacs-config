@@ -82,8 +82,9 @@ $HOME/.emacs.d/lisp" )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; PSVN for subversion integration
-(unless (try-require 'psvn)
-  (warn "Could't load psvn.el there is no subversion support. You may want to look at this. "))
+;; TODO [MHS, 2012-10-14] Check to see this is using the new version from el-get
+;; (unless (try-require 'psvn)
+;;   (warn "Could't load psvn.el there is no subversion support. You may want to look at this. "))
 
 
 
@@ -93,10 +94,6 @@ $HOME/.emacs.d/lisp" )
   (add-to-list 'load-path magnars-stuff))
 
 
-;; (autoload 'markdown-mode "markdown-mode.el"
-;;         "Major mode for editing Markdown files" t)
-;; (setq auto-mode-alist
-;;       (cons '("\\.md" . markdown-mode) auto-mode-alist))
 ;; 2012-04-17: <mhs> need to look at these options</mhs>
 (when (try-require 'markdown-mode)
   (setq auto-mode-alist
@@ -131,17 +128,13 @@ $HOME/.emacs.d/lisp" )
 ;; Load the BBDB if it's around.
 (try-require 'mhs-bbdb)
 
-;; Try to use eclim for eclipse integration
-;; 2011-10-02: <mhs>  Need to get Java working first.</mhs>
-;;(try-require 'mhs-eclim)
-
 
 ;; Add a local site-lisp site.  2011-09-07: I'm not exactly sure why this is.
 ;; /home/savoie/local/share/emacs/site-lisp
-(defvar mhs-local-site-lisp  (expand-file-name "~savoie/local/share/emacs/site-lisp"))
-(when (file-accessible-directory-p mhs-local-site-lisp)
-  (add-to-list 'load-path mhs-local-site-lisp))
-
+;; TODO [MHS, 2012-10-14]  I think this is OBE. Check and delete
+;; (defvar mhs-local-site-lisp  (expand-file-name "~savoie/local/share/emacs/site-lisp"))
+;; (when (file-accessible-directory-p mhs-local-site-lisp)
+;;   (add-to-list 'load-path mhs-local-site-lisp))
 
 
 ;; if you are debugging emacs completely: open this file and it records keystrokes.

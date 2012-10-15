@@ -120,7 +120,7 @@
  '(message-cite-function (quote message-cite-original-without-signature))
  '(message-mode-hook (quote (turn-on-flyspell turn-off-auto-fill turn-on-visual-line-mode)))
  '(message-send-mail-partially-limit nil)
- '(message-setup-hook (quote (bbdb-define-all-aliases bbdb-insinuate-message)))
+ '(message-setup-hook (quote (bbdb-define-all-aliases bbdb-insinuate-message)) t)
  '(mm-verify-option (quote always))
  '(mouse-wheel-follow-mouse t)
  '(mouse-wheel-mode t nil (mwheel))
@@ -133,8 +133,8 @@
  '(org-log-done (quote note))
  '(org-refile-targets (quote ((org-agenda-files :maxlevel . 5))))
  '(org-remember-default-headline "TASKS.org")
- '(org-remember-templates (quote (("todo" 116 "* TODO %? %u %a" nil nil nil) ("note" 110 "* %?" nil nil nil) ("Url" 117 "* %^{Title}  
-	Source: %u, %c 
+ '(org-remember-templates (quote (("todo" 116 "* TODO %? %u %a" nil nil nil) ("note" 110 "* %?" nil nil nil) ("Url" 117 "* %^{Title}
+	Source: %u, %c
 	%i" nil nil nil))))
  '(org-tag-alist (quote (("daac" . 100) ("programmer" . 112) ("erik" . 101) ("management" . 109) ("services" . 115) ("masie" . 105) ("annual_review" . 97))))
  '(org-todo-keywords (quote ((sequence "TODO" "WAITING" "|" "DONE" "DELEGATED" "CANCELLED"))))
@@ -148,7 +148,7 @@
  '(ps-print-color-p nil)
  '(ps-print-only-one-header t)
  '(ps-printer-name "snowprint")
- '(safe-local-variable-values (quote ((dired-actual-switches . "-latS") (dired-actual-switches . "-lat") (dired-omit-mode . t))))
+ '(safe-local-variable-values (quote ((eval ignore-errors "Write-contents-functions is a buffer-local alternative to before-save-hook" (add-hook (quote write-contents-functions) (lambda nil (delete-trailing-whitespace) nil)) (require (quote whitespace)) "Sometimes the mode needs to be toggled off and on." (whitespace-mode 0) (whitespace-mode 1)) (whitespace-line-column . 80) (whitespace-style face trailing lines-tail) (require-final-newline . t) (ruby-compilation-executable . "ruby") (ruby-compilation-executable . "ruby1.8") (ruby-compilation-executable . "ruby1.9") (ruby-compilation-executable . "rbx") (ruby-compilation-executable . "jruby") (dired-actual-switches . "-latS") (dired-actual-switches . "-lat") (dired-omit-mode . t))))
  '(save-abbrevs t)
  '(save-interprogram-paste-before-kill t)
  '(scroll-bar-mode (quote right))
@@ -229,4 +229,3 @@
  '(spam ((((class color) (background dark)) (:foreground "ivory4"))))
  '(tool-bar ((nil (:inherit menu))))
  '(trailing-whitespace ((((class color) (background dark)) (:background "grey13")))))
-
