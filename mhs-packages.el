@@ -19,12 +19,14 @@
 (setq el-get-install-skip-emacswiki-recipes t)
 
 ; If el-get is missing, install it automatically
+
 (unless (require 'el-get nil t)
-  (url-retrieve
+(url-retrieve
    "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
    (lambda (s)
-     (goto-char (point-max))
-     (eval-print-last-sexp))))
+     (let (el-get-master-branch)
+       (goto-char (point-max))
+       (eval-print-last-sexp)))))
 
 
 (push '(:name yasnippet
@@ -36,27 +38,48 @@
               :compile "yasnippet.el")
       el-get-sources)
 
+;; These all moved and aren't updated in eg-get yet.
+(push '(:name auto-complete
+       :website "https://github.com/auto-complete/auto-complete"
+       :description "The most intelligent auto-completion extension."
+       :type github
+       :pkgname "auto-complete/auto-complete"
+       :depends (popup fuzzy)) el-get-sources)
+
+(push '(:name popup
+       :website "https://github.com/auto-complete/popup-el"
+       :description "Visual Popup Interface Library for Emacs"
+       :type github
+       :pkgname "auto-complete/popup-el") el-get-sources)
+
+(push '(:name fuzzy
+       :website "https://github.com/auto-complete/fuzzy-el"
+       :description "Fuzzy matching utilities for GNU Emacs"
+       :type github
+       :pkgname "auto-complete/fuzzy-el") el-get-sources)
+
+
+
 ; Also install these packages, no configuration required
 (setq my-el-get-packages
-      (append
-       '(el-get
-        ace-jump-mode
-        bbdb
-        clojure-mode
-        auto-complete
-        multiple-cursors
-        mark-multiple
-        ncl-mode
-        nrepl
-        paredit
-        psvn
-        rinari
-        yaml-mode
-        markdown-mode
-        emacs-w3m
-        expand-region
-        magit )
-       (mapcar 'el-get-source-name el-get-sources)))
+      (append '(el-get
+                ace-jump-mode
+                bbdb
+                clojure-mode
+                auto-complete
+                multiple-cursors
+                mark-multiple
+                ncl-mode
+                nrepl
+                paredit
+                psvn
+                rinari
+                yaml-mode
+                markdown-mode
+                emacs-w3m
+                expand-region
+                magit )
+              (mapcar 'el-get-source-name el-get-sources)))
 
 
 ; Check packages and install any that are missing
