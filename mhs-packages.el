@@ -38,6 +38,12 @@
               :compile "yasnippet.el")
       el-get-sources)
 
+(push '(:name flymake-node-jshint
+              :website "https://github.com/jegbjerg/flymake-node-jshint"
+              :description "Emacs library providing simple flymake for JavaScript using JSHint through node-jshint"
+              :type github
+              :pkgname "jegbjerg/flymake-node-jshint") el-get-sources)
+
 ;; These all moved and aren't updated in eg-get yet.
 (push '(:name auto-complete
        :website "https://github.com/auto-complete/auto-complete"
@@ -69,7 +75,6 @@
                 auto-complete
                 multiple-cursors
                 mark-multiple
-                ncl-mode
                 nrepl
                 paredit
                 psvn

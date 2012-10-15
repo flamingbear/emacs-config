@@ -179,7 +179,6 @@
  '(tab-width 4)
  '(tool-bar-mode nil nil (tool-bar))
  '(transient-mark-mode t)
- '(type-break-mode nil nil (type-break))
  '(uniquify-buffer-name-style (quote forward) nil (uniquify))
  '(url-privacy-level (quote (paranoid)))
  '(url-temporary-directory "~savoie/tmp")
