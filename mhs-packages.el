@@ -70,7 +70,7 @@
 (setq my-el-get-packages
       (append '(el-get
                 ace-jump-mode
-                bbdb
+                edit-server
                 clojure-mode
                 auto-complete
                 multiple-cursors
@@ -85,6 +85,9 @@
                 expand-region
                 magit )
               (mapcar 'el-get-source-name el-get-sources)))
+
+(when running-macos
+  (push 'bbdb my-el-get-packages ))
 
 
 ; Check packages and install any that are missing
