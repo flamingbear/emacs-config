@@ -8,7 +8,7 @@
 ;; Version: 1.0
 ;; Keywords:
 
- 
+
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
 ;; the Free Software Foundation; either version 1, or (at your option)
@@ -45,14 +45,14 @@
 ;; Keep a clock across working sessions.
 (org-clock-persistence-insinuate)
 
-;; The following lines are always needed.  
+;; The following lines are always needed.
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 (define-key global-map "\C-cb" 'org-iswitchb)
 
 (org-remember-insinuate)
-(setq org-directory (concat emacs-top '"mhs/orgs/"))
+(setq org-directory "~/Dropbox/orgs")
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 
 ;; Prefer capture to remember.

@@ -59,3 +59,4 @@ maybe_not_used
 /external-lisp-files/nrepl/
 /rainbow-delimiters.el
 /.org-id-locations
+/.mc-lists.el
