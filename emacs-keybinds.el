@@ -94,6 +94,8 @@
 
 
 
+
+
 ;; Stuff from EmacsRocks guy Magnars.
 
 ;; Use the fancy rgrep if available. from magnars
@@ -102,25 +104,26 @@
   (global-set-key (kbd "M-s s") 'rgrep))
 
 
-(when (boundp 'mhs-searchmap)
-  (define-key mhs-searchmap "s" 'rgrep-fullscreen))
-
-
 (when (try-require 'inline-string-rectangle)
   (global-set-key (kbd "C-x r t") 'inline-string-rectangle))
 
-(when (try-require 'mark-more-like-this)
-  (global-set-key (kbd "C-<") 'mark-previous-like-this)
-  (global-set-key (kbd "C->") 'mark-next-like-this)
-  (global-set-key (kbd "C-M-m") 'mark-more-like-this) ; like the other two, but takes an argument (negative is previous)
-  (global-set-key (kbd "C-*") 'mark-all-like-this))
+;; TODO [MHS, 2012-10-14] Not using mark-multiple anymore.  But will keep this here for a while.
+;; I haven't decided if inline-string-rectangle is still useful and I need mark-multiple to have it work
+;; (when (try-require 'mark-more-like-this)
+;;   (global-set-key (kbd "C-<") 'mark-previous-like-this)
+;;   (global-set-key (kbd "C->") 'mark-next-like-this)
+;;   (global-set-key (kbd "C-M-m") 'mark-more-like-this) ; like the other two, but takes an argument (negative is previous)
+;;   (global-set-key (kbd "C-*") 'mark-all-like-this))
 
-(when (and (try-require 'rename-sgml-tag)
-	   (try-require 'sgml-mode))
-  (define-key sgml-mode-map (kbd "C-c C-r") 'rename-sgml-tag))
+(when (try-require 'multiple-cursors)
+  (global-set-key (kbd "C->") 'mc/mark-next-like-this)
+  (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+  (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+  (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines))
 
-(when (try-require 'js2-rename-var)
-  (define-key js2-mode-map (kbd "C-c C-r") 'js2-rename-var))
+(when (boundp 'mhs-searchmap)
+  (define-key mhs-searchmap "s" 'rgrep-fullscreen))
+
 
 ;; Ace Jumping mode.
 (when (try-require 'ace-jump-mode)

@@ -1,6 +1,7 @@
 *~
 *.elc
 emacs-w3m*
+/el-get
 /eshell/history
 /eshell/lastdir
 /ac-comphist.dat
@@ -58,3 +59,4 @@ maybe_not_used
 /external-lisp-files/nrepl/
 /rainbow-delimiters.el
 /.org-id-locations
+/.mc-lists.el

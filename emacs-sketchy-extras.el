@@ -46,13 +46,8 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 
 ;; Yasnippet
 ;;-----------
-(add-to-list 'load-path
-             (concat emacs-top "external-lisp-files/yasnippet"))
-
 (when (try-require 'yasnippet) ;; not yasnippet-bundle
-  (progn (yas/initialize)
-         (setq yas/root-directory (concat emacs-top "external-lisp-files/yasnippet/snippets"))
-         (yas/load-directory yas/root-directory)))
+  (yas-global-mode 1))
 
 
 
