@@ -1,6 +1,7 @@
 *~
 *.elc
 emacs-w3m*
+/el-get
 /eshell/history
 /eshell/lastdir
 /ac-comphist.dat
