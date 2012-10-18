@@ -23,6 +23,10 @@ Normally this points to: $HOME/.emacs.d/")
 (setq custom-file (concat emacs-top ".gnu-emacs-custom"))
 (load custom-file t t)
 
+
+(setq backup-directory-alist `(("." . ,(expand-file-name
+                                        (concat (file-name-directory emacs-top) "backups")))))
+
 ;; couple of tweaks for browsers and handling emacs on mac osx
 (load "mhs-environment" t t)
 
