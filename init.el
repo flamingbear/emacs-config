@@ -20,7 +20,7 @@ Normally this points to: $HOME/.emacs.d/")
 ;; ** Custom Settings **
 ;; To avoid any trouble with the customization system of GNU emacs
 ;; we set the default file ~/.gnu-emacs-custom
-(setq custom-file (concat emacs-top ".gnu-emacs-custom"))
+(setq custom-file (concat (file-name-as-directory emacs-top) ".gnu-emacs-custom"))
 (load custom-file t t)
 
 
