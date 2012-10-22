@@ -92,7 +92,7 @@
  '(idlwave-shell-automatic-start t)
  '(idlwave-shell-debug-modifiers (quote (super)))
  '(idlwave-shell-electric-stop-color "darkviolet")
- '(idlwave-shell-explicit-file-name "my_idl.8.1.sh" t)
+ '(idlwave-shell-explicit-file-name "my_idl.sh" t)
  '(idlwave-shell-reset-no-prompt t)
  '(idlwave-shell-separate-examine-output nil)
  '(idlwave-shell-show-commands (quote (run breakpoint debug misc)))
