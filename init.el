@@ -1,8 +1,7 @@
 ;; This file is the default file that is loaded when emacs is started
 ;;--------------------------------------------------------------------
 
-
-;; Set the BASE of the emacs directory structure.
+;; Set the BASE of the emacs directory structure and add it to my load-path
 (defvar emacs-top (getenv "EMACS_HOME")
   "this is the top level directory where all of the emacs customizations will live under.
 I generally set the EMACS_HOME environmental variable before starting and this is picked up.
@@ -14,24 +13,32 @@ Normally this points to: $HOME/.emacs.d/")
   ;; continue
   (setq emacs-top (shell-command-to-string "source $HOME/.profile && printf $EMACS_HOME")))
 
+(setq emacs-top (file-name-as-directory emacs-top))
 (add-to-list 'load-path emacs-top)
 
 
+
 ;; ** Custom Settings **
-;; To avoid any trouble with the customization system of GNU emacs
-;; we set the default file ~/.gnu-emacs-custom
-(setq custom-file (concat (file-name-as-directory emacs-top) ".gnu-emacs-custom"))
+(setq custom-file (concat emacs-top ".gnu-emacs-custom"))
 (load custom-file t t)
 
-
+;; Want backups in a separate directory under emacs-top
 (setq backup-directory-alist `(("." . ,(expand-file-name
                                         (concat (file-name-directory emacs-top) "backups")))))
+
 
 ;; couple of tweaks for browsers and handling emacs on mac osx
 (load "mhs-environment" t t)
 
 ;; LOAD packages via the el-get
 (load "mhs-packages" t t)
+
+
+(when running-macos
+  (if (file-readable-p (concat emacs-top '"emacs-darwin.el"))
+      (load (concat emacs-top '"emacs-darwin.el") nil t)))
+
+
 
 
 

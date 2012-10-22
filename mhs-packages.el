@@ -2,8 +2,8 @@
 
 ;; Copyright (C) 2012 Matt Savoie
 
-;; Author: Matt Savoie <savoie@nsidc.org>
-;; Maintainer: Matt Savoie <savoie@nsidc.org>
+;; Author: Matt Savoie <emacs@flamingbear.com>
+;; Maintainer: Matt Savoie <emacs@flamingbear.com>
 ;; Created: 14 Oct 2012
 ;; Version: 1.0
 ;; Keywords:
@@ -43,6 +43,19 @@
               :description "Emacs library providing simple flymake for JavaScript using JSHint through node-jshint"
               :type github
               :pkgname "jegbjerg/flymake-node-jshint") el-get-sources)
+
+(push '(:name Emacs-wgrep
+              :website "https://github.com/mhayashi1120/Emacs-wgrep"
+              :description "Writable grep buffer and apply the changes to files "
+              :type github
+              :pkgname "mhayashi1120/Emacs-wgrep") el-get-sources)
+
+(push '(:name exec-path-from-shell
+              :website "https://github.com/purcell/exec-path-from-shell"
+              :description "A GNU Emacs library to setup environment variables from the user's shell."
+              :type github
+              :pkgname "purcell/exec-path-from-shell") el-get-sources)
+
 
 ;; These all moved and aren't updated in eg-get yet.
 (push '(:name auto-complete
