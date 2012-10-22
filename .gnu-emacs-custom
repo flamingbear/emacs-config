@@ -180,7 +180,6 @@
  '(uniquify-buffer-name-style (quote forward) nil (uniquify))
  '(url-privacy-level (quote (paranoid)))
  '(url-temporary-directory "~savoie/tmp")
- '(user-mail-address "savoie@nsidc-snowblower.ad.nsidc.org")
  '(visible-bell t)
  '(w3m-default-display-inline-images t)
  '(w3m-search-default-engine "google")

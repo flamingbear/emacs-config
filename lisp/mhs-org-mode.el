@@ -2,8 +2,8 @@
 
 ;; Copyright (C) 2011 Matt Savoie
 
-;; Author: Matt Savoie <savoie@nsidc.org>
-;; Maintainer: Matt Savoie <savoie@nsidc.org>
+;; Author: Matt Savoie <emacs@flamingbear.com>
+;; Maintainer: Matt Savoie <emacs@flamingbear.com>
 ;; Created: 13 May 2011
 ;; Version: 1.0
 ;; Keywords:
@@ -20,11 +20,11 @@
 ;; GNU General Public License for more details.
 
 ;; A copy of the GNU General Public License can be obtained from this
-;; program's author (send electronic mail to <savoie@nsidc.org>) or from the
+;; program's author (send electronic mail to <emacs@flamingbear.com>) or from the
 ;; Free Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 ;; LCD Archive Entry:
-;; mhs-org-mode|Matt Savoie|<savoie@nsidc.org>
+;; mhs-org-mode|Matt Savoie|<emacs@flamingbear.com>
 ;; |Commands for ORG Mode operation.
 ;; |$Date$|$Revision: 19387 $|~/packages/mhs-org-mode.el
 
@@ -37,7 +37,7 @@
 ;;; Code:
 
 (defconst mhs-org-mode-version (substring "$Revision: 19387 $" 11 -2)
-   "$Id$ Report bugs to: Matt Savoie <savoie@nsidc.org>")
+   "$Id$ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 ;; ORG MODE information
 ;;----------------------
 (require 'org-protocol)
