@@ -17,6 +17,7 @@
 
 
 ;; stolen from KWB-emacs
+;;----------------------
 
 ;; show empty lines at the end of the file
 (set-default 'indicate-empty-lines t)
@@ -27,6 +28,8 @@
 
 ;; delete trailing whitespace
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+
 
 
 ;; Better file and buffer searching.
@@ -65,6 +68,8 @@ $HOME/.emacs.d/lisp" )
 ;;;; IDLWAVE Customizations
 ;; Load this before ruby because we want the jds history search.
 (try-require 'emacs-idlwave-support)
+
+
 
 
 

@@ -2,8 +2,8 @@
 
 ;; Copyright (C) 2011 Matt Savoie
 
-;; Author: Matt Savoie <savoie@nsidc.org>
-;; Maintainer: Matt Savoie <savoie@nsidc.org>
+;; Author: Matt Savoie <emacs@flamingbear.com>
+;; Maintainer: Matt Savoie <emacs@flamingbear.com>
 ;; Created: 27 Sep 2011
 ;; Version: 1.0
 ;; Keywords:
@@ -20,11 +20,11 @@
 ;; GNU General Public License for more details.
 
 ;; A copy of the GNU General Public License can be obtained from this
-;; program's author (send electronic mail to <savoie@nsidc.org>) or from the
+;; program's author (send electronic mail to <emacs@flamingbear.com>) or from the
 ;; Free Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 ;; LCD Archive Entry:
-;; mhs-ruby-stuff|Matt Savoie|<savoie@nsidc.org>
+;; mhs-ruby-stuff|Matt Savoie|<emacs@flamingbear.com>
 ;; |Quick place to stash all of my ruby loads.
 ;; |$Date: 2011-10-23 17:43:02 -0600 (Sun, 23 Oct 2011) $|$Revision: 19616 $|~/packages/mhs-ruby-stuff.el
 
@@ -39,7 +39,7 @@
 (defconst mhs-ruby-stuff-version (substring "$Revision: 19616 $" 11 -2)
   "$Id: mhs-ruby-stuff.el 19616 2011-10-23 23:43:02Z savoie $
 
-Report bugs to: Matt Savoie <savoie@nsidc.org>")
+Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 
 
 

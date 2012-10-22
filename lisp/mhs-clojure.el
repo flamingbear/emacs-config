@@ -1,9 +1,9 @@
-;;; MHS-CLOJURE.EL --- 
+;;; MHS-CLOJURE.EL ---
 
 ;; Copyright (C) 2012 Matt Savoie
 
-;; Author: Matt Savoie <savoie@nsidc.org>
-;; Maintainer: Matt Savoie <savoie@nsidc.org>
+;; Author: Matt Savoie <emacs@flamingbear.com>
+;; Maintainer: Matt Savoie <emacs@flamingbear.com>
 ;; Created: 30 Jun 2012
 ;; Version: 1.0
 ;; Keywords:

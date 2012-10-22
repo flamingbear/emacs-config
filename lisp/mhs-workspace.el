@@ -2,8 +2,8 @@
 
 ;; Copyright (C) 2012 Matt Savoie
 
-;; Author: Matt Savoie <savoie@nsidc.org>
-;; Maintainer: Matt Savoie <savoie@nsidc.org>
+;; Author: Matt Savoie <emacs@flamingbear.com>
+;; Maintainer: Matt Savoie <emacs@flamingbear.com>
 ;; Created: 15 Jun 2012
 ;; Version: 1.0
 ;; Keywords:
@@ -18,13 +18,13 @@
 
 (defconst mhs-workspace-version "0.0.1"
 "
-Report bugs to: Matt Savoie <savoie@nsidc.org>")
+Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 
 (defvar mhs-current-workspace  (convert-standard-filename (concat (getenv "HOME") "/workspace/"))
   "Current working location" )
 
 
-(defun mhs-set-workspace () 
+(defun mhs-set-workspace ()
   (interactive)
   (setq mhs-current-workspace default-directory))
 

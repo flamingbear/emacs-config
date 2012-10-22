@@ -2,8 +2,8 @@
 
 ;; Copyright (C) 2011 Matt Savoie
 
-;; Author: Matt Savoie <savoie@nsidc.org>
-;; Maintainer: Matt Savoie <savoie@nsidc.org>
+;; Author: Matt Savoie <emacs@flamingbear.com>
+;; Maintainer: Matt Savoie <emacs@flamingbear.com>
 ;; Created: 01 Oct 2011
 ;; Version: 1.0
 ;; Keywords:
@@ -20,11 +20,11 @@
 ;; GNU General Public License for more details.
 
 ;; A copy of the GNU General Public License can be obtained from this
-;; program's author (send electronic mail to <savoie@nsidc.org>) or from the
+;; program's author (send electronic mail to <emacs@flamingbear.com>) or from the
 ;; Free Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 ;; LCD Archive Entry:
-;; mhs-clisp-stuff|Matt Savoie|<savoie@nsidc.org>
+;; mhs-clisp-stuff|Matt Savoie|<emacs@flamingbear.com>
 ;; |Loads up common lisp environment on machines where it exists.
 ;; |$Date$|$Revision: 19511 $|~/packages/mhs-clisp-stuff.el
 
@@ -39,7 +39,7 @@
 (defconst mhs-clisp-stuff-version (substring "$Revision: 19511 $" 11 -2)
   "$Id: mhs-clisp-stuff.el 19511 2011-10-03 15:46:13Z savoie $
 
-Report bugs to: Matt Savoie <savoie@nsidc.org>")
+Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 
 (defvar mhs-inferiorlisp-system "/usr/local/bin/sbcl")
 (defvar mhs-slime-dir (concat mhs-external-lisp-dir "slime/"))
