@@ -125,7 +125,7 @@
  '(mouse-wheel-mode t nil (mwheel))
  '(nnmail-crosspost nil)
  '(nnmail-expiry-wait 3)
- '(org-agenda-files (quote ("~/Dropbox/orgs/2011ASA.org" "~/Dropbox/orgs/honeybadger.org" "~/Dropbox/orgs/endevor.org" "~/Dropbox/orgs/masie.org" "~/Dropbox/orgs/tasks.org" "~/Dropbox/orgs/programmers.org" "~/Dropbox/orgs/opensearch.org" "~/Dropbox/orgs/meetings.org" "~/Dropbox/orgs/sage.org" "~/Dropbox/orgs/tips.org" "~/Dropbox/orgs/notes.org" "~/Dropbox/orgs/manager.org" "~/Dropbox/orgs/someday.org" "~/Dropbox/orgs/timetrack.org" "~/Dropbox/orgs/check-in.org" "~/Dropbox/orgs/time_off.org" "~/Dropbox/orgs/travel.org" "~/Dropbox/orgs/pm.org" "~/Dropbox/orgs/sprint_track.org")))
+ '(org-agenda-files (quote ("~/Dropbox/orgs/rockhopper.org" "~/Dropbox/orgs/2011ASA.org" "~/Dropbox/orgs/honeybadger.org" "~/Dropbox/orgs/endevor.org" "~/Dropbox/orgs/masie.org" "~/Dropbox/orgs/tasks.org" "~/Dropbox/orgs/programmers.org" "~/Dropbox/orgs/opensearch.org" "~/Dropbox/orgs/meetings.org" "~/Dropbox/orgs/sage.org" "~/Dropbox/orgs/tips.org" "~/Dropbox/orgs/notes.org" "~/Dropbox/orgs/manager.org" "~/Dropbox/orgs/someday.org" "~/Dropbox/orgs/timetrack.org" "~/Dropbox/orgs/check-in.org" "~/Dropbox/orgs/time_off.org" "~/Dropbox/orgs/travel.org" "~/Dropbox/orgs/pm.org" "~/Dropbox/orgs/sprint_track.org")))
  '(org-clock-persist (quote history))
  '(org-clock-persist-file "~/Dropbox/orgs/org-clock-save.el")
  '(org-log-done (quote note))
