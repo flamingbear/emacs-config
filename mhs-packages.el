@@ -44,6 +44,13 @@
               :type github
               :pkgname "jegbjerg/flymake-node-jshint") el-get-sources)
 
+(push '(:name idlwave
+              :website "http://idlwave.org"
+              :description "IDL Emacs editing and shell mode"
+              :type github
+              :pkgname "jdtsmith/idlwave") el-get-sources)
+
+
 ;; These all moved and aren't updated in eg-get yet.
 (push '(:name auto-complete
        :website "https://github.com/auto-complete/auto-complete"

@@ -103,11 +103,12 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
        (progn (setq my-menu-fg-color "turquoise")   ;midnightblue
               (setq my-menu-bg-color "darkgreen"))) ;cornflowerblue
 
+      ;; Mary Jo's Machine.
       ((string-match (system-name) "wuzzles.colorado.edu")
        (progn (setq my-menu-fg-color "#2f4f4f")   ;dark slate gray
               (setq my-menu-bg-color "#c0ff3e"))) ;olivedrab1
 
-
+      ;; user archive.
       ((string-match (user-login-name) "archive")
        (progn (setq my-menu-fg-color "black")
               (setq my-menu-bg-color "red")))
@@ -241,10 +242,12 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
        (progn (setq my-menu-fg-color "#00bfff")   ; deep sky blue
               (setq my-menu-bg-color "#adff2f"))) ;green yellow
 
-      ;; POPSICLE only one to start.
+      ;; savoie.dev
       (running-on-dev-vm
-       (progn (setq my-menu-fg-color "palevioletred1")
-              (setq my-menu-bg-color "darkred")))
+       (progn
+         (setq idlwave-shell-explicit-file-name "my_idl.sh")
+         (setq my-menu-fg-color "palevioletred1")
+         (setq my-menu-bg-color "darkred")))
 
       (running-macos
        (progn
