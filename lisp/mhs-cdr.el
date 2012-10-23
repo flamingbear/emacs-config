@@ -2,14 +2,14 @@
 
 ;; Copyright (C) 2011 Matt Savoie
 
-;; Author: Matt Savoie <savoie@nsidc.org>
-;; Maintainer: Matt Savoie <savoie@nsidc.org>
+;; Author: Matt Savoie <emacs@flamingbear.com>
+;; Maintainer: Matt Savoie <emacs@flamingbear.com>
 ;; Created: 06 May 2011
 ;; Version: 1.0
 ;; Keywords:
 
 ;; LCD Archive Entry:
-;; mhs-cdr|Matt Savoie|<savoie@nsidc.org>
+;; mhs-cdr|Matt Savoie|<emacs@flamingbear.com>
 ;; |Helper routines for working on the CDR project
 ;; |$Date$|$Revision$|~/packages/mhs-cdr.el
 
@@ -24,7 +24,7 @@
 (defconst mhs-cdr-version
   "$Id$
 
-Report bugs to: Matt Savoie <savoie@nsidc.org>")
+Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 
 
 (defvar cdr-current-build (getenv "BUILD")

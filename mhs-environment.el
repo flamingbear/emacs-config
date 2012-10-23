@@ -2,8 +2,11 @@
 
 ;; Check to see if we're running Darwin
 (defvar running-macos
-  (string-match "darwin" (prin1-to-string system-type))
+  (or (string-match "darwin" (prin1-to-string system-type))
+      (memq (window-system) '(mac ns)))
   "Boolean to determine if we are running on a macintosh laptop" )
+
+
 
 ;; Sometimes we don't want all of our options.
 (defvar running-on-dev-vm
@@ -22,6 +25,3 @@
       browse-url-of-file-hook (quote (browse-url-generic-reload)))
 
 
-(when running-macos
-  (if (file-readable-p (concat emacs-top '"emacs-darwin.el"))
-      (load (concat emacs-top '"emacs-darwin.el") nil t)))

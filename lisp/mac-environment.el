@@ -2,8 +2,8 @@
 
 ;; Copyright (C) 2012 Matt Savoie
 
-;; Author: Matt Savoie <savoie@nsidc.org>
-;; Maintainer: Matt Savoie <savoie@nsidc.org>
+;; Author: Matt Savoie <emacs@flamingbear.com>
+;; Maintainer: Matt Savoie <emacs@flamingbear.com>
 ;; Created: 11 Mar 2012
 ;; Version: 1.0
 ;; Keywords:
@@ -17,7 +17,7 @@
 (defconst mac-environment-version "0.1.0"
   "$Id$
 
-Report bugs to: Matt Savoie <savoie@nsidc.org>")
+Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 
 
   ;;; Provide support for the environment on Mac OS X

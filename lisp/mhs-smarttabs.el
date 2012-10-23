@@ -2,13 +2,13 @@
 
 ;; Copyright (C) 2011 Matt Savoie
 
-;; Author: Matt Savoie <savoie@nsidc.org>
-;; Maintainer: Matt Savoie <savoie@nsidc.org>
+;; Author: Matt Savoie <emacs@flamingbear.com>
+;; Maintainer: Matt Savoie <emacs@flamingbear.com>
 ;; Created: 06 Oct 2011
 ;; Version: 1.0
 ;; Keywords:
 
- 
+
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
 ;; the Free Software Foundation; either version 1, or (at your option)
@@ -20,11 +20,11 @@
 ;; GNU General Public License for more details.
 
 ;; A copy of the GNU General Public License can be obtained from this
-;; program's author (send electronic mail to <savoie@nsidc.org>) or from the
+;; program's author (send electronic mail to <emacs@flamingbear.com>) or from the
 ;; Free Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 ;; LCD Archive Entry:
-;; mhs-smarttabs|Matt Savoie|<savoie@nsidc.org>
+;; mhs-smarttabs|Matt Savoie|<emacs@flamingbear.com>
 ;; |set up for smart tabs
 ;; |$Date: 2011-10-06 08:32:40 -0600 (Thu, 06 Oct 2011) $|$Revision: 19548 $|~/packages/mhs-smarttabs.el
 
@@ -39,7 +39,7 @@
 (defconst mhs-smarttabs-version (substring "$Revision: 19548 $" 11 -2)
   "$Id: mhs-smarttabs.el 19548 2011-10-06 14:32:40Z savoie $
 
-Report bugs to: Matt Savoie <savoie@nsidc.org>")
+Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 
 
 (defvar mhs-smart-tabs-dir (expand-file-name (concat mhs-external-lisp-dir "smart-tabs")))

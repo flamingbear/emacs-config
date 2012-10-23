@@ -2,8 +2,8 @@
 
 ;; Copyright (C) 2012 Matt Savoie
 
-;; Author: Matt Savoie <savoie@nsidc.org>
-;; Maintainer: Matt Savoie <savoie@nsidc.org>
+;; Author: Matt Savoie <emacs@flamingbear.com>
+;; Maintainer: Matt Savoie <emacs@flamingbear.com>
 ;; Created: 09 Mar 2012
 ;; Version: 1.0
 ;; Keywords:
@@ -18,7 +18,7 @@
 (defconst mhs-javascript-version "0.1.0"
   "$Id$
 
-Report bugs to: Matt Savoie <savoie@nsidc.org>")
+Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 
 ;; [MHS, 2012-08-11] I found flymake-node-jshint when trying to fix the old
 ;; jshint-mode and this works with node-jshint and allows configuration via a

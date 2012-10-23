@@ -2,8 +2,8 @@
 
 ;; Copyright (C) 2010 Matt Savoie
 
-;; Author: Matt Savoie <savoie@nsidc.org>
-;; Maintainer: Matt Savoie <savoie@nsidc.org>
+;; Author: Matt Savoie <emacs@flamingbear.com>
+;; Maintainer: Matt Savoie <emacs@flamingbear.com>
 ;; Created: 16 Dec 2010
 ;; Version: 1.0
 ;; Keywords:
@@ -20,11 +20,11 @@
 ;; GNU General Public License for more details.
 
 ;; A copy of the GNU General Public License can be obtained from this
-;; program's author (send electronic mail to <savoie@nsidc.org>) or from the
+;; program's author (send electronic mail to <emacs@flamingbear.com>) or from the
 ;; Free Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 ;; LCD Archive Entry:
-;; mhs-buffer-to-ps-file|Matt Savoie|<savoie@nsidc.org>
+;; mhs-buffer-to-ps-file|Matt Savoie|<emacs@flamingbear.com>
 ;; |Quickly reformat code into printable files suitable for code review
 ;; |$Date: 2011-09-18 10:23:58 -0600 (Sun, 18 Sep 2011) $|$Revision: 19387 $|~/packages/mhs-buffer-to-ps-file.el
 
@@ -38,7 +38,7 @@
 (defconst mhs-buffer-to-ps-file-version (substring "$Revision: 19387 $" 11 -2)
   "$Id: mhs-buffer-to-ps-file.el 19387 2011-09-18 16:23:58Z savoie $
 
-Report bugs to: Matt Savoie <savoie@nsidc.org>")
+Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 
 (defun mhs-buffer-to-ps-file ()
   "Called from inside a buffer, will create a new file with buffername.ps suitable for printing"

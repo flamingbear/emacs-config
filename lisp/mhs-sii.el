@@ -2,13 +2,13 @@
 
 ;; Copyright (C) 2009 Matt Savoie
 
-;; Author: Matt Savoie <savoie@nsidc.org>
-;; Maintainer: Matt Savoie <savoie@nsidc.org>
+;; Author: Matt Savoie <emacs@flamingbear.com>
+;; Maintainer: Matt Savoie <emacs@flamingbear.com>
 ;; Created: 07 Aug 2009
 ;; Version: 1.0
 ;; Keywords:
 
- 
+
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
 ;; the Free Software Foundation; either version 1, or (at your option)
@@ -20,11 +20,11 @@
 ;; GNU General Public License for more details.
 
 ;; A copy of the GNU General Public License can be obtained from this
-;; program's author (send electronic mail to <savoie@nsidc.org>) or from the
+;; program's author (send electronic mail to <emacs@flamingbear.com>) or from the
 ;; Free Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 ;; LCD Archive Entry:
-;; mhs-sii|Matt Savoie|<savoie@nsidc.org>
+;; mhs-sii|Matt Savoie|<emacs@flamingbear.com>
 ;; |This is a simple set of shortcuts that I need to move around efficiently in the SII.  I'm forever jumping around between directories and it's always dependent on the ${BUILD} environment.
 ;; |$Date: 2011-10-02 14:24:28 -0600 (Sun, 02 Oct 2011) $|$Revision: 19509 $|~/packages/mhs-sii.el
 
@@ -39,7 +39,7 @@
 (defconst mhs-sii-version (substring "$Revision: 19509 $" 11 -2)
   "$Id: mhs-sii.el 19509 2011-10-02 20:24:28Z savoie $
 
-Report bugs to: Matt Savoie <savoie@nsidc.org>")
+Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 
 
 (defvar sii-current-build (getenv "BUILD")

@@ -2,13 +2,13 @@
 
 ;; Copyright (C) 2010 Matt Savoie
 
-;; Author: Matt Savoie <savoie@nsidc.org>
-;; Maintainer: Matt Savoie <savoie@nsidc.org>
+;; Author: Matt Savoie <emacs@flamingbear.com>
+;; Maintainer: Matt Savoie <emacs@flamingbear.com>
 ;; Created: 12 Aug 2010
 ;; Version: 1.0
 ;; Keywords:
 
- 
+
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
 ;; the Free Software Foundation; either version 1, or (at your option)
@@ -20,11 +20,11 @@
 ;; GNU General Public License for more details.
 
 ;; A copy of the GNU General Public License can be obtained from this
-;; program's author (send electronic mail to <savoie@nsidc.org>) or from the
+;; program's author (send electronic mail to <emacs@flamingbear.com>) or from the
 ;; Free Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 ;; LCD Archive Entry:
-;; mhs-masie|Matt Savoie|<savoie@nsidc.org>
+;; mhs-masie|Matt Savoie|<emacs@flamingbear.com>
 ;; |quick movements for masie project
 ;; |$Date: 2011-10-23 18:34:01 -0600 (Sun, 23 Oct 2011) $|$Revision: 19617 $|~/packages/mhs-masie.el
 
@@ -39,7 +39,7 @@
 (defconst mhs-masie-version (substring "$Revision: 19617 $" 11 -2)
   "$Id: mhs-masie.el 19617 2011-10-24 00:34:01Z savoie $
 
-Report bugs to: Matt Savoie <savoie@nsidc.org>")
+Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 
 
 (defvar masie-current-build (getenv "BUILD")
@@ -50,7 +50,7 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
   "Insert the proper function for masie error handling"
   (interactive)
   (insert "Catch,  theError
-   if theError ne 0 then begin 
+   if theError ne 0 then begin
       Catch,  /CANCEL
       masie_log,  /is_error
       return,
@@ -88,7 +88,7 @@ Report bugs to: Matt Savoie <savoie@nsidc.org>")
   (dired dir-to-jump))
 
 (defun masie-src ()
-  (interactive) 
+  (interactive)
   (masie-subdir "src"))
 
 (defun masie-uber ()
