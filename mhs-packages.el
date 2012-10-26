@@ -90,20 +90,26 @@
 (setq my-el-get-packages
       (append '(el-get
                 ace-jump-mode
-                edit-server
-                clojure-mode
                 auto-complete
-                multiple-cursors
+                clojure-mode
+                edit-server
+                emacs-w3m
+                expand-region
+                magit
                 mark-multiple
+                markdown-mode
+                multiple-cursors
                 nrepl
                 paredit
                 psvn
+                pymacs
+                python-mode
                 rinari
+                rope
+                ropemacs
+                ropemode
                 yaml-mode
-                markdown-mode
-                emacs-w3m
-                expand-region
-                magit )
+                )
               (mapcar 'el-get-source-name el-get-sources)))
 
 (when running-macos

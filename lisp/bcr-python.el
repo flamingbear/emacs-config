@@ -5,21 +5,11 @@
 ;;
 ;; 2011-05-10 Modified by MHS to work on multiple virtual env installs.
 
-(add-to-list 'load-path (expand-file-name (concat emacs-top '"python-mode/")))
-
-
-(autoload 'pymacs-apply "pymacs")
-(autoload 'pymacs-call "pymacs")
-(autoload 'pymacs-eval "pymacs" nil t)
-(autoload 'pymacs-exec "pymacs" nil t)
-(autoload 'pymacs-load "pymacs" nil t)
-
-(require 'pymacs)
-
+;; Adding pymacs/python-mode to el-get
 
 ;; Load ropemacs, which depends on Pymacs (see above).
 
-(pymacs-load "ropemacs" "rope-")
+;;(pymacs-load "ropemacs" "rope-")
 
 ;; Set up Flymake to use PyFlakes.
 
