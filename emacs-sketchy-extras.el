@@ -78,22 +78,11 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
      (setq mm-text-html-renderer 'gnus-article-html)
      (setq mm-inline-text-html-with-images 't) ))
 
-;; R-language support.
-(try-require 'ess-site)
-
-;; Ctypes support
-(when (try-require 'ctypes)
-  (setq ctypes-file-name "~savoie/.ctypes")
-  (setq ctypes-write-types-at-exit t)
-  (ctypes-read-file nil nil t t)
-  (ctypes-auto-parse-mode 1))
-
 
 ;;; Chrome editing.
 (when (require 'edit-server nil t)
   (setq edit-server-new-frame nil)
   (edit-server-start))
-
 
 
 ;;; EMACS-SKETCHY-EXTRAS.EL ends here
