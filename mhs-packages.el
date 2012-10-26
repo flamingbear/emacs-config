@@ -15,16 +15,15 @@
 (setq el-get-install-dir (concat el-get-dir "/el-get"))
 (add-to-list 'load-path el-get-install-dir)
 
-;; I was having trouble with the wiki recipes so I skip them.
-(setq el-get-install-skip-emacswiki-recipes t)
+
 
 ; If el-get is missing, install it automatically
-
 (unless (require 'el-get nil t)
 (url-retrieve
    "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
    (lambda (s)
-     (let (el-get-master-branch)
+     (let ((el-get-master-branch)
+           (el-get-install-skip-emacswiki-recipes))
        (goto-char (point-max))
        (eval-print-last-sexp)))))
 
@@ -46,7 +45,7 @@
 
 
 (push '(:name idlwave
-              :website "http://idlwave.org"
+              :website "git://github.com/jdtsmith/idlwave.git"
               :description "IDL Emacs editing and shell mode"
               :type github
               :pkgname "jdtsmith/idlwave") el-get-sources)
@@ -55,6 +54,7 @@
               :website "https://github.com/mhayashi1120/Emacs-wgrep"
               :description "Writable grep buffer and apply the changes to files "
               :type github
+              :features wgrep
               :pkgname "mhayashi1120/Emacs-wgrep") el-get-sources)
 
 (push '(:name exec-path-from-shell

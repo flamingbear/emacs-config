@@ -23,7 +23,7 @@
 (set-default 'indicate-empty-lines t)
 
 ;; automatically sync up external changes to files
-(global-auto-revert-mode t)
+;; (global-auto-revert-mode nil)
 (defalias 'auto-revert-tail-mode 'tail-mode)
 
 ;; delete trailing whitespace
