@@ -44,6 +44,13 @@
               :type github
               :pkgname "jegbjerg/flymake-node-jshint") el-get-sources)
 
+
+(push '(:name idlwave
+              :website "http://idlwave.org"
+              :description "IDL Emacs editing and shell mode"
+              :type github
+              :pkgname "jdtsmith/idlwave") el-get-sources)
+
 (push '(:name Emacs-wgrep
               :website "https://github.com/mhayashi1120/Emacs-wgrep"
               :description "Writable grep buffer and apply the changes to files "
