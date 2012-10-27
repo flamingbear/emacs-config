@@ -22,12 +22,12 @@
 
 ;; Old school : This is how you use imap as POP3 before migration to IMAP
 ;; (setq mail-sources '((file)
-;; 		      (imap :user "savoie" 
+;; 		      (imap :user "savoie"
 ;; 		           :server "kryos.colorado.edu"
 ;; 		           :stream ssl )
 ;;                      ))
 
-(setq gnus-secondary-select-methods 
+(setq gnus-secondary-select-methods
       '(
         (nnimap "kryos"
                 (nnimap-inbox "INBOX")
@@ -71,11 +71,12 @@
 (setq nnimap-split-methods 'nnimap-split-fancy)
 ;; Function for splitting kryos INBOX mail
 (setq nnimap-split-fancy
-      '(| 
+      '(|
         ("subject" "Build failed in Hudson" "maild/nsidc-notices")
         ("subject" "NISE PROBLEM on nusnow" "maild/nsidc-notices")
         ("subject" "NISE PROBLEM on snow" "maild/nsidc-notices")
         ("subject" "NISE FAILURE on snow" "maild/nsidc-notices")
+        (any ".*idc-contrib.*" "maild/honeybadger")
         (any "Honeybadger" "maild/honeybadger")
         (from "www@nsidc.org" "maild/nsidc-notices")
         (from "Pivotal Tracker" "maild/nsidc-notices")
@@ -264,5 +265,3 @@
 
 
 (setq gnus-auto-expirable-newsgroups "\\(.*lists\\|.*nsidc-notices\\|.*exchange:INBOX\\)")
-
-
