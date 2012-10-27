@@ -126,22 +126,22 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
        ;;(setq idlwave-shell-explicit-file-name "my_idl.7.0.sh")
        (progn (setq idlwave-shell-explicit-file-name
                     (expand-file-name "~savoie/local/bin/my_idl.6.4.sh"))
-              (setq my-menu-bg-color "#7a378b") ; turquoise1
+              (setq my-menu-bg-color "#7a378b")
               (setq my-menu-fg-color "gold")))
 
       ((string-match build "MASIE_prod")
        (progn ;;(setq idlwave-shell-explicit-file-name "my_idl.7.0.sh")
          (setq idlwave-shell-explicit-file-name "my_idl.6.4.sh")
          (setq my-menu-bg-color "#7a378b") ; mediumOrchid4
-         (setq my-menu-fg-color "palevioletred3")))
+         (setq my-menu-fg-color "PaleVioletRed3")))
 
       ;; We're back to nusnow...
       ((string-match "nusnow.colorado" (system-name))
        (progn
-         (setq my-menu-fg-color "greenyellow")
-         (setq my-menu-bg-color "darkolivegreen")
+         (setq my-menu-fg-color "GreenYellow")
+         (setq my-menu-bg-color "DarkOliveGreen")
          (when (string-match user-login-name "nise")
-           (setq my-menu-fg-color "darkorange3"))))
+           (setq my-menu-fg-color "DarkOrange3"))))
 
       ;; Works with snow.colo only now...
       ((string-match "^snow.colorado.edu" (system-name))
@@ -150,12 +150,12 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
          (setq my-menu-bg-color "moccasin")
          (setq my-menu-fg-color "black")
          (cond ((string-match (user-login-name) "nise")
-                (setq my-menu-fg-color "dodgerblue")))
+                (setq my-menu-fg-color "DodgerBlue")))
          (cond ((string-match build  "development")
-                (setq my-menu-fg-color "darkmagenta")
+                (setq my-menu-fg-color "DarkMagenta")
                 )
                ((string-match build  "testing")
-                (setq my-menu-fg-color "darkgreen")
+                (setq my-menu-fg-color "DarkGreen")
                 )
                ((string-match build  "production")
                 (setq my-menu-fg-color "red")
@@ -163,7 +163,7 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
                ((string-match build  "F17_dev")
                                         ;(setq idlwave-shell-explicit-file-name "my_special_idl.8.1.sh")
                 (setq idlwave-shell-explicit-file-name "my_idl.8.2.sh")
-                (setq my-menu-fg-color "mediumvioletred")
+                (setq my-menu-fg-color "MediumVioletRed")
                 (setq my-menu-bg-color "burlywood")
                 )
                ((string-match build  "F17_text_dev")
@@ -173,7 +173,7 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
                 )
                ((string-match build  "F17_stdev_check")
                 (setq idlwave-shell-explicit-file-name "my_idl.8.1.sh")
-                (setq my-menu-fg-color "darkgoldenrod")
+                (setq my-menu-fg-color "DarkGoldenrod")
                 (setq my-menu-bg-color "LightCyan3")
                 )
 
@@ -185,16 +185,16 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
                ;;  )
                ((string-match build  "cdr_dev")
                 (setq idlwave-shell-explicit-file-name "my_idl.8.1.sh")
-                (setq my-menu-fg-color "greenyellow")
-                (setq my-menu-bg-color "royalblue")
+                (setq my-menu-fg-color "GreenYellow")
+                (setq my-menu-bg-color "RoyalBlue")
                 )
                ((string-match build  "cdr_test")
                 (setq my-menu-fg-color "gold")
-                (setq my-menu-bg-color "royalblue")
+                (setq my-menu-bg-color "RoyalBlue")
                 )
                ((string-match build  "cdr_test")
                 (setq my-menu-fg-color "red")
-                (setq my-menu-bg-color "royalblue")
+                (setq my-menu-bg-color "RoyalBlue")
                 )
                ((string-match build  "F17_test")
                 (setq my-menu-fg-color "dark green")
@@ -242,12 +242,17 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
        (progn (setq my-menu-fg-color "#00bfff")   ; deep sky blue
               (setq my-menu-bg-color "#adff2f"))) ;green yellow
 
-      ;; savoie.dev
+      ;; savoie.dev or icebadger
       (running-on-dev-vm
        (progn
          (setq idlwave-shell-explicit-file-name "my_idl.sh")
-         (setq my-menu-fg-color "palevioletred1")
-         (setq my-menu-bg-color "darkred")))
+         (setq my-menu-fg-color "PaleVioletRed1")
+         (setq my-menu-bg-color "DarkRed")
+         (when (string-match "savoie.dev" (system-name))
+           (setq my-menu-fg-color "LightSteelBlue")
+           (setq my-menu-bg-color "DarkOliveGreen")
+           )
+         ))
 
       (running-macos
        (progn
