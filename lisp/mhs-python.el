@@ -5,16 +5,58 @@
 ;;
 ;;
 
+;; autocomplete
+(require 'auto-complete-config)
+(setq ac-dictionary-files (list (concat user-emacs-directory ".dict")))
+(ac-config-default)
+;; hack to fix ac-sources after pycomplete.el breaks it
+(add-hook 'python-mode-hook
+          '(lambda ()
+             (setq ac-sources '(ac-source-pycomplete
+                                ac-source-abbrev
+                                ac-source-dictionary
+                                ac-source-words-in-same-mode-buffers))))
+
+
 (setenv "PYMACS_DIR" mhs-virtualenv-dir)
 (setenv "PYMACS_PYTHON" (concat (getenv "PYMACS_DIR") "/bin/python"))
-(setq py-use-current-dir-when-execute-p t)
+(setq py-install-directory (concat emacs-top "external-lisp-files/python-mode/"))
+;; show method sigs when typing.
 (setq py-set-complete-keymap-p t)
+(setq py-use-current-dir-when-execute-p t)
 (require 'python-mode) ;; TODO [MHS, 2012-10-28]  currently using unreleased from bzr repo
 (virtualenv-activate mhs-virtualenv-dir)
 
+(defun load-pycomplete ()
+  "Load and initialize pycomplete."
+  (interactive)
+  (let* ((pyshell (py-choose-shell))
+         (path (getenv "PYTHONPATH")))
+    (setenv "PYTHONPATH" (concat
+                          (expand-file-name py-install-directory) "completion"
+                          (if path (concat path-separator path))))
+    (if (py-install-directory-check)
+        (progn
+          (setenv "PYMACS_PYTHON" (if (string-match "IP" pyshell)
+                                      "python"
+                                    pyshell))
+          (autoload 'pymacs-apply "pymacs")
+          (autoload 'pymacs-call "pymacs")
+          (autoload 'pymacs-eval "pymacs")
+          (autoload 'pymacs-exec "pymacs")
+          (autoload 'pymacs-load "pymacs")
+          (load (concat py-install-directory "completion/pycomplete.el") nil t)
+          (add-hook 'python-mode-hook 'py-complete-initialize))
+      (error "`py-install-directory' not set, see INSTALL"))))
+(eval-after-load 'pymacs '(load-pycomplete))
 
-;; Set up Flymake to use PyFlakes.
 
+;; pyflakes flymake integration
+;; pycheckers is in my localbin. and is just
+;; pyflakes "$1"
+;; pep8 --repeat "$1"
+;; true
+;; http://stackoverflow.com/a/1257306/347942
 (when (load "flymake" t)
   (defun flymake-pyflakes-init ()
     (let* ((temp-file (flymake-init-create-temp-buffer-copy
@@ -22,19 +64,20 @@
            (local-file (file-relative-name
                         temp-file
                         (file-name-directory buffer-file-name))))
-      (list (concat (getenv "PYMACS_DIR") "/bin/pyflakes") (list local-file))))
-
+      (list "pycheckers" (list local-file))))
   (add-to-list 'flymake-allowed-file-name-masks
                '("\\.py\\'" flymake-pyflakes-init)))
+(add-hook 'python-mode-hook 'flymake-mode)
+
 
 (add-hook 'find-file-hook 'flymake-find-file-hook)
 
 
 
-(setq auto-mode-alist (cons '("\\.py$" . python-mode) auto-mode-alist))
-(setq interpreter-mode-alist (cons '("python" . python-mode)
-                                   interpreter-mode-alist))
-(autoload 'python-mode "python-mode" "Python editing mode." t)
+;; (setq auto-mode-alist (cons '("\\.py$" . python-mode) auto-mode-alist))
+;; (setq interpreter-mode-alist (cons '("python" . python-mode)
+;;                                    interpreter-mode-alist))
+;; (autoload 'python-mode "python-mode" "Python editing mode." t)
 
 
 ;; pink anything over 90 characters
