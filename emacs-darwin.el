@@ -17,8 +17,8 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 ;; TODO [MHS, 2012-10-26] Here's where I'm getting my /usr/bin/python back
 ;; exec-path-from-shell-initialize before it's set, after it's not.
 (when running-macos
-  (exec-path-from-shell-initialize)
   (exec-path-from-shell-copy-env "NODE_PATH")
-  (exec-path-from-shell-copy-env "VIRTUAL_ENV") )
+  (exec-path-from-shell-copy-env "VIRTUAL_ENV")
+  (exec-path-from-shell-initialize))
 
 ;;; .EMACS-DARWIN.EL ends here

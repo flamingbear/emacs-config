@@ -51,7 +51,6 @@ $HOME/.emacs.d/lisp" )
 
 
 
-
 ;; External lisp files
 (defvar mhs-external-lisp-dir  (expand-file-name (concat emacs-top '"external-lisp-files/"))
   "Directory where lispy things I didn't write are put" )
@@ -63,34 +62,16 @@ $HOME/.emacs.d/lisp" )
     (normal-top-level-add-subdirs-to-load-path)))
 
 
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; IDLWAVE Customizations
+;; IDLWAVE Customizations
 ;; Load this before ruby because we want the jds history search.
 (try-require 'emacs-idlwave-support)
 
 
-
-
-
-;; 2011-08-09: <mhs> i've changed my python loading and now you have to have a
-;; virtual environment set up before you start emacs if you want to use it
-;; </mhs>
-(setq mhs-pymacs-dir (getenv "VIRTUAL_ENV"))
-(when mhs-pymacs-dir
-    (setenv "PYMACS_DIR" mhs-pymacs-dir)
-    (setenv "PYMACS_PYTHON" (concat (getenv "PYMACS_DIR") "/bin/python"))
-    (require 'bcr-python))
-
-
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; PSVN for subversion integration
-;; TODO [MHS, 2012-10-14] Check to see this is using the new version from el-get
-;; (unless (try-require 'psvn)
-;;   (warn "Could't load psvn.el there is no subversion support. You may want to look at this. "))
-
+;; PYTHON
+;; If you've got a VIRTUAL_ENV set up this will load your python needs
+(setq mhs-virtualenv-dir (getenv "VIRTUAL_ENV"))
+(when mhs-virtualenv-dir
+  (require 'mhs-python))
 
 
 ;; Set up Magnars' subdirs.
@@ -99,7 +80,6 @@ $HOME/.emacs.d/lisp" )
   (add-to-list 'load-path magnars-stuff))
 
 
-;; 2012-04-17: <mhs> need to look at these options</mhs>
 (when (try-require 'markdown-mode)
   (setq auto-mode-alist
          (cons '("\\.md" . markdown-mode) auto-mode-alist)))
@@ -134,14 +114,6 @@ $HOME/.emacs.d/lisp" )
 (try-require 'mhs-bbdb)
 
 
-;; Add a local site-lisp site.  2011-09-07: I'm not exactly sure why this is.
-;; /home/savoie/local/share/emacs/site-lisp
-;; TODO [MHS, 2012-10-14]  I think this is OBE. Check and delete
-;; (defvar mhs-local-site-lisp  (expand-file-name "~savoie/local/share/emacs/site-lisp"))
-;; (when (file-accessible-directory-p mhs-local-site-lisp)
-;;   (add-to-list 'load-path mhs-local-site-lisp))
-
-
 ;; if you are debugging emacs completely: open this file and it records keystrokes.
 ;;(open-dribble-file "~/dribble")
 
@@ -149,13 +121,11 @@ $HOME/.emacs.d/lisp" )
 (server-start)
 
 
-;; requires
-;;----------
+;; more  requires
 (try-require 'force-space)
 
 ;; Do binary diff in hexl-mode if files are binary format
 (try-require 'binary-diff)
-
 
 ;; jump-to and set workspaces.
 (try-require 'mhs-workspace)
@@ -163,8 +133,6 @@ $HOME/.emacs.d/lisp" )
 ;; NCL mode
 (when (try-require 'ncl)
   (add-to-list 'auto-mode-alist '("\\.ncl$" . ncl-mode)))
-
-
 
 ;; Extra Dired commands
 (add-hook 'dired-load-hook

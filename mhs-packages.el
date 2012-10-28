@@ -103,14 +103,14 @@
                 paredit
                 psvn
                 pymacs
-                python-mode
                 rinari
-                rope
-                ropemacs
-                ropemode
                 yaml-mode
                 )
               (mapcar 'el-get-source-name el-get-sources)))
+
+
+;;Taking these out for now: Rope, ropemacs, ropemode, python-mode
+
 
 (when running-macos
   (push 'bbdb my-el-get-packages ))

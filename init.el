@@ -1,5 +1,6 @@
-;; This file is the default file that is loaded when emacs is started
-;;--------------------------------------------------------------------
+;; This file is the default file that is loaded when emacs is started It
+;; should set up environment and then load additional packages as necessary
+;; -------------------------------------------------------------------------
 
 ;; Set the BASE of the emacs directory structure and add it to my load-path
 (defvar emacs-top (getenv "EMACS_HOME")
@@ -18,7 +19,7 @@ Normally this points to: $HOME/.emacs.d/")
 
 
 
-;; ** Custom Settings **
+;; ** Custom Settings that are updated via << M-x customize >> **
 (setq custom-file (concat emacs-top ".gnu-emacs-custom"))
 (load custom-file t t)
 
@@ -37,37 +38,6 @@ Normally this points to: $HOME/.emacs.d/")
 (when running-macos
   (if (file-readable-p (concat emacs-top '"emacs-darwin.el"))
       (load (concat emacs-top '"emacs-darwin.el") nil t)))
-
-
-
-
-
-;; Attempt to load a feature/library, But don't bail out of the load if it's
-;; not around, go ahead and report it to the message buffer.
-;-----------------------------------------------------------
-;; Set up a list of packages that weren't loaded for multiple machine set-up.
-(defvar missing-packages-list nil
-  "List of packages that `try-require' can't find.")
-
-(defun try-require (feature)
-  "Attempt to load a library or module. Return true if the
-library given as argument is successfully loaded. If not, instead
-of an error, just add the package to a list of missing packages."
-  (condition-case err
-      ;; protected form
-      (progn
-        (message "Checking for library `%s'..." feature)
-        (if (stringp feature)
-            (load-library feature)
-          (require feature))
-        (message "Checking for library `%s'... Found" feature))
-    ;; error handler
-    (file-error  ; condition
-     (progn
-       (message "Checking for library `%s'... Missing" feature)
-       (add-to-list 'missing-packages-list feature 'append))
-     nil)))
-
 
 
 ;; add load paths to custom files, load special packages, load the

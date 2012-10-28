@@ -7,7 +7,7 @@
 /auto-save-list/.saves*
 /el-get
 /pymacs*
-/python-mode*
+/external-lisp-files/python-mode*
 /python-pep*
 /swank/slime-eldoc-d8b3cf74.el
 /swank/slime-fbbb883a.el

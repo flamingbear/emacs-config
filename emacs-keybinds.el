@@ -76,7 +76,7 @@
 (global-set-key "\C-cd"                    'mhs-dblstuff); C-c d
 (global-set-key "\C-ct"                 'mhs-trunc-lines); C-c t
 (global-set-key "\C-ck"                'mhs-kill-current); C-c k
-(global-set-key "\C-cg"                       'goto-line); C-c g
+(global-set-key "\C-cg"                    'magit-status); C-c g
 (global-set-key "\C-ci"              'mhs-include-guards); C-c i
 
 (global-set-key "\C-c\'"               'mhs-squote-region)
