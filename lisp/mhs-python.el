@@ -3,12 +3,17 @@
 ;; But was changed with time and looking at this post:
 ;; http://www.kurup.org/blog/2012/10/24/emacs-for-python-programming/
 ;;
-;;
+
 
 ;; autocomplete
 (require 'auto-complete-config)
 (setq ac-dictionary-files (list (concat user-emacs-directory ".dict")))
 (ac-config-default)
+
+
+(setenv "PYMACS_DIR" mhs-virtualenv-dir)
+(setenv "PYMACS_PYTHON" (concat (getenv "PYMACS_DIR") "/bin/python"))
+
 ;; hack to fix ac-sources after pycomplete.el breaks it
 (add-hook 'python-mode-hook
           '(lambda ()
@@ -17,14 +22,16 @@
                                 ac-source-dictionary
                                 ac-source-words-in-same-mode-buffers))))
 
-
-(setenv "PYMACS_DIR" mhs-virtualenv-dir)
-(setenv "PYMACS_PYTHON" (concat (getenv "PYMACS_DIR") "/bin/python"))
 (setq py-install-directory (concat emacs-top "external-lisp-files/python-mode/"))
+(add-to-list 'load-path py-install-directory)
+
 ;; show method sigs when typing.
 (setq py-set-complete-keymap-p t)
 (setq py-use-current-dir-when-execute-p t)
+
 (require 'python-mode) ;; TODO [MHS, 2012-10-28]  currently using unreleased from bzr repo
+
+;; activate your virtual environment
 (virtualenv-activate mhs-virtualenv-dir)
 
 (defun load-pycomplete ()
@@ -49,6 +56,7 @@
           (add-hook 'python-mode-hook 'py-complete-initialize))
       (error "`py-install-directory' not set, see INSTALL"))))
 (eval-after-load 'pymacs '(load-pycomplete))
+(eval-after-load 'python-mode '(load-pycomplete))
 
 
 ;; pyflakes flymake integration
@@ -71,7 +79,6 @@
 
 
 (add-hook 'find-file-hook 'flymake-find-file-hook)
-
 
 
 ;; (setq auto-mode-alist (cons '("\\.py$" . python-mode) auto-mode-alist))
