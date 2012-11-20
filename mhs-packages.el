@@ -44,6 +44,14 @@
               :pkgname "jegbjerg/flymake-node-jshint") el-get-sources)
 
 
+(push '(:name emacs-flymake-cursor
+              :website "git://github.com/illusori/emacs-flymake-cursor.git"
+              :description "Show flymake errors in minibuffer. Fork of http://www.emacswiki.org/emacs/flymake-cursor.el"
+              :type github
+              :after (progn () (eval-after-load 'flymake '(require 'flymake-cursor)))
+              :pkgname "illusori/emacs-flymake-cursor") el-get-sources)
+
+
 (push '(:name idlwave
               :website "git://github.com/jdtsmith/idlwave.git"
               :description "IDL Emacs editing and shell mode"
