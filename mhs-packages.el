@@ -91,6 +91,7 @@
       (append '(el-get
                 ace-jump-mode
                 auto-complete
+                autopair
                 clojure-mode
                 edit-server
                 emacs-w3m

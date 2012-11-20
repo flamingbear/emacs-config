@@ -91,7 +91,7 @@
 (add-hook 'python-mode-hook
           (lambda ()
             (font-lock-add-keywords
-             nil '(("^[^\n]\\{90\\}\\(.*\\)$" 1 font-lock-warning-face t)))))
+             nil '(("^[^\n]\\{100\\}\\(.*\\)$" 1 font-lock-warning-face t)))))
 
 (add-hook 'python-mode-hook (lambda () (linum-mode)))
 
