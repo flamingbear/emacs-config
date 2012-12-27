@@ -90,6 +90,8 @@
 ;; pink anything over 90 characters
 (add-hook 'python-mode-hook
           (lambda ()
+            (local-set-key (kbd "M-f") 'py-forward-into-nomenclature)
+            (local-set-key (kbd "M-b") 'py-backward-into-nomenclature)
             (font-lock-add-keywords
              nil '(("^[^\n]\\{100\\}\\(.*\\)$" 1 font-lock-warning-face t)))))
 

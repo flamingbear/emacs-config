@@ -100,8 +100,10 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 
       ;; NOAA Combined
       ((string-match build "n0046_dev")
-       (progn (setq my-menu-fg-color "turquoise")   ;midnightblue
-              (setq my-menu-bg-color "darkgreen"))) ;cornflowerblue
+       (progn (setq my-menu-fg-color "darkgoldenrod")   ;midnightblue
+              (setq my-menu-bg-color "saddlebrown")
+              (setq idlwave-shell-explicit-file-name "idl82")
+              )) ;cornflowerblue
 
       ;; Mary Jo's Machine.
       ((string-match (system-name) "wuzzles.colorado.edu")
