@@ -61,6 +61,13 @@
 ;; save your fingers again
 (global-set-key [f16] 'execute-extended-command)   ;Copy
 
+
+;; Don't like zap to character.
+(autoload 'zap-up-to-char "misc"
+  "Kill up to, but not including ARGth occurrence of CHAR.")
+(global-set-key (kbd "M-z") 'zap-up-to-char)
+(global-set-key (kbd "M-Z") 'zap-to-char)
+
 (global-unset-key [mouse-2])
 
 ;; C-c [a-zA-Z] are saved for user's options so use these to define
