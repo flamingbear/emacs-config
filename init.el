@@ -28,6 +28,14 @@ Normally this points to: $HOME/.emacs.d/")
                                         (concat (file-name-directory emacs-top) "backups")))))
 
 
+;; Extra Dired commands
+(add-hook 'dired-load-hook
+          (function (lambda ()
+                      (load "dired-x")
+                      ;; Set global variables here.  For example:
+                      ;; (setq dired-guess-shell-gnutar "gtar")
+                      )))
+
 ;; couple of tweaks for browsers and handling emacs on mac osx
 (load "mhs-environment" t t)
 
