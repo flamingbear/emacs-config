@@ -134,13 +134,6 @@ $HOME/.emacs.d/lisp" )
 (when (try-require 'ncl)
   (add-to-list 'auto-mode-alist '("\\.ncl$" . ncl-mode)))
 
-;; Extra Dired commands
-(add-hook 'dired-load-hook
-          (function (lambda ()
-                      (load "dired-x")
-                      ;; Set global variables here.  For example:
-                      ;; (setq dired-guess-shell-gnutar "gtar")
-                      )))
 
 
 
