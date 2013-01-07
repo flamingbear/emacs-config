@@ -28,7 +28,8 @@
 
 ;; delete trailing whitespace
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
-
+;; To edit binary files
+;; (remove-hook 'before-save-hook 'delete-trailing-whitespace)
 
 
 
