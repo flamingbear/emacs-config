@@ -72,7 +72,27 @@
               :pkgname "purcell/exec-path-from-shell") el-get-sources)
 
 
-;; These all moved and aren't updated in eg-get yet.
+(push '(:name python
+              :website "https://github.com/fgallina/python.el.git"
+              :description "Python's flying circus support for Emacs"
+              :type github
+              :pkgname "fgallina/python.el") el-get-sources)
+
+(push '(:name nose
+              :type elpa
+              :pkgname "nose") el-get-sources)
+
+(push '(:name virtualenv
+              :type elpa
+              :pkgname "virtualenv") el-get-sources)
+
+(push '(:name flymake-python-pyflakes
+              :type elpa
+              :pkgname "flymake-pytholn-pyflakes") el-get-sources)
+
+
+
+;; These all moved and aren't updated in el-get yet.
 (push '(:name auto-complete
        :website "https://github.com/auto-complete/auto-complete"
        :description "The most intelligent auto-completion extension."
@@ -104,6 +124,7 @@
                 edit-server
                 emacs-w3m
                 expand-region
+                jedi
                 magit
                 mark-multiple
                 markdown-mode
@@ -112,6 +133,9 @@
                 paredit
                 psvn
                 pymacs
+                rope
+                ropemacs
+                ropemode
                 rinari
                 yaml-mode
                 )

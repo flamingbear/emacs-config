@@ -45,11 +45,12 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 
 ;; RUBY RINARI (RINARI IS NOT A RAILS IDE...not really)
 ;;-----------------------------------------
-(defvar my-rinari-top-dir
-  (expand-file-name (concat emacs-top '"external-lisp-files/rinari/")))
-(if (file-accessible-directory-p my-rinari-top-dir)
-    (add-to-list 'load-path my-rinari-top-dir))
-(try-require 'rinari)
+;(defvar my-rinari-top-dir
+;  (expand-file-name (concat emacs-top '"external-lisp-files/rinari/")))
+;(if (file-accessible-directory-p my-rinari-top-dir)
+;    (add-to-list 'load-path my-rinari-top-dir))
+;(try-require 'rinari)
+(require 'rinari)
 
 
 ;; Ruby autoload for syntax highlighting and keybindings

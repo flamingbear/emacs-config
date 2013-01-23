@@ -18,6 +18,26 @@
 
 ;; stolen from KWB-emacs
 ;;----------------------
+;; show me the line numbers in source
+(defun add-line-numbers ()
+  (linum-mode 1))
+
+;; auto wrap, but only in comments
+(defun local-comment-auto-fill ()
+  (set (make-local-variable 'comment-auto-fill-only-comments) t)
+  (auto-fill-mode t))
+
+
+(defvar dev-hook nil
+  "Hook that gets run on activation of any programming mode.")
+(add-hook 'dev-hook 'add-line-numbers)
+(add-hook 'dev-hook 'local-comment-auto-fill)
+(add-hook 'def-hook 'auto-complete-mode)
+
+(defun run-dev-hook ()
+  "Enable things that are convenient across all dev buffers."
+  (run-hooks 'dev-hook))
+
 
 ;; show empty lines at the end of the file
 (set-default 'indicate-empty-lines t)
@@ -70,10 +90,7 @@ $HOME/.emacs.d/lisp" )
 
 
 ;; PYTHON
-;; If you've got a VIRTUAL_ENV set up this will load your python needs
-(setq mhs-virtualenv-dir (getenv "VIRTUAL_ENV"))
-(when mhs-virtualenv-dir
-  (require 'mhs-python))
+(require 'mhs-python-2)
 
 
 ;; Set up Magnars' subdirs.
