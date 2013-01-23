@@ -78,7 +78,8 @@
 (add-hook 'python-mode-hook 'flymake-mode)
 
 
-(add-hook 'find-file-hook 'flymake-find-file-hook)
+;(add-hook 'find-file-hook 'flymake-find-file-hook)
+;(remove-hook 'find-file-hook 'flymake-find-file-hook)
 
 
 ;; (setq auto-mode-alist (cons '("\\.py$" . python-mode) auto-mode-alist))
