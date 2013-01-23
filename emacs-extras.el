@@ -27,8 +27,10 @@
 (defalias 'auto-revert-tail-mode 'tail-mode)
 
 ;; delete trailing whitespace
+;; TODO [MHS, 2013-01-23] You should learn how to make this only for modes you want.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
-
+;; To edit binary files
+;; (remove-hook 'before-save-hook 'delete-trailing-whitespace)
 
 
 

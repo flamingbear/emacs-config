@@ -17,8 +17,7 @@
 ;;; Code:
 
 (defconst mhs-workspace-version "0.0.1"
-"
-Report bugs to: Matt Savoie <emacs@flamingbear.com>")
+"Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 
 (defvar mhs-current-workspace  (convert-standard-filename (concat (getenv "HOME") "/workspace/"))
   "Current working location" )

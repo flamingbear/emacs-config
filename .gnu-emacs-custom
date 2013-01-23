@@ -213,6 +213,8 @@
  '(message-separator ((((class color) (background dark)) (:foreground "rosybrown"))))
  '(mode-line ((nil (:inherit menu))))
  '(mouse ((t (:background "sky blue"))))
+ '(org-done ((t (:foreground "PaleGreen" :weight normal :strike-through t))))
+ '(org-headline-done ((((class color) (min-colors 16) (background dark)) (:foreground "LightSalmon" :strike-through t))))
  '(org-hide ((t (:inherit default :foreground "gray12"))))
  '(rst-level-1-face ((t (:background "grey85" :foreground "blue"))) t)
  '(rst-level-2-face ((t (:inherit rst-level-1-face :background "grey78"))) t)
