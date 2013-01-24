@@ -4,11 +4,12 @@
 /.mc-lists.el
 /.org-id-locations
 /ac-comphist.dat
-/auto-save-list/.saves*
+/auto-save-list
 /el-get
-/pymacs*
+/semanticdb
+/pymacs
 /external-lisp-files/python-mode*
-/python-pep*
+/python-pep
 /swank/slime-eldoc-d8b3cf74.el
 /swank/slime-fbbb883a.el
 /swank/slime-frame-colors-a24dd450.el
