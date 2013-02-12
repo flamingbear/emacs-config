@@ -88,7 +88,7 @@
 
 (push '(:name flymake-python-pyflakes
               :type elpa
-              :pkgname "flymake-pytholn-pyflakes") el-get-sources)
+              :pkgname "flymake-python-pyflakes") el-get-sources)
 
 
 
