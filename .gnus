@@ -20,12 +20,6 @@
 
 (require 'nnir)
 
-;; Old school : This is how you use imap as POP3 before migration to IMAP
-;; (setq mail-sources '((file)
-;; 		      (imap :user "savoie"
-;; 		           :server "kryos.colorado.edu"
-;; 		           :stream ssl )
-;;                      ))
 
 (setq gnus-secondary-select-methods
       '(
