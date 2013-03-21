@@ -102,6 +102,11 @@
               :pkgname "flymake-python-pyflakes") el-get-sources)
 
 
+(push '(:name flycheck
+              :type elpa
+              :pkgname "flycheck") el-get-sources)
+
+
 
 ;; These all moved and aren't updated in el-get yet.
 (push '(:name auto-complete
