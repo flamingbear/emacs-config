@@ -135,6 +135,7 @@
                 edit-server
                 emacs-w3m
                 expand-region
+                git-gutter-fringe
                 jedi
                 magit
                 mark-multiple
