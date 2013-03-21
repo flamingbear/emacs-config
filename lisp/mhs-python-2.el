@@ -1,6 +1,13 @@
 ;;; MHS-PYTHON-2.EL ---
 
-;; Stolen from KWB totally
+(defun add-dir-to-python-path () "\t
+    Add current directory to PYTHONPATH"
+  (interactive)
+  (setenv "PYTHONPATH" (concat (getenv "PYTHONPATH") ":" (file-name-directory (buffer-file-name)))))
+
+
+
+;; Below: Stolen from KWB totally
 
 ;; We're gonna need us a Python mode
 (require 'python)
