@@ -19,10 +19,10 @@
 (setq virtualenv-root "~/.virtual_envs/")
 
 ;; flymake & flake8
-(add-hook 'python-mode-hook 'flymake-mode)
-(add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
-(setq flymake-python-pyflakes-executable "flake8")
-(require 'flymake-cursor)
+;; (add-hook 'python-mode-hook 'flymake-mode)
+;; (add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
+;; (setq flymake-python-pyflakes-executable "flake8")
+;; (require 'flymake-cursor)
 
 ;; Be lazy about activating ropemacs
 (defun load-ropemacs ()
