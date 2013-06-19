@@ -72,17 +72,6 @@
               :pkgname "purcell/exec-path-from-shell") el-get-sources)
 
 
-
-(push '(:name keyfreq
-              :website "https://github.com/dacap/keyfreq"
-              :description "measure your key frequency use"
-              :type github
-              :after (progn ()
-                            (require 'keyfreq)
-                            (keyfreq-mode 1)
-                            (keyfreq-autosave-mode 1))
-              :pkgname "dacap/keyfreq") el-get-sources)
-
 (push '(:name python
               :website "https://github.com/fgallina/python.el.git"
               :description "Python's flying circus support for Emacs"
@@ -140,6 +129,7 @@
                 auto-complete
                 autopair
                 clojure-mode
+                ein
                 edit-server
                 emacs-w3m
                 expand-region

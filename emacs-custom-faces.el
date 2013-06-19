@@ -90,16 +90,16 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 
 (cond ((string-match (user-login-name) "nrtsig")
        (progn
-         (cond ((string-match build  "F17_prod")
+         (cond ((or (string-match build  "F17_prod") (string-match build  "production"))
                 (setq my-menu-fg-color "red")
                 (setq my-menu-bg-color "#483d8b")) ;darkslateblue
-               ((string-match build  "F17_test")
+               ((or (string-match build  "F17_test") (string-match build  "testing"))
                 (setq my-menu-fg-color "moccasin")
                 (setq my-menu-bg-color "#483d8b")) ; darkslateblue
                )))
 
       ;; NOAA Combined
-      ((string-match build "n0046_dev")
+      ((string-match "n0046_dev" build)
        (progn (setq my-menu-fg-color "darkgoldenrod")   ;midnightblue
               (setq my-menu-bg-color "saddlebrown")
               (setq idlwave-shell-explicit-file-name "idl82")
@@ -118,7 +118,7 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 
       ;; You'll get the same colors for MASIE emacs sessions for any
       ;; machine... Set the title.
-      ((string-match build "MASIE_dev")
+      ((string-match "MASIE_dev" build)
        (progn
          (setq idlwave-shell-explicit-file-name "my_idl.7.0.sh")
          (setq my-menu-bg-color "#7a378b") ; mediumOrchid4
@@ -153,7 +153,7 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
          (setq my-menu-fg-color "black")
          (cond ((string-match (user-login-name) "nise")
                 (setq my-menu-fg-color "DodgerBlue")))
-         (cond ((string-match build  "development")
+         (cond ((string-match "development" build)
                 (setq my-menu-fg-color "DarkMagenta")
                 )
                ((string-match build  "testing")
@@ -162,14 +162,13 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
                ((string-match build  "production")
                 (setq my-menu-fg-color "red")
                 )
-               ((string-match build  "F17_dev")
-                                        ;(setq idlwave-shell-explicit-file-name "my_special_idl.8.1.sh")
+               ((string-match "F17_dev" build)
                 (setq idlwave-shell-explicit-file-name "my_idl.8.2.sh")
                 (setq my-menu-fg-color "MediumVioletRed")
                 (setq my-menu-bg-color "burlywood")
                 )
-               ((string-match build  "F17_text_dev")
-                (setq idlwave-shell-explicit-file-name "my_idl.8.1.sh")
+               ((string-match "dev" build)
+                (setq idlwave-shell-explicit-file-name "my_idl.8.2.sh")
                 (setq my-menu-fg-color "SeaGreen4")
                 (setq my-menu-bg-color "LightCyan3")
                 )
