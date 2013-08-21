@@ -1,5 +1,8 @@
 *.elc
 *~
+/elpa
+/request
+/url
 /.emacs.bmk
 /.mc-lists.el
 /.org-id-locations

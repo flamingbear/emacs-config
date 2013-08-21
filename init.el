@@ -17,7 +17,8 @@ Normally this points to: $HOME/.emacs.d/")
 (setq emacs-top (file-name-as-directory emacs-top))
 (add-to-list 'load-path emacs-top)
 
-
+;; LOAD packages via the package.el (ELPA)
+(load "mhs-packages" t t)
 
 ;; ** Custom Settings that are updated via << M-x customize >> **
 (setq custom-file (concat emacs-top ".gnu-emacs-custom"))
@@ -39,8 +40,6 @@ Normally this points to: $HOME/.emacs.d/")
 ;; couple of tweaks for browsers and handling emacs on mac osx
 (load "mhs-environment" t t)
 
-;; LOAD packages via the el-get
-(load "mhs-packages" t t)
 
 
 (when running-macos
