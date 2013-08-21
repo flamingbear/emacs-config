@@ -117,6 +117,7 @@
 (defun my-common-idlwave-hook ()
   (local-set-key [(meta .)] 'idlwave-find-module)
   (local-set-key [(super z)] 'mhs-idlwave-shell-reset)
+  (local-set-key (kbd "C-c C-d C-z" ) 'mhs-idlwave-shell-reset)
   (local-set-key [(meta s)] 'idlwave-complete)  )
 
 
