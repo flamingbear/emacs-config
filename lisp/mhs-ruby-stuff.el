@@ -75,8 +75,9 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 
 (add-hook 'ruby-mode-hook
           (lambda ()
-            (local-set-key [(super E)] 'ruby-send-region-and-go)
-            (local-set-key [(super e)] 'ruby-send-region)
+            ;; TODO [MHS, 2013-08-15] See if you can live without Super.
+            ;; (local-set-key [(super E)] 'ruby-send-region-and-go)
+            ;; (local-set-key [(super e)] 'ruby-send-region)
             (linum-mode t)))
 
 
