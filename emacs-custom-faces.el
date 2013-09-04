@@ -19,6 +19,10 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 ;; Set up the  default values for frame creation
 ;;-------------------------------------------
 
+(setq custom-theme-directory (concat emacs-top "themes"))
+(add-to-list 'custom-theme-load-path custom-theme-directory)
+(load-theme 'savoie t)
+
 (when (display-graphic-p)
   (progn
     (setq default-frame-alist
