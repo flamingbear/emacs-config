@@ -27,7 +27,8 @@
     autopair
     clojure-mode
     edit-server
-    ;;    emacs-w3m
+    ein
+    w3m
     exec-path-from-shell
     expand-region
     flycheck
