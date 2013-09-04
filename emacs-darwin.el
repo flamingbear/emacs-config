@@ -18,6 +18,7 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 ;; exec-path-from-shell-initialize before it's set, after it's not.
 (when running-macos
   (exec-path-from-shell-copy-env "NODE_PATH")
+  (exec-path-from-shell-copy-env "GIT_EDITOR")
   (exec-path-from-shell-copy-env "VIRTUAL_ENV")
   (exec-path-from-shell-initialize))
 
