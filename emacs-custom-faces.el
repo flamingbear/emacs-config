@@ -159,7 +159,7 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
       ;; Works with snow.colo only now...
       ((string-match "^snow.colorado.edu" (system-name))
        (progn
-         (setq idlwave-shell-explicit-file-name "my_idl.8.1.sh")
+         (setq idlwave-shell-explicit-file-name "my_idl.8.2.sh")
          (setq my-menu-bg-color "#ffe4b5")
          (setq my-menu-fg-color "#000000")
          (cond ((string-match (user-login-name) "nise")
@@ -259,7 +259,7 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
        (progn (setq my-menu-fg-color "#00bfff")   ; deep sky blue
               (setq my-menu-bg-color "#adff2f"))) ;green yellow
 
-      ;; savoie.dev or icebadger
+      ;; savoie.dev
       (running-on-dev-vm
        (progn
          (setq idlwave-shell-explicit-file-name "my_idl.sh")
@@ -280,8 +280,10 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
       (t (progn (setq my-menu-fg-color "#ffd700")
                 (setq my-menu-bg-color "#6b8e23"))))
 
-(set-face-foreground 'menu my-menu-fg-color)
-(set-face-background 'menu my-menu-bg-color)
+
+
+(set-face-foreground 'mode-line my-menu-fg-color)
+(set-face-background 'mode-line my-menu-bg-color)
 
 
 ;;; .EMACS-CUSTOM-FACES ends here

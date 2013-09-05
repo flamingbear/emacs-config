@@ -71,8 +71,6 @@
         ("subject" "NISE PROBLEM on snow" "maild/nsidc-notices")
         ("subject" "NISE FAILURE on snow" "maild/nsidc-notices")
         ("subject" ".*Software Release Announcements.*" "maild/nsidc-notices")
-        ("subject" ".*Matplotlib.*" "maild/matplotlib")
-        ("subject" ".*matplotlib.*" "maild/matplotlib")
         (any ".*idc-contrib.*" "maild/honeybadger")
         (any "Honeybadger" "maild/honeybadger")
         (from "www@nsidc.org" "maild/nsidc-notices")
