@@ -281,9 +281,12 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
                 (setq my-menu-bg-color "#6b8e23"))))
 
 
-
+;; Set both mode and menu rather than inheriting
 (set-face-foreground 'mode-line my-menu-fg-color)
 (set-face-background 'mode-line my-menu-bg-color)
+
+(set-face-foreground 'menu my-menu-fg-color)
+(set-face-background 'menu my-menu-bg-color)
 
 
 ;;; .EMACS-CUSTOM-FACES ends here
