@@ -27,6 +27,7 @@
     autopair
     clojure-mode
     edit-server
+    feature-mode
     ein
     w3m
     exec-path-from-shell
