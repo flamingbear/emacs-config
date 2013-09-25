@@ -60,6 +60,15 @@
 (define-key global-map "\C-cr" 'org-capture)
 
 (setq org-fontify-done-headline t)
+
+;; From keelerm84 on
+(require 'org-latex)
+(setq org-export-latex-listings 'minted)
+(add-to-list 'org-export-latex-packages-alist '("" "minted"))
+(setq org-src-fontify-natively t)
+
+
+
 ;; TODO [MHS, 2013-09-04] fix this. Only one custom-set-faces
 ;; (custom-set-faces
 ;;  '(org-done ((t (:foreground "PaleGreen"
