@@ -173,6 +173,7 @@
  '(spam-use-stat nil)
  '(spam-use-whitelist t)
  '(spam-whitelist "~savoie/News/spam/whitelist")
+ '(starttls-extra-arguments (quote ("--no-ca-verification")))
  '(starttls-gnutls-program "gnutls-cli")
  '(tab-always-indent (quote complete))
  '(tab-width 4)
