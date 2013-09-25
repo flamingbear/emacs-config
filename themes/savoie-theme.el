@@ -1,5 +1,5 @@
 (deftheme savoie
-  "Created 2013-09-04.")
+  "Created 2013-09-09.")
 
 (custom-theme-set-faces
  'savoie
@@ -45,6 +45,10 @@
  '(match ((((class color) (min-colors 88) (background light)) (:background "yellow1")) (((class color) (min-colors 88) (background dark)) (:background "RoyalBlue3")) (((class color) (min-colors 8) (background light)) (:foreground "black" :background "yellow")) (((class color) (min-colors 8) (background dark)) (:foreground "white" :background "blue")) (((type tty) (class mono)) (:inverse-video t)) (t (:background "gray"))))
  '(next-error ((t (:inherit (region)))))
  '(query-replace ((t (:inherit (isearch)))))
- '(default ((t (:family "Inconsolata" :foundry "apple" :width normal :height 200 :weight normal :slant normal :underline nil :overline nil :strike-through nil :box nil :inverse-video nil :foreground "gray89" :background "gray12" :stipple nil :inherit nil)))))
+ '(ediff-even-diff-Ancestor ((t (:background "#a9a9a9" :foreground "#ffffff"))))
+ '(default ((t (:family "Inconsolata" :foundry "apple" :width normal :height 200 :weight normal :slant normal :underline nil :overline nil :strike-through nil :box nil :inverse-video nil :foreground "gray89" :background "gray12" :stipple nil :inherit nil))))
+ '(ediff-even-diff-B ((t (:background "#a9a9a9" :foreground "#ffffff"))))
+ '(ediff-odd-diff-C ((t (:background "#a9a9a9" :foreground "#ffffff"))))
+ '(ediff-odd-diff-A ((t (:background "#a9a9a9" :foreground "#ffffff")))))
 
 (provide-theme 'savoie)
