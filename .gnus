@@ -16,8 +16,7 @@
 (setq message-fill-column 'nil)
 
 
-
-
+;; search mail with various search engines.
 (require 'nnir)
 
 
@@ -42,26 +41,15 @@
 
 
 
-;; For information on swish-e and mail indexing look at .gnus files from before 2011-05-13
+;(setq nnimap-split-inbox '("INBOX"))
+;(setq nnimap-split-predicate "UNDELETED")
+;(setq nnimap-split-crosspost nil)
 
-;; ;;GMAIL for flamingbear
-;; Uncomment out for working IMAP
-;; (add-to-list 'gnus-secondary-select-methods '(nnimap "gmail"
-;;                                                      (nnimap-address "imap.gmail.com")
-;;                                                      (nnimap-server-port 993)
-;;                                                      (nnimap-authinfo-file "~/.imap-authinfo")
-;;                                                      (nnimap-stream ssl)))
-
-
-(setq nnimap-split-inbox '("INBOX"))
-(setq nnimap-split-predicate "UNDELETED")
-(setq nnimap-split-crosspost nil)
-
-(setq nnimap-split-rule '(("kryos" ("INBOX" nnimap-split-fancy))))
+;(setq nnimap-split-rule '(("kryos" ("INBOX" nnimap-split-fancy))))
 
 ;; -----------------------------------------------
 ;; Where should the incoming mail be delivered to?
-(setq nnmail-split-methods 'nnmail-split-fancy)
+;(setq nnmail-split-methods 'nnmail-split-fancy)
 (setq nnimap-split-methods 'nnimap-split-fancy)
 ;; Function for splitting kryos INBOX mail
 (setq nnimap-split-fancy
@@ -193,23 +181,6 @@
         ad-do-it)
     ad-do-it))
 
-;; (defadvice message-send-mail (around culink-message-send-mail protect activate)
-;;   "Set up SMTP settings to use culink's server when mail is from a colorado.edu address."
-;;   (interactive "P")
-;;   (if (save-restriction
-;;         (message-narrow-to-headers)
-;;         (string-match "colorado.edu" (message-fetch-field "from")))
-
-;;       (let ((message-send-mail-function 'smtpmail-send-it)
-;;             (smtpmail-starttls-credentials '(("smtp.colorado.edu" 587 nil nil)))
-;;             (smtpmail-auth-credentials '(("smtp.colorado.edu" 587 "matthew.savoie@colorado.edu" nil)))
-;;             (smtpmail-default-smtp-server "smtp.colorado.edu")
-;;             (smtpmail-smtp-server "smtp.colorado.edu")
-;;             (smtpmail-smtp-service 587)
-;;             (smtpmail-local-domain "colorado.edu"))
-;;         ad-do-it)
-;;     ad-do-it))
-
 
 (setq gnus-posting-styles
       '((".*"
@@ -219,20 +190,12 @@
         ;;  (signature "This is not spam(tm)."))
         ))
 
-;;          (From (save-excursion
-;;                  (set-buffer gnus-article-buffer)
-;;                  (message-fetch-field "to")))
-
-
-
-;; Old news reader
-;; text.giganews.com
 
 (setq gnus-extra-headers '(To Newsgroups))
 (setq nnmail-extra-headers gnus-extra-headers)
 (setq gnus-summary-line-format
       "%U%R%z%I%(%[%4L: %-20,20f%]%) %s\n")
-(setq gnus-ignored-from-addresses "savoie@snowblower\\.colorado\\.edu\\|mattie@flamingbear\\.com\\|sugarlist@flamingbear\\.com\\|savoie@nsidc\\.org")
+(setq gnus-ignored-from-addresses "mattie@flamingbear\\.com\\|savoie@nsidc\\.org")
 
 
 (setq gnus-thread-hide-subtree 't)
@@ -240,12 +203,8 @@
 (add-hook 'gnus-select-article-hook 'gnus-summary-show-thread)
 
 
-;; -----------------------------------------------
-;; Where should the incoming mail be delivered to?
 
-;(setq nnmail-split-methods 'nnmail-split-fancy)
-
-
+;; Set automatic days to expire on some groups
 (setq nnmail-expiry-wait-function
       (lambda (group)
         (cond ((string= group "nsidc-notices") 90)
@@ -258,5 +217,5 @@
 	      ((string= group "saved") 'never)
 	      (t 200))))
 
-
+;; Set the groups that are auto-expirable.
 (setq gnus-auto-expirable-newsgroups "\\(.*lists\\|.*nsidc-notices\\|.*exchange:INBOX\\)")
