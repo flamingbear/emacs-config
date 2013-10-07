@@ -10,7 +10,7 @@
 
 ;; Sometimes we don't want all of our options.
 (defvar running-on-dev-vm
-  (string-match "\\(icebadger\\|savoie\\)" (prin1-to-string system-name)))
+  (string-match "\\(icebadger\\|savoie$\\)" (prin1-to-string system-name)))
 
 
 
