@@ -89,6 +89,8 @@ $HOME/.emacs.d/lisp" )
 ;; Load this before ruby because we want the jds history search.
 (try-require 'emacs-idlwave-support)
 
+;; set pivotal-tracker api tolken
+(require 'mhs-pivotal)
 
 ;; PYTHON
 (require 'mhs-python-2)
