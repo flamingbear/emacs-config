@@ -51,6 +51,7 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 ;    (add-to-list 'load-path my-rinari-top-dir))
 ;(try-require 'rinari)
 (require 'rinari)
+(global-rinari-mode)
 
 
 ;; Ruby autoload for syntax highlighting and keybindings
@@ -59,6 +60,7 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 (autoload 'ruby-mode "ruby-mode" "Major mode for ruby files" t)
 (add-to-list 'auto-mode-alist '("\\.rb$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Rakefile" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.rake" . ruby-mode))
 (add-to-list 'interpreter-mode-alist '("ruby" . ruby-mode))
 
 (autoload 'inf-ruby "inf-ruby" "Run an inferior Ruby process" t)

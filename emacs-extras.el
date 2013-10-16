@@ -52,6 +52,7 @@
 ;; To edit binary files
 ;; (remove-hook 'before-save-hook 'delete-trailing-whitespace)
 
+(global-flycheck-mode 't)
 
 
 ;; Better file and buffer searching.
