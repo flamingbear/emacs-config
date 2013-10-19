@@ -67,6 +67,12 @@
 (add-to-list 'org-export-latex-packages-alist '("" "minted"))
 (setq org-src-fontify-natively t)
 
+(defun mhs-update-today ()
+  (interactive)
+  (save-excursion
+    (beginning-of-line)
+    (while (search-forward-regexp "[0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\}" (line-end-position) t)
+      (replace-match (format-time-string "%Y-%m-%d")))))
 
 
 ;; TODO [MHS, 2013-09-04] fix this. Only one custom-set-faces
