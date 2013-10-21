@@ -44,7 +44,7 @@
     nrepl
     paredit
     psvn
-    pivotal-tracker
+;    pivotal-tracker
     python
     rinari
     virtualenv

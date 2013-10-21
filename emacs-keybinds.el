@@ -39,6 +39,7 @@
 ;; My Mapping Stuff, this is a prefix key that allows me access to more
 ;; functions.  These are defined in ~/lisp/mhs-map.el
 (global-set-key [f7]              'mhs-map) ; F7
+(global-set-key [f8]              'mhs-map) ; F7
 
 ;; This is so that I can get used to copy-paste in eclipse with mulgaSoft emacs+
 (global-set-key (kbd "C-x x") 'copy-to-register)
@@ -46,7 +47,7 @@
 
 
 
-(global-set-key [f8]              'force-space) ; F8
+;(global-set-key [f8]              'force-space) ; F8
 (global-set-key [f9]              'gud-step) ; F9
 (global-set-key [f10]             'gud-refresh) ; F10
 (global-set-key [f11]             'gud-print) ; Stop

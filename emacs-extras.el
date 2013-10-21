@@ -90,10 +90,10 @@ $HOME/.emacs.d/lisp" )
 (try-require 'emacs-idlwave-support)
 
 ;; set pivotal-tracker api tolken
-(require 'mhs-pivotal)
+(try-require 'mhs-pivotal)
 
 ;; PYTHON
-(require 'mhs-python-2)
+(try-require 'mhs-python-2)
 
 
 ;; Set up Magnars' subdirs.
