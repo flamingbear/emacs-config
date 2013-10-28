@@ -167,10 +167,6 @@ $HOME/.emacs.d/lisp" )
 (eval-after-load "vc-hooks"
   '(define-key vc-prefix-map "=" 'ediff-revision))
 
-(defvar mhs-git-helpers (expand-file-name (concat mhs-external-lisp-dir '"magit")))
-(when (file-accessible-directory-p mhs-git-helpers)
-  (add-to-list 'load-path mhs-git-helpers)
-  (try-require 'magit))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ediff cutomizations

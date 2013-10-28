@@ -22,4 +22,9 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
   (exec-path-from-shell-copy-env "VIRTUAL_ENV")
   (exec-path-from-shell-initialize))
 
+;; magit bug with using /usr/bin/emacsclient
+(eval-after-load 'magit
+  '(set-variable 'magit-emacsclient-executable (getenv "GIT_EDITOR")))
+
+
 ;;; .EMACS-DARWIN.EL ends here
