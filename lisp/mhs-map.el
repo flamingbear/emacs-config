@@ -25,11 +25,8 @@
 (define-key mhs-map " "                            'mhs-region-word)
 ;(define-key mhs-map [(f8)]                      'delete-blank-lines)
 
-(define-key mhs-map [(f7)]                         'copy-to-register)
 (define-key mhs-map [(f8)]                         'copy-to-register)
-(define-key mhs-map [(S-f7)]                     'append-to-register)
-(define-key mhs-map [(S-f8)]                     'append-to-register)
-(define-key mhs-map [(f6)]                          'insert-register)
+(define-key mhs-map [(f7)]                          'insert-register)
 (define-key mhs-map [(control c)]             'clipboard-copy-region)
 (define-key mhs-map ";"                  'mhs-idlwave-insert-comment)
 (define-key mhs-map "B"                'mhs-browse-buffer-in-firefox)

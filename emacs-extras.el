@@ -58,6 +58,16 @@
 ;; Better file and buffer searching.
 (require 'ido)
 
+;; (require 'grizzl)
+;; (projectile-global-mode)
+;; (setq projectile-enable-caching t)
+;; (setq projectile-completion-system 'grizzl)
+
+;; ;; I have no idea why this matches C-c C-/, but it does and that's what I was after
+;; (global-set-key (kbd "C-c C-_") 'projectile-find-file)
+;; (global-set-key (kbd "C-c C-b") 'projectile-switch-to-buffer)
+
+
 
 
 ;;----------------------------------------------------------------
@@ -226,6 +236,9 @@ $HOME/.emacs.d/lisp" )
 
 ;; Sh mode for some common files
 (add-to-list 'auto-mode-alist '("\\.alias$" . sh-mode))
+
+
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
 ;; show time in mode line
 (display-time)
