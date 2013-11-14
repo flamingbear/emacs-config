@@ -27,4 +27,5 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
   '(set-variable 'magit-emacsclient-executable (getenv "GIT_EDITOR")))
 
 
+
 ;;; .EMACS-DARWIN.EL ends here
