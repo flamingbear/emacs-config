@@ -40,12 +40,12 @@ Normally this points to: $HOME/.emacs.d/")
 ;; couple of tweaks for browsers and handling emacs on mac osx
 (load "mhs-environment" t t)
 
-
-
 (when running-macos
   (if (file-readable-p (concat emacs-top '"emacs-darwin.el"))
       (load (concat emacs-top '"emacs-darwin.el") nil t)))
 
+(autoload 'skewer-start "setup-skewer" nil t)
+(projectile-global-mode)
 
 ;; add load paths to custom files, load special packages, load the
 ;; mhs-idlwave-extras file.

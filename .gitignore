@@ -22,3 +22,6 @@
 emacs-w3m*
 /private
 /var/pcache/gh/gh-gist-api/flamingbear
+/.litable-lists.el
+/backups/
+/projectile-bookmarks.eld
