@@ -45,7 +45,7 @@
     psvn
     python
     rinari
-    skewer
+    skewer-mode
     virtualenv
     wgrep
     yaml-mode
