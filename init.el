@@ -74,3 +74,7 @@ Normally this points to: $HOME/.emacs.d/")
 (if missing-packages-list
     (progn (message "Packages not found: %S" missing-packages-list)))
 (put 'dired-find-alternate-file 'disabled nil)
+
+
+;; Work around for bug in macosx
+(cd (getenv "HOME"))

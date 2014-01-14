@@ -64,9 +64,7 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 (add-to-list 'interpreter-mode-alist '("ruby" . ruby-mode))
 
 (autoload 'inf-ruby "inf-ruby" "Run an inferior Ruby process" t)
-(autoload 'inf-ruby-setup-keybindings "inf-ruby" "" t)
-(eval-after-load 'ruby-mode
-  '(add-hook 'ruby-mode-hook 'inf-ruby-setup-keybindings))
+(add-hook 'ruby-mode-hook 'inf-ruby-minor-mode)
 
 ;; This is my regex seach for interactive shells, lets you search for anything
 ;; old commands by regex

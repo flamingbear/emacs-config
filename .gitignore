@@ -1,5 +1,6 @@
 *.elc
 *~
+/var
 /elpa
 /request
 /url
@@ -25,3 +26,4 @@ emacs-w3m*
 /.litable-lists.el
 /backups/
 /projectile-bookmarks.eld
+/projectile.cache

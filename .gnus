@@ -47,6 +47,8 @@
 
 ;(setq nnimap-split-rule '(("kryos" ("INBOX" nnimap-split-fancy))))
 
+(defvar default-mailbox (concat "maild/mail-" (format-time-string "%Y")))
+
 ;; -----------------------------------------------
 ;; Where should the incoming mail be delivered to?
 ;(setq nnmail-split-methods 'nnmail-split-fancy)
@@ -161,7 +163,11 @@
         (to "ecs-mo" "maild/lists")
         (to "savoie@tundra.colorado.edu" "spam")
         ("subject" "^No new Files on sidads" "maild/nsidc-notices")
-        "maild/mail-2013"))
+        "maild/mail-2014"
+        ))
+
+
+
 
 (defadvice message-send-mail (around gmail-message-send-mail protect activate)
   "Set up SMTP settings to use Gmail's server when mail is from a gmail.com address."
