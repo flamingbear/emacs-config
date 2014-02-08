@@ -310,7 +310,9 @@ $HOME/.emacs.d/lisp" )
 (try-require 'if-jump)
 
 
+
 ;; Handle multiple locations for aspell.
+(defvar ispell-program-name)
 (cond ((file-exists-p "/usr/bin/aspell")
        (setq ispell-program-name "/usr/bin/aspell"))
       ((file-exists-p "/usr/local/bin/aspell")
@@ -322,6 +324,7 @@ $HOME/.emacs.d/lisp" )
 
 
 ;; Use these to override stupid defaults for the ! command in dired.
+(defvar dired-guess-shell-alist-user)
 (setq dired-guess-shell-alist-user
       (list (list "\\.png\\'" "display")
             (list "\\.jpg\\'" "display")
