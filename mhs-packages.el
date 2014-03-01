@@ -46,7 +46,7 @@
     python
     rinari
     skewer-mode
-    virtualenv
+    virtualenvwrapper
     wgrep
     yaml-mode
     yasnippet))

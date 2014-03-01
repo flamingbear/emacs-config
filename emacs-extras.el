@@ -103,7 +103,7 @@ $HOME/.emacs.d/lisp" )
 (try-require 'mhs-pivotal)
 
 ;; PYTHON
-(try-require 'mhs-python-2)
+(try-require 'mhs-python)
 
 
 ;; Set up Magnars' subdirs.
