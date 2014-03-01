@@ -30,12 +30,9 @@
 ;; Use the Python force, my young padawan learner
 (add-hook 'python-mode-hook 'jedi:setup)
 (setq jedi:setup-keys t)
+(setq jedi:complete-on-dot t)
 
 (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
 
-
-
-
-
-(provide 'mhs-python-2)
-;;; MHS-PYTHON-2.EL ends here
+(provide 'mhs-python)
+;;; mhs-python.el ends here
