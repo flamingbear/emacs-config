@@ -27,3 +27,4 @@ emacs-w3m*
 /backups/
 /projectile-bookmarks.eld
 /projectile.cache
+/.projectile
