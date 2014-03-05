@@ -54,22 +54,8 @@
 
 
 ; prompt before installing
-; https://bigmac.caelum.uberspace.de/paste/ensure-package-installed.html
-(defun ensure-package-installed (&rest packages)
-  "Assure every package is installed, ask for installation if it’s not.
-Return a list of installed packages or nil for every package not installed."
-  (mapcar
-   (lambda (package)
-     (package-installed-p 'evil)
-     (if (package-installed-p package)
-         package
-       (if (y-or-n-p (format "Package %s is missing. Install it? " package))
-           (package-install package)
-         nil)))
-   packages))
-
-
 ; install the missing packages
 (dolist (package mhs-packages)
   (unless (package-installed-p package)
-    (ensure-package-installed package)))
+    (if (y-or-n-p (format "Package %s is missing. Install it? " package))
+           (package-install package))))
