@@ -58,4 +58,7 @@
 (dolist (package mhs-packages)
   (unless (package-installed-p package)
     (if (y-or-n-p (format "Package %s is missing. Install it? " package))
-           (package-install package))))
+        (package-install package))))
+
+(provide 'mhs-packages)
+;;; mhs-packages.el ends here
