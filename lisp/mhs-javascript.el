@@ -45,17 +45,19 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 ;;                              (flymake-mode 1))))
 
 
+
 ;; Use linum-mode in javascript
-(add-hook 'js2-mode-hook (lambda () (linum-mode)))
 (add-hook 'js2-mode-hook
           (lambda ()
             (linum-mode)
+            (tern-mode t)
             (local-set-key [(control meta q)] 'prog-indent-sexp) ))
 
 (autoload 'js2-mode "js2-mode" nil t)
-(setq js2-basic-offset 4)
 
-;(add-to-list 'auto-mode-alist '("\\.js" . js2-mode) nil)
+(custom-set-variables
+ '(js2-basic-offset 4)
+ '(js2-bounce-indent-p nil))
 
 
 
@@ -83,6 +85,11 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
                               )))
 
 
+;; Add tern
+(eval-after-load 'tern
+   '(progn
+      (require 'tern-auto-complete)
+      (tern-ac-setup)))
 
 (provide 'mhs-javascript)
 

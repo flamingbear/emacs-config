@@ -44,7 +44,9 @@ Normally this points to: $HOME/.emacs.d/")
   (if (file-readable-p (concat emacs-top '"emacs-darwin.el"))
       (load (concat emacs-top '"emacs-darwin.el") nil t)))
 
+
 (autoload 'skewer-start "setup-skewer" nil t)
+
 (projectile-global-mode)
 
 ;; add load paths to custom files, load special packages, load the

@@ -94,6 +94,8 @@ $HOME/.emacs.d/lisp" )
   (let ((default-directory  mhs-external-lisp-dir))
     (normal-top-level-add-subdirs-to-load-path)))
 
+;; This is currently non-functional except to fetch and search confluence.
+(try-require 'mhs-confluence)
 
 ;; IDLWAVE Customizations
 ;; Load this before ruby because we want the jds history search.
