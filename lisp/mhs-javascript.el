@@ -57,7 +57,17 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 
 (custom-set-variables
  '(js2-basic-offset 4)
- '(js2-bounce-indent-p nil))
+ '(js2-bounce-indent-p nil)
+ '(js2-global-externs '("define" "module" "require"
+                        "jQuery" "$" "_" "buster" "sinon"
+                        "assert" "refute"
+                        "setTimeout" "clearTimeout"
+                        "setInterval" "clearInterval"
+                        "location" "__dirname" "console" "JSON"
+                        "require" "chai" "expect" "exports" "before" "after"
+                        "describe" "beforeEach" "afterEach" "it")))
+
+
 
 
 

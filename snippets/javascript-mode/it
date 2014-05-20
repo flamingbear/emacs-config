@@ -4,8 +4,8 @@
 # group: Jasmine
 # contributor: David Miller <david@deadpansincerity.com>
 # --
-it('Should ${1:have a description}', function () {
-    // arrange           
+it("Should ${1:have a description}", function () {
+    // arrange
     var $0
     // act
     // assert

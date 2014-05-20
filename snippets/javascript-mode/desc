@@ -5,6 +5,6 @@
 # contributor: David Miller <david@deadpansincerity.com>
 # --
 
-describe('${1:Spec}', function (){
+describe("${1:Spec}", function (){
     $0
 });
