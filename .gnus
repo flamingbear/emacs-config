@@ -70,7 +70,7 @@
         (from "majordomo@kryos" "maild/nsidc-notices")
         (any ".*Searchlight Maven Webapp.*" "maild/nsidc-notices")
         (to "tiger@nsidc.org" "maild/nsidc-notices")
-        (to "savoie@kryos.colorado.edu" "spam")
+        (to ".*savoie@kryos.colorado.edu.*" "spam")
         ("subject" ".*HDF Bulletin.*" "maild/nsidc-notices")
         ("subject" ".*Hudson build became unstable.*" "maild/nsidc-notices")
         ("subject" ".*way from my mail.*" "maild/nsidc-notices")
