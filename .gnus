@@ -51,13 +51,14 @@
 
 ;; -----------------------------------------------
 ;; Where should the incoming mail be delivered to?
-;(setq nnmail-split-methods 'nnmail-split-fancy)
+(setq nnmail-split-methods 'nnimap-split-fancy)
 (setq nnimap-split-methods 'nnimap-split-fancy)
 ;; Function for splitting kryos INBOX mail
 (setq nnimap-split-fancy
       '(|
+        (to ".*savoie@kryos.colorado.edu.*" "spam")
         ("Subject" ".*confluence.*" "maild/nsidc-notices")
-        ("Subject" ".*\[Bamboo\].*" "maild/nsidc-notices")
+        ("Subject" ".*\\[Bamboo\\].*" "maild/nsidc-notices")
         ("Subject" ".*Esip-documentation.*" "maild/nsidc-notices")
         ("Subject" "NISE PROBLEM on nusnow" "maild/nsidc-notices")
         ("Subject" "NISE PROBLEM on snow" "maild/nsidc-notices")
@@ -70,7 +71,6 @@
         (from "majordomo@kryos" "maild/nsidc-notices")
         (any ".*Searchlight Maven Webapp.*" "maild/nsidc-notices")
         (to "tiger@nsidc.org" "maild/nsidc-notices")
-        (to ".*savoie@kryos.colorado.edu.*" "spam")
         ("subject" ".*HDF Bulletin.*" "maild/nsidc-notices")
         ("subject" ".*Hudson build became unstable.*" "maild/nsidc-notices")
         ("subject" ".*way from my mail.*" "maild/nsidc-notices")

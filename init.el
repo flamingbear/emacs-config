@@ -78,5 +78,17 @@ Normally this points to: $HOME/.emacs.d/")
 (put 'dired-find-alternate-file 'disabled nil)
 
 
+;; colorize compilation buffer
+(require 'ansi-color)
+(defun colorize-compilation-buffer ()
+  (let ((inhibit-read-only t))
+    (ansi-color-apply-on-region (point-min) (point-max))))
+(add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
+
+
+;;(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+
+
+
 ;; Work around for bug in macosx
 (cd (getenv "HOME"))
