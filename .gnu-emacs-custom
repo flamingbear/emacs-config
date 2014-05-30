@@ -8,7 +8,9 @@
  '(abbrev-file-name "~savoie/.abbrev_defs")
  '(abbrev-mode t t)
  '(auto-compression-mode t nil (jka-compr))
- '(auto-insert-path (quote ("~savoie/.emacs.d/external-lisp-files/autoinsert/insert/")) t)
+ '(auto-insert-path
+   (quote
+    ("~savoie/.emacs.d/external-lisp-files/autoinsert/insert/")) t)
  '(bbdb-use-pop-up nil)
  '(bookmark-save-flag 1)
  '(canlock-password "b908e6544be0e18bb190e50cf9afc8279754b5a4")
@@ -31,7 +33,9 @@
  '(cperl-noscan-files-regexp "/\\(\\.\\.?\\|SCCS\\|RCS\\|CVS\\|blib\\)$")
  '(cperl-under-as-char nil)
  '(ctypes-file-name "~savoie/.ctypes" t)
- '(custom-safe-themes (quote ("f273b5dd467ea352d69a2452e5d67108c0f2f26cb30880265fd0947d402833da" "6a741b4c066a3abed2d179d5b872c30d1be9a8b11d633cf1122d0dffbac5d102" "276e8d576ca7ec46cc45542cbd415dba4ab7802c31c80ebd5f1eca0b0e7371fc" "5b4538ea0ff39a873f22a1e6120305b5f3614febfc73b454375ea2c4d9baf113" "b8df5e4e6ec75196245615aeeb788f47fffc0f720ebb77454ebba916e8e96d30" "fbe191ce2f35027b23d58098a84bc2ba1e6bab77b7bc0feb744f817b684c2119" default)))
+ '(custom-safe-themes
+   (quote
+    ("f273b5dd467ea352d69a2452e5d67108c0f2f26cb30880265fd0947d402833da" "6a741b4c066a3abed2d179d5b872c30d1be9a8b11d633cf1122d0dffbac5d102" "276e8d576ca7ec46cc45542cbd415dba4ab7802c31c80ebd5f1eca0b0e7371fc" "5b4538ea0ff39a873f22a1e6120305b5f3614febfc73b454375ea2c4d9baf113" "b8df5e4e6ec75196245615aeeb788f47fffc0f720ebb77454ebba916e8e96d30" "fbe191ce2f35027b23d58098a84bc2ba1e6bab77b7bc0feb744f817b684c2119" default)))
  '(custom-unlispify-menu-entries nil)
  '(custom-unlispify-tag-names nil)
  '(dabbrev-case-fold-search nil)
@@ -59,7 +63,12 @@
  '(gnus-select-method (quote (nntp "nntp.aioe.org")))
  '(gnus-spam-autodetect (quote (("mail-200" t))))
  '(gnus-spam-process-destinations (quote (("mail" "nnml+private:spam"))))
- '(gnus-spam-process-newsgroups (quote (("mail" ((spam spam-use-bogofilter) (spam spam-use-blacklist) (ham spam-use-whitelist))))))
+ '(gnus-spam-process-newsgroups
+   (quote
+    (("mail"
+      ((spam spam-use-bogofilter)
+       (spam spam-use-blacklist)
+       (ham spam-use-whitelist))))))
  '(gnus-thread-sort-functions (quote (gnus-thread-sort-by-number)))
  '(gnus-treat-body-boundary nil)
  '(gnus-treat-date-english (quote head))
@@ -68,14 +77,22 @@
  '(gnus-treat-fill-long-lines nil)
  '(gnus-treat-hide-signature t)
  '(gnus-verbose 10)
- '(gnus-visible-headers (quote ("^From:" "^Newsgroups:" "^Subject:" "^Date:" "^Followup-To:" "^Reply-To:" "^Organization:" "^Summary:" "^Keywords:" "^To:" "^[BGF]?Cc:" "^Posted-To:" "^Mail-Copies-To:" "^Mail-Followup-To:" "^Apparently-To:" "^Gnus-Warning:" "^Resent-From:" "^X-Sent:" "^X-Gnus-Label:")))
- '(grep-find-command "find . -name \".svn\" -prune -o -type f  -exec grep -nH \"\" {} \\;")
+ '(gnus-visible-headers
+   (quote
+    ("^From:" "^Newsgroups:" "^Subject:" "^Date:" "^Followup-To:" "^Reply-To:" "^Organization:" "^Summary:" "^Keywords:" "^To:" "^[BGF]?Cc:" "^Posted-To:" "^Mail-Copies-To:" "^Mail-Followup-To:" "^Apparently-To:" "^Gnus-Warning:" "^Resent-From:" "^X-Sent:" "^X-Gnus-Label:")))
+ '(grep-find-command
+   "find . -name \".svn\" -prune -o -type f  -exec grep -nH \"\" {} \\;")
  '(highlight-changes-global-initial-state (quote passive))
  '(highlight-changes-global-modes t)
  '(highlight-changes-initial-state (quote passive))
  '(idlwave-abbrev-start-char "/" t)
  '(idlwave-block-indent 3)
- '(idlwave-completion-case (quote ((routine . preserve) (keyword . downcase) (class . preserve) (method . preserve))))
+ '(idlwave-completion-case
+   (quote
+    ((routine . preserve)
+     (keyword . downcase)
+     (class . preserve)
+     (method . preserve))))
  '(idlwave-completion-force-default-case t)
  '(idlwave-completion-show-classes 10)
  '(idlwave-continuation-indent 3)
@@ -87,7 +104,14 @@
  '(idlwave-main-block-indent 3)
  '(idlwave-max-extra-continuation-indent 60)
  '(idlwave-pad-keyword t)
- '(idlwave-query-class (quote ((method-default) (keyword-default) ("INIT" . t) ("CLEANUP" . t) ("SETPROPERTY" . t) ("GETPROPERTY" . t))))
+ '(idlwave-query-class
+   (quote
+    ((method-default)
+     (keyword-default)
+     ("INIT" . t)
+     ("CLEANUP" . t)
+     ("SETPROPERTY" . t)
+     ("GETPROPERTY" . t))))
  '(idlwave-reserved-word-upcase nil nil nil "Want pro rather than PRO")
  '(idlwave-shell-automatic-electric-debug t)
  '(idlwave-shell-automatic-start t)
@@ -119,7 +143,9 @@
  '(mail-user-agent (quote message-user-agent))
  '(markdown-command "Markdown.pl")
  '(message-cite-function (quote message-cite-original-without-signature))
- '(message-mode-hook (quote (turn-on-flyspell turn-off-auto-fill turn-on-visual-line-mode)))
+ '(message-mode-hook
+   (quote
+    (turn-on-flyspell turn-off-auto-fill turn-on-visual-line-mode)))
  '(message-send-mail-partially-limit nil)
  '(mm-verify-option (quote always))
  '(mouse-wheel-follow-mouse t)
@@ -132,11 +158,25 @@
  '(org-log-done (quote note))
  '(org-refile-targets (quote ((org-agenda-files :maxlevel . 5))))
  '(org-remember-default-headline "TASKS.org")
- '(org-remember-templates (quote (("todo" 116 "* TODO %? %u %a" nil nil nil) ("note" 110 "* %?" nil nil nil) ("Url" 117 "* %^{Title}
+ '(org-remember-templates
+   (quote
+    (("todo" 116 "* TODO %? %u %a" nil nil nil)
+     ("note" 110 "* %?" nil nil nil)
+     ("Url" 117 "* %^{Title}
 	Source: %u, %c
 	%i" nil nil nil))))
- '(org-tag-alist (quote (("daac" . 100) ("programmer" . 112) ("erik" . 101) ("management" . 109) ("services" . 115) ("masie" . 105) ("annual_review" . 97))))
- '(org-todo-keywords (quote ((sequence "TODO" "WAITING" "|" "DONE" "DELEGATED" "CANCELLED"))))
+ '(org-tag-alist
+   (quote
+    (("daac" . 100)
+     ("programmer" . 112)
+     ("erik" . 101)
+     ("management" . 109)
+     ("services" . 115)
+     ("masie" . 105)
+     ("annual_review" . 97))))
+ '(org-todo-keywords
+   (quote
+    ((sequence "TODO" "WAITING" "|" "DONE" "DELEGATED" "CANCELLED"))))
  '(perl-indent-level 3)
  '(printer-name "Snowprint_2")
  '(ps-default-bg "white")
@@ -147,7 +187,30 @@
  '(ps-print-color-p nil)
  '(ps-print-only-one-header t)
  '(ps-printer-name "snowprint")
- '(safe-local-variable-values (quote ((eval ignore-errors "Write-contents-functions is a buffer-local alternative to before-save-hook" (add-hook (quote write-contents-functions) (lambda nil (delete-trailing-whitespace) nil)) (require (quote whitespace)) "Sometimes the mode needs to be toggled off and on." (whitespace-mode 0) (whitespace-mode 1)) (whitespace-line-column . 80) (whitespace-style face trailing lines-tail) (require-final-newline . t) (ruby-compilation-executable . "ruby") (ruby-compilation-executable . "ruby1.8") (ruby-compilation-executable . "ruby1.9") (ruby-compilation-executable . "rbx") (ruby-compilation-executable . "jruby") (dired-actual-switches . "-latS") (dired-actual-switches . "-lat") (dired-omit-mode . t))))
+ '(safe-local-variable-values
+   (quote
+    ((eval ignore-errors "Write-contents-functions is a buffer-local alternative to before-save-hook"
+           (add-hook
+            (quote write-contents-functions)
+            (lambda nil
+              (delete-trailing-whitespace)
+              nil))
+           (require
+            (quote whitespace))
+           "Sometimes the mode needs to be toggled off and on."
+           (whitespace-mode 0)
+           (whitespace-mode 1))
+     (whitespace-line-column . 80)
+     (whitespace-style face trailing lines-tail)
+     (require-final-newline . t)
+     (ruby-compilation-executable . "ruby")
+     (ruby-compilation-executable . "ruby1.8")
+     (ruby-compilation-executable . "ruby1.9")
+     (ruby-compilation-executable . "rbx")
+     (ruby-compilation-executable . "jruby")
+     (dired-actual-switches . "-latS")
+     (dired-actual-switches . "-lat")
+     (dired-omit-mode . t))))
  '(save-abbrevs t)
  '(save-interprogram-paste-before-kill t)
  '(scroll-bar-mode (quote right))
