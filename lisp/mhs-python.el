@@ -20,12 +20,20 @@
 (require 'nose)
 (add-hook 'python-mode-hook
           (lambda ()
+            (hack-local-variables)
+            (venv-workon project-venv-name)
             (local-set-key "\C-ca" 'nosetests-all)
             (local-set-key "\C-cm" 'nosetests-module)
             (local-set-key "\C-c." 'nosetests-one)
             (local-set-key "\C-cpa" 'nosetests-pdb-all)
             (local-set-key "\C-cpm" 'nosetests-pdb-module)
             (local-set-key "\C-cp." 'nosetests-pdb-one)))
+
+
+;; the venv-workon above lets you use .dir-local.el files to control the virtual env and activate it...
+;; sample .dir-locals.el file for python
+;; ((nil . ((venv-location . "/home/savoie/projects/pyswath/.pyswath")))
+;;  (python-mode . ((project-venv-name . "local"))))
 
 ;; Use the Python force, my young padawan learner
 (add-hook 'python-mode-hook 'jedi:setup)
