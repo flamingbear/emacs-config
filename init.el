@@ -89,6 +89,6 @@ Normally this points to: $HOME/.emacs.d/")
 ;;(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
 
-
 ;; Work around for bug in macosx
-(cd (getenv "HOME"))
+(when running-macos
+  (cd (getenv "HOME")))
