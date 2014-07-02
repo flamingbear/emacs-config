@@ -116,10 +116,11 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
               (setq idlwave-shell-explicit-file-name "idl82")
               )) ;cornflowerblue
 
-      ;; Mary Jo's Machine.
-      ((string-match (system-name) "wuzzles.colorado.edu")
+      ;; Dev VM
+
+      ((string-match "^v.*\.dev\.int\.nsidc\.org" (system-name))
        (progn (setq my-menu-fg-color "#2f4f4f")   ;dark slate gray
-              (setq my-menu-bg-color "#c0ff3e"))) ;olivedrab1
+              (setq my-menu-bg-color "#6b8e23"))) ;
 
       ;; user archive.
       ((string-match (user-login-name) "archive")
