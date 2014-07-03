@@ -17,8 +17,10 @@ Normally this points to: $HOME/.emacs.d/")
 (setq emacs-top (file-name-as-directory emacs-top))
 (add-to-list 'load-path emacs-top)
 
-;; LOAD packages via the package.el (ELPA)
-(load "mhs-packages" t t)
+(require 'cask "/usr/local/Cellar/cask/0.7.0/cask.el")
+(cask-initialize)
+(require 'pallet)
+
 
 ;; ** Custom Settings that are updated via << M-x customize >> **
 (setq custom-file (concat emacs-top ".gnu-emacs-custom"))
