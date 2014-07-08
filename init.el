@@ -26,6 +26,14 @@ Normally this points to: $HOME/.emacs.d/")
 (setq custom-file (concat emacs-top ".gnu-emacs-custom"))
 (load custom-file t t)
 
+;; Private variables that don't get checked into revision control.
+(defvar mhs-private-dir (concat (file-name-as-directory emacs-top) "private"))
+(when (file-exists-p mhs-private-dir)
+  (add-to-list 'load-path mhs-private-dir)
+  (require 'mhs-private-vars))
+
+
+
 ;; Want backups in a separate directory under emacs-top
 (setq backup-directory-alist `(("." . ,(expand-file-name
                                         (concat (file-name-directory emacs-top) "backups")))))
@@ -50,6 +58,8 @@ Normally this points to: $HOME/.emacs.d/")
 (autoload 'skewer-start "setup-skewer" nil t)
 
 (projectile-global-mode)
+
+
 
 ;; add load paths to custom files, load special packages, load the
 ;; mhs-idlwave-extras file.
