@@ -261,18 +261,15 @@ $HOME/.emacs.d/lisp" )
 (try-require 'uniquify)
 
 ;; ------------------------------------------------------------
-;; I want template expansion!  use the auto-insert-tkld package
+;; auto-insert madness
 ;; ------------------------------------------------------------
-(when (try-require 'auto-insert-tkld)
-  (setq auto-insert-alist (cons '("\\.cpp$" . "C++") auto-insert-alist))
-  (add-to-list 'auto-insert-alist '("\\.pro$" . "idlwave"))
-  (add-to-list 'auto-insert-type-alist '("idlwave" . "idlwave-insert.pro"))
+(auto-insert-mode 1)
+(add-hook 'find-file-hook 'auto-insert)
+(setq auto-insert-directory (concat (file-name-as-directory emacs-top) "autoinsert/"))
+(add-to-list 'auto-insert-alist '("\\.cpp$" . "c++-insert.cc"))
+(add-to-list 'auto-insert-alist '("\\.pro$" . "idlwave-insert.pro"))
+(add-to-list 'auto-insert-alist '("\\.py$" . "python-insert.pl"))
 
-  (add-to-list 'auto-insert-alist '("\\.R$" . "ess-file"))
-  (add-to-list 'auto-insert-type-alist '("ess-file" . "ess-file.R"))
-
-  (add-to-list 'auto-insert-alist '("\\.py$" . "python-file"))
-  (add-to-list 'auto-insert-type-alist '("python-file" . "python-insert.py")))
 
 
 
