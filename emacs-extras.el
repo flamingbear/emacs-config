@@ -92,6 +92,9 @@ $EMACS_TOP/lisp" )
 ;; set pivotal-tracker api tolken (defunct)
 (try-require 'mhs-pivotal)
 
+;; Use pivotal plugin
+(try-require 'mhs-jira)
+
 ;; PYTHON
 (try-require 'mhs-python)
 
