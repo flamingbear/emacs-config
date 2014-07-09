@@ -9,11 +9,6 @@
 ;; Keywords:
 
 
-;;; Code:
-
-(defconst emacs-sketchy-extras-version (substring "$Revision: 19610 $" 11 -2)
-  "$Id: emacs-sketchy-extras.el 19610 2011-10-20 20:59:03Z savoie $
-Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 
 
 ;; See if you can run orgmode from this computer.
@@ -63,20 +58,20 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Use the gnus news reader
-(defvar mhs-bleeding-gnus (concat emacs-top "external-lisp-files/bleeding-gnus/lisp")
-  "Location of the git repository of gnus for testing")
-(if (file-accessible-directory-p mhs-bleeding-gnus)
-    (progn (add-to-list 'load-path mhs-bleeding-gnus 'nil)
-           (require 'gnus-load))
-  (try-require 'gnus))
+;; (defvar mhs-bleeding-gnus (concat emacs-top "external-lisp-files/bleeding-gnus/lisp")
+;;   "Location of the git repository of gnus for testing")
+;; (if (file-accessible-directory-p mhs-bleeding-gnus)
+;;     (progn (add-to-list 'load-path mhs-bleeding-gnus 'nil)
+;;            (require 'gnus-load))
+;;   (try-require 'gnus))
 
 
 ;; Proper gnus reader
-(if (try-require 'gnus-w3m)
-    (setq mm-text-html-renderer 'gnus-w3m)
-   (progn                                ;macosx mainly
-     (setq mm-text-html-renderer 'gnus-article-html)
-     (setq mm-inline-text-html-with-images 't) ))
+;; (if (try-require 'gnus-w3m)
+;;     (setq mm-text-html-renderer 'gnus-w3m)
+;;    (progn                                ;macosx mainly
+;;      (setq mm-text-html-renderer 'gnus-article-html)
+;;      (setq mm-inline-text-html-with-images 't) ))
 
 
 ;;; Chrome editing.

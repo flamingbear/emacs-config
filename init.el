@@ -1,8 +1,8 @@
 ;; This file is the default file that is loaded when emacs is started It
-;; should set up environment and then load additional packages as necessary
-;; -------------------------------------------------------------------------
+;; sets up the environment and loads additional packages as necessary
 
-;; Set the BASE of the emacs directory structure and add it to my load-path
+
+;; Set the BASE of the emacs configuration directory and add it to my load-path
 (defvar emacs-top (getenv "EMACS_HOME")
   "this is the top level directory where all of the emacs customizations will live under.
 I generally set the EMACS_HOME environmental variable before starting and this is picked up.
@@ -17,16 +17,18 @@ Normally this points to: $HOME/.emacs.d/")
 (setq emacs-top (file-name-as-directory emacs-top))
 (add-to-list 'load-path emacs-top)
 
+;; use cask/pallet to set up external packages from melpa
 (require 'cask "/usr/local/Cellar/cask/0.7.0/cask.el")
 (cask-initialize)
 (require 'pallet)
 
 
 ;; ** Custom Settings that are updated via << M-x customize >> **
+;; Generally Try to avoid putting things in here.
 (setq custom-file (concat emacs-top ".gnu-emacs-custom"))
 (load custom-file t t)
 
-;; Private variables that don't get checked into revision control.
+;; Private variables that don't get checked into revision control github-tokens etc.
 (defvar mhs-private-dir (concat (file-name-as-directory emacs-top) "private"))
 (when (file-exists-p mhs-private-dir)
   (add-to-list 'load-path mhs-private-dir)
@@ -96,9 +98,6 @@ Normally this points to: $HOME/.emacs.d/")
   (let ((inhibit-read-only t))
     (ansi-color-apply-on-region (point-min) (point-max))))
 (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
-
-
-;;(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
 
 ;; Work around for bug in macosx

@@ -1,6 +1,4 @@
-
-
-;; Check to see if we're running Darwin
+;; Check to see if we're running darwin (osx)
 (defvar running-macos
   (or (string-match "darwin" (prin1-to-string system-type))
       (memq (window-system) '(mac ns)))

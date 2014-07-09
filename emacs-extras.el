@@ -58,34 +58,24 @@
 ;; Better file and buffer searching.
 (require 'ido)
 
-;; (require 'grizzl)
-;; (projectile-global-mode)
-;; (setq projectile-enable-caching t)
-;; (setq projectile-completion-system 'grizzl)
-
-;; ;; I have no idea why this matches C-c C-/, but it does and that's what I was after
-;; (global-set-key (kbd "C-c C-_") 'projectile-find-file)
-;; (global-set-key (kbd "C-c C-b") 'projectile-switch-to-buffer)
-
 
 
 
 ;;----------------------------------------------------------------
-;; General Lisp directory
+;; Personal Lisp directory
 ;;----------------------------------------------------------------
-(defvar mhs-lisp-dir (expand-file-name (concat emacs-top '"lisp"))
-  "Directory for possible private *.el & *.elc files for customization when you
-cannot put them directly in /usr/local/share/emacs/site-lisp
+(defvar mhs-lisp-dir (expand-file-name (concat (file-name-as-directory emacs-top) "lisp"))
+  "Directory for possible private *.el & *.elc files for customization
 
 I choose for my custom files:
-$HOME/.emacs.d/lisp" )
+$EMACS_TOP/lisp" )
 (if (file-accessible-directory-p mhs-lisp-dir)
     (add-to-list 'load-path mhs-lisp-dir))
 
 
 
 ;; External lisp files
-(defvar mhs-external-lisp-dir  (expand-file-name (concat emacs-top '"external-lisp-files/"))
+(defvar mhs-external-lisp-dir  (expand-file-name (concat (file-name-as-directory emacs-top) "external-lisp-files/"))
   "Directory where lispy things I didn't write are put" )
 
 ;; Add all subdirectories of the external lisp dir to the load path.
@@ -99,7 +89,7 @@ $HOME/.emacs.d/lisp" )
 ;; Load this before ruby because we want the jds history search.
 (try-require 'emacs-idlwave-support)
 
-;; set pivotal-tracker api tolken
+;; set pivotal-tracker api tolken (defunct)
 (try-require 'mhs-pivotal)
 
 ;; PYTHON
@@ -139,8 +129,6 @@ $HOME/.emacs.d/lisp" )
 (when (try-require 'anything)
   (try-require 'perl-completion))
 
-(try-require 'mhs-smarttabs)
-
 
 ;; Load the BBDB if it's around.
 (try-require 'mhs-bbdb)
@@ -152,22 +140,11 @@ $HOME/.emacs.d/lisp" )
 ;; For orgmode and others start emacsclient
 (server-start)
 
-
-;; more  requires
-(try-require 'force-space)
-
 ;; Do binary diff in hexl-mode if files are binary format
 (try-require 'binary-diff)
 
 ;; jump-to and set workspaces.
 (try-require 'mhs-workspace)
-
-;; NCL mode
-(when (try-require 'ncl)
-  (add-to-list 'auto-mode-alist '("\\.ncl$" . ncl-mode)))
-
-
-
 
 
 ;;--------------------------------------------------------------------------
@@ -216,9 +193,6 @@ $HOME/.emacs.d/lisp" )
 (setq-default fill-column 77) ; Change it locally with [C-x f]
 
 
-
-;;(add-hook 'text-mode-hook 'turn-on-auto-fill)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Makefile mode stuff
 ;;  you can comment this out if you don't like the "features" of this mode by
@@ -245,20 +219,11 @@ $HOME/.emacs.d/lisp" )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; set up some print commands
-(setq lpr-command "/usr/bin/lpr -Psnowprint -h")
+(setq lpr-command "/usr/bin/lpr -PHP4700 -h")
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;  Set up html-helper-mode and font for it.
-;; need the files html-helper-mode.el and tempo.el in your load-path
-;; 2011-09-18: <mhs>  Taking this out, but the .el is in maybe-not-used</mhs>
-;; (require 'html-helper-mode)
-;; (add-to-list 'auto-mode-alist '("\\.asp" . html-helper-mode))
-;; (add-to-list 'auto-mode-alist '("\\.html" . html-helper-mode))
-;; (add-to-list 'auto-mode-alist '("\\.htm" . html-helper-mode))
-;(add-to-list 'auto-mode-alist '("\\.xml" . html-helper-mode))
 
 ;; unique buffer names
-(try-require 'uniquify)
+(require 'uniquify)
 
 ;; ------------------------------------------------------------
 ;; auto-insert madness
@@ -269,9 +234,6 @@ $HOME/.emacs.d/lisp" )
 (add-to-list 'auto-insert-alist '("\\.cpp$" . "c++-insert.cc"))
 (add-to-list 'auto-insert-alist '("\\.pro$" . "idlwave-insert.pro"))
 (add-to-list 'auto-insert-alist '("\\.py$" . "python-insert.pl"))
-
-
-
 
 
 ;; Allows you to separate out the parens and see them for what they are, and
@@ -303,10 +265,6 @@ $HOME/.emacs.d/lisp" )
 (try-require 'mhs-cmode)
 (try-require 'mhs-comment)
 
-;; preprocessor movement.
-(try-require 'if-jump)
-
-
 
 ;; Handle multiple locations for aspell.
 (defvar ispell-program-name)
@@ -332,26 +290,9 @@ $HOME/.emacs.d/lisp" )
             (list "\\.odg\\'" "ooffice")
             (list "\\.ods\\'" "ooffice")
             (list "\\.pdf\\'" "acroread") ))
-;;             ;; possibly more rules ...
-;;               (list "\\.bar\'";; rule with condition test
-;;                     '(if condition
-;;                           "BAR-COMMAND-1"
-;;                         "BAR-COMMAND-2"))))
 
 ;; Set registers to things that I type zillions of times.
 ;; ------------------------------------------------------
-
-(set-register
- (string-to-char "w")
- "while 1 do wdelete")
-
-(set-register
- (string-to-char "u")
- ";;----------------------------------------------------------------------\n")
-
-(set-register
- (string-to-char "f")
- "fprintf(stdout, \"\\n\");")
 
 (set-register
  (string-to-char "p")

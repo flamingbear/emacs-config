@@ -22,7 +22,7 @@
 ;;;
 
 ;(define-key mhs-map "g"                             'gnus-no-server)
-(define-key mhs-map " "                            'mhs-region-word)
+;(define-key mhs-map " "                            ')
 ;(define-key mhs-map [(f8)]                      'delete-blank-lines)
 
 (define-key mhs-map [(f8)]                         'copy-to-register)
