@@ -50,6 +50,7 @@
 (depends-on "magit")
 (depends-on "mark-multiple")
 (depends-on "markdown-mode")
+(depends-on "matlab-mode")
 (depends-on "multi-term")
 (depends-on "multiple-cursors")
 (depends-on "noflet")
