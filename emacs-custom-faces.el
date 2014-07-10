@@ -21,7 +21,6 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 
 (setq custom-theme-directory (concat emacs-top "themes"))
 (add-to-list 'custom-theme-load-path custom-theme-directory)
-(load-theme 'savoie t)
 
 (when (display-graphic-p)
   (progn
@@ -83,8 +82,7 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
   (cond (use-inconsolata (mhs-use-inconsolata))
         (running-macos (progn (mhs-use-inconsolata)
                               (set-face-attribute 'default nil :height 195)))
-        (t (mhs-use-normal-face)))
-  )
+        (t (mhs-use-normal-face))))
 
 ;; This was the stuff below in my .gnu-emacs-custom but I've updated to use
 ;; different fonts for NX and whatnots.:
@@ -99,6 +97,9 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
     (setq build "unknown"))
 
 
+;;-------------------------------------------------------------------
+;; Customize the modeline and menu colors based on your environment.
+;;-------------------------------------------------------------------
 (cond ((string-match (user-login-name) "nrtsig")
        (progn
          (cond ((or (string-match build  "F17_prod") (string-match build  "production"))
@@ -294,7 +295,10 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
  (set-face-background 'menu my-menu-bg-color))
 
 
+;; We can choose different themes if you don't have full colors (like in terminal)
+(if (<= (display-color-cells) 256)
+    (load-theme 'ample t)
+  (load-theme 'ample t))
+
 (mhs-update-mode-line)
-
-
 ;;; .EMACS-CUSTOM-FACES ends here
