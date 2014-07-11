@@ -64,6 +64,8 @@
     ("Subject" ".*\\[Prod_changes\\].*" "maild/jira-production")
     ("Subject" ".*\\[Asina\\].*" "maild/asina")
     ("Subject" ".*Esip-documentation.*" "maild/esip-documentation")
+    ("Subject" ".*Esip-sciencesoftware.*" "maild/esip-documentation")
+    ("Subject" ".*ESIP Update.*" "maild/esip-documentation")
     ("Subject" "NISE.*" "maild/nsidc-notices")
     ("Subject" ".*Software Release Announcements.*" "maild/jira-production")
     (from "www@nsidc.org" "maild/nsidc-notices")

@@ -30,39 +30,9 @@
   (set-default-font
    "-Misc-Fixed-Medium-R-Normal--20-200-75-75-C-100-ISO8859-1" nil))
 
-
-(defun mhs-light-faces ()
-  (interactive)
-  (set-face-foreground 'default "black")
-  (set-face-background 'default "white"))
-
-(defun mhs-display-faces ()
-  (interactive)
-  (set-face-foreground 'default "white")
-  (set-face-background 'default "black"))
-
-;; (defun indent-or-expand (arg)
-;;   "Either indent according to mode, or expand the word preceding
-;; point."
-;;   (interactive "*P")
-;;   (if (and
-;;        (or (bobp) (= ?w (char-syntax (char-before))))
-;;        (or (eobp) (not (= ?w (char-syntax (char-after))))))
-;;       (dabbrev-expand arg)
-;;     (indent-according-to-mode)))
-
-;; (defun my-tab-fix ()
-;;   (local-set-key [tab] 'indent-or-expand))
-
-;; (add-hook 'c-mode-hook          'my-tab-fix)
-;; (add-hook 'sh-mode-hook         'my-tab-fix)
-;; (add-hook 'emacs-lisp-mode-hook 'my-tab-fix)
-;; (add-hook 'idlwave-mode-hook    'my-tab-fix)
-
 (defun mhs-insert-todo ()
   (interactive)
   (insert (concat "TODO [MHS, " (format-time-string "%Y-%m-%d") "] ")))
-
 
 (defun mhs-insert-date ()
   (interactive)
@@ -88,8 +58,6 @@
   "* Fires up firefox on the filename currently stored in register a"
   (interactive)
   (browse-url (get-register ?a) 't))
-
-
 
 (defun mhs-insert-filename ()
   "*creates a filename from register d and register f for dir and file"
@@ -124,20 +92,11 @@
   (interactive)
   (mhs-dblstuff (string-to-char "]")))
 
-
 (defun mhs-squote-region ()
   "*places single quotes around the current region"
   (interactive)
   (mhs-dblstuff (string-to-char "'")))
 
-(defun mhs-region-word () "\
-  Sets region around current word"
-  (interactive)
-  (forward-word -1)
-  (push-mark nil t t)
-  (forward-word 1)
-  (copy-to-register ?q (region-beginning) (region-end) nil)
-  )
 
 (defun mhs-kill-current () "\
   Kills the current buffer if it has not been modified."
@@ -151,27 +110,6 @@
   (interactive "r")
   (let ((x-select-enable-clipboard t))
     (copy-region-as-kill beg end)))
-
-
-
-(defun mhs-mycolors ()
-  (interactive)
-  (set-background-color "grey90")
-
-  ;; for sand
-  (set-face-background 'modeline "#ea00be009300")
-  (set-face-foreground 'modeline "black") )
-
-
-;; (defadvice x-create-frame-with-faces
-;;   (after mhs-modeline-update activate)
-;;   "Updates the Modeline automagically when you create a new frame."
-;;   (mhs-mycolors))
-
-
-(defun mhs-bbdb-bury-buffer ()
-  (cond ((get-buffer "*BBDB*")
-	 (bury-buffer "*BBDB*"))))
 
 
 
@@ -517,6 +455,12 @@ following the prefix character"
       (delete-region beg end)
       (goto-char beg)
       (insert c))))
+
+
+(defun json-format ()
+  (interactive)
+  (save-excursion
+    (shell-command-on-region (mark) (point) "python -m json.tool" (buffer-name) t)))
 
 
 

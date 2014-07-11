@@ -28,3 +28,6 @@ emacs-w3m*
 /projectile-bookmarks.eld
 /projectile.cache
 /.projectile
+/.cask/
+/.python-environments/
+/lisp/.tern-port

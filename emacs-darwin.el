@@ -7,11 +7,7 @@
 
 ;;; Code:
 
-(defconst emacs-darwin-version (substring "$Revision: 19643 $" 11 -2)
-  "$Id: emacs-darwin.el 19643 2011-10-29 21:07:05Z savoie $
-Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 
-;; from exec-path-from-shell
 
 (require 'exec-path-from-shell)
 ;; TODO [MHS, 2012-10-26] Here's where I'm getting my /usr/bin/python back

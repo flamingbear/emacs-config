@@ -12,22 +12,13 @@
 (global-set-key [\C-end]         'end-of-buffer)
 
 
-(defun mhs-scroll-right-slowly()
-  (interactive)
-  (scroll-right '4))
-
-(defun mhs-scroll-left-slowly()
-  (interactive)
-  (scroll-left '4))
 
 
 (global-set-key [f1]          'mhs-insert-filename); F1
 (global-set-key [f2]                       'shell); F2
 (global-set-key [f3]                     'speedbar); F3
-(global-set-key [s-f2]               'scroll-right); Windows-F2
-(global-set-key [s-f3]                'scroll-left); Windows-F3
-(global-set-key [f4]      'mhs-scroll-right-slowly); F4
-(global-set-key [f5]       'mhs-scroll-left-slowly); F5
+;(global-set-key [f4]      '); F4
+;(global-set-key [f5]       '); F5
 
 
 (global-set-key [f6]              'gud-break) ; F7
@@ -38,7 +29,9 @@
 
 ;; My Mapping Stuff, this is a prefix key that allows me access to more
 ;; functions.  These are defined in ~/lisp/mhs-map.el
-(global-set-key [f7]              'mhs-map) ; F7
+
+;; let's break this habit
+;; (global-set-key [f7]              ') ; F7
 (global-set-key [f8]              'mhs-map) ; F7
 
 ;; This is so that I can get used to copy-paste in eclipse with mulgaSoft emacs+
@@ -47,20 +40,10 @@
 
 
 
-;(global-set-key [f8]              'force-space) ; F8
 (global-set-key [f9]              'gud-step) ; F9
 (global-set-key [f10]             'gud-refresh) ; F10
 (global-set-key [f11]             'gud-print) ; Stop
 (global-set-key [f12]             'repeat-complex-command) ; F12
-
-;; These are pretty hard to reach function keys
-(global-set-key [f13]             'other-frame) ; props
-(global-set-key [f20]             'split-window-vertically) ; cut
-(global-set-key [f18]             'delete-other-windows) ; paste
-(global-set-key [f19]             'switch-to-buffer) ; find
-
-;; save your fingers again
-(global-set-key [f16] 'execute-extended-command)   ;Copy
 
 
 ;; Don't like zap to character.
@@ -104,7 +87,6 @@
 ;; Font size
 (define-key global-map (kbd "C-+") 'text-scale-increase)
 (define-key global-map (kbd "C--") 'text-scale-decrease)
-
 
 
 ;; Stuff from EmacsRocks guy Magnars.

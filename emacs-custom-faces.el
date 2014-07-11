@@ -21,7 +21,6 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 
 (setq custom-theme-directory (concat emacs-top "themes"))
 (add-to-list 'custom-theme-load-path custom-theme-directory)
-(load-theme 'savoie t)
 
 (when (display-graphic-p)
   (progn
@@ -83,8 +82,7 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
   (cond (use-inconsolata (mhs-use-inconsolata))
         (running-macos (progn (mhs-use-inconsolata)
                               (set-face-attribute 'default nil :height 195)))
-        (t (mhs-use-normal-face)))
-  )
+        (t (mhs-use-normal-face))))
 
 ;; This was the stuff below in my .gnu-emacs-custom but I've updated to use
 ;; different fonts for NX and whatnots.:
@@ -99,6 +97,9 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
     (setq build "unknown"))
 
 
+;;-------------------------------------------------------------------
+;; Customize the modeline and menu colors based on your environment.
+;;-------------------------------------------------------------------
 (cond ((string-match (user-login-name) "nrtsig")
        (progn
          (cond ((or (string-match build  "F17_prod") (string-match build  "production"))
@@ -116,10 +117,11 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
               (setq idlwave-shell-explicit-file-name "idl82")
               )) ;cornflowerblue
 
-      ;; Mary Jo's Machine.
-      ((string-match (system-name) "wuzzles.colorado.edu")
+      ;; Dev VM
+
+      ((string-match "^v.*\.dev\.int\.nsidc\.org" (system-name))
        (progn (setq my-menu-fg-color "#2f4f4f")   ;dark slate gray
-              (setq my-menu-bg-color "#c0ff3e"))) ;olivedrab1
+              (setq my-menu-bg-color "#6b8e23"))) ;
 
       ;; user archive.
       ((string-match (user-login-name) "archive")
@@ -281,12 +283,22 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
                 (setq my-menu-bg-color "#6b8e23"))))
 
 
-;; Set both mode and menu rather than inheriting
-(set-face-foreground 'mode-line my-menu-fg-color)
-(set-face-background 'mode-line my-menu-bg-color)
 
-(set-face-foreground 'menu my-menu-fg-color)
-(set-face-background 'menu my-menu-bg-color)
+(defun mhs-update-mode-line ()
+ "set the mode and menu bar colors according to customizations"
+ (interactive)
+ ;; Set both mode and menu rather than inheriting
+ (set-face-foreground 'mode-line my-menu-fg-color)
+ (set-face-background 'mode-line my-menu-bg-color)
+
+ (set-face-foreground 'menu my-menu-fg-color)
+ (set-face-background 'menu my-menu-bg-color))
 
 
+;; We can choose different themes if you don't have full colors (like in terminal)
+(if (<= (display-color-cells) 256)
+    (load-theme 'ample t)
+  (load-theme 'ample t))
+
+(mhs-update-mode-line)
 ;;; .EMACS-CUSTOM-FACES ends here
