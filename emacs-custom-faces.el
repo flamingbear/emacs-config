@@ -297,8 +297,8 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 
 ;; We can choose different themes if you don't have full colors (like in terminal)
 (if (<= (display-color-cells) 256)
-    (load-theme 'ample t)
-  (load-theme 'ample t))
+    (load-theme 'flatland t)
+  (load-theme 'flatland t))
 
 (mhs-update-mode-line)
 ;;; .EMACS-CUSTOM-FACES ends here

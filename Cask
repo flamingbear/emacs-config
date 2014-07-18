@@ -30,6 +30,7 @@
 (depends-on "fakir")
 (depends-on "feature-mode")
 (depends-on "findr")
+(depends-on "flatland-theme")
 (depends-on "flx")
 (depends-on "flx-ido")
 (depends-on "flycheck")

@@ -21,7 +21,8 @@
 (add-hook 'python-mode-hook
           (lambda ()
             (hack-local-variables)
-            (venv-workon project-venv-name)
+            (when (boundp 'project-venv-name)
+              (venv-workon project-venv-name))
             (local-set-key "\C-ca" 'nosetests-all)
             (local-set-key "\C-cm" 'nosetests-module)
             (local-set-key "\C-c." 'nosetests-one)
