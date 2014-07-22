@@ -146,3 +146,9 @@
 ;; switch C-h a from command-apropos to apropos This is so you have every
 ;; option that matches your string when you call it.
 (define-key help-map "a" 'apropos)
+
+
+;; Projectile moved my cheese!
+(eval-after-load "projectile"
+  '(progn
+     (define-key projectile-command-map (kbd "g") 'projectile-grep)))
