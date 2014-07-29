@@ -41,6 +41,7 @@
 (depends-on "git-gutter")
 (depends-on "git-gutter-fringe")
 (depends-on "git-rebase-mode")
+(depends-on "git-timemachine")
 (depends-on "inf-ruby")
 (depends-on "inflections")
 (depends-on "jedi")
