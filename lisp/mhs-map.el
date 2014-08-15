@@ -17,6 +17,7 @@
 
 (define-prefix-command 'mhs-searchmap)
 (define-prefix-command 'mhs-workspace-map)
+
 ;;;
 ;;; mhs-map key definitions
 ;;;
@@ -41,7 +42,10 @@
 (define-key mhs-map "e"                                   'mhs-ediff)
 (define-key mhs-map "f"                           'mhs-save-filename)
 (define-key mhs-map "i"                               'idlwave-shell)
-(define-key mhs-map "j"                     'mhs-insert-jshint-lines)
+
+;; reserved:
+;; (define-key mhs-map "j" 'mhs-jira)
+
 (define-key mhs-map "k"                         'mhs-setdefaultvalue)
 (define-key mhs-map "l"                                  'mhs-lineup)
 (define-key mhs-map "m"                             'gnus-group-mail)
@@ -70,6 +74,7 @@
 (define-key mhs-workspace-map "t" 'acadis-top)
 (define-key mhs-workspace-map "a" 'acadis-jump-to-spec-or-code)
 (define-key mhs-workspace-map "A" 'acadis-split-window-and-show-match)
+
 
 (define-key mhs-workspace-map "w" 'mhs-workspace-action)
 
