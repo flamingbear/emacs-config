@@ -24,8 +24,56 @@
 
 ;;; Code:
 
-(try-require 'jira)
-(setq jira-url "https://nsidc.org/jira/rpc/xmlrpc")
+(defvar mhs-jira--current-ticket-number "RO-xx"
+  "The current ticket number that is clocked in.")
+
+(defvar mhs-jira--url-base "https://nsidc.org/jira/browse/")
+
+(defun mhs-jira--set-ticket-number ()
+  "Set the ticket number to the current region, or prompt the user for input."
+  (interactive)
+  (setq mhs-jira--current-ticket-number
+        (upcase
+         (if (use-region-p)
+             (buffer-substring-no-properties (region-beginning) (region-end))
+           (read-from-minibuffer "Enter ticket number: " "RO-")))))
+
+(defun mhs-jira--ticket-number ()
+  "Return just the base of the ticket number.
+RO-XX."
+  (interactive)
+  mhs-jira--current-ticket-number)
+
+(defun mhs-jira--ticket-uri ()
+  "Return the URI to the current ticket."
+  (interactive)
+  (concat mhs-jira--url-base mhs-jira--current-ticket-number))
+
+(defun mhs-jira--insert-org-ticket-link ()
+  "Insert an orgmode style link to the current ticket.
+
+   [[https://nsidc.org/jira/browse/RO-xx][RO-xx]]"
+  (interactive)
+  (insert (concat "[[" (mhs-jira--ticket-uri) "][" (mhs-jira--ticket-number) "]]")))
+
+(defun mhs-jira--browse-current-ticket ()
+  "Open a browse to the current ticket."
+  (interactive)
+  (browse-url (mhs-jira--ticket-uri)))
+
+(defun mhs-jira--org-find-current-ticket ()
+  "Look through the org files searching for a task matching the current ticket number."
+  (interactive)
+  ;; todo
+  )
+
+
+
+
+
+
+
+
 
 (provide 'mhs-jira)
 ;;; mhs-jira.el ends here
