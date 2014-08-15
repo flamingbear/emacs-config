@@ -23,7 +23,6 @@
 ;; just sets a couple of values
 
 ;;; Code:
-(require 'mhs-map)
 
 (defvar mhs-jira--current-ticket-number "RO-xx"
   "The current ticket number that is clocked in.")
@@ -69,7 +68,7 @@
 
 
 ;; Default keybindings
-
+(require 'mhs-map)
 (defvar mhs-jira-map (make-keymap)
   "Make a keymap for jira commands.")
 
