@@ -63,7 +63,6 @@
 (depends-on "inf-ruby")
 (depends-on "inflections")
 (depends-on "jedi")
-(depends-on "jira")
 (depends-on "js2-mode")
 (depends-on "js2-mode")
 (depends-on "js2-refactor")
