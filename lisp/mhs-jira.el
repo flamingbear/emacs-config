@@ -67,18 +67,20 @@
   )
 
 
-;; Default keybindings
-(require 'mhs-map)
-(defvar mhs-jira-map (make-keymap)
-  "Make a keymap for jira commands.")
+;; ;; Default keybindings
+(when (try-require 'mhs-map)
 
-(define-prefix-command 'mhs-jira-map)
-(define-key mhs-map "j" 'mhs-jira-map)
+  (defvar mhs-jira-map (make-keymap)
+    "Make a keymap for jira commands.")
 
-(define-key mhs-jira-map "s" 'mhs-jira--set-ticket-number)
-(define-key mhs-jira-map "t" 'mhs-jira--insert-ticket-number)
-(define-key mhs-jira-map "o" 'mhs-jira--insert-org-ticket-link)
-(define-key mhs-jira-map "b" 'mhs-jira--browse-current-ticket)
+  (define-prefix-command 'mhs-jira-map)
+
+  (define-key mhs-map "j" 'mhs-jira-map)
+
+  (define-key mhs-jira-map "s" 'mhs-jira--set-ticket-number)
+  (define-key mhs-jira-map "t" 'mhs-jira--insert-ticket-number)
+  (define-key mhs-jira-map "o" 'mhs-jira--insert-org-ticket-link)
+  (define-key mhs-jira-map "b" 'mhs-jira--browse-current-ticket))
 
 
 

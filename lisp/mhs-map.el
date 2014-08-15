@@ -14,7 +14,7 @@
 (defvar mhs-workspace-map (make-keymap)
   "make a keymap for different coding options")
 
-
+(define-prefix-command 'mhs-map)
 (define-prefix-command 'mhs-searchmap)
 (define-prefix-command 'mhs-workspace-map)
 

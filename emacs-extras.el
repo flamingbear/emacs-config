@@ -252,7 +252,6 @@ $EMACS_TOP/lisp" )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; require the gnus stuff that I wrote...
-(define-prefix-command 'mhs-map)
 (try-require 'mhs-map)
 (try-require 'mhs-extends)
 (try-require 'mhs-perl)
