@@ -69,6 +69,7 @@
     ("Subject" "NISE.*" "maild/nsidc-notices")
     ("Subject" ".*Software Release Announcements.*" "maild/jira-production")
     ("Subject" ".*\\[JIRA\\].*" "maild/jira-tickets")
+    ("subject" ".*\\[Server Status.*" "maild/nsidc-notices")
     (from "www@nsidc.org" "maild/nsidc-notices")
     (from "Pivotal Tracker" "maild/nsidc-notices")
     (from "scm\@scm\.nsidc\.org" "maild/nsidc-notices")
@@ -97,7 +98,6 @@
     (to ".*opensearch@googlegroups.com.*" "maild/opensearch-mail")
     (any ".*esip-federatedsearch.*" "maild/esip-mail")
     ("subject" "Minutes and Questions" "maild/nsidc-notices")
-    ("subject" "\\[Server Status" "maild/nsidc-notices")
     ("subject" "General News & Discussion" "maild/nsidc-notices")
     (from "nofluffjuststuff" "maild/nsidc-notices")
     (from "ucereport@mxlogic.com" "maild/nsidc-notices")
@@ -231,4 +231,4 @@
               (t 200))))
 
 ;; Set the groups that are auto-expirable.
-(setq gnus-auto-expirable-newsgroups "\\(.*lists\\|.*list\\|.*nsidc-notices\\|.*jira-production\\|.*confluence\\|.*exchange:INBOX\\)")
+(setq gnus-auto-expirable-newsgroups "\\(.*lists\\|.*jira.*\\|.*list\\|.*nsidc-notices\\|.*confluence\\|.*exchange:INBOX\\)")
