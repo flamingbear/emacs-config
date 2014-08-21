@@ -217,8 +217,6 @@ $EMACS_TOP/lisp" )
 
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
-;; show time in mode line
-(display-time)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; set up some print commands
