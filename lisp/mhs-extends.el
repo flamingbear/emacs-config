@@ -108,9 +108,7 @@
 (defun clipboard-copy-region (beg end)
   "copy the region, and save it in the X clipboard."
   (interactive "r")
-  (let ((x-select-enable-clipboard t))
-    (copy-region-as-kill beg end)))
-
+  (clipboard-kill-ring-save beg end))
 
 
 (defun mhs-lineup ()
