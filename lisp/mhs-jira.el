@@ -67,7 +67,7 @@
   )
 
 
-;; ;; Default keybindings
+;; Default keybindings
 (when (try-require 'mhs-map)
 
   (defvar mhs-jira-map (make-keymap)
