@@ -38,6 +38,8 @@
 (global-set-key (kbd "C-x x") 'copy-to-register)
 (global-set-key (kbd "C-x g") 'insert-register)
 
+;; This adds the function of being able to paste into other windows.
+(global-set-key (kbd "M-w") 'clipboard-kill-ring-save)
 
 
 (global-set-key [f9]              'gud-step) ; F9
