@@ -43,11 +43,7 @@ Normally this points to: $HOME/.emacs.d/")
 
 ;; Extra Dired commands
 (add-hook 'dired-load-hook
-          (function (lambda ()
-                      (load "dired-x")
-                      ;; Set global variables here.  For example:
-                      ;; (setq dired-guess-shell-gnutar "gtar")
-                      )))
+          (function (lambda () (load "dired-x"))))
 
 ;; couple of tweaks for browsers and handling emacs on mac osx
 (load "mhs-environment" t t)
@@ -59,6 +55,7 @@ Normally this points to: $HOME/.emacs.d/")
 
 (autoload 'skewer-start "setup-skewer" nil t)
 
+;; Projectile is the BOMB!
 (projectile-global-mode)
 
 
