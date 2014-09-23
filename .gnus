@@ -58,7 +58,8 @@
 
 (defvar my-split-methods
   '(|
-    (to ".*savoie@kryos.colorado.edu.*" "spam")
+    (any ".*savoie@kryos.colorado.edu.*" "spam")
+    ("Delivered-To" "savoie@kryos.colorado.edu" "spam")
     ("Subject" ".*\\[confluence\\].*" "maild/confluence")
     ("Subject" ".*\\[Bamboo\\].*" "maild/nsidc-notices")
     ("Subject" ".*\\[Prod_changes\\].*" "maild/jira-production")
