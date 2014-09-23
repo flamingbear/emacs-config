@@ -18,6 +18,10 @@
   (exec-path-from-shell-copy-env "VIRTUAL_ENV")
   (exec-path-from-shell-initialize))
 
+;; This re-fixes bad cut/paste in osx for emacs 23.3
+;; "Quit: "empty or unsupported pasteboard type""
+(setq save-interprogram-paste-before-kill nil)
+
 ;; magit bug with using /usr/bin/emacsclient
 (eval-after-load 'magit
   '(set-variable 'magit-emacsclient-executable (getenv "GIT_EDITOR")))

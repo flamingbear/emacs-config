@@ -18,7 +18,7 @@ Normally this points to: $HOME/.emacs.d/")
 (add-to-list 'load-path emacs-top)
 
 ;; use cask/pallet to set up external packages from melpa
-(require 'cask "/usr/local/Cellar/cask/0.7.0/cask.el")
+(require 'cask (expand-file-name "~/.cask/cask.el"))
 (cask-initialize)
 (require 'pallet)
 
