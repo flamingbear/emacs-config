@@ -428,7 +428,7 @@ following the prefix character"
 (defun underscore-previous-camel (&optional beg end)
   "unCamelize the previous camelCased string.
     If transient-mark-mode is active and a region is activated,
-    camelize the region."
+    snakify the region."
   (interactive "r")
   (unless (and (boundp 'transient-mark-mode) transient-mark-mode mark-active)
     (setq end (point)
