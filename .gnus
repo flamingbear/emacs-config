@@ -62,6 +62,7 @@
     ("Delivered-To" "savoie@kryos.colorado.edu" "spam")
     ("Subject" ".*\\[confluence\\].*" "maild/confluence")
     ("Subject" ".*\\[Bamboo\\].*" "maild/nsidc-notices")
+    ("Subject" ".*\\[gdal-dev\\].*" "maild/lists")
     ("Subject" ".*\\[Prod_changes\\].*" "maild/jira-production")
     ("Subject" ".*\\[Asina\\].*" "maild/asina")
     ("Subject" ".*Esip-documentation.*" "maild/esip-documentation")
