@@ -45,6 +45,10 @@ Normally this points to: $HOME/.emacs.d/")
 (add-hook 'dired-load-hook
           (function (lambda () (load "dired-x"))))
 
+(setq dired-guess-shell-alist-user
+      '(("\\.tif\\'" "display")))
+
+
 ;; couple of tweaks for browsers and handling emacs on mac osx
 (load "mhs-environment" t t)
 
