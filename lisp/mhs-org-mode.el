@@ -51,7 +51,7 @@
 (define-key global-map "\C-ca" 'org-agenda)
 (define-key global-map "\C-cb" 'org-iswitchb)
 
-(org-remember-insinuate)
+;; (org-remember-insinuate) 2014-10-30 MHS - Nuking for 24.4?
 (setq org-directory "~/Dropbox/orgs")
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 
