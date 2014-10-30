@@ -1,5 +1,5 @@
 ;; Check to see if we're running darwin (osx)
-(defvar running-macos
+(defconst running-macos
   (or (string-match "darwin" (prin1-to-string system-type))
       (memq (window-system) '(mac ns)))
   "Boolean to determine if we are running on a macintosh laptop" )

@@ -15,7 +15,7 @@ Normally this points to: $HOME/.emacs.d/")
   (setq emacs-top (shell-command-to-string "source $HOME/.profile && printf $EMACS_HOME")))
 
 (setq emacs-top (file-name-as-directory emacs-top))
-(add-to-list 'load-path emacs-top)
+;;(add-to-list 'load-path emacs-top)
 
 ;; use cask/pallet to set up external packages from melpa
 (require 'cask (expand-file-name "~/.cask/cask.el"))
@@ -50,7 +50,7 @@ Normally this points to: $HOME/.emacs.d/")
 
 
 ;; couple of tweaks for browsers and handling emacs on mac osx
-(load "mhs-environment" t t)
+(load (concat emacs-top "mhs-environment"))
 
 (when running-macos
   (if (file-readable-p (concat emacs-top '"emacs-darwin.el"))

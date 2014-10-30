@@ -4,7 +4,6 @@
 
 ;; Override having to type Yes or No with just Y or N
 (fset 'yes-or-no-p 'y-or-n-p)
-(set-scroll-bar-mode 'nil)
 (put 'scroll-left 'disabled nil)
 (put 'eval-expression 'disabled nil)
 (put 'upcase-region 'disabled nil)
