@@ -7,7 +7,8 @@
  '(Info-additional-directory-list (quote ("~savoie/local/info/")))
  '(abbrev-file-name "~savoie/.abbrev_defs")
  '(abbrev-mode t t)
- '(ansi-color-names-vector ["#26292c" "#ff4a52" "#40b83e" "#f6f080" "#afc4db" "#dc8cc3" "#93e0e3" "#f8f8f8"])
+ '(ansi-color-names-vector
+   ["#26292c" "#ff4a52" "#40b83e" "#f6f080" "#afc4db" "#dc8cc3" "#93e0e3" "#f8f8f8"])
  '(auto-compression-mode t nil (jka-compr))
  '(auto-insert-path (quote ("~savoie/.emacs.d/autoinsert/insert/")) t)
  '(bbdb-use-pop-up nil)
@@ -32,7 +33,9 @@
  '(cperl-noscan-files-regexp "/\\(\\.\\.?\\|SCCS\\|RCS\\|CVS\\|blib\\)$")
  '(cperl-under-as-char nil)
  '(ctypes-file-name "~savoie/.ctypes" t)
- '(custom-safe-themes (quote ("7fbb8d064286706fb1e319c9d3c0a8eafc2efe6b19380aae9734c228b05350ae" "86f4407f65d848ccdbbbf7384de75ba320d26ccecd719d50239f2c36bec18628" "60f04e478dedc16397353fb9f33f0d895ea3dab4f581307fbf0aa2f07e658a40" "4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" "d8a4e35ee1b219ccb8a8c15cdfed687fcc9d467c9c8b9b93bd25229b026e4703" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "f273b5dd467ea352d69a2452e5d67108c0f2f26cb30880265fd0947d402833da" "6a741b4c066a3abed2d179d5b872c30d1be9a8b11d633cf1122d0dffbac5d102" "276e8d576ca7ec46cc45542cbd415dba4ab7802c31c80ebd5f1eca0b0e7371fc" "5b4538ea0ff39a873f22a1e6120305b5f3614febfc73b454375ea2c4d9baf113" "b8df5e4e6ec75196245615aeeb788f47fffc0f720ebb77454ebba916e8e96d30" "fbe191ce2f35027b23d58098a84bc2ba1e6bab77b7bc0feb744f817b684c2119" default)))
+ '(custom-safe-themes
+   (quote
+    ("7fbb8d064286706fb1e319c9d3c0a8eafc2efe6b19380aae9734c228b05350ae" "86f4407f65d848ccdbbbf7384de75ba320d26ccecd719d50239f2c36bec18628" "60f04e478dedc16397353fb9f33f0d895ea3dab4f581307fbf0aa2f07e658a40" "4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" "d8a4e35ee1b219ccb8a8c15cdfed687fcc9d467c9c8b9b93bd25229b026e4703" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "f273b5dd467ea352d69a2452e5d67108c0f2f26cb30880265fd0947d402833da" "6a741b4c066a3abed2d179d5b872c30d1be9a8b11d633cf1122d0dffbac5d102" "276e8d576ca7ec46cc45542cbd415dba4ab7802c31c80ebd5f1eca0b0e7371fc" "5b4538ea0ff39a873f22a1e6120305b5f3614febfc73b454375ea2c4d9baf113" "b8df5e4e6ec75196245615aeeb788f47fffc0f720ebb77454ebba916e8e96d30" "fbe191ce2f35027b23d58098a84bc2ba1e6bab77b7bc0feb744f817b684c2119" default)))
  '(custom-unlispify-menu-entries nil)
  '(custom-unlispify-tag-names nil)
  '(dabbrev-case-fold-search nil)
@@ -61,7 +64,12 @@
  '(gnus-select-method (quote (nntp "nntp.aioe.org")))
  '(gnus-spam-autodetect (quote (("mail-200" t))))
  '(gnus-spam-process-destinations (quote (("mail" "nnml+private:spam"))))
- '(gnus-spam-process-newsgroups (quote (("mail" ((spam spam-use-bogofilter) (spam spam-use-blacklist) (ham spam-use-whitelist))))))
+ '(gnus-spam-process-newsgroups
+   (quote
+    (("mail"
+      ((spam spam-use-bogofilter)
+       (spam spam-use-blacklist)
+       (ham spam-use-whitelist))))))
  '(gnus-thread-sort-functions (quote (gnus-thread-sort-by-number)))
  '(gnus-treat-body-boundary nil)
  '(gnus-treat-date-english (quote head))
@@ -70,14 +78,22 @@
  '(gnus-treat-fill-long-lines nil)
  '(gnus-treat-hide-signature t)
  '(gnus-verbose 10)
- '(gnus-visible-headers (quote ("^From:" "^Newsgroups:" "^Subject:" "^Date:" "^Followup-To:" "^Reply-To:" "^Organization:" "^Summary:" "^Keywords:" "^To:" "^[BGF]?Cc:" "^Posted-To:" "^Mail-Copies-To:" "^Mail-Followup-To:" "^Apparently-To:" "^Gnus-Warning:" "^Resent-From:" "^X-Sent:" "^X-Gnus-Label:")))
- '(grep-find-command "find . -name \".svn\" -prune -o -type f  -exec grep -nH \"\" {} \\;")
+ '(gnus-visible-headers
+   (quote
+    ("^From:" "^Newsgroups:" "^Subject:" "^Date:" "^Followup-To:" "^Reply-To:" "^Organization:" "^Summary:" "^Keywords:" "^To:" "^[BGF]?Cc:" "^Posted-To:" "^Mail-Copies-To:" "^Mail-Followup-To:" "^Apparently-To:" "^Gnus-Warning:" "^Resent-From:" "^X-Sent:" "^X-Gnus-Label:")))
+ '(grep-find-command
+   "find . -name \".svn\" -prune -o -type f  -exec grep -nH \"\" {} \\;")
  '(highlight-changes-global-initial-state (quote passive))
  '(highlight-changes-global-modes t)
  '(highlight-changes-initial-state (quote passive))
  '(idlwave-abbrev-start-char "/" t)
  '(idlwave-block-indent 3)
- '(idlwave-completion-case (quote ((routine . preserve) (keyword . downcase) (class . preserve) (method . preserve))))
+ '(idlwave-completion-case
+   (quote
+    ((routine . preserve)
+     (keyword . downcase)
+     (class . preserve)
+     (method . preserve))))
  '(idlwave-completion-force-default-case t)
  '(idlwave-completion-show-classes 10)
  '(idlwave-continuation-indent 3)
@@ -89,7 +105,14 @@
  '(idlwave-main-block-indent 3)
  '(idlwave-max-extra-continuation-indent 60)
  '(idlwave-pad-keyword t)
- '(idlwave-query-class (quote ((method-default) (keyword-default) ("INIT" . t) ("CLEANUP" . t) ("SETPROPERTY" . t) ("GETPROPERTY" . t))))
+ '(idlwave-query-class
+   (quote
+    ((method-default)
+     (keyword-default)
+     ("INIT" . t)
+     ("CLEANUP" . t)
+     ("SETPROPERTY" . t)
+     ("GETPROPERTY" . t))))
  '(idlwave-reserved-word-upcase nil nil nil "Want pro rather than PRO")
  '(idlwave-shell-automatic-electric-debug t)
  '(idlwave-shell-automatic-start t)
@@ -114,7 +137,9 @@
  '(js-indent-level 2)
  '(js2-basic-offset 4)
  '(js2-bounce-indent-p nil)
- '(js2-global-externs (quote ("define" "module" "require" "jQuery" "$" "_" "buster" "sinon" "assert" "refute" "setTimeout" "clearTimeout" "setInterval" "clearInterval" "location" "__dirname" "console" "JSON" "require" "chai" "expect" "exports" "before" "after" "describe" "beforeEach" "afterEach" "it")))
+ '(js2-global-externs
+   (quote
+    ("define" "module" "require" "jQuery" "$" "_" "buster" "sinon" "assert" "refute" "setTimeout" "clearTimeout" "setInterval" "clearInterval" "location" "__dirname" "console" "JSON" "require" "chai" "expect" "exports" "before" "after" "describe" "beforeEach" "afterEach" "it")))
  '(large-file-warning-threshold nil)
  '(longlines-show-hard-newlines t)
  '(lpr-command "/usr/bin/lpr")
@@ -124,24 +149,42 @@
  '(mail-user-agent (quote message-user-agent))
  '(markdown-command "Markdown.pl")
  '(message-cite-function (quote message-cite-original-without-signature))
- '(message-mode-hook (quote (turn-on-flyspell turn-off-auto-fill turn-on-visual-line-mode)))
+ '(message-mode-hook
+   (quote
+    (turn-on-flyspell turn-off-auto-fill turn-on-visual-line-mode)))
  '(message-send-mail-partially-limit nil)
  '(mm-verify-option (quote always))
  '(mouse-wheel-follow-mouse t)
  '(mouse-wheel-mode t nil (mwheel))
  '(nnmail-crosspost nil)
  '(nnmail-expiry-wait 3)
- '(org-agenda-files (quote ("~/Dropbox/orgs/rockhopper.org" "~/Dropbox/orgs/honeybadger.org" "~/Dropbox/orgs/masie.org" "~/Dropbox/orgs/tasks.org" "~/Dropbox/orgs/programmers.org" "~/Dropbox/orgs/tips.org" "~/Dropbox/orgs/notes.org" "~/Dropbox/orgs/someday.org" "~/Dropbox/orgs/timetrack.org" "~/Dropbox/orgs/pm.org" "~/Dropbox/orgs/sprint_track.org" "~/Dropbox/orgs/time_off.org")))
+ '(org-agenda-files
+   (quote
+    ("~/Dropbox/orgs/rockhopper.org" "~/Dropbox/orgs/honeybadger.org" "~/Dropbox/orgs/masie.org" "~/Dropbox/orgs/tasks.org" "~/Dropbox/orgs/programmers.org" "~/Dropbox/orgs/tips.org" "~/Dropbox/orgs/notes.org" "~/Dropbox/orgs/someday.org" "~/Dropbox/orgs/timetrack.org" "~/Dropbox/orgs/pm.org" "~/Dropbox/orgs/sprint_track.org" "~/Dropbox/orgs/time_off.org")))
  '(org-clock-persist (quote history))
  '(org-clock-persist-file "~/Dropbox/orgs/org-clock-save.el")
  '(org-log-done (quote note))
  '(org-refile-targets (quote ((org-agenda-files :maxlevel . 5))))
  '(org-remember-default-headline "TASKS.org")
- '(org-remember-templates (quote (("todo" 116 "* TODO %? %u %a" nil nil nil) ("note" 110 "* %?" nil nil nil) ("Url" 117 "* %^{Title}
+ '(org-remember-templates
+   (quote
+    (("todo" 116 "* TODO %? %u %a" nil nil nil)
+     ("note" 110 "* %?" nil nil nil)
+     ("Url" 117 "* %^{Title}
 	Source: %u, %c
 	%i" nil nil nil))))
- '(org-tag-alist (quote (("daac" . 100) ("programmer" . 112) ("erik" . 101) ("management" . 109) ("services" . 115) ("masie" . 105) ("annual_review" . 97))))
- '(org-todo-keywords (quote ((sequence "TODO" "WAITING" "|" "DONE" "DELEGATED" "CANCELLED"))))
+ '(org-tag-alist
+   (quote
+    (("daac" . 100)
+     ("programmer" . 112)
+     ("erik" . 101)
+     ("management" . 109)
+     ("services" . 115)
+     ("masie" . 105)
+     ("annual_review" . 97))))
+ '(org-todo-keywords
+   (quote
+    ((sequence "TODO" "WAITING" "|" "DONE" "DELEGATED" "CANCELLED"))))
  '(paradox-github-token t t)
  '(perl-indent-level 3)
  '(printer-name "Snowprint_2")
@@ -153,7 +196,90 @@
  '(ps-print-color-p nil)
  '(ps-print-only-one-header t)
  '(ps-printer-name "snowprint")
- '(safe-local-variable-values (quote ((project-venv-name . ".matasano") (venv-location "/Users/savoie/projects/matasano/.matasano") (project-venv-name . ".iceage") (venv-location "/Users/savoie/projects/soac/iceage/.iceage") (project-venv-name . "sota_snowcover") (venv-location "/Users/savoie/.virtual_envs/sota_snowcover") (eval when (and (buffer-file-name) (file-regular-p (buffer-file-name)) (string-match-p "^[^.]" (buffer-file-name))) (emacs-lisp-mode) (when (fboundp (quote flycheck-mode)) (flycheck-mode -1)) (unless (featurep (quote package-build)) (let ((load-path (cons ".." load-path))) (require (quote package-build)))) (package-build-minor-mode) (set (make-local-variable (quote package-build-working-dir)) (expand-file-name "../working/")) (set (make-local-variable (quote package-build-archive-dir)) (expand-file-name "../packages/")) (set (make-local-variable (quote package-build-recipes-dir)) default-directory)) (project-venv-name . "moac-ft") (venv-location "/Users/savoie/.virtual_envs/moac-ft") (project-venv-name . ".monthly_sea_ice_extent_tools") (project-venv-name . ".icebridge-services") (venv-location "/Users/savoie/projects/icebridge-services/.icebridge-services") (project-venv-name . ".tb_pipeline") (venv-location "/Users/savoie/projects/tb_pipeline/.tb_pipeline") (project-venv-name . ".brightness-temperature-vm") (venv-location "/Users/savoie/projects/brightness-temperature-vm/.brightness-temperature-vm") (project-venv-name . ".bumpversion") (venv-location "/Users/savoie/projects/bumpversion/.bumpversion") (venv-location "/Users/savoie/projects/monthly_sea_ice_extent_tools/.monthly_sea_ice_extent_tools") (venv-location . "/home/savoie/projects/kpyswath/.pyswath") (venv-location . "/home/savoie/projects/pyswath/.pyswath") (project-venv-name . "local") (venv-location . "/home/savoie/projects/pyswath/.venv") (venv-location . "/home/savoie/projects/nsidc0001/.nsidc0001") (venv-location . "/home/savoie/projects/nsidc0001/") (venv-location . "~/projects/nsidc0001/") (eval ignore-errors "Write-contents-functions is a buffer-local alternative to before-save-hook" (add-hook (quote write-contents-functions) (lambda nil (delete-trailing-whitespace) nil)) (require (quote whitespace)) "Sometimes the mode needs to be toggled off and on." (whitespace-mode 0) (whitespace-mode 1)) (whitespace-line-column . 80) (whitespace-style face trailing lines-tail) (require-final-newline . t) (ruby-compilation-executable . "ruby") (ruby-compilation-executable . "ruby1.8") (ruby-compilation-executable . "ruby1.9") (ruby-compilation-executable . "rbx") (ruby-compilation-executable . "jruby") (dired-actual-switches . "-latS") (dired-actual-switches . "-lat") (dired-omit-mode . t))))
+ '(safe-local-variable-values
+   (quote
+    ((project-venv-name . ".rss_netcdf_togs")
+     (venv-location "/Users/savoie/projects/rss_netcdf_togs/.rss_netcdf_togs")
+     (project-venv-name . ".matasano")
+     (venv-location "/Users/savoie/projects/matasano/.matasano")
+     (project-venv-name . ".iceage")
+     (venv-location "/Users/savoie/projects/soac/iceage/.iceage")
+     (project-venv-name . "sota_snowcover")
+     (venv-location "/Users/savoie/.virtual_envs/sota_snowcover")
+     (eval when
+           (and
+            (buffer-file-name)
+            (file-regular-p
+             (buffer-file-name))
+            (string-match-p "^[^.]"
+                            (buffer-file-name)))
+           (emacs-lisp-mode)
+           (when
+               (fboundp
+                (quote flycheck-mode))
+             (flycheck-mode -1))
+           (unless
+               (featurep
+                (quote package-build))
+             (let
+                 ((load-path
+                   (cons ".." load-path)))
+               (require
+                (quote package-build))))
+           (package-build-minor-mode)
+           (set
+            (make-local-variable
+             (quote package-build-working-dir))
+            (expand-file-name "../working/"))
+           (set
+            (make-local-variable
+             (quote package-build-archive-dir))
+            (expand-file-name "../packages/"))
+           (set
+            (make-local-variable
+             (quote package-build-recipes-dir))
+            default-directory))
+     (project-venv-name . "moac-ft")
+     (venv-location "/Users/savoie/.virtual_envs/moac-ft")
+     (project-venv-name . ".monthly_sea_ice_extent_tools")
+     (project-venv-name . ".icebridge-services")
+     (venv-location "/Users/savoie/projects/icebridge-services/.icebridge-services")
+     (project-venv-name . ".tb_pipeline")
+     (venv-location "/Users/savoie/projects/tb_pipeline/.tb_pipeline")
+     (project-venv-name . ".brightness-temperature-vm")
+     (venv-location "/Users/savoie/projects/brightness-temperature-vm/.brightness-temperature-vm")
+     (project-venv-name . ".bumpversion")
+     (venv-location "/Users/savoie/projects/bumpversion/.bumpversion")
+     (venv-location "/Users/savoie/projects/monthly_sea_ice_extent_tools/.monthly_sea_ice_extent_tools")
+     (venv-location . "/home/savoie/projects/kpyswath/.pyswath")
+     (venv-location . "/home/savoie/projects/pyswath/.pyswath")
+     (project-venv-name . "local")
+     (venv-location . "/home/savoie/projects/pyswath/.venv")
+     (venv-location . "/home/savoie/projects/nsidc0001/.nsidc0001")
+     (venv-location . "/home/savoie/projects/nsidc0001/")
+     (venv-location . "~/projects/nsidc0001/")
+     (eval ignore-errors "Write-contents-functions is a buffer-local alternative to before-save-hook"
+           (add-hook
+            (quote write-contents-functions)
+            (lambda nil
+              (delete-trailing-whitespace)
+              nil))
+           (require
+            (quote whitespace))
+           "Sometimes the mode needs to be toggled off and on."
+           (whitespace-mode 0)
+           (whitespace-mode 1))
+     (whitespace-line-column . 80)
+     (whitespace-style face trailing lines-tail)
+     (require-final-newline . t)
+     (ruby-compilation-executable . "ruby")
+     (ruby-compilation-executable . "ruby1.8")
+     (ruby-compilation-executable . "ruby1.9")
+     (ruby-compilation-executable . "rbx")
+     (ruby-compilation-executable . "jruby")
+     (dired-actual-switches . "-latS")
+     (dired-actual-switches . "-lat")
+     (dired-omit-mode . t))))
  '(save-abbrevs t)
  '(scroll-bar-mode (quote right))
  '(select-active-regions t)
@@ -188,7 +314,26 @@
  '(url-privacy-level (quote (paranoid)))
  '(url-temporary-directory "~savoie/tmp")
  '(vc-annotate-background "#1f2124")
- '(vc-annotate-color-map (quote ((20 . "#ff0000") (40 . "#ff4a52") (60 . "#f6aa11") (80 . "#f1e94b") (100 . "#f5f080") (120 . "#f6f080") (140 . "#41a83e") (160 . "#40b83e") (180 . "#b6d877") (200 . "#b7d877") (220 . "#b8d977") (240 . "#b9d977") (260 . "#93e0e3") (280 . "#72aaca") (300 . "#8996a8") (320 . "#afc4db") (340 . "#cfe2f2") (360 . "#dc8cc3"))))
+ '(vc-annotate-color-map
+   (quote
+    ((20 . "#ff0000")
+     (40 . "#ff4a52")
+     (60 . "#f6aa11")
+     (80 . "#f1e94b")
+     (100 . "#f5f080")
+     (120 . "#f6f080")
+     (140 . "#41a83e")
+     (160 . "#40b83e")
+     (180 . "#b6d877")
+     (200 . "#b7d877")
+     (220 . "#b8d977")
+     (240 . "#b9d977")
+     (260 . "#93e0e3")
+     (280 . "#72aaca")
+     (300 . "#8996a8")
+     (320 . "#afc4db")
+     (340 . "#cfe2f2")
+     (360 . "#dc8cc3"))))
  '(vc-annotate-very-old-color "#dc8cc3")
  '(visible-bell t)
  '(w3m-default-display-inline-images t)
