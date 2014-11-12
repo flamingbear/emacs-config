@@ -74,18 +74,6 @@
     (while (search-forward-regexp "[0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\}" (line-end-position) t)
       (replace-match (format-time-string "%Y-%m-%d")))))
 
-
-;; TODO [MHS, 2013-09-04] fix this. Only one custom-set-faces
-;; (custom-set-faces
-;;  '(org-done ((t (:foreground "PaleGreen"
-;;                  :weight normal
-;;                  :strike-through t))))
-;;  '(org-headline-done
-;;             ((((class color) (min-colors 16) (background dark))
-;;                (:foreground "LightSalmon" :strike-through t)))))
-
-
-
 (provide 'mhs-org-mode)
 
 ;;; MHS-ORG-MODE.EL ends here

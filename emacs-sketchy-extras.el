@@ -29,6 +29,10 @@
            ((org-agenda-files (file-expand-wildcards "~/Dropbox/orgs/*.org_archive"))))))
   "mhs-org mode loaded"  )
 
+(setq org-time-clocksum-format
+      '(:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t))
+
+
 
 ;; New Better Autocomplete?
 ;;--------------------------
