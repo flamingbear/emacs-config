@@ -77,7 +77,7 @@
 ;;      (setq mm-text-html-renderer 'gnus-article-html)
 ;;      (setq mm-inline-text-html-with-images 't) ))
 
-(powerline-default-theme)
+
 
 ;;; Chrome editing.
 (when (require 'edit-server nil t)
