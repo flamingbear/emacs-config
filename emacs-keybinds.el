@@ -92,6 +92,8 @@
 
 
 ;; Stuff from EmacsRocks guy Magnars.
+(global-set-key (kbd "M-2") #'er/expand-region)
+
 
 ;; Use the fancy rgrep if available. from magnars
 (if (try-require 'setup-rgrep)

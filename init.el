@@ -56,6 +56,9 @@ Normally this points to: $HOME/.emacs.d/")
   (if (file-readable-p (concat emacs-top '"emacs-darwin.el"))
       (load (concat emacs-top '"emacs-darwin.el") nil t)))
 
+;; Create a pbcopy.el
+; curl https://raw.githubusercontent.com/daniel-nelson/emacs_d/master/dnelson/pbcopy.el > pbcopy.el
+
 
 (autoload 'skewer-start "setup-skewer" nil t)
 

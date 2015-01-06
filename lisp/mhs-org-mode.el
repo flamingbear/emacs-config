@@ -63,10 +63,10 @@
 (setq org-fontify-done-headline t)
 
 ;; From keelerm84 on
-(require 'org-latex)
-(setq org-export-latex-listings 'minted)
-(add-to-list 'org-export-latex-packages-alist '("" "minted"))
-(setq org-src-fontify-natively t)
+;; (require 'org-latex)
+;; (setq org-export-latex-listings 'minted)
+;; (add-to-list 'org-export-latex-packages-alist '("" "minted"))
+;; (setq org-src-fontify-natively t)
 
 (defun mhs-update-today ()
   (interactive)
@@ -74,6 +74,14 @@
     (beginning-of-line)
     (while (search-forward-regexp "[0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\}" (line-end-position) t)
       (replace-match (format-time-string "%Y-%m-%d")))))
+
+
+(defun org-clocktable-indent-string (level)
+  (if (= level 1) ""
+    (let ((str " "))
+      (dotimes (k (1- level) str)
+	(setq str (concat "...." str))))))
+
 
 (provide 'mhs-org-mode)
 
