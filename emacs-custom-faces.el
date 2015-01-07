@@ -117,11 +117,10 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
               (setq idlwave-shell-explicit-file-name "idl82")
               )) ;cornflowerblue
 
-      ;; Dev VM
-
+      ;; Dev or apps VM
       ((string-match "^v.*\.\\(dev\\|apps\\)\.int\.nsidc\.org" (system-name))
-       (progn (setq my-menu-fg-color "#5c5cff")
-              (setq my-menu-bg-color "#af5f00"))) ;
+       (progn (setq my-menu-fg-color "#F2FF30")
+              (setq my-menu-bg-color "#BD598E"))) ;
 
       ;; user archive.
       ((string-match (user-login-name) "archive")
