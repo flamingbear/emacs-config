@@ -84,6 +84,12 @@ $EMACS_TOP/lisp" )
     (normal-top-level-add-subdirs-to-load-path)))
 
 
+;; pbcopy can't happen before pbcopy is available to load
+(when running-macos
+  ;; use pbcopy for macosx
+  (require 'pbcopy))
+
+
 ;; IDLWAVE Customizations
 ;; Load this before ruby because we want the jds history search.
 (try-require 'emacs-idlwave-support)

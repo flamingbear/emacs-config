@@ -64,6 +64,7 @@
 (depends-on "multiple-cursors")
 (depends-on "noflet")
 (depends-on "nose")
+(depends-on "org")
 (depends-on "package-build")
 (depends-on "pallet")
 (depends-on "paradox")
