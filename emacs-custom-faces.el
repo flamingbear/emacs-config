@@ -119,9 +119,9 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 
       ;; Dev VM
 
-      ((string-match "^v.*\.dev\.int\.nsidc\.org" (system-name))
-       (progn (setq my-menu-fg-color "#2f4f4f")   ;dark slate gray
-              (setq my-menu-bg-color "#6b8e23"))) ;
+      ((string-match "^v.*\.\\(dev\\|apps\\)\.int\.nsidc\.org" (system-name))
+       (progn (setq my-menu-fg-color "#5c5cff")
+              (setq my-menu-bg-color "#af5f00"))) ;
 
       ;; user archive.
       ((string-match (user-login-name) "archive")
