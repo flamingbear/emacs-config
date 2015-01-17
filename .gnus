@@ -49,6 +49,12 @@
 
 (defvar default-mailbox (concat "maild/mail-" (format-time-string "%Y")))
 
+
+(defun default-mailbox ()
+  (interactive)
+  (concat "maild/mail-" (format-time-string "%Y")))
+
+
 ;; -----------------------------------------------
 ;; Where should the incoming mail be delivered to?
 
@@ -166,7 +172,7 @@
     (to "ecs-mo" "maild/lists")
     (to "savoie@tundra.colorado.edu" "spam")
     ("subject" "^No new Files on sidads" "maild/nsidc-notices")
-    "maild/mail-2014"
+    (: default-mailbox)
     ))
 (setq nnimap-split-fancy my-split-methods)
 (setq nnmail-split-fancy my-split-methods)
