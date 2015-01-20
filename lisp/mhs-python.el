@@ -4,7 +4,12 @@
 
 ;; We're gonna need us a Python mode
 (require 'python)
+(require 'elpy)
+(require 'pyvenv)
 (elpy-enable)
+;; track virtual environments if they are set dir locally
+(setq pyvenv-tracking-mode 't)
+
 ;; Python is a dev mode
 (add-hook 'python-mode-hook 'run-dev-hook)
 
