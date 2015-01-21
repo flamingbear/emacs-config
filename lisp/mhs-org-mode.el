@@ -51,8 +51,7 @@
 (define-key global-map "\C-ca" 'org-agenda)
 (define-key global-map "\C-cb" 'org-iswitchb)
 
-;; (require 'org-remember)
-;; (org-remember-insinuate)
+(require 'org-capture)
 (setq org-directory "~/Dropbox/orgs")
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 
