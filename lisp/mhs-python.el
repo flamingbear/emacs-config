@@ -32,7 +32,7 @@
           (lambda ()
             (hack-local-variables)
             (when (boundp 'project-venv-name)
-              (venv-workon project-venv-name))
+              (pyvenv-activate project-venv-name))
             (local-set-key "\C-ca" 'nosetests-all)
             (local-set-key "\C-cm" 'nosetests-module)
             (local-set-key "\C-c." 'nosetests-one)
