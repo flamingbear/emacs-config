@@ -1,7 +1,6 @@
 (source gnu)
 (source melpa)
 
-(depends-on "ac-slime")
 (depends-on "ace-jump-mode")
 (depends-on "ample-theme")
 (depends-on "async")
@@ -73,7 +72,6 @@
 (depends-on "nose")
 (depends-on "package-build")
 (depends-on "pallet")
-(depends-on "paradox")
 (depends-on "paredit")
 (depends-on "pcache")
 (depends-on "pkg-info")
@@ -97,7 +95,6 @@
 (depends-on "slime")
 (depends-on "solarized-theme")
 (depends-on "tern")
-(depends-on "tern-auto-complete")
 (depends-on "web")
 (depends-on "websocket")
 (depends-on "wgrep")
