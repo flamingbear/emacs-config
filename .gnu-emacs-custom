@@ -181,7 +181,7 @@
  '(org-todo-keywords
    (quote
     ((sequence "TODO" "WAITING" "|" "DONE" "DELEGATED" "CANCELLED"))))
- '(paradox-github-token t)
+ '(paradox-github-token t t)
  '(perl-indent-level 3)
  '(printer-name "Snowprint_2")
  '(ps-default-bg "white")
@@ -385,4 +385,5 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(region ((t (:background "#454545"))))
+ '(shadow ((t (:foreground "grey40"))))
  '(trailing-whitespace ((t (:background "grey25" :weight bold)))))
