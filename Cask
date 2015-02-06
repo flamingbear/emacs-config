@@ -4,7 +4,6 @@
 (depends-on "ace-jump-mode")
 (depends-on "ample-theme")
 (depends-on "async")
-(depends-on "auto-complete")
 (depends-on "autopair")
 (depends-on "bbdb")
 (depends-on "bbdb-ext")

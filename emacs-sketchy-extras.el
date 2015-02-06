@@ -34,13 +34,9 @@
 
 
 
-;; New Better Autocomplete?
+;; Try company-mode instead of auto-complete
 ;;--------------------------
-
-(when (try-require 'auto-complete-config)
-  (progn (add-to-list 'ac-dictionary-directories (concat mhs-external-lisp-dir "ac-dict"))
-         (add-to-list 'ac-modes 'idlwave-mode)
-         (ac-config-default)))
+(add-hook 'after-init-hook 'global-company-mode)
 
 
 ;; Yasnippet

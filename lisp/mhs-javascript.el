@@ -95,12 +95,6 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
                               )))
 
 
-;; Add tern
-(eval-after-load 'tern
-   '(progn
-      (require 'tern-auto-complete)
-      (tern-ac-setup)))
-
 (provide 'mhs-javascript)
 
 ;;; MHS-JAVASCRIPT.EL ends here

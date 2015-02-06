@@ -8,7 +8,7 @@
 ;; Version: 1.0
 ;; Keywords:
 
- 
+
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
 ;; the Free Software Foundation; either version 1, or (at your option)
@@ -56,19 +56,11 @@ Report bugs to: Matthew H. Savoie <savoie@fsl.noaa.gov>")
 (when (try-require 'cperl-mode)
   (defalias 'perl-mode 'cperl-mode))
 
-(add-hook 'cperl-mode-hook
-          (lambda ()
-            (when (try-require 'auto-complete) ; no error whatever auto-complete.el is not installed.
-              (auto-complete-mode t)
-              (make-variable-buffer-local 'ac-sources)
-              (setq cperl-indent-level '3)
-              (setq ac-sources
-                    '(ac-source-perl-completion)))))
 
 ;; Use perl completion mode.
 (add-hook 'cperl-mode-hook
           (lambda ()
-            (when (try-require 'perl-completion) 
+            (when (try-require 'perl-completion)
               (perl-completion-mode 't))))
 
 
@@ -97,7 +89,7 @@ Report bugs to: Matthew H. Savoie <savoie@fsl.noaa.gov>")
 (defun perltidy-defun ()
   "Run perltidy on the current defun."
   (interactive)
-  (save-excursion 
+  (save-excursion
     (mark-defun) (perltidy-region)))
 
 

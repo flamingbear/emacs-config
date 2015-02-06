@@ -24,7 +24,7 @@
 
 ;;; Code:
 
-(defvar mhs-jira--current-ticket-number "RO-xx"
+(defvar mhs-jira--current-ticket-number "PM-xx"
   "The current ticket number that is clocked in.")
 
 (defvar mhs-jira--url-base "https://nsidc.org/jira/browse/")
