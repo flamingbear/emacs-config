@@ -33,7 +33,6 @@
       '(:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t))
 
 
-
 ;; Try company-mode instead of auto-complete
 ;;--------------------------
 (add-hook 'after-init-hook 'global-company-mode)
@@ -43,37 +42,6 @@
 ;;-----------
 (when (try-require 'yasnippet) ;; not yasnippet-bundle
   (yas-global-mode 1))
-
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Use Secure Shell for Remote access
-;; To use:
-;;  /[<machine name>]/path/to/file
-;;  /[<machine name>]~/expanded/homedir/file
-;; /[<machine name>].emacs
-;; or assume home directory
-(when (try-require 'tramp)
-  (setq tramp-default-method "scp"))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Use the gnus news reader
-;; (defvar mhs-bleeding-gnus (concat emacs-top "external-lisp-files/bleeding-gnus/lisp")
-;;   "Location of the git repository of gnus for testing")
-;; (if (file-accessible-directory-p mhs-bleeding-gnus)
-;;     (progn (add-to-list 'load-path mhs-bleeding-gnus 'nil)
-;;            (require 'gnus-load))
-;;   (try-require 'gnus))
-
-
-;; Proper gnus reader
-;; (if (try-require 'gnus-w3m)
-;;     (setq mm-text-html-renderer 'gnus-w3m)
-;;    (progn                                ;macosx mainly
-;;      (setq mm-text-html-renderer 'gnus-article-html)
-;;      (setq mm-inline-text-html-with-images 't) ))
-
-
 
 ;;; Chrome editing.
 (when (require 'edit-server nil t)

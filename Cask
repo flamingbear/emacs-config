@@ -51,7 +51,6 @@
 (depends-on "idomenu")
 (depends-on "inf-ruby")
 (depends-on "inflections")
-(depends-on "jedi")
 (depends-on "js2-mode")
 (depends-on "js2-refactor")
 (depends-on "jump")
