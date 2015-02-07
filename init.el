@@ -9,10 +9,8 @@ I generally set the EMACS_HOME environmental variable before starting and this i
 Normally this points to: $HOME/.emacs.d/")
 
 (when (not emacs-top)
-  ;; If you didn't have it set before, try to read directly out of the
-  ;; .profile file. This is a workaround on Darwin systems to allow us to
-  ;; continue
-  (setq emacs-top (shell-command-to-string "source $HOME/.profile && printf $EMACS_HOME")))
+  ;; If it's not set, assume it's $HOME/.emacs.d/
+  (setq emacs-top (concat (file-name-as-directory (getenv "HOME")) ".emacs.d")))
 
 (setq emacs-top (file-name-as-directory emacs-top))
 ;;(add-to-list 'load-path emacs-top)
