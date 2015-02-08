@@ -1,57 +1,9 @@
-;;; .EMACS-CUSTOM-FACES --- customize the modeline display based on machine, user and BUILD environment.
-
-;; Copyright (C) 2011 Matt Savoie
-
-;; Author: Matt Savoie <emacs@flamingbear.com>
-;; Maintainer: Matt Savoie <emacs@flamingbear.com>
-;; Created: 07 Sep 2011
-;; Version: 1.0
-;; Keywords:
-
-;;; Code:
-
-(defconst -version (substring "$Revision: 19611 $" 11 -2)
-  "$Id: emacs-custom-faces.el 19611 2011-10-20 21:09:37Z savoie $
-
-Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 
 
-;; Set up the  default values for frame creation
-;;-------------------------------------------
-
-(setq custom-theme-directory (concat emacs-top "themes"))
+(setq custom-theme-directory (locate-user-emacs-file "themes"))
 (add-to-list 'custom-theme-load-path custom-theme-directory)
 
-;; (when (display-graphic-p)
-;;   (progn
-;;     (setq default-frame-alist
-;;           (quote ((mouse-color . "#87ceeb")
-;;                   (cursor-color . "#ffa500")
-;;                   (tool-bar-lines . 0)
-;;                   (top . 25)
-;;                   (left . 54)
-;;                   (menu-bar-lines . 1)
-;;                   (background-color . "#1f1f1f")
-;;                   (foreground-color . "#e3e3e3"))))
 
-
-;;     (add-to-list 'default-frame-alist
-;;                  (cond ((>= (x-display-pixel-height) 1578)
-;;                         '(height . 62))
-;;                        ((>= (x-display-pixel-height) 1200)
-;;                         '(height . 51))
-;;                        ((>= (x-display-pixel-height) 1050)
-;;                         '(height . 47))
-;;                        ((>= (x-display-pixel-height) 900)
-;;                         '(height . 36))
-;;                        (t '(height . 30))))
-
-;;     (add-to-list 'default-frame-alist
-;;                  (cond ((>= (x-display-pixel-width) 1280)
-;;                         '(width . 120))
-;;                        (t '(width . 93))))))
-
-;;-------------------------------------------
 
 
 
@@ -300,4 +252,5 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
   (load-theme 'ample t))
 
 (mhs-update-mode-line)
+(provide 'emacs-custom-faces)
 ;;; .EMACS-CUSTOM-FACES ends here

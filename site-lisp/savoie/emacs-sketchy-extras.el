@@ -50,5 +50,5 @@
   (setq edit-server-new-frame nil)
   (edit-server-start))
 
-
+(provide 'emacs-sketchy-extras)
 ;;; EMACS-SKETCHY-EXTRAS.EL ends here

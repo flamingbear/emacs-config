@@ -45,11 +45,6 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 
 ;; RUBY RINARI (RINARI IS NOT A RAILS IDE...not really)
 ;;-----------------------------------------
-;(defvar my-rinari-top-dir
-;  (expand-file-name (concat emacs-top '"external-lisp-files/rinari/")))
-;(if (file-accessible-directory-p my-rinari-top-dir)
-;    (add-to-list 'load-path my-rinari-top-dir))
-;(try-require 'rinari)
 (require 'rinari)
 (global-rinari-mode)
 
@@ -85,16 +80,14 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 
 ;;; nXML % nXHTML (HTML ERB template support)
 (when (> emacs-major-version 23)
-  (defvar nxml-dir (concat emacs-top "external-lisp-files/nxml/"))
+  (defvar nxml-dir (locate-user-emacs-file  "external-lisp-files/nxml/"))
   (when (file-accessible-directory-p nxml-dir)
     (add-to-list 'load-path nxml-dir)))
 
 (when (try-require 'nxml-mode)
   (add-to-list 'auto-mode-alist '("\\.xml$" . nxml-mode)))
 
-(defvar nxhtml-dir (concat emacs-top "external-lisp-files/nxhtml/"))
-
-
+(setq nxhtml-dir (locate-user-emacs-file "external-lisp-files/nxhtml/"))
 (when (file-accessible-directory-p nxhtml-dir)
   ;;  this nex line causes problems with INFO paths, but it might not be necessary.
   ;; (add-to-list 'load-path nxhtml-dir) ; <- this causes info problems.

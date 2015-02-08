@@ -1,8 +1,8 @@
-;; Check to see if we're running darwin (osx)
-(defconst running-macos
-  (or (string-match "darwin" (prin1-to-string system-type))
-      (memq (window-system) '(mac ns)))
-  "Boolean to determine if we are running on a macintosh laptop" )
+;; Set up some variables that you will use for different environments.
+"Boolean to determine if we are running on a macintosh laptop"
+(setq running-macos
+  (or (equal 'darwin system-type)
+      (memq (window-system) '(mac ns))))
 
 
 
@@ -11,11 +11,11 @@
   (string-match "\\(icebadger\\|savoie$\\)" (prin1-to-string system-name)))
 
 
-
 ;; Browser settings
 (setq browse-url-browser-function (if running-macos
                                       (quote browse-url-default-macosx-browser)
-                                      (quote browse-url-firefox))
+                                    (quote browse-url-firefox))
+
       browse-url-firefox-new-window-is-tab t
       browse-url-generic-program "firefox"
       browse-url-new-window-flag t
@@ -49,3 +49,11 @@ of an error, just add the package to a list of missing packages."
        (message "Checking for library `%s'... Missing" feature)
        (add-to-list 'missing-packages-list feature 'append))
      nil)))
+
+
+;; Load emacs specials for mac osx only
+(when running-macos
+  (require 'emacs-darwin))
+
+(provide 'mhs-environment)
+;;; mhs-environment.el ends here

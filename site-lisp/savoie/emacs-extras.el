@@ -63,32 +63,6 @@
 ;;----------------------------------------------------------------
 ;; Personal Lisp directory
 ;;----------------------------------------------------------------
-(defvar mhs-lisp-dir (expand-file-name (concat (file-name-as-directory emacs-top) "lisp"))
-  "Directory for possible private *.el & *.elc files for customization
-
-I choose for my custom files:
-$EMACS_TOP/lisp" )
-(if (file-accessible-directory-p mhs-lisp-dir)
-    (add-to-list 'load-path mhs-lisp-dir))
-
-
-
-;; External lisp files
-(defvar mhs-external-lisp-dir  (expand-file-name (concat (file-name-as-directory emacs-top) "external-lisp-files/"))
-  "Directory where lispy things I didn't write are put" )
-
-;; Add all subdirectories of the external lisp dir to the load path.
-(when (file-accessible-directory-p mhs-external-lisp-dir)
-  (add-to-list 'load-path mhs-external-lisp-dir)
-  (let ((default-directory  mhs-external-lisp-dir))
-    (normal-top-level-add-subdirs-to-load-path)))
-
-
-;; pbcopy can't happen before pbcopy is available to load
-(when running-macos
-  ;; use pbcopy for macosx
-  (require 'pbcopy))
-
 
 ;; IDLWAVE Customizations
 ;; Load this before ruby because we want the jds history search.
@@ -102,13 +76,6 @@ $EMACS_TOP/lisp" )
 
 ;; Python environment
 (try-require 'mhs-python)
-
-
-;; Set up Magnars' subdirs.
-(defvar magnars-stuff (concat mhs-external-lisp-dir "magnars/"))
-(when (file-accessible-directory-p magnars-stuff)
-  (add-to-list 'load-path magnars-stuff))
-
 
 (when (try-require 'markdown-mode)
   (setq auto-mode-alist
@@ -191,10 +158,11 @@ $EMACS_TOP/lisp" )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; read personal abbreviations each time
-(quietly-read-abbrev-file (concat emacs-top ".abbrev_defs"))
+(quietly-read-abbrev-file (locate-user-emacs-file ".abbrev_defs"))
+
 
 ;; Set the bookmark file in the right location.
-(setq bookmark-default-file (expand-file-name ".emacs.bmk" emacs-top))
+(setq bookmark-default-file (locate-user-emacs-file ".emacs.bmk"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Text mode (hook also run by related modes, e.g. Tex/LaTeX & outline)
@@ -236,16 +204,9 @@ $EMACS_TOP/lisp" )
 ;; ------------------------------------------------------------
 (auto-insert-mode 1)
 (add-hook 'find-file-hook 'auto-insert)
-(setq auto-insert-directory (concat (file-name-as-directory emacs-top) "autoinsert/"))
-(add-to-list 'auto-insert-alist '("\\.cpp$" . "c++-insert.cc"))
+(setq auto-insert-directory (concat (file-name-as-directory user-emacs-directory) "autoinsert/"))
 (add-to-list 'auto-insert-alist '("\\.pro$" . "idlwave-insert.pro"))
-(add-to-list 'auto-insert-alist '("\\.py$" . "python-insert.pl"))
 
-
-;; Allows you to separate out the parens and see them for what they are, and
-;; jump from one end to the other with M-p
-(autoload 't-match-move-point-to-matching "t-match" nil t nil)
-(define-key global-map "\M-p" 't-match-move-point-to-matching)
 
 
 
@@ -300,3 +261,5 @@ $EMACS_TOP/lisp" )
 (set-register
  (string-to-char "p")
  "ftp://sidads.colorado.edu/pub/incoming/savoie")
+
+(provide 'emacs-extras)

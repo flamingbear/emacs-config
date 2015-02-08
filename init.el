@@ -1,61 +1,91 @@
-;; This file is the default file that is loaded when emacs is started It
-;; sets up the environment and loads additional packages as necessary
+;;; init.el --- staring up emacs since 18.58          -*- lexical-binding: t; -*-
 
+;; Copyright (C) 2015  Matt Savoie
 
-;; Set the BASE of the emacs configuration directory and add it to my load-path
-(defvar emacs-top (getenv "EMACS_HOME")
-  "this is the top level directory where all of the emacs customizations will live under.
-I generally set the EMACS_HOME environmental variable before starting and this is picked up.
-Normally this points to: $HOME/.emacs.d/")
+;; Author: Matt Savoie <savoie@flamingbear.com>
+;; Keywords: convenience
 
-(when (not emacs-top)
-  ;; If it's not set, assume it's $HOME/.emacs.d/
-  (setq emacs-top (concat (file-name-as-directory (getenv "HOME")) ".emacs.d")))
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
 
-(setq emacs-top (file-name-as-directory emacs-top))
-;;(add-to-list 'load-path emacs-top)
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
 
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+;;; Commentary:
+
+;;  This is my long and crazy emacs setup.  I have stolen plenty of it from other places.
+;;  particularly.
+;;  magnars: https://github.com/magnars/.emacs.d
+;;  kwbeam: https://github.com/kwbeam/kwb-emacs
+
+;;; Code:
 ;; use cask/pallet to set up external packages from melpa
 (require 'cask (expand-file-name "~/.cask/cask.el"))
 (cask-initialize)
 (require 'pallet)
 
-
-;; ** Custom Settings that are updated via << M-x customize >> **
-;; Generally Try to avoid putting things in here.
-(setq custom-file (concat emacs-top ".gnu-emacs-custom"))
+;; ** Custom Settings that are updated via << M-x customize >>
+;; ** Generally Try to avoid putting things in here and prefer setting
+;; directly in your init files.
+(setq custom-file (locate-user-emacs-file ".gnu-emacs-custom"))
 (load custom-file t t)
 
-;; Private variables that don't get checked into revision control github-tokens etc.
-(defvar mhs-private-dir (concat (file-name-as-directory emacs-top) "private"))
+;; Set path to dependencies
+(setq site-lisp-dir
+      (expand-file-name "site-lisp" user-emacs-directory))
+
+(setq settings-dir
+      (expand-file-name "settings" user-emacs-directory))
+
+;; Add all sub-dir projects to load path
+(dolist (project (directory-files site-lisp-dir t "\\w+"))
+  (when (file-directory-p project)
+    (add-to-list 'load-path project)))
+
+
+
+;; Store "Private" variables/files that don't get checked into revision control
+;; github-tokens etc in here.
+(defvar mhs-private-dir (locate-user-emacs-file "private"))
 (when (file-exists-p mhs-private-dir)
   (add-to-list 'load-path mhs-private-dir)
   (require 'mhs-private-vars))
 
 
+;; Want backups in a separate directory under the user's dir
+(setq backup-directory-alist
+      `(("." . ,(expand-file-name
+                 (concat user-emacs-directory "backups")))))
 
-;; Want backups in a separate directory under emacs-top
-(setq backup-directory-alist `(("." . ,(expand-file-name
-                                        (concat (file-name-directory emacs-top) "backups")))))
+;; Still make backups even if vc.
+(setq vc-make-backup-files t)
+
+;; Save point position between sessions
+(require 'saveplace)
+(setq-default save-place t)
+(setq save-place-file (expand-file-name ".places" user-emacs-directory))
 
 
 ;; Extra Dired commands
 (add-hook 'dired-load-hook
           (function (lambda () (load "dired-x"))))
 
+
+;; What command should be run from dired with 'dired-do-shell-command'
+;; I don't know why the \\' in tif. regex
 (setq dired-guess-shell-alist-user
       '(("\\.tif\\'" "display")))
 
 
 ;; couple of tweaks for browsers and handling emacs on mac osx
-(load (concat emacs-top "mhs-environment"))
-
-(when running-macos
-  (if (file-readable-p (concat emacs-top '"emacs-darwin.el"))
-      (load (concat emacs-top '"emacs-darwin.el") nil t)))
-
-;; Create a pbcopy.el
-; curl https://raw.githubusercontent.com/daniel-nelson/emacs_d/master/dnelson/pbcopy.el > pbcopy.el
+(require 'mhs-environment)
 
 
 (autoload 'skewer-start "setup-skewer" nil t)
@@ -67,25 +97,12 @@ Normally this points to: $HOME/.emacs.d/")
 
 ;; add load paths to custom files, load special packages, load the
 ;; mhs-idlwave-extras file.
-(if (file-readable-p (concat emacs-top '"emacs-extras.el"))
-    (load (concat emacs-top '"emacs-extras.el") nil t))
+(require 'emacs-extras)
+(require 'emacs-keybinds)
+(require 'emacs-sketchy-extras)
+(require 'emacs-custom-faces)
 
 
-;; My Settings for keybinds/maps
-(if (file-readable-p (concat emacs-top '"emacs-keybinds.el"))
-    (load (concat emacs-top '"emacs-keybinds.el") nil t))
-
-
-
-;; These are things that are sometimes tricky...
-(if (file-readable-p (concat emacs-top '"emacs-sketchy-extras.el"))
-    (load (concat emacs-top '"emacs-sketchy-extras.el")))
-
-
-
-;; load custom faces in separate file.
-(if (file-readable-p (concat emacs-top '"emacs-custom-faces.el"))
-    (load (concat emacs-top '"emacs-custom-faces.el") nil t))
 
 
 ;; If we found some packages that didn't load..Print them out.
