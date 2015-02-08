@@ -4,7 +4,7 @@
 ;; Created: 21 Sep 2011
 ;; Version: 1.0
 ;; Keywords:
-
+;;; Commentary:
 ;;; Code:
 
 
@@ -37,4 +37,4 @@
 
 
 (provide 'emacs-darwin)
-;;; .EMACS-DARWIN.EL ends here
+;;; emacs-darwin.el ends here

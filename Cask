@@ -1,6 +1,6 @@
 (source gnu)
-(source melpa-stable)
 (source melpa)
+(source melpa-stable)
 
 (depends-on "ace-jump-mode")
 (depends-on "ample-theme")
@@ -13,6 +13,7 @@
 (depends-on "clojure-mode")
 (depends-on "color-theme-sanityinc-solarized")
 (depends-on "company")
+(depends-on "company-quickhelp")
 (depends-on "concurrent")
 (depends-on "confluence")
 (depends-on "connection")
@@ -75,6 +76,7 @@
 (depends-on "pcache")
 (depends-on "pkg-info")
 (depends-on "popup")
+(depends-on "pos-tip")
 (depends-on "powerline")
 (depends-on "projectile")
 (depends-on "psvn")

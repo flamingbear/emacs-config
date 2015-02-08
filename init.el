@@ -44,7 +44,7 @@
 (setq settings-dir
       (expand-file-name "settings" user-emacs-directory))
 
-;; Add all sub-dir projects to load path
+;; Add all site-lisp sub dir projects to load path
 (dolist (project (directory-files site-lisp-dir t "\\w+"))
   (when (file-directory-p project)
     (add-to-list 'load-path project)))
@@ -73,22 +73,9 @@
 (setq save-place-file (expand-file-name ".places" user-emacs-directory))
 
 
-;; Extra Dired commands
-(add-hook 'dired-load-hook
-          (function (lambda () (load "dired-x"))))
-
-
-;; What command should be run from dired with 'dired-do-shell-command'
-;; I don't know why the \\' in tif. regex
-(setq dired-guess-shell-alist-user
-      '(("\\.tif\\'" "display")))
-
-
 ;; couple of tweaks for browsers and handling emacs on mac osx
 (require 'mhs-environment)
 
-
-(autoload 'skewer-start "setup-skewer" nil t)
 
 ;; Projectile is the BOMB!
 (projectile-global-mode)

@@ -15,6 +15,23 @@
 (ansi-color-for-comint-mode-on)
 
 
+;; Extra Dired commands
+(add-hook 'dired-load-hook
+          (function (lambda () (load "dired-x"))))
+
+
+;; What command should be run from dired with 'dired-do-shell-command'
+;; I don't know why the \\' in tif. regex
+(setq dired-guess-shell-alist-user
+      '(("\\.tif\\'" "display")))
+
+
+
+(autoload 'skewer-start "setup-skewer" nil t)
+
+
+
+
 ;; stolen from KWB-emacs
 ;;----------------------
 ;; show me the line numbers in source
