@@ -5,8 +5,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(Info-additional-directory-list (quote ("~savoie/local/info/")))
- '(abbrev-file-name "~savoie/.abbrev_defs")
- '(abbrev-mode t t)
  '(auto-compression-mode t nil (jka-compr))
  '(auto-insert-path (quote ("~savoie/.emacs.d/autoinsert/insert/")) t)
  '(bbdb-use-pop-up nil)
@@ -36,9 +34,6 @@
     ("49eea2857afb24808915643b1b5bd093eefb35424c758f502e98a03d0d3df4b1" "3a727bdc09a7a141e58925258b6e873c65ccf393b2240c51553098ca93957723" "b21bf64c01dc3a34bc56fff9310d2382aa47ba6bc3e0f4a7f5af857cd03a7ef7" "6a37be365d1d95fad2f4d185e51928c789ef7a4ccf17e7ca13ad63a8bf5b922f" "7fbb8d064286706fb1e319c9d3c0a8eafc2efe6b19380aae9734c228b05350ae" "86f4407f65d848ccdbbbf7384de75ba320d26ccecd719d50239f2c36bec18628" "60f04e478dedc16397353fb9f33f0d895ea3dab4f581307fbf0aa2f07e658a40" "4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" "d8a4e35ee1b219ccb8a8c15cdfed687fcc9d467c9c8b9b93bd25229b026e4703" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "f273b5dd467ea352d69a2452e5d67108c0f2f26cb30880265fd0947d402833da" "6a741b4c066a3abed2d179d5b872c30d1be9a8b11d633cf1122d0dffbac5d102" "276e8d576ca7ec46cc45542cbd415dba4ab7802c31c80ebd5f1eca0b0e7371fc" "5b4538ea0ff39a873f22a1e6120305b5f3614febfc73b454375ea2c4d9baf113" "b8df5e4e6ec75196245615aeeb788f47fffc0f720ebb77454ebba916e8e96d30" "fbe191ce2f35027b23d58098a84bc2ba1e6bab77b7bc0feb744f817b684c2119" default)))
  '(custom-unlispify-menu-entries nil)
  '(custom-unlispify-tag-names nil)
- '(dabbrev-case-fold-search nil)
- '(dabbrev-case-replace t)
- '(dabbrev-upcase-means-case-search t)
  '(debug-on-error nil)
  '(default-abbrev-mode t t)
  '(default-major-mode (quote indented-text-mode) t)
@@ -46,16 +41,12 @@
  '(delete-selection-mode nil)
  '(dired-listing-switches "-al")
  '(display-time-24hr-format t)
- '(ediff-diff-options "")
  '(ess-indent-level 4)
- '(fill-column 78)
  '(font-lock-global-modes t)
  '(font-lock-maximum-decoration t)
  '(font-lock-support-mode (quote jit-lock-mode))
  '(global-font-lock-mode t nil (font-lock))
  '(gnus-agent-expire-days 90)
- '(gnus-auto-expirable-newsgroups "\\(.*flaming\\|.*lists\\|.*junk\\)")
- '(gnus-gcc-mark-as-read t)
  '(gnus-inhibit-mime-unbuttonizing nil)
  '(gnus-init-file "~savoie/.emacs.d/.gnus")
  '(gnus-select-method (quote (nntp "nntp.aioe.org")))
@@ -83,7 +74,7 @@
  '(highlight-changes-global-initial-state (quote passive))
  '(highlight-changes-global-modes t)
  '(highlight-changes-initial-state (quote passive))
- '(idlwave-abbrev-start-char "/")
+ '(idlwave-abbrev-start-char "/" t)
  '(idlwave-block-indent 3)
  '(idlwave-completion-case
    (quote
@@ -194,7 +185,18 @@
  '(ps-printer-name "snowprint")
  '(safe-local-variable-values
    (quote
-    ((project-venv-name . ".sqlalchemy")
+    ((eval setq pyvenv-activate
+           (concat
+            (file-name-directory
+             (let
+                 ((d
+                   (dir-locals-find-file ".")))
+               (if
+                   (stringp d)
+                   d
+                 (car d))))
+            ".matasano"))
+     (project-venv-name . ".sqlalchemy")
      (venv-location "/Users/savoie/projects/sqlalchemy/.sqlalchemy")
      (project-venv-name . ".rss_netcdf_togs")
      (venv-location "/Users/savoie/projects/rss_netcdf_togs/.rss_netcdf_togs")
@@ -371,7 +373,6 @@
  '(tab-width 4)
  '(tool-bar-mode nil nil (tool-bar))
  '(transient-mark-mode t)
- '(uniquify-buffer-name-style (quote forward) nil (uniquify))
  '(url-privacy-level (quote (paranoid)))
  '(url-temporary-directory "~savoie/tmp")
  '(visible-bell t)

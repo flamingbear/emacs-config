@@ -218,6 +218,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; read personal abbreviations each time
 (quietly-read-abbrev-file (locate-user-emacs-file ".abbrev_defs"))
+(setq abbrev-mode t)
+
 
 
 ;; Set the bookmark file in the right location.

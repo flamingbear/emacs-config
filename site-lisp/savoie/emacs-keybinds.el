@@ -12,6 +12,11 @@
 (global-set-key [\C-end]         'end-of-buffer)
 
 
+ ;; '(dabbrev-case-fold-search nil)
+ ;; '(dabbrev-case-replace t)
+ ;; '(dabbrev-upcase-means-case-search t)
+(global-set-key (kbd "M-/") 'hippie-expand)
+
 
 
 (global-set-key [f1]          'mhs-insert-filename); F1
