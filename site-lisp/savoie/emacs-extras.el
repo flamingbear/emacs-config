@@ -135,9 +135,6 @@
 ;; Do binary diff in hexl-mode if files are binary format
 (try-require 'binary-diff)
 
-;; jump-to and set workspaces.
-(try-require 'mhs-workspace)
-
 
 ;;--------------------------------------------------------------------------
 ;; GIT has some quirks and normally, I don't want to do a regular diff when

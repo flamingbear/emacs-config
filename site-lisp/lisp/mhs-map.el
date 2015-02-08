@@ -11,12 +11,10 @@
 (defvar mhs-searchmap (make-keymap)
   "make a keymap for different grep options")
 
-(defvar mhs-workspace-map (make-keymap)
-  "make a keymap for different coding options")
 
 (define-prefix-command 'mhs-map)
 (define-prefix-command 'mhs-searchmap)
-(define-prefix-command 'mhs-workspace-map)
+
 
 ;;;
 ;;; mhs-map key definitions
@@ -35,7 +33,7 @@
 (define-key mhs-map "J"                     'mhs-remove-jshint-lines)
 (define-key mhs-map "P"                             'perltidy-region)
 (define-key mhs-map "U"                     'camelize-previous-snake)
-(define-key mhs-map "a"                           'mhs-workspace-map)
+;(define-key mhs-map "a"                           'mhs-workspace-map)
 (define-key mhs-map "b"                                  'browse-url)
 (define-key mhs-map "c"                          'ctypes-define-type)
 (define-key mhs-map "d"                             'mhs-insert-date)
@@ -69,11 +67,6 @@
 (define-key mhs-searchmap "r"            'mhs-nocase-grep-these-prompt)
 (define-key mhs-searchmap "R"            'mhs-nocase-grep-these-prompt)
 
-(define-key mhs-workspace-map "s" 'acadis-spec)
-(define-key mhs-workspace-map "c" 'acadis-src)
-(define-key mhs-workspace-map "t" 'acadis-top)
-(define-key mhs-workspace-map "a" 'acadis-jump-to-spec-or-code)
-(define-key mhs-workspace-map "A" 'acadis-split-window-and-show-match)
 
 
 (define-key mhs-workspace-map "w" 'mhs-workspace-action)
