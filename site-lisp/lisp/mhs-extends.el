@@ -67,36 +67,6 @@
                     (insert-register ?d t)
                     (insert-register ?f t)))
 
-(defun mhs-double-quote-around-region ()
-  "*Places Double quotes around the region"
-  (interactive)
-  (mhs-dblstuff (string-to-char "\"")))
-
-(defun mhs-paren-region ()
-  "*places parentheses around the current region"
-  (interactive)
-  (mhs-dblstuff (string-to-char ")")))
-
-(defun mhs-anglebracket-region ()
-  "*places angle brackets around the current region"
-  (interactive)
-  (mhs-dblstuff (string-to-char ">")))
-
-(defun mhs-bracket-region ()
-  "*places parentheses around the current region"
-  (interactive)
-  (mhs-dblstuff (string-to-char "}")))
-
-(defun mhs-sqbracket-region ()
-  "*places square brackets around the current region"
-  (interactive)
-  (mhs-dblstuff (string-to-char "]")))
-
-(defun mhs-squote-region ()
-  "*places single quotes around the current region"
-  (interactive)
-  (mhs-dblstuff (string-to-char "'")))
-
 
 (defun mhs-kill-current () "\
   Kills the current buffer if it has not been modified."
