@@ -26,10 +26,12 @@
 ;;  kwbeam: https://github.com/kwbeam/kwb-emacs
 
 ;;; Code:
-;; use cask/pallet to set up external packages from melpa
+
+;; use cask/pallet to set up external packages from melpa/melpa-stable
 (require 'cask (expand-file-name "~/.cask/cask.el"))
 (cask-initialize)
 (require 'pallet)
+(pallet-mode 't)
 
 ;; ** Custom Settings that are updated via << M-x customize >>
 ;; ** Generally Try to avoid putting things in here and prefer setting

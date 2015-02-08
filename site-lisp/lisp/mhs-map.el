@@ -33,7 +33,7 @@
 (define-key mhs-map "J"                     'mhs-remove-jshint-lines)
 (define-key mhs-map "P"                             'perltidy-region)
 (define-key mhs-map "U"                     'camelize-previous-snake)
-;(define-key mhs-map "a"                           'mhs-workspace-map)
+;;(define-key mhs-map "a"                           'mhs-workspace-map)
 (define-key mhs-map "b"                                  'browse-url)
 (define-key mhs-map "c"                          'ctypes-define-type)
 (define-key mhs-map "d"                             'mhs-insert-date)
@@ -66,10 +66,5 @@
 (define-key mhs-searchmap "I"                          'mhs-grep-these)
 (define-key mhs-searchmap "r"            'mhs-nocase-grep-these-prompt)
 (define-key mhs-searchmap "R"            'mhs-nocase-grep-these-prompt)
-
-
-
-(define-key mhs-workspace-map "w" 'mhs-workspace-action)
-
 
 (provide 'mhs-map)
