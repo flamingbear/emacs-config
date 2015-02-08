@@ -1,2 +1,9 @@
 *.elc
 *~
+/.cask/
+/.emacs.bmk
+/.mc-lists.el
+/.places
+/.projectile
+/projectile-bookmarks.eld
+/projectile.cache
