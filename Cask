@@ -94,6 +94,7 @@
 (depends-on "simple-httpd")
 (depends-on "skewer-mode")
 (depends-on "slime")
+(depends-on "smartparens")
 (depends-on "solarized-theme")
 (depends-on "tern")
 (depends-on "web")

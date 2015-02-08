@@ -14,6 +14,51 @@
 
 (ansi-color-for-comint-mode-on)
 
+;; Some magnar's Sane Defaults.
+;;------------------------------
+;; Show keystrokes in progress
+(setq echo-keystrokes 0.3)
+
+;; Move files to trash when deleting
+(setq delete-by-moving-to-trash t)
+
+;; UTF-8 please
+;; (setq locale-coding-system 'utf-8) ; pretty
+;; (set-terminal-coding-system 'utf-8) ; pretty
+;; (set-keyboard-coding-system 'utf-8) ; pretty
+;; (set-selection-coding-system 'utf-8) ; please
+;; (prefer-coding-system 'utf-8) ; with sugar on top
+
+;; Remove text in active region if inserting text
+(delete-selection-mode 1)
+
+;; Lines should be 80 characters wide, not 72
+(setq fill-column 80)
+
+;; Save minibuffer history
+(savehist-mode 1)
+(setq history-length 1000)
+
+;; Easily NavigateSillyCased words
+(global-subword-mode 1)
+
+;; Don't break lines for me, please
+;;  But use mhs-trunc-lines to toggle bound to [C-c t]
+(setq-default truncate-lines t)
+
+;; A saner ediff
+(setq ediff-diff-options "-w")
+(setq ediff-split-window-function 'split-window-horizontally)
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+
+(require 'smartparens-config)
+(smartparens-global-mode t)
+
+
+
+
+
+
 
 ;; Extra Dired commands
 (add-hook 'dired-load-hook
@@ -212,6 +257,7 @@
 
 ;; unique buffer names
 (require 'uniquify)
+(setq uniquify-buffer-name-style 'forward)
 
 ;; ------------------------------------------------------------
 ;; auto-insert madness
