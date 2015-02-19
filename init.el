@@ -27,7 +27,7 @@
 
 ;;; Code:
 
-;; use cask/pallet to set up external packages from melpa/melpa-stable
+;; use cask/pallet to set up and track external packages from gnu/melpa/melpa-stable
 (require 'cask (expand-file-name "~/.cask/cask.el"))
 (cask-initialize)
 (require 'pallet)
@@ -46,11 +46,10 @@
 (setq settings-dir
       (expand-file-name "settings" user-emacs-directory))
 
-;; Add all site-lisp sub dir projects to load path
+;; Add all site-lisp subdir projects to load path
 (dolist (project (directory-files site-lisp-dir t "\\w+"))
   (when (file-directory-p project)
     (add-to-list 'load-path project)))
-
 
 
 ;; Store "Private" variables/files that don't get checked into revision control
@@ -83,15 +82,10 @@
 (projectile-global-mode)
 
 
-
-;; add load paths to custom files, load special packages, load the
-;; mhs-idlwave-extras file.
 (require 'emacs-extras)
 (require 'emacs-keybinds)
 (require 'emacs-sketchy-extras)
 (require 'emacs-custom-faces)
-
-
 
 
 ;; If we found some packages that didn't load..Print them out.
@@ -99,13 +93,6 @@
     (progn (message "Packages not found: %S" missing-packages-list)))
 (put 'dired-find-alternate-file 'disabled nil)
 
-
-;; colorize compilation buffer
-(require 'ansi-color)
-(defun colorize-compilation-buffer ()
-  (let ((inhibit-read-only t))
-    (ansi-color-apply-on-region (point-min) (point-max))))
-(add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
 
 
 ;; Work around for bug in macosx

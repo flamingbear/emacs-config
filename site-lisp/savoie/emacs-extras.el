@@ -52,6 +52,7 @@
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
 (require 'smartparens-config)
+(sp-use-smartparens-bindings)
 (smartparens-global-mode t)
 
 
@@ -323,5 +324,14 @@
 (set-register
  (string-to-char "p")
  "ftp://sidads.colorado.edu/pub/incoming/savoie")
+
+
+;; colorize compilation buffer
+(require 'ansi-color)
+(defun colorize-compilation-buffer ()
+  (let ((inhibit-read-only t))
+    (ansi-color-apply-on-region (point-min) (point-max))))
+(add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
+
 
 (provide 'emacs-extras)

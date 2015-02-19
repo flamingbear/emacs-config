@@ -34,9 +34,11 @@
   (interactive)
   (insert (concat "TODO [MHS, " (format-time-string "%Y-%m-%d") "] ")))
 
-(defun mhs-insert-date ()
-  (interactive)
-  (insert (format-time-string "%Y-%m-%d")))
+(defun mhs-insert-date (arg)
+  (interactive "p")
+  (let ((fmt '"%F"))
+    (if (not (= arg 1)) (setq fmt '"%FT%R" ))
+    (insert (format-time-string fmt))))
 
 (defun mhs-bracket-comment()
   (interactive)

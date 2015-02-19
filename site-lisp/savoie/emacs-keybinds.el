@@ -77,16 +77,6 @@
 (global-set-key "\C-cg"                    'magit-status); C-c g
 (global-set-key "\C-ci"              'mhs-include-guards); C-c i
 
-(global-set-key "\C-c\'"               'mhs-squote-region)
-(global-set-key "\C-c\""               'mhs-double-quote-around-region)
-(global-set-key "\C-c("                'mhs-paren-region)
-(global-set-key "\C-c)"                'mhs-paren-region)
-(global-set-key "\C-c{"                'mhs-bracket-region)
-(global-set-key "\C-c}"                'mhs-bracket-region)
-(global-set-key "\C-c["                'mhs-sqbracket-region)
-(global-set-key "\C-c]"                'mhs-sqbracket-region)
-(global-set-key "\C-c<"                'mhs-anglebracket-region)
-(global-set-key "\C-c>"                'mhs-anglebracket-region)
 (global-set-key (kbd "C-c p") 'perldb)
 (global-set-key (kbd "C-x SPC") 'push-mark-command)
 
