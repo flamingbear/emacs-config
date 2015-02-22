@@ -50,7 +50,7 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 (add-hook 'js2-mode-hook
           (lambda ()
             (linum-mode)
-            (tern-mode t)
+            ;;(tern-mode t)
             (local-set-key [(control meta q)] 'prog-indent-sexp) ))
 
 (autoload 'js2-mode "js2-mode" nil t)

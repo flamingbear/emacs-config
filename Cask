@@ -96,7 +96,6 @@
 (depends-on "slime")
 (depends-on "smartparens")
 (depends-on "solarized-theme")
-(depends-on "tern")
 (depends-on "web")
 (depends-on "websocket")
 (depends-on "wgrep")
