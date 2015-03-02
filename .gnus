@@ -55,6 +55,8 @@
   (concat "maild/mail-" (format-time-string "%Y")))
 
 
+;; We don't want to see each time we send email.
+(setq gnus-gcc-mark-as-read 't)
 ;; -----------------------------------------------
 ;; Where should the incoming mail be delivered to?
 
