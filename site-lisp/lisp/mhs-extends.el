@@ -4,9 +4,6 @@
 ;;;
 
 
-;; This function is old and people shouldn't use it, mhs-dblstuff replaces it.
-(require 'mhs-dblstuff)
-
 (defun mhs-base-name ()
   "* inserts the current buffer's name where the mark is."
   (interactive)
@@ -19,16 +16,6 @@
   (interactive)
   (browse-url (concat "file://" (buffer-file-name))))
 
-
-(defun mhs-home-font ()
-  (interactive)
-  (set-default-font
-   "-*-fixed-*-r-normal-*-20-*-*-*-*-*-*-*" nil))
-
-(defun mhs-nusnow-font ()
-  (interactive)
-  (set-default-font
-   "-Misc-Fixed-Medium-R-Normal--20-200-75-75-C-100-ISO8859-1" nil))
 
 (defun mhs-insert-todo ()
   (interactive)
