@@ -74,7 +74,7 @@
  '(highlight-changes-global-initial-state (quote passive))
  '(highlight-changes-global-modes t)
  '(highlight-changes-initial-state (quote passive))
- '(idlwave-abbrev-start-char "/" t)
+ '(idlwave-abbrev-start-char "/")
  '(idlwave-block-indent 3)
  '(idlwave-completion-case
    (quote
@@ -147,7 +147,7 @@
  '(nnmail-expiry-wait 3)
  '(org-agenda-files
    (quote
-    ("~/Dropbox/orgs/rockhopper.org" "~/Dropbox/orgs/honeybadger.org" "~/Dropbox/orgs/masie.org" "~/Dropbox/orgs/tasks.org" "~/Dropbox/orgs/programmers.org" "~/Dropbox/orgs/tips.org" "~/Dropbox/orgs/notes.org" "~/Dropbox/orgs/someday.org" "~/Dropbox/orgs/timetrack.org" "~/Dropbox/orgs/pm.org" "~/Dropbox/orgs/sprint_track.org" "~/Dropbox/orgs/time_off.org")))
+    ("~/Dropbox/orgs/2014ASA.org" "~/Dropbox/orgs/rockhopper.org" "~/Dropbox/orgs/honeybadger.org" "~/Dropbox/orgs/masie.org" "~/Dropbox/orgs/tasks.org" "~/Dropbox/orgs/programmers.org" "~/Dropbox/orgs/tips.org" "~/Dropbox/orgs/notes.org" "~/Dropbox/orgs/someday.org" "~/Dropbox/orgs/timetrack.org" "~/Dropbox/orgs/pm.org" "~/Dropbox/orgs/sprint_track.org" "~/Dropbox/orgs/time_off.org")))
  '(org-clock-persist (quote history))
  '(org-clock-persist-file "~/Dropbox/orgs/org-clock-save.el")
  '(org-log-done (quote note))
