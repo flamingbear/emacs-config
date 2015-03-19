@@ -1,36 +1,10 @@
 ;;; mhs-magit.el ---                                 -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2015  Matt Savoie
-
-;; Author: Matt Savoie <savoie@savoie-laptop.ad.int.nsidc.org>
-;; Keywords:
-
-;; This program is free software; you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation, either version 3 of the License, or
-;; (at your option) any later version.
-
-;; This program is distributed in the hope that it will be useful,
-;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;; GNU General Public License for more details.
-
-;; You should have received a copy of the GNU General Public License
-;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-;;; Commentary:
-
-;;
-
-
 ;;; Code:
-;; Stolen here
-
-;;  TODO integrate bitbucket:
-;; "git@bitbucket.org:nsidc/extended_generic_swath.git"
-;;  new PR: https://bitbucket.org/nsidc/measures-byu-vm/pull-request/new
-
+;; Originally idea for Github PR Stolen from here:
 ;; http://endlessparentheses.com/easily-create-github-prs-from-magit.html?source=rss
+
+
 (defun endless/visit-pull-request-url ()
   "Visit the current branch's PR on Github."
   (interactive)
@@ -47,7 +21,10 @@
             repo)
            (magit-get-current-branch))))
 
-;; This could be changed to not look at the new pull requests.
+
+
+;; Bitbucket pull requests are kinda funky, it seems to try to just do the
+;; right thing, so there's no branches to include.
 ;; https://bitbucket.org/nsidc/measures-byu-vm/pull-request/new
 (defun visit-bb-pull-request (repo)
   (browse-url
@@ -56,6 +33,7 @@
             "\\`.+bitbucket\\.org:\\(.+\\)\\.git\\'" "\\1"
             repo))))
 
+;; visit PR for github or bitbucket repositories with "V"
 (eval-after-load 'magit
   '(define-key magit-mode-map "V"
      #'endless/visit-pull-request-url))
