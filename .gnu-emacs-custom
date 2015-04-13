@@ -147,7 +147,7 @@
  '(nnmail-expiry-wait 3)
  '(org-agenda-files
    (quote
-    ("~/Dropbox/orgs/PMESDR.org" "~/Dropbox/orgs/2014ASA.org" "~/Dropbox/orgs/rockhopper.org" "~/Dropbox/orgs/honeybadger.org" "~/Dropbox/orgs/masie.org" "~/Dropbox/orgs/tasks.org" "~/Dropbox/orgs/programmers.org" "~/Dropbox/orgs/tips.org" "~/Dropbox/orgs/notes.org" "~/Dropbox/orgs/someday.org" "~/Dropbox/orgs/timetrack.org" "~/Dropbox/orgs/pm.org" "~/Dropbox/orgs/sprint_track.org" "~/Dropbox/orgs/time_off.org")))
+    ("~/projects/pycon2015/pycon2015.org" "~/Dropbox/orgs/PMESDR.org" "~/Dropbox/orgs/2014ASA.org" "~/Dropbox/orgs/rockhopper.org" "~/Dropbox/orgs/honeybadger.org" "~/Dropbox/orgs/masie.org" "~/Dropbox/orgs/tasks.org" "~/Dropbox/orgs/programmers.org" "~/Dropbox/orgs/tips.org" "~/Dropbox/orgs/notes.org" "~/Dropbox/orgs/timetrack.org" "~/Dropbox/orgs/pm.org" "~/Dropbox/orgs/sprint_track.org" "~/Dropbox/orgs/time_off.org" "~/Dropbox/orgs/someday.org")))
  '(org-clock-persist (quote history))
  '(org-clock-persist-file "~/Dropbox/orgs/org-clock-save.el")
  '(org-log-done (quote note))
@@ -185,7 +185,10 @@
  '(ps-printer-name "snowprint")
  '(safe-local-variable-values
    (quote
-    ((eval setq pyvenv-activate
+    ((project-venv-name . "/Users/savoie/.pyenv/versions/miniconda-3.8.3/envs/gsx")
+     (project-venv-name . "gsx")
+     (venv-location "/Users/savoie/.pyenv/versions/miniconda-3.8.3/envs/gsx")
+     (eval setq pyvenv-activate
            (concat
             (file-name-directory
              (let
