@@ -280,6 +280,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; require the gnus stuff that I wrote...
 (try-require 'mhs-map)
+(try-require 'mhs-magit)
 (try-require 'mhs-extends)
 (try-require 'mhs-perl)
 (try-require 'mhs-grep)
