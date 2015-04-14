@@ -4,6 +4,9 @@
 ;;;
 
 
+;; This function is old and people shouldn't use it, mhs-dblstuff replaces it.
+(require 'mhs-dblstuff)
+
 (defun mhs-base-name ()
   "* inserts the current buffer's name where the mark is."
   (interactive)
@@ -55,6 +58,36 @@
   (save-restriction (narrow-to-region (mark 't) (point))
                     (insert-register ?d t)
                     (insert-register ?f t)))
+
+(defun mhs-double-quote-around-region ()
+  "*Places Double quotes around the region"
+  (interactive)
+  (mhs-dblstuff (string-to-char "\"")))
+
+(defun mhs-paren-region ()
+  "*places parentheses around the current region"
+  (interactive)
+  (mhs-dblstuff (string-to-char ")")))
+
+(defun mhs-anglebracket-region ()
+  "*places angle brackets around the current region"
+  (interactive)
+  (mhs-dblstuff (string-to-char ">")))
+
+(defun mhs-bracket-region ()
+  "*places parentheses around the current region"
+  (interactive)
+  (mhs-dblstuff (string-to-char "}")))
+
+(defun mhs-sqbracket-region ()
+  "*places square brackets around the current region"
+  (interactive)
+  (mhs-dblstuff (string-to-char "]")))
+
+(defun mhs-squote-region ()
+  "*places single quotes around the current region"
+  (interactive)
+  (mhs-dblstuff (string-to-char "'")))
 
 
 (defun mhs-kill-current () "\
