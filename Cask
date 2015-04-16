@@ -65,6 +65,7 @@
 (depends-on "mark-multiple")
 (depends-on "markdown-mode")
 (depends-on "matlab-mode")
+(depends-on "moe-theme")
 (depends-on "monokai-theme")
 (depends-on "multi-term")
 (depends-on "multiple-cursors")
