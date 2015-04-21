@@ -1,9 +1,13 @@
 ;;; mhs-magit.el ---                                 -*- lexical-binding: t; -*-
 
+
+
+(setq magit-last-seen-setup-instructions "1.4.0")
+
+
 ;;; Code:
 ;; Originally idea for Github PR Stolen from here:
 ;; http://endlessparentheses.com/easily-create-github-prs-from-magit.html?source=rss
-
 
 (defun endless/visit-pull-request-url ()
   "Visit the current branch's PR on Github."
