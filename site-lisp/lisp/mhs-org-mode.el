@@ -75,11 +75,24 @@
       (replace-match (format-time-string "%Y-%m-%d")))))
 
 
-(defun org-clocktable-indent-string (level)
+(defun my-org-clocktable-indent-string (level)
   (if (= level 1) ""
     (let ((str " "))
       (dotimes (k (1- level) str)
-	(setq str (concat "...." str))))))
+	(setq str (concat ".." str))))))
+
+(advice-add 'org-clocktable-indent-string :override #'my-org-clocktable-indent-string)
+
+;; (defun my-org-clocktable-indent-string (level)
+;;   (if (= level 1)
+;;       ""
+;;     (let ((str " "))
+;;       (while (> level 2)
+;;         (setq level (1- level)
+;;               str (concat str "  ")))
+;;       (concat str "   "))))
+
+
 
 
 (provide 'mhs-org-mode)
