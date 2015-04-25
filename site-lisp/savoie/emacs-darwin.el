@@ -11,6 +11,7 @@
   (require 'exec-path-from-shell)
   (exec-path-from-shell-copy-env "NODE_PATH")
   (exec-path-from-shell-copy-env "GIT_EDITOR")
+  (exec-path-from-shell-copy-env "EDITOR")
   (exec-path-from-shell-copy-env "VIRTUAL_ENV")
   (exec-path-from-shell-initialize))
 
@@ -29,7 +30,7 @@
 
 ;; magit bug with using /usr/bin/emacsclient
 (eval-after-load 'magit
-  '(set-variable 'magit-emacsclient-executable (getenv "GIT_EDITOR")))
+  '(set-variable 'magit-emacsclient-executable (getenv "EDITOR")))
 
 
 (provide 'emacs-darwin)
