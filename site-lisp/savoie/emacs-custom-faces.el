@@ -248,10 +248,10 @@
 
 ;; We can choose different themes if you don't have full colors (like in terminal)
 ;; Also like moe-light moe-dark
-(require 'moe-theme)
+;; We can choose different themes if you don't have full colors (like in terminal)
 (if (<= (display-color-cells) 256)
-    (load-theme 'moe-dark t)
-  (load-theme 'moe-dark t))
+    (load-theme 'ample t)
+  (load-theme 'ample t))
 
 (mhs-update-mode-line)
 (provide 'emacs-custom-faces)

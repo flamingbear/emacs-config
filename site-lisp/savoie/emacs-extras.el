@@ -36,6 +36,8 @@
 (setq fill-column 80)
 
 ;; Save minibuffer history
+;; TODO [MHS, 2015-04-23] This isn't working right now
+;; If you get hung up.  (setq savehist-mode 'nil)
 (savehist-mode 1)
 (setq history-length 1000)
 
