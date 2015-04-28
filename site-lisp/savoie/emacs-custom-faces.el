@@ -249,6 +249,7 @@
 ;; We can choose different themes if you don't have full colors (like in terminal)
 ;; Also like moe-light moe-dark
 ;; We can choose different themes if you don't have full colors (like in terminal)
+(require 'moe-theme)
 (if (<= (display-color-cells) 256)
     (load-theme 'ample t)
   (load-theme 'ample t))
