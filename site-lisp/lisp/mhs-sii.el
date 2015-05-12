@@ -42,11 +42,12 @@
 Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 
 
-(defvar sii-current-build (getenv "BUILD")
-  "Currently active build")
-
 (defvar sii-current-proj-top (getenv "NRTSI_PROJ_TOP")
   "Current Project Top Dir")
+
+(defun sii-set-topdir ()
+  (interactive)
+  (setq sii-current-proj-top (file-name-directory (buffer-file-name))))
 
 ;; Functions to set the environment.
 (defun df17 ()
@@ -55,7 +56,6 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
   (setenv "BUILD" "F17_dev" )
   (setenv "NRTSI_PROJ_TOP" "/projects/NRTSI-G/F17_dev" )
   (setenv "NRTSI_WEBBASE" "/projects/NRTSI-G/F17_dev/website_base")
-  (setq sii-current-build (getenv "BUILD"))
   (setq sii-current-proj-top (getenv "NRTSI_PROJ_TOP"))
   (setq sii-current-web (getenv "NRTSI_WEBBASE")))
 
@@ -65,7 +65,6 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
   (setenv "BUILD" "F17_test" )
   (setenv "NRTSI_PROJ_TOP" "/projects/NRTSI-G/F17_test" )
   (setenv "NRTSI_WEBBASE" "/disks/testsnowtest/live/data/seaice_index/")
-  (setq sii-current-build (getenv "BUILD"))
   (setq sii-current-proj-top (getenv "NRTSI_PROJ_TOP"))
   (setq sii-current-web (getenv "NRTSI_WEBBASE")))
 
@@ -75,7 +74,6 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
   (setenv "BUILD" "F17_prod" )
   (setenv "NRTSI_PROJ_TOP" "/projects/NRTSI-G/F17_prod" )
   (setenv "NRTSI_WEBBASE" "/disks/production/live/data/seaice_index/")
-  (setq sii-current-build (getenv "BUILD"))
   (setq sii-current-proj-top (getenv "NRTSI_PROJ_TOP"))
   (setq sii-current-web (getenv "NRTSI_WEBBASE")))
 
