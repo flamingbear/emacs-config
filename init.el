@@ -86,6 +86,7 @@
 (require 'emacs-keybinds)
 (require 'emacs-sketchy-extras)
 (require 'emacs-custom-faces)
+(require 'mhs-cut-and-paste)
 
 
 ;; If we found some packages that didn't load..Print them out.

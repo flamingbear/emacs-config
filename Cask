@@ -75,6 +75,7 @@
 (depends-on "package-build")
 (depends-on "pallet")
 (depends-on "paredit")
+(depends-on "pbcopy")
 (depends-on "pcache")
 (depends-on "pkg-info")
 (depends-on "popup")
