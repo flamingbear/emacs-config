@@ -10,13 +10,16 @@
 ;; (that uses mouse-select/middle-button-click)
 ;; (setq x-select-enable-clipboard t)
 
-;; Turn on pbcopy if you're running emacs on a mac.
+;; Turn on pbcopy if you're running emacs on a mac regardless of the window type.
+;;--------------------------------------------------------------------------------
+
 (if (equal 'darwin system-type)
     (progn
       (require 'pbcopy)
       (turn-on-pbcopy)))
 
 ;; use this fancy thing I found if you're in a terminal, but not on macosx
+;;-------------------------------------------------------------------------
 
 ;; If emacs is run in a terminal, the clipboard- functions have no
 ;; effect. Instead, we use of xsel, see
