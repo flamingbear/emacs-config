@@ -51,7 +51,29 @@
 ;; (setq jedi:setup-keys t)
 ;; (setq jedi:complete-on-dot t)
 
-(add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
+
+;;
+;;; Special configuration for ein:notebook autocomplete
+(require 'ein-loaddefs)
+(eval-when-compile (require 'ein-notebooklist))
+(require 'ein)
+
+  ;; auto-complete superpack
+(setq ein:use-auto-complete-superpack t)
+
+(defun mhs-ein-notebook-hook ()
+  (interactive)
+  (require 'auto-complete-config nil t)
+  (declare-function auto-complete-mode "auto-complete.el")
+  (when (featurep 'auto-complete-config)
+    (company-mode -1)
+    (ac-config-default)
+    (auto-complete-mode t)))
+
+;(add-hook 'ein:notebooklist-first-open-hook 'mhs-ein-notebook-hook)
+(add-hook 'ein:notebook-mode-hook 'mhs-ein-notebook-hook)
+;(add-hook 'ein:connect-mode-hook 'mhs-ein-notebook-hook)
+;(add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
 
 (provide 'mhs-python)
 ;;; mhs-python.el ends here

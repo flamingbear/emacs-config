@@ -36,7 +36,7 @@
 ;; Try company-mode instead of auto-complete
 ;;--------------------------
 (add-hook 'after-init-hook 'global-company-mode)
-;; (company-quickhelp-mode 1)
+(company-quickhelp-mode 1)
 
 
 
