@@ -39,12 +39,15 @@
 (setq custom-file (locate-user-emacs-file ".gnu-emacs-custom"))
 (load custom-file t t)
 
+
 ;; Set path to dependencies
 (setq site-lisp-dir
       (expand-file-name "site-lisp" user-emacs-directory))
 
 (setq settings-dir
       (expand-file-name "settings" user-emacs-directory))
+
+
 
 ;; Add all site-lisp subdir projects to load path
 (dolist (project (directory-files site-lisp-dir t "\\w+"))
