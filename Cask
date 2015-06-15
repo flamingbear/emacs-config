@@ -15,7 +15,6 @@
 (depends-on "color-theme-sanityinc-solarized")
 (depends-on "company")
 (depends-on "company-jedi")
-(depends-on "company-quickhelp")
 (depends-on "concurrent")
 (depends-on "confluence")
 (depends-on "connection")
