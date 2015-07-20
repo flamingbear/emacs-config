@@ -35,12 +35,6 @@
 ;; Lines should be 80 characters wide, not 72
 (setq fill-column 80)
 
-;; Save minibuffer history
-;; TODO [MHS, 2015-04-23] This isn't working right now, can't quit emacs.
-;; If you get hung up.  (setq savehist-mode 'nil)
-                                        ; (savehist-mode 1)
-(setq savehist-mode 'nil)
-(setq history-length 1000)
 
 ;; Easily NavigateSillyCased words
 (global-subword-mode 1)

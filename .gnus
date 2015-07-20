@@ -31,7 +31,7 @@
                 (nnimap-authinfo-file "~/.authinfo")
                 )
         (nnimap "CU-exchange"
-                (nnimap-address "exchangeimap.colorado.edu")
+                (nnimap-address "outlook.office365.com")
                 (nnimap-server-port 993)
                 (nnimap-stream ssl)
                 (nnir-search-engine imap)

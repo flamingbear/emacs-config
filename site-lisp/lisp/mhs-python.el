@@ -58,8 +58,8 @@
 (eval-when-compile (require 'ein-notebooklist))
 (require 'ein)
 
-  ;; auto-complete superpack
-(setq ein:use-auto-complete-superpack t)
+;; auto-complete superpack
+;(setq ein:use-auto-complete-superpack t)
 
 (defun mhs-ein-notebook-hook ()
   (interactive)
@@ -70,8 +70,11 @@
     (ac-config-default)
     (auto-complete-mode t)))
 
+; 2015-06-30 This is the one.
+;(add-hook 'ein:notebook-mode-hook 'mhs-ein-notebook-hook)
+
 ;(add-hook 'ein:notebooklist-first-open-hook 'mhs-ein-notebook-hook)
-(add-hook 'ein:notebook-mode-hook 'mhs-ein-notebook-hook)
+
 ;(add-hook 'ein:connect-mode-hook 'mhs-ein-notebook-hook)
 ;(add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
 
