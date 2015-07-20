@@ -12,18 +12,21 @@
 (defun endless/visit-pull-request-url ()
   "Visit the current branch's PR on Github."
   (interactive)
-  (let ((repo (magit-get "remote" (magit-get-current-remote) "url")))
+  (let ((repo (magit-get "remote" (magit-get-remote) "url")))
     (if (string-match "github\\.com" repo)
         (visit-gh-pull-request repo)
       (visit-bb-pull-request repo))))
 
+
 (defun visit-gh-pull-request (repo)
+  "Visit the current branch's PR on Github."
+  (interactive)
   (browse-url
-   (format "https://github.com/%s/compare/%s"
-           (replace-regexp-in-string
-            "\\`.+github\\.com:\\(.+\\)\\.git\\'" "\\1"
-            repo)
-           (magit-get-current-branch))))
+   (format "https://github.com/%s/pull/new/%s"
+     (replace-regexp-in-string
+      "\\`.+github\\.com:\\(.+\\)\\.git\\'" "\\1"
+      repo)
+     (cdr (magit-get-remote-branch)))))
 
 
 
@@ -39,7 +42,7 @@
 
 ;; visit PR for github or bitbucket repositories with "V"
 (eval-after-load 'magit
-  '(define-key magit-mode-map "V"
+  '(define-key magit-mode-map "v"
      #'endless/visit-pull-request-url))
 
 
