@@ -9,25 +9,9 @@
  '(auto-insert-path (quote ("~savoie/.emacs.d/autoinsert/insert/")) t)
  '(bbdb-use-pop-up nil)
  '(bookmark-save-flag 1)
- '(canlock-password "b908e6544be0e18bb190e50cf9afc8279754b5a4")
+ '(canlock-password "b908e6544be0e18bb190e50cf9afc8279754b5a4" t)
  '(column-number-mode t)
  '(comment-column 32)
- '(cperl-clobber-lisp-bindings t)
- '(cperl-close-paren-offset -4)
- '(cperl-continued-statement-offset 4)
- '(cperl-electric-keywords t)
- '(cperl-electric-linefeed t)
- '(cperl-electric-parens nil)
- '(cperl-font-lock t)
- '(cperl-highlight-variables-indiscriminately t)
- '(cperl-indent-parens-as-block t)
- '(cperl-info-on-command-no-prompt t)
- '(cperl-info-page "perl")
- '(cperl-invalid-face (quote default))
- '(cperl-lazy-help-time 5)
- '(cperl-merge-trailing-else nil)
- '(cperl-noscan-files-regexp "/\\(\\.\\.?\\|SCCS\\|RCS\\|CVS\\|blib\\)$")
- '(cperl-under-as-char nil)
  '(ctypes-file-name "~savoie/.ctypes" t)
  '(custom-safe-themes
    (quote
@@ -147,7 +131,7 @@
  '(nnmail-expiry-wait 3)
  '(org-agenda-files
    (quote
-    ("~/Dropbox/orgs/PMESDR.org" "~/Dropbox/orgs/2014ASA.org" "~/Dropbox/orgs/rockhopper.org" "~/Dropbox/orgs/honeybadger.org" "~/Dropbox/orgs/tasks.org" "~/Dropbox/orgs/tips.org" "~/Dropbox/orgs/notes.org" "~/Dropbox/orgs/timetrack.org" "~/Dropbox/orgs/pm.org" "~/Dropbox/orgs/sprint_track.org" "~/Dropbox/orgs/time_off.org" "~/Dropbox/orgs/someday.org" "~/Dropbox/orgs/asina.org" "~/Dropbox/orgs/daac.org" "~/Dropbox/orgs/masie.org" "~/Dropbox/projects/pycon2015/pycon2015.org" "~/Dropbox/Resume/personal-todo.org" "~/projects/seaice-ungoo/seaice_projects.org" "~/Dropbox/orgs/pss.org")))
+    ("~/Dropbox/orgs/PMESDR.org" "~/Dropbox/orgs/2014ASA.org" "~/Dropbox/orgs/rockhopper.org" "~/Dropbox/orgs/honeybadger.org" "~/Dropbox/orgs/tasks.org" "~/Dropbox/orgs/tips.org" "~/Dropbox/orgs/notes.org" "~/Dropbox/orgs/timetrack.org" "~/Dropbox/orgs/pm.org" "~/Dropbox/orgs/sprint_track.org" "~/Dropbox/orgs/time_off.org" "~/Dropbox/orgs/someday.org" "~/Dropbox/orgs/asina.org" "~/Dropbox/orgs/daac.org" "~/Dropbox/orgs/masie.org" "~/Dropbox/projects/pycon2015/pycon2015.org" "~/Dropbox/Resume/personal-todo.org" "~/Dropbox/orgs/pss.org")))
  '(org-clock-persist (quote history))
  '(org-clock-persist-file "~/Dropbox/orgs/org-clock-save.el")
  '(org-log-done (quote note))
@@ -172,17 +156,7 @@
  '(org-todo-keywords
    (quote
     ((sequence "TODO" "WAITING" "|" "DONE" "DELEGATED" "CANCELLED"))))
- '(paradox-github-token t t)
- '(perl-indent-level 3)
- '(printer-name "Snowprint_2")
- '(ps-default-bg "white")
- '(ps-default-fg "black")
- '(ps-lpr-switches nil)
- '(ps-n-up-printing 1)
- '(ps-paper-type (quote letter))
- '(ps-print-color-p nil)
- '(ps-print-only-one-header t)
- '(ps-printer-name "snowprint")
+ '(paradox-automatically-star t)
  '(safe-local-variable-values
    (quote
     ((project-venv-name . "/Users/savoie/anaconda/envs/seaice_tools")

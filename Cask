@@ -97,6 +97,7 @@
 (depends-on "rinari")
 (depends-on "ruby-compilation")
 (depends-on "s")
+(depends-on "seq")
 (depends-on "shut-up")
 (depends-on "simple-httpd")
 (depends-on "skewer-mode")
