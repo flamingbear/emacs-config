@@ -453,5 +453,16 @@ following the prefix character"
     (shell-command-on-region (mark) (point) "python -m json.tool" (buffer-name) t)))
 
 
+;; Not a perfect solution, but this will modify ansi colors in a region very
+;; good for reading puppet output, but it modifies the buffer so you
+;; shouldn't save any changes.
+
+(require 'ansi-color)
+
+(defun display-ansi-colors ()
+  (interactive)
+  (ansi-color-apply-on-region (point-min) (point-max)))
+
+#(add-to-list 'auto-mode-alist '("\\.log\\'" . display-ansi-colors))
 
 (provide 'mhs-extends)
