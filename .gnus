@@ -15,7 +15,7 @@
 ;; Do we really want the auto-fill turned on.  I dont' think so
 (setq message-fill-column 'nil)
 
-
+(setq mml2015-signers '("1AFA6998"))
 ;; search mail with various search engines.
 (require 'nnir)
 
@@ -28,14 +28,14 @@
                 (nnimap-server-port 993)
                 (nnimap-stream ssl)
                 (nnir-search-engine imap)
-                (nnimap-authinfo-file "~/.authinfo")
+                (nnimap-authinfo-file "~/.authinfo.gpg")
                 )
         (nnimap "CU-exchange"
                 (nnimap-address "outlook.office365.com")
                 (nnimap-server-port 993)
                 (nnimap-stream ssl)
                 (nnir-search-engine imap)
-                (nnimap-authinfo-file "~/.authinfo")
+                (nnimap-authinfo-file "~/.authinfo.gpg")
                 )
 	(nnml "private" )))
 
