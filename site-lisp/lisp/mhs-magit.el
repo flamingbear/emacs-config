@@ -4,7 +4,7 @@
 
 (setq magit-last-seen-setup-instructions "1.4.0")
 
-
+(setq magit-push-always-verify nil)
 ;;; Code:
 ;; Originally idea for Github PR Stolen from here:
 ;; http://endlessparentheses.com/easily-create-github-prs-from-magit.html?source=rss

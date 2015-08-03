@@ -159,7 +159,13 @@
  '(paradox-automatically-star t)
  '(safe-local-variable-values
    (quote
-    ((project-venv-name . "/Users/savoie/anaconda/envs/seaice_tools")
+    ((project-venv-name . "/Users/savoie/anaconda/envs/sea_ice_timeseries")
+     (venv-location "/Users/savoie/anaconda/envs/sea_ice_timeseries")
+     (project-venv-name . "/Users/savoie/anaconda/envs/sea_ice_tools")
+     (venv-location "/Users/savoie/anaconda/envs/sea_ice_tools")
+     (project-venv-name . "/Users/savoie/anaconda/envs/gsx")
+     (venv-location "/Users/savoie/anaconda/envs/gsx")
+     (project-venv-name . "/Users/savoie/anaconda/envs/seaice_tools")
      (venv-location "/Users/savoie/anaconda/envs/seaice_tools")
      (project-venv-name . "/Users/savoie/anaconda/envs/seaice_timeseries")
      (venv-location "/Users/savoie/anaconda/envs/seaice_timeseries")
