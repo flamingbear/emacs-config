@@ -59,7 +59,7 @@
 (require 'ein)
 
 ;; auto-complete superpack
-;(setq ein:use-auto-complete-superpack t)
+(setq ein:use-auto-complete-superpack t)
 
 (defun mhs-ein-notebook-hook ()
   (interactive)
@@ -71,12 +71,12 @@
     (auto-complete-mode t)))
 
 ; 2015-06-30 This is the one.
-;(add-hook 'ein:notebook-mode-hook 'mhs-ein-notebook-hook)
+(add-hook 'ein:notebook-mode-hook 'mhs-ein-notebook-hook)
 
 ;(add-hook 'ein:notebooklist-first-open-hook 'mhs-ein-notebook-hook)
 
-;(add-hook 'ein:connect-mode-hook 'mhs-ein-notebook-hook)
-;(add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
+(add-hook 'ein:connect-mode-hook 'mhs-ein-notebook-hook)
+(add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
 
 (provide 'mhs-python)
 ;;; mhs-python.el ends here
