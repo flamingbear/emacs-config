@@ -4,6 +4,7 @@
 
 (depends-on "ace-jump-mode")
 (depends-on "ample-theme")
+(depends-on "ample-zen-theme")
 (depends-on "async")
 (depends-on "auto-complete")
 (depends-on "autopair")
