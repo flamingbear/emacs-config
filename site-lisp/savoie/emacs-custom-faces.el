@@ -18,10 +18,8 @@
 (when (display-graphic-p)
   ;; If we're not running NX set the fonts like I like them.  Otherwise, we
   ;; default to 10x20
-  (setq nx-env (getenv "NX_ROOT"))
   (setq use-inconsolata t)
-  (if  (or (not (string= nx-env nil))
-           (string-match "snow.colorado.edu" (system-name))
+  (if  (or (string-match "snow.colorado.edu" (system-name))
            (not (string-match "snow[^s]" (system-name)))
            (string-match "masie" (user-login-name))
            (string-match "nise" (user-login-name))
@@ -249,10 +247,11 @@
 ;; We can choose different themes if you don't have full colors (like in terminal)
 ;; Also like moe-light moe-dark
 ;; We can choose different themes if you don't have full colors (like in terminal)
-(require 'moe-theme)
+;; (require 'moe-theme)
+;; (require 'solarized)
 (if (<= (display-color-cells) 256)
-    (load-theme 'ample-zen t)
-  (load-theme 'ample-zen t))
+    (load-theme 'ample t)
+  (load-theme 'ample t))
 
 (mhs-update-mode-line)
 (provide 'emacs-custom-faces)

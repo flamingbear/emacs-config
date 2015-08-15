@@ -332,7 +332,6 @@ following the prefix character"
 (defun mhs-use-inconsolata ()
   (interactive)
   (progn (set-face-attribute 'default nil :inherit nil :stipple nil
-                               :background "gray12" :foreground "gray89"
                                :inverse-video nil :box nil
                                :strike-through nil :overline nil
                                :underline nil  :height 150
@@ -343,7 +342,6 @@ following the prefix character"
   "Switch from the current face to a nice coding font for macintosh machines"
   (interactive)
   (progn (set-face-attribute 'default nil :inherit nil :stipple nil
-                             :background "gray12" :foreground "gray89"
                              :inverse-video nil :box nil
                              :strike-through nil :overline nil
                              :underline nil  :height 145
@@ -354,7 +352,6 @@ following the prefix character"
   "Switch from the current face to a nice coding font for macintosh machines"
   (interactive)
   (progn (set-face-attribute 'default nil :inherit nil :stipple nil
-                             :background "gray12" :foreground "gray89"
                              :inverse-video nil :box nil
                              :strike-through nil :overline nil
                              :underline nil  :height 145
@@ -379,7 +376,6 @@ following the prefix character"
 (defun mhs-use-normal-face ()
   (interactive)
   (progn (set-face-attribute 'default nil :font "10x20" :inherit nil :stipple nil
-                             :background "gray12" :foreground "gray89"
                              :inverse-video nil :box nil :strike-through nil
                              :overline nil :underline nil )))
 
