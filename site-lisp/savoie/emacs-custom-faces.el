@@ -250,8 +250,8 @@
 ;; (require 'moe-theme)
 ;; (require 'solarized)
 (if (<= (display-color-cells) 256)
-    (load-theme 'ample t)
-  (load-theme 'ample t))
+    (load-theme 'ample-savoie t)
+  (load-theme 'ample-savoie t))
 
 (mhs-update-mode-line)
 (provide 'emacs-custom-faces)
