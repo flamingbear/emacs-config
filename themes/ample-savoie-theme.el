@@ -98,7 +98,7 @@
  '(gnus-summary-selected ((t (:foreground nil :background nil :underline t))))
  '(highlight-indentation-current-column-face ((t (:foreground nil :background "#757575"))))
  '(highlight-indentation-face ((t (:foreground nil :background "#252525"))))
- '(trailing-whitespace ((t (:background "white" :bold t))))
+ '(trailing-whitespace ((t (:inherit default :underline t :weight bold))))
  '(custom-button ((t (:foreground nil :background nil))))
  '(custom-button-mouse ((t (:foreground nil :background nil))))
  '(custom-button-pressed ((t (:foreground nil :background nil))))
