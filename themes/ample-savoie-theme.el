@@ -1,5 +1,5 @@
 (deftheme ample-savoie
-  "Created 2015-08-16.")
+  "Created 2015-08-27.")
 
 (custom-theme-set-variables
  'ample-savoie
@@ -124,6 +124,7 @@
  '(custom-variable-tag ((t (:foreground "#528fd1" :background nil :bold t))))
  '(custom-visibility ((t (:inherit button))))
  '(widget-field ((t (:foreground "#bdbdb3" :background "#656565"))))
- '(default ((t (:foreground "#bdbdb3" :background "gray13")))))
+ '(default ((t (:foreground "#bdbdb3" :background "gray13"))))
+ '(shadow ((t (:foreground "grey30")))))
 
 (provide-theme 'ample-savoie)
