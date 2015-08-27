@@ -70,12 +70,15 @@
     (ac-config-default)
     (auto-complete-mode t)))
 
-; 2015-06-30 This is the one.
-(add-hook 'ein:notebook-mode-hook 'mhs-ein-notebook-hook)
+; 2015-06-30 This is the one that causes problems when you have large arrays
+;;(add-hook 'ein:notebook-mode-hook 'mhs-ein-notebook-hook)
+;;(remove-hook 'ein:notebook-mode-hook 'mhs-ein-notebook-hook)
 
-;(add-hook 'ein:notebooklist-first-open-hook 'mhs-ein-notebook-hook)
+;;(add-hook 'ein:notebooklist-first-open-hook 'mhs-ein-notebook-hook)
 
-(add-hook 'ein:connect-mode-hook 'mhs-ein-notebook-hook)
+;;(add-hook 'ein:connect-mode-hook 'mhs-ein-notebook-hook)
+;; (remove-hook 'ein:connect-mode-hook 'mhs-ein-notebook-hook)
+
 (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
 
 (provide 'mhs-python)
