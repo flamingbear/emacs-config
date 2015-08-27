@@ -78,6 +78,7 @@
 (depends-on "paredit")
 (depends-on "pbcopy")
 (depends-on "pcache")
+(depends-on "pianobar")
 (depends-on "pkg-info")
 (depends-on "popup")
 (depends-on "pos-tip")

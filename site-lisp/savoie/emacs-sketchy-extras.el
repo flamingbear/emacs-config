@@ -50,5 +50,9 @@
   (setq edit-server-new-frame nil)
   (edit-server-start))
 
+;; pandora music in the EMACS
+(autoload 'pianobar "pianobar" nil t)
+(setq pianobar-username "pandora@flamingbear.com")
+
 (provide 'emacs-sketchy-extras)
 ;;; EMACS-SKETCHY-EXTRAS.EL ends here
