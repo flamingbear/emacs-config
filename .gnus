@@ -69,6 +69,7 @@
     (any ".*savoie@kryos.colorado.edu.*" "spam")
     ("Delivered-To" "savoie@kryos.colorado.edu" "spam")
     ("Subject" ".*\\[confluence\\].*" "maild/confluence")
+    ("Subject" ".*\\[Bitbucket\\].*" "maild/bitbucket")
     (from ".*Travis CI.*" "maild/travis")
     ("Subject" ".*\\[Bamboo\\].*" "maild/nsidc-notices")
     ("Subject" ".*\\[gdal-dev\\].*" "maild/lists")
@@ -231,6 +232,7 @@
         (cond ((string= group "nsidc-notices") 90)
               ((string= group  "jira-production") 30)
               ((string= group  "jira-tickets") 30)
+              ((string= group  "bitbucket") 30)
               ((string= group "confluence") 30)
               ((string= group "glas_requests") 10)
               ((string= group "spam") 7)
@@ -242,4 +244,4 @@
               (t 200))))
 
 ;; Set the groups that are auto-expirable.
-(setq gnus-auto-expirable-newsgroups "\\(.*lists\\|.*jira.*\\|.*list\\|.*nsidc-notices\\|.*confluence\\|.*exchange:INBOX\\)")
+(setq gnus-auto-expirable-newsgroups "\\(.*lists\\|.*bitbucket.*\\|.*jira.*\\|.*list\\|.*nsidc-notices\\|.*confluence\\|.*exchange:INBOX\\)")
