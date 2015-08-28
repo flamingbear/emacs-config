@@ -125,6 +125,6 @@
  '(custom-visibility ((t (:inherit button))))
  '(widget-field ((t (:foreground "#bdbdb3" :background "#656565"))))
  '(default ((t (:foreground "#bdbdb3" :background "gray13"))))
- '(shadow ((t (:foreground "grey30")))))
+ '(shadow ((t (:foreground "grey40")))))
 
 (provide-theme 'ample-savoie)
