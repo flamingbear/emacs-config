@@ -59,6 +59,12 @@
                     (insert-register ?d t)
                     (insert-register ?f t)))
 
+
+(defun mhs-backtick-around-region ()
+  "*Places Double quotes around the region"
+  (interactive)
+  (mhs-dblstuff (string-to-char "`")))
+
 (defun mhs-double-quote-around-region ()
   "*Places Double quotes around the region"
   (interactive)
