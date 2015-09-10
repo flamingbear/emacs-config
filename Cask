@@ -22,6 +22,7 @@
 (depends-on "creole")
 (depends-on "ctable")
 (depends-on "dash")
+(depends-on "dash-functional")
 (depends-on "db")
 (depends-on "deferred")
 (depends-on "dictionary")
