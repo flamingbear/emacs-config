@@ -72,6 +72,7 @@
     ("Subject" ".*\\[Bitbucket\\].*" "maild/bitbucket")
     (from ".*Travis CI.*" "maild/travis")
     ("Subject" ".*\\[Bamboo\\].*" "maild/nsidc-notices")
+    ("Subject" ".*\\[eosdis-ux\\].*" "maild/lists")
     ("Subject" ".*\\[gdal-dev\\].*" "maild/lists")
     ("Subject" ".*\\[Prod_changes\\].*" "maild/jira-production")
     ("Subject" ".*\\[Asina\\].*" "maild/asina")
