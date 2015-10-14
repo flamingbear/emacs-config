@@ -54,8 +54,10 @@
 
 
 
-
-
+;; Bug in El Capitain with visible bell
+;; https://debbugs.gnu.org/cgi/bugreport.cgi?bug=21662
+;; This just fixes it sort of for a while.
+(setq ring-bell-function (lambda () (message "*woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* ")(sleep-for .15)))
 
 
 ;; Extra Dired commands
