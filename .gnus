@@ -15,8 +15,13 @@
 ;; Do we really want the auto-fill turned on.  I dont' think so
 (setq message-fill-column 'nil)
 
-(setq mml2015-signers '("1AFA6998"))
+;; (setq mml2015-signers '("1AFA6998")) # flamingbear
+(setq mml2015-signers '("171530BF"))  ;; savoie@nsidc.org
 ;; search mail with various search engines.
+
+(setq gnus-buttonized-mime-types (quote ("multipart/signed")))
+(setq gnus-inhibit-mime-unbuttonizing nil)
+
 (require 'nnir)
 
 
@@ -73,6 +78,7 @@
     (from ".*Travis CI.*" "maild/travis")
     ("Subject" ".*\\[Bamboo\\].*" "maild/nsidc-notices")
     ("Subject" ".*\\[eosdis-ux\\].*" "maild/lists")
+    ("Subject" ".*\\[eosdis-.*\\].*" "maild/lists")
     ("Subject" ".*\\[gdal-dev\\].*" "maild/lists")
     ("Subject" ".*\\[Prod_changes\\].*" "maild/jira-production")
     ("Subject" ".*\\[Asina\\].*" "maild/asina")
