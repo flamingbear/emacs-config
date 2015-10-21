@@ -5,6 +5,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(Info-additional-directory-list (quote ("~savoie/local/info/")))
+ '(ansi-color-names-vector
+   ["#454545" "#cd5542" "#6aaf50" "#baba36" "#5180b3" "#ab75c3" "#bdbc61" "#bdbdb3"])
  '(auto-compression-mode t nil (jka-compr))
  '(auto-insert-path (quote ("~savoie/.emacs.d/autoinsert/insert/")) t)
  '(bbdb-use-pop-up nil)
