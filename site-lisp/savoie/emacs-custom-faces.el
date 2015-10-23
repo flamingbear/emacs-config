@@ -70,7 +70,7 @@
       ;; Dev or apps VM
       ((string-match "^v.*\.\\(dev\\|apps\\)\.int\.nsidc\.org" (system-name))
        (progn (setq my-menu-fg-color "#F2FF30")
-              (setq my-menu-bg-color "#BD598E"))) ;
+              (setq my-menu-bg-color "#5f5fff"))) ;
 
       ;; user archive.
       ((string-match (user-login-name) "archive")
