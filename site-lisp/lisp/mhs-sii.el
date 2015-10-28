@@ -103,7 +103,7 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 (defun sii-logs ()
   "Jump to the nrtsi logs directory."
   (interactive)
-  (dired (nrtsi-out-subdir "nrtsig/logs" )))
+  (dired (nrtsi-out-subdir "logs" )))
 
 
 (defun sii-libs ()
