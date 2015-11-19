@@ -79,6 +79,12 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
   (interactive)
   (dired (nrtsi-proj-top)))
 
+(defun sii-out-root ()
+  "Jump to current project top."
+  (interactive)
+  (dired (nrtsi-out-top)))
+
+
 (defun sii-website ()
   "Jump to the nrtsi results directory."
   (interactive)
@@ -105,7 +111,6 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
   (interactive)
   (dired (nrtsi-out-subdir "logs" )))
 
-
 (defun sii-libs ()
   "Jump to library locs."
   (interactive)
@@ -124,7 +129,7 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 (defun sii-images ()
   "Jump to the images directory."
   (interactive)
-  (dired (nrtsi-proj-top-subdir "seaice_index/idl/images")))
+  (dired (nrtsi-out-subdir "images")))
 
 (defun sii-extents ()
   "Jump to the extent_ts_output directory."
