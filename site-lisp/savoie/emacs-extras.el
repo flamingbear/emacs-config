@@ -152,6 +152,13 @@
             '(lambda ()
                (define-key yaml-mode-map "\C-m" 'newline-and-indent))))
 
+;; SICP
+
+(add-to-list 'auto-mode-alist '("\\.scm$" . scheme-mode))
+(add-hook 'scheme-mode-hook
+          '(lambda ()
+             (paredit-mode 1)))
+
 
 ;; Javascript stuff
 (try-require 'mhs-javascript)
