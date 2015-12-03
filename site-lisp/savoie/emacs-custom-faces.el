@@ -67,7 +67,13 @@
               (setq idlwave-shell-explicit-file-name "idl82")
               )) ;cornflowerblue
 
-      ;; Dev or apps VM
+      ;; NRTSI-work. if NRTSITOP is defined use these
+      ((not (eq (getenv "NRTSITOP") nil))
+       (progn (setq my-menu-fg-color "color-28")
+              (setq my-menu-bg-color "color-154")))
+
+
+      ;; Dev or apps VM - standard
       ((string-match "^v.*\.\\(dev\\|apps\\)\.int\.nsidc\.org" (system-name))
        (progn (setq my-menu-fg-color "#F2FF30")
               (setq my-menu-bg-color "#5f5fff"))) ;
