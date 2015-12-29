@@ -26,7 +26,7 @@
      (replace-regexp-in-string
       "\\`.+github\\.com:\\(.+\\)\\.git\\'" "\\1"
       repo)
-     (cdr (magit-get-remote-branch)))))
+     (magit-get-current-branch))))
 
 
 
