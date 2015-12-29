@@ -132,9 +132,7 @@
  '(mouse-wheel-mode t nil (mwheel))
  '(nnmail-crosspost nil)
  '(nnmail-expiry-wait 3)
- '(org-agenda-files
-   (quote
-    ("~/Dropbox/orgs/PMESDR.org" "~/Dropbox/orgs/2014ASA.org" "~/Dropbox/orgs/rockhopper.org" "~/Dropbox/orgs/honeybadger.org" "~/Dropbox/orgs/tasks.org" "~/Dropbox/orgs/tips.org" "~/Dropbox/orgs/notes.org" "~/Dropbox/orgs/timetrack.org" "~/Dropbox/orgs/pm.org" "~/Dropbox/orgs/sprint_track.org" "~/Dropbox/orgs/time_off.org" "~/Dropbox/orgs/someday.org" "~/Dropbox/orgs/asina.org" "~/Dropbox/orgs/daac.org" "~/Dropbox/orgs/masie.org" "~/Dropbox/projects/pycon2015/pycon2015.org" "~/Dropbox/Resume/personal-todo.org" "~/Dropbox/orgs/pss.org")))
+ '(org-agenda-files "~/Dropbox/orgs/org-agenda-files")
  '(org-clock-persist (quote history))
  '(org-clock-persist-file "~/Dropbox/orgs/org-clock-save.el")
  '(org-log-done (quote note))
