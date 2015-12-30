@@ -9,20 +9,15 @@
 ;; don't use flymake (elpy default), use flycheck
 ;; from: https://github.com/jorgenschaefer/elpy/issues/137
 (when (require 'flycheck nil t)
-  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  (remove-hook 'elpy-modules 'elpy-module-flymake)
   (add-hook 'elpy-mode-hook 'flycheck-mode))
+
 
 ;; track virtual environments if they are set dir locally
 (setq pyvenv-tracking-mode 't)
 
 ;; Python is a dev mode
 (add-hook 'python-mode-hook 'run-dev-hook)
-
-
-;; (require 'virtualenvwrapper)
-;; (venv-initialize-interactive-shells) ;; if you want interactive shell support
-;; (venv-initialize-eshell) ;; if you want eshell support
-;; (setq venv-location "~/.virtual_envs/")
 
 
 
@@ -40,16 +35,6 @@
             (local-set-key "\C-cpm" 'nosetests-pdb-module)
             (local-set-key "\C-cp." 'nosetests-pdb-one)))
 
-
-;; the venv-workon above lets you use .dir-local.el files to control the virtual env and activate it...
-;; sample .dir-locals.el file for python
-;; ((nil . ((venv-location . "/home/savoie/projects/pyswath/.pyswath")))
-;;  (python-mode . ((project-venv-name . "local"))))
-
-;; Use the Python force, my young padawan learner
-;; (add-hook 'python-mode-hook 'jedi:setup)
-;; (setq jedi:setup-keys t)
-;; (setq jedi:complete-on-dot t)
 
 
 ;;
