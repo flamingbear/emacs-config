@@ -157,7 +157,9 @@
  '(paradox-automatically-star t t)
  '(safe-local-variable-values
    (quote
-    ((project-venv-name . "/Users/savoie/anaconda/envs/py3")
+    ((project-venv-name . "/Users/savoie/anaconda/envs/seaiceservice")
+     (venv-location "/Users/savoie/anaconda/envs/seaiceservice")
+     (project-venv-name . "/Users/savoie/anaconda/envs/py3")
      (venv-location "/Users/savoie/anaconda/envs/py3")
      (project-venv-name . "/Users/savoie/anaconda/envs/gsvc")
      (venv-location "/Users/savoie/anaconda/envs/gsvc")
@@ -381,7 +383,7 @@
      (340 . "#6380b3")
      (360 . "#DC8CC3"))))
  '(vc-annotate-very-old-color "#DC8CC3")
- '(visible-bell nil)
+ '(visible-bell 't)
  '(w3m-default-display-inline-images t)
  '(w3m-search-default-engine "google")
  '(w3m-use-header-line nil)
