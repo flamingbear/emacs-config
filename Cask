@@ -75,6 +75,7 @@
 (depends-on "nose")
 (depends-on "package-build")
 (depends-on "pallet")
+(depends-on "paradox")
 (depends-on "paredit")
 (depends-on "pbcopy")
 (depends-on "pcache")
