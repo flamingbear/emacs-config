@@ -37,7 +37,7 @@
 
 
 ;; Easily NavigateSillyCased words
-(global-subword-mode 1)
+(global-subword-mode 0)
 
 ;; Don't break lines for me, please
 ;;  But use mhs-trunc-lines to toggle bound to [C-c t]
