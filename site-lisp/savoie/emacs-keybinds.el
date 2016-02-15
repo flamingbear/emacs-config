@@ -158,8 +158,8 @@
 
 
 ;; Projectile moved my cheese!
-(eval-after-load "projectile"
-  '(progn
-     (define-key projectile-command-map (kbd "g") 'projectile-grep)))
+;; (eval-after-load "projectile"
+;;   '(progn
+;;      (define-key projectile-command-map (kbd "g") 'projectile-grep)))
 
 (provide 'emacs-keybinds)

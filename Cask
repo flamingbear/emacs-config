@@ -12,6 +12,7 @@
 (depends-on "bbdb-ext")
 (depends-on "cask")
 (depends-on "cider")
+(depends-on "cl-generic")
 (depends-on "clojure-mode")
 (depends-on "company")
 (depends-on "company-jedi")

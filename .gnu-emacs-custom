@@ -115,6 +115,9 @@
  '(large-file-warning-threshold nil)
  '(longlines-show-hard-newlines t)
  '(lpr-command "/usr/bin/lpr")
+ '(magit-fetch-arguments (quote ("--prune")))
+ '(magit-log-arguments (quote ("--graph" "--color" "--decorate" "-n256")))
+ '(magit-pull-arguments nil)
  '(mail-self-address "<savoie@nsidc.org>" t)
  '(mail-source-delete-incoming t)
  '(mail-user-agent (quote message-user-agent))
@@ -154,10 +157,13 @@
  '(org-todo-keywords
    (quote
     ((sequence "TODO" "WAITING" "|" "DONE" "DELEGATED" "CANCELLED"))))
- '(paradox-automatically-star t t)
+ '(paradox-automatically-star t)
+ '(paradox-execute-asynchronously t)
  '(safe-local-variable-values
    (quote
-    ((project-venv-name . "/Users/savoie/anaconda/envs/seaiceservice")
+    ((project-venv-name . "/Users/savoie/anaconda/envs/nasateam")
+     (venv-location "/Users/savoie/anaconda/envs/nasateam")
+     (project-venv-name . "/Users/savoie/anaconda/envs/seaiceservice")
      (venv-location "/Users/savoie/anaconda/envs/seaiceservice")
      (project-venv-name . "/Users/savoie/anaconda/envs/py3")
      (venv-location "/Users/savoie/anaconda/envs/py3")
@@ -383,7 +389,7 @@
      (340 . "#6380b3")
      (360 . "#DC8CC3"))))
  '(vc-annotate-very-old-color "#DC8CC3")
- '(visible-bell 't)
+ '(visible-bell (quote t))
  '(w3m-default-display-inline-images t)
  '(w3m-search-default-engine "google")
  '(w3m-use-header-line nil)
