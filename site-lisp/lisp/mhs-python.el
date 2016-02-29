@@ -7,7 +7,7 @@
 (elpy-enable)
 
 ;; don't use flymake (elpy default), use flycheck
-;; from: https://github.com/jorgenschaefer/elpy/issues/137
+;; https://github.com/jorgenschaefer/elpy/issues/137#issuecomment-55403160
 (when (require 'flycheck nil t)
   (remove-hook 'elpy-modules 'elpy-module-flymake)
   (add-hook 'elpy-mode-hook 'flycheck-mode))
@@ -47,7 +47,7 @@
 (require 'ein)
 
 ;; auto-complete superpack
-;; (setq ein:use-auto-complete-superpack t)
+(setq ein:use-auto-complete-superpack t)
 
 (defun mhs-ein-notebook-hook ()
   (interactive)
@@ -58,22 +58,11 @@
     (ac-config-default)
     (auto-complete-mode t)))
 
-; 2015-06-30 This is the one that causes problems when you have large arrays
-(add-hook 'ein:notebook-mode-hook 'mhs-ein-notebook-hook)
-(add-hook 'ein:notebooklist-first-open-hook 'mhs-ein-notebook-hook)
-;; (add-hook 'ein:connect-mode-hook 'mhs-ein-notebook-hook)
-
+;; ein hangs if garbage collection is too small.  Make it Yoooge!
+(setq gc-cons-threshold 300000000)
 
 (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
-
-;; https://github.com/millejoh/emacs-ipython-notebook/issues/67#issuecomment-165782847
-;; (defun my-ein-dot-function ()
-;;   (interactive)
-;;   (if (bound-and-true-p auto-complete-mode)
-;;       (ein:notebook-complete-dot)
-;;     (self-insert-command 1)))           ;problem remains: cannot insert many dots this way...
-
-;; (define-key ein:notebook-mode-map (kbd ".") 'my-ein-dot-function)
+(add-hook 'ein:notebook-mode-hook 'mhs-ein-notebook-hook)
 
 
 (provide 'mhs-python)
