@@ -26,6 +26,8 @@
 ;;  kwbeam: https://github.com/kwbeam/kwb-emacs
 
 ;;; Code:
+(setq user-init-file (or load-file-name (buffer-file-name)))
+(setq user-emacs-directory (file-name-directory user-init-file))
 
 ;; use cask/pallet to set up and track external packages from gnu/melpa/melpa-stable
 (require 'cask (expand-file-name "~/.cask/cask.el"))
