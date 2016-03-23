@@ -47,6 +47,7 @@
 (require 'ein)
 
 ;; auto-complete superpack
+(setq ein:use-auto-complete t)
 (setq ein:use-auto-complete-superpack t)
 
 (defun mhs-ein-notebook-hook ()
@@ -56,10 +57,11 @@
   (when (featurep 'auto-complete-config)
     (company-mode -1)
     (ac-config-default)
+    (setq gc-cons-threshold 100000000)
     (auto-complete-mode t)))
 
 ;; ein hangs if garbage collection is too small.  Make it Yoooge!
-(setq gc-cons-threshold 300000000)
+
 
 (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
 (add-hook 'ein:notebook-mode-hook 'mhs-ein-notebook-hook)
