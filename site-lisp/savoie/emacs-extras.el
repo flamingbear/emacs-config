@@ -36,7 +36,7 @@
 (setq fill-column 80)
 
 
-;; Easily NavigateSillyCased words
+;; Easily NavigateSillyCased words when set to 0
 (global-subword-mode 0)
 
 ;; Don't break lines for me, please

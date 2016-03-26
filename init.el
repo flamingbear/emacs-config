@@ -20,12 +20,18 @@
 
 ;;; Commentary:
 
-;;  This is my long and crazy emacs setup.  I have stolen plenty of it from other places.
+;;  This is my long and crazy Emacs setup.  I have stolen plenty of it from other places.
 ;;  particularly.
 ;;  magnars: https://github.com/magnars/.emacs.d
 ;;  kwbeam: https://github.com/kwbeam/kwb-emacs
 
 ;;; Code:
+
+;; Set init-file and directory location relative to reading this file.  By
+;; doing this you can put this emacs config in any directory and start up
+;; emacs with:
+;; emacs -q -l /path/to/init.el
+
 (setq user-init-file (or load-file-name (buffer-file-name)))
 (setq user-emacs-directory (file-name-directory user-init-file))
 
