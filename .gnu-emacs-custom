@@ -58,7 +58,7 @@
  '(highlight-changes-global-initial-state (quote passive))
  '(highlight-changes-global-modes t)
  '(highlight-changes-initial-state (quote passive))
- '(idlwave-abbrev-start-char "/" t)
+ '(idlwave-abbrev-start-char "/")
  '(idlwave-block-indent 3)
  '(idlwave-completion-case
    (quote
@@ -115,6 +115,7 @@
  '(large-file-warning-threshold nil)
  '(longlines-show-hard-newlines t)
  '(lpr-command "/usr/bin/lpr")
+ '(magit-branch-arguments nil)
  '(magit-fetch-arguments (quote ("--prune")))
  '(magit-log-arguments (quote ("--graph" "--color" "--decorate" "-n256")))
  '(magit-pull-arguments nil)
@@ -157,11 +158,13 @@
  '(org-todo-keywords
    (quote
     ((sequence "TODO" "WAITING" "|" "DONE" "DELEGATED" "CANCELLED"))))
- '(paradox-automatically-star t)
+ '(paradox-automatically-star t t)
  '(paradox-execute-asynchronously t)
  '(safe-local-variable-values
    (quote
-    ((project-venv-name . "/Users/savoie/anaconda/envs/nasateam")
+    ((project-venv-name . "/Users/savoie/anaconda/envs/tb_pipeline")
+     (venv-location "/Users/savoie/anaconda/envs/tb_pipeline")
+     (project-venv-name . "/Users/savoie/anaconda/envs/nasateam")
      (venv-location "/Users/savoie/anaconda/envs/nasateam")
      (project-venv-name . "/Users/savoie/anaconda/envs/seaiceservice")
      (venv-location "/Users/savoie/anaconda/envs/seaiceservice")
