@@ -36,7 +36,7 @@
         (upcase
          (if (use-region-p)
              (buffer-substring-no-properties (region-beginning) (region-end))
-           (read-from-minibuffer "Enter ticket number: " "RO-")))))
+           (read-from-minibuffer "Enter ticket number: " "PM-")))))
 
 
 (defun mhs-jira--ticket-uri ()
@@ -46,7 +46,7 @@
 (defun mhs-jira--insert-org-ticket-link ()
   "Insert an orgmode style link to the current ticket.
 
-   [[https://nsidc.org/jira/browse/RO-xx][RO-xx]]"
+   [[https://nsidc.org/jira/browse/PM-xx][PM-xx]]"
   (interactive)
   (insert (concat "[[" (mhs-jira--ticket-uri) "][" mhs-jira--current-ticket-number "]]")))
 
