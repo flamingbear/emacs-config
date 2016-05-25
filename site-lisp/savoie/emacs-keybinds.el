@@ -16,7 +16,7 @@
 ;;;;;;;
 (ivy-mode 1)
 (setq ivy-use-virtual-buffers t)
-(global-set-key "\C-s" 'swiper)
+;; (global-set-key "\C-s" 'swiper) replace with modi/swiper
 (global-set-key (kbd "C-c C-r") 'ivy-resume)
 ;(global-set-key (kbd "<f6>") 'ivy-resume)
 (global-set-key (kbd "M-x") 'counsel-M-x)
@@ -34,6 +34,35 @@
 (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
 
 
+;;; Get symbol at point
+;; https://github.com/Wilfred/ag.el
+(defun modi/get-symbol-at-point ()
+  "If there's an active selection, return that.
+Otherwise, get the symbol at point, as a string."
+  (cond ((use-region-p)
+         (buffer-substring-no-properties (region-beginning) (region-end)))
+        ((symbol-at-point)
+         (substring-no-properties
+          (symbol-name (symbol-at-point))))))
+
+
+;; https://github.com/kaushalmodi/.emacs.d/blob/master/setup-files/setup-search.el
+(defun modi/swiper (arg)
+  "Start swiper with input as the selected region.
+If a region is not selected and,
+  - If ARG is nil, start swiper with the symbol at point as input.
+  - Elseswiper without any arguments (stock behavior)."
+  (interactive "P")
+  (if (use-region-p)
+      (let ((b (region-beginning))
+            (e (region-end)))
+        (deactivate-mark)
+        (swiper (buffer-substring-no-properties b e)))
+    (if arg
+        (swiper)                        ; C-u
+      (swiper (modi/get-symbol-at-point)))))
+
+(global-set-key "\C-s" 'modi/swiper)
 
 
 
