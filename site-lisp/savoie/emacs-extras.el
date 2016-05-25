@@ -117,8 +117,7 @@
 
 
 ;; Better file and buffer searching.
-(require 'ido)
-
+(ivy-mode 1)
 
 
 

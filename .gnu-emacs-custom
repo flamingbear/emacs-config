@@ -58,7 +58,7 @@
  '(highlight-changes-global-initial-state (quote passive))
  '(highlight-changes-global-modes t)
  '(highlight-changes-initial-state (quote passive))
- '(idlwave-abbrev-start-char "/")
+ '(idlwave-abbrev-start-char "/" t)
  '(idlwave-block-indent 3)
  '(idlwave-completion-case
    (quote
@@ -98,10 +98,6 @@
  '(idlwave-shell-use-dedicated-window nil)
  '(idlwave-surround-by-blank t)
  '(idlwave-system-directory "/usr/local/rsi/idl64/")
- '(ido-enable-flex-matching t)
- '(ido-everywhere t)
- '(ido-max-directory-size 100000)
- '(ido-mode (quote both) nil (ido))
  '(indent-tabs-mode nil)
  '(inhibit-eol-conversion t)
  '(inhibit-startup-screen t)

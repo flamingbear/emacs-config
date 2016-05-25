@@ -61,6 +61,7 @@
   '(define-key mhs-map "c"
      #'mhs/visit-ci-machine))
 
+(setq magit-completing-read-function 'ivy-completing-read)
 
 (provide 'mhs-magit)
 ;;; mhs-magit.el ends here
