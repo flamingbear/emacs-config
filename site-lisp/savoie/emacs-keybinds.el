@@ -64,8 +64,9 @@ If a region is not selected and,
         (swiper (modi/get-symbol-at-point)) ; C-u
         (swiper))))
 
-(global-set-key "\C-s" 'modi/swiper)
-
+;; This seems way more natural to me.
+(global-set-key "\C-s" 'isearch-forward)
+(define-key isearch-mode-map (kbd "M-i") 'swiper-from-isearch)
 
 
 
