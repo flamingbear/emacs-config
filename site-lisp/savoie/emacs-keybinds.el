@@ -175,7 +175,7 @@ If a region is not selected and,
    (global-set-key (kbd "C->") 'mc/mark-next-like-this)
    (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
    (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-   (defhydra multiple-cursors-hydra (mhs-map "<f9>")
+   (defhydra multiple-cursors-hydra (:hint nil)
     "
      ^Up^            ^Down^        ^Other^
 ----------------------------------------------
@@ -195,7 +195,7 @@ If a region is not selected and,
     ("r" mc/mark-all-in-region-regexp :exit t)
     ("q" nil))
 
-  )
+    (define-key mhs-map [(f9)] 'multiple-cursors-hydra/body))
 
 (when (boundp 'mhs-searchmap)
   (define-key mhs-searchmap "s" 'rgrep-fullscreen))
