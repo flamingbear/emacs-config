@@ -20,7 +20,7 @@
 ;; (global-set-key "\C-s" 'swiper) replace with modi/swiper
 (global-set-key (kbd "C-c C-r") 'ivy-resume)
 ;(global-set-key (kbd "<f6>") 'ivy-resume)
-(global-set-key (kbd "M-x") 'counsel-M-x)
+(global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "C-x C-f") 'counsel-find-file)
 
 (global-set-key (kbd "C-h f") 'counsel-describe-function)
@@ -180,11 +180,10 @@ If a region is not selected and,
 ;;   (global-set-key (kbd "C-*") 'mark-all-like-this))
 
 (when (try-require 'multiple-cursors)
-  ;; (global-set-key (kbd "C->") 'mc/mark-next-like-this)
-  ;; (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-  ;; (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-  ;; (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-  (defhydra multiple-cursors-hydra (mhs-map "<f9>")
+   (global-set-key (kbd "C->") 'mc/mark-next-like-this)
+   (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+   (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+   (defhydra multiple-cursors-hydra (mhs-map "<f9>")
     "
      ^Up^            ^Down^        ^Other^
 ----------------------------------------------
