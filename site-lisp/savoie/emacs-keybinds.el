@@ -19,20 +19,14 @@
 (setq ivy-count-format "(%d/%d) ")
 ;; (global-set-key "\C-s" 'swiper) replace with modi/swiper
 (global-set-key (kbd "C-c C-r") 'ivy-resume)
-;(global-set-key (kbd "<f6>") 'ivy-resume)
-(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "<f6>") 'ivy-resume)
+(global-set-key (kbd "M-x") 'counsel-M-x)
 (global-set-key (kbd "C-x C-f") 'counsel-find-file)
 
 (global-set-key (kbd "C-h f") 'counsel-describe-function)
 (global-set-key (kbd "C-h v") 'counsel-describe-variable)
-;(global-set-key (kbd "<f1> l") 'counsel-load-library)
-;(global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
-;(global-set-key (kbd "<f2> u") 'counsel-unicode-char)󠇯
 (global-set-key (kbd "C-c f") 'counsel-git)
 (global-set-key (kbd "C-c j") 'counsel-git-grep)
-;(global-set-key (kbd "C-c k") 'counsel-ag)
-;(global-set-key (kbd "C-x l") 'counsel-locate)
-;(global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
 (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
 
 
@@ -83,12 +77,10 @@ If a region is not selected and,
 (global-set-key [f1]          'mhs-insert-filename); F1
 (global-set-key [f2]                       'shell); F2
 (global-set-key [f3]                     'speedbar); F3
-;(global-set-key [f4]      '); F4
-;(global-set-key [f5]       '); F5
-
-
-(global-set-key [f6]              'gud-break) ; F7
-(global-set-key [M-f6]            'gud-remove) ; F7
+;;(global-set-key [f4]      '); F4
+;;(global-set-key [f5]       '); F5
+;; (global-set-key [f6]              'gud-break) ; F7
+;; (global-set-key [M-f6]            'gud-remove) ; F7
 
 
 
