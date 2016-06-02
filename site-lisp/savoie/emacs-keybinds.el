@@ -14,6 +14,9 @@
 ;;;;;;;;
 ;; try swiper/ivy/counsel
 ;;;;;;;
+(use-package counsel  :ensure t)
+(use-package swiper  :ensure t)
+
 (ivy-mode 1)
 (setq ivy-use-virtual-buffers t)
 (setq ivy-count-format "(%d/%d) ")
@@ -155,15 +158,19 @@ If a region is not selected and,
 
 
 ;; Use the fancy rgrep if available. from magnars
-(if (try-require 'setup-rgrep)
-    (global-set-key (kbd "M-s s") 'rgrep-fullscreen)
+(use-package setup-rgrep
+  :config
+  (global-set-key (kbd "M-s s") 'rgrep-fullscreen)
   (global-set-key (kbd "M-s s") 'rgrep))
 
-(when (try-require 'multiple-cursors)
-   (global-set-key (kbd "C->") 'mc/mark-next-like-this)
-   (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-   (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-   (defhydra multiple-cursors-hydra (:hint nil)
+(use-package hydra :ensure t)
+(use-package multiple-cursors
+  :ensure t
+  :config
+  (global-set-key (kbd "C->") 'mc/mark-next-like-this)
+  (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+  (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+  (defhydra multiple-cursors-hydra (:hint nil)
     "
      ^Up^            ^Down^        ^Other^
 ----------------------------------------------
@@ -183,7 +190,7 @@ If a region is not selected and,
     ("r" mc/mark-all-in-region-regexp :exit t)
     ("q" nil))
 
-    (define-key mhs-map [(f9)] 'multiple-cursors-hydra/body))
+  (define-key mhs-map [(f9)] 'multiple-cursors-hydra/body))
 
 
 (when (boundp 'mhs-searchmap)
@@ -191,19 +198,14 @@ If a region is not selected and,
 
 
 ;; Ace Jumping mode.
-(when (try-require 'ace-jump-mode)
+(use-package ace-jump-mode
+  :ensure t
+  :config
   (define-key global-map (kbd "C-c x") 'ace-jump-mode))
 
 
 ;; Find-name-dired
 (global-set-key (kbd "M-s f") 'find-name-dired)
-
-
-;; Cyclical Marking
-;------------------
-(when (try-require 'thing-cmds)
-  (global-set-key (kbd "C-M-?") 'mark-thing) ; vs `mark-sexp'
-  (global-set-key (kbd "M-@") 'cycle-thing-region)) ; vs `mark-word'
 
 
 ;; Options for Macintosh Laptop

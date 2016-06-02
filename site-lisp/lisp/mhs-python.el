@@ -2,9 +2,14 @@
 
 ;; We're gonna need us a Python mode
 (require 'python)
-(require 'elpy)
+
+(use-package elpy
+  :ensure t
+  :config
+  (elpy-enable))
+
 (require 'pyvenv)
-(elpy-enable)
+
 
 ;; don't use flymake (elpy default), use flycheck
 ;; https://github.com/jorgenschaefer/elpy/issues/137#issuecomment-55403160
@@ -22,18 +27,20 @@
 
 
 ;; Be able to run nose tests with various keybindings
-(require 'nose)
-(add-hook 'python-mode-hook
-          (lambda ()
-            (hack-local-variables)
-            (when (boundp 'project-venv-name)
-              (pyvenv-activate project-venv-name))
-            (local-set-key "\C-ca" 'nosetests-all)
-            (local-set-key "\C-cm" 'nosetests-module)
-            (local-set-key "\C-c." 'nosetests-one)
-            (local-set-key "\C-cpa" 'nosetests-pdb-all)
-            (local-set-key "\C-cpm" 'nosetests-pdb-module)
-            (local-set-key "\C-cp." 'nosetests-pdb-one)))
+(use-package nose
+  :ensure t
+  :config
+  (add-hook 'python-mode-hook
+            (lambda ()
+              ;(hack-local-variables)
+              (when (boundp 'project-venv-name)
+                (pyvenv-activate project-venv-name))
+              (local-set-key "\C-ca" 'nosetests-all)
+              (local-set-key "\C-cm" 'nosetests-module)
+              (local-set-key "\C-c." 'nosetests-one)
+              (local-set-key "\C-cpa" 'nosetests-pdb-all)
+              (local-set-key "\C-cpm" 'nosetests-pdb-module)
+              (local-set-key "\C-cp." 'nosetests-pdb-one))))
 
 
 
@@ -42,29 +49,34 @@
 ;;;
 ;;; This is still a problem.
 
-(require 'ein-loaddefs)
-(eval-when-compile (require 'ein-notebooklist))
-(require 'ein)
+(use-package ein
+  :ensure t
+  :config
+  (setq ein:use-auto-complete t)
+  (setq ein:use-auto-complete-superpack t)
+  (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
+  (add-hook 'ein:notebook-mode-hook 'mhs-ein-notebook-hook)
+
+  (defun mhs-ein-notebook-hook ()
+    (interactive)
+    (require 'auto-complete-config nil t)
+    (declare-function auto-complete-mode "auto-complete.el")
+    (when (featurep 'auto-complete-config)
+      (company-mode -1)
+      (ac-config-default)
+      ;;    (setq gc-cons-threshold 100000000)
+      (auto-complete-mode t))))
+
+
+;; (require 'ein-loaddefs)
+;; (eval-when-compile (require 'ein-notebooklist))
+;; (require 'ein)
 
 ;; auto-complete superpack
-(setq ein:use-auto-complete t)
-(setq ein:use-auto-complete-superpack t)
-
-(defun mhs-ein-notebook-hook ()
-  (interactive)
-  (require 'auto-complete-config nil t)
-  (declare-function auto-complete-mode "auto-complete.el")
-  (when (featurep 'auto-complete-config)
-    (company-mode -1)
-    (ac-config-default)
-    (setq gc-cons-threshold 100000000)
-    (auto-complete-mode t)))
 
 ;; ein hangs if garbage collection is too small.  Make it Yoooge!
 
 
-(add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
-(add-hook 'ein:notebook-mode-hook 'mhs-ein-notebook-hook)
 
 
 

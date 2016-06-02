@@ -68,7 +68,7 @@
 
 
 ;; Default keybindings
-(when (try-require 'mhs-map)
+(when (require 'mhs-map)
 
   (defvar mhs-jira-map (make-keymap)
     "Make a keymap for jira commands.")

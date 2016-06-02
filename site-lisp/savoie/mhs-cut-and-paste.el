@@ -14,8 +14,9 @@
 ;;--------------------------------------------------------------------------------
 
 (if (equal 'darwin system-type)
-    (progn
-      (require 'pbcopy)
+    (use-package pbcopy
+      :ensure t
+      :config
       (turn-on-pbcopy)))
 
 ;; use this fancy thing I found if you're in a terminal, but not on macosx

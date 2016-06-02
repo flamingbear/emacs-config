@@ -129,26 +129,26 @@
 
 ;; IDLWAVE Customizations
 ;; Load this before ruby because we want the jds history search.
-(try-require 'emacs-idlwave-support)
-
-;; set pivotal-tracker api tolken (defunct)
-(try-require 'mhs-pivotal)
+(require 'emacs-idlwave-support)
 
 ;; Use jira information
-(try-require 'mhs-jira)
+(require 'mhs-jira)
 
 ;; Python environment
-(try-require 'mhs-python)
+(require 'mhs-python)
 
-(when (try-require 'markdown-mode)
+(use-package markdown-mode
+  :ensure t
+  :config
   (setq auto-mode-alist
-         (cons '("\\.md" . markdown-mode) auto-mode-alist)))
+        (cons '("\\.md" . markdown-mode) auto-mode-alist)))
 
 ;; Try to set up a ruby on rails environment.
-(try-require 'mhs-ruby-stuff)
+;(require 'mhs-ruby-stuff)
 
-
-(when (try-require 'yaml-mode)
+(use-package yaml-mode
+  :ensure t
+  :config
   (add-hook 'yaml-mode-hook
             '(lambda ()
                (define-key yaml-mode-map "\C-m" 'newline-and-indent))))
@@ -162,21 +162,10 @@
 
 
 ;; Javascript stuff
-(try-require 'mhs-javascript)
-
-;; If there's a clojure setup, use it.
-(try-require 'mhs-clojure)
-
-;; if external-lisp-dir has a slime directory, we will set up that
-(try-require 'mhs-clisp-stuff)
-
-;; Perl completion if possible
-(when (try-require 'anything)
-  (try-require 'perl-completion))
-
+(require 'mhs-javascript)
 
 ;; Load the BBDB if it's around.
-(try-require 'mhs-bbdb)
+(require 'mhs-bbdb)
 
 
 ;; if you are debugging emacs completely: open this file and it records keystrokes.
@@ -186,7 +175,7 @@
 (server-start)
 
 ;; Do binary diff in hexl-mode if files are binary format
-(try-require 'binary-diff)
+(require 'binary-diff)
 
 
 ;;--------------------------------------------------------------------------
@@ -286,19 +275,18 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; require the gnus stuff that I wrote...
-(try-require 'mhs-map)
-(try-require 'mhs-magit)
-(try-require 'mhs-extends)
-(try-require 'mhs-perl)
-(try-require 'mhs-grep)
-(try-require 'mhs-sii)
-(try-require 'mhs-cdr)
-(try-require 'mhs-masie)
-(try-require 'mhs-reindent)
+(require 'mhs-map)
+(require 'mhs-magit)
+(require 'mhs-extends)
+(require 'mhs-perl)
+(require 'mhs-grep)
+(require 'mhs-sii)
+(require 'mhs-masie)
+(require 'mhs-reindent)
 
 
-(try-require 'mhs-cmode)
-(try-require 'mhs-comment)
+(require 'mhs-cmode)
+(require 'mhs-comment)
 
 
 ;; Handle multiple locations for aspell.

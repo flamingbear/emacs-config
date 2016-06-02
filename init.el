@@ -119,13 +119,7 @@
 (require 'mhs-cut-and-paste)
 
 
-;; If we found some packages that didn't load..Print them out.
-(if missing-packages-list
-    (progn (message "Packages not found: %S" missing-packages-list)))
-(put 'dired-find-alternate-file 'disabled nil)
-
-
 
 ;; Work around for bug in macosx
-(when running-macos
-  (cd (getenv "HOME")))
+;; (when running-macos
+;;   (cd (getenv "HOME")))

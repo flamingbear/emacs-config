@@ -26,8 +26,9 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 ;; BBDB
 
 ;; Location on macintosh machines.
-
-(when (try-require 'bbdb)
+(use-package bbdb
+  :ensure t
+  :config
   (if running-macos
       (bbdb-initialize 'gnus 'message)
     (bbdb-initialize 'gnus 'message 'sc)))

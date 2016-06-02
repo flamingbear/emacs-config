@@ -53,47 +53,45 @@ Report bugs to: Matthew H. Savoie <savoie@fsl.noaa.gov>")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; use cperl-mode by default
-(when (try-require 'cperl-mode)
-  (defalias 'perl-mode 'cperl-mode))
+(use-package cperl-mode
+  :ensure t
+  :config
+  (defalias 'perl-mode 'cperl-mode)
+
+  (add-hook 'cperl-mode-hook
+            (lambda ()
+              (when (require 'perl-completion)
+                (perl-completion-mode 't))))
 
 
-;; Use perl completion mode.
-(add-hook 'cperl-mode-hook
-          (lambda ()
-            (when (try-require 'perl-completion)
-              (perl-completion-mode 't))))
+  (defun mhs-redo-perlcolors ()
+    (set-face-foreground 'font-lock-other-type-face "SeaGreen4")
+    (set-face-font 'font-lock-other-type-face (face-font 'italic))
+    (set-face-background 'font-lock-other-type-face nil)
+    (set-face-foreground 'font-lock-emphasized-face "CornflowerBlue")
+    (set-face-background 'font-lock-emphasized-face nil)
+    (set-face-foreground 'font-lock-other-emphasized-face "CornflowerBlue")
+    (set-face-background 'font-lock-other-emphasized-face nil)
+    )
+
+  (defun mhs-perl-mode-hook ()
+                                        ;  (mhs-redo-perlcolors)
+    (local-set-key [(control meta return)] 'mhs-insert-newline-perl)
+    )
 
 
-(defun mhs-redo-perlcolors ()
-  (set-face-foreground 'font-lock-other-type-face "SeaGreen4")
-  (set-face-font 'font-lock-other-type-face (face-font 'italic))
-  (set-face-background 'font-lock-other-type-face nil)
-  (set-face-foreground 'font-lock-emphasized-face "CornflowerBlue")
-  (set-face-background 'font-lock-emphasized-face nil)
-  (set-face-foreground 'font-lock-other-emphasized-face "CornflowerBlue")
-  (set-face-background 'font-lock-other-emphasized-face nil)
-)
+  (defun perltidy-region ()
+    "Run perltidy on the current region."
+    (interactive)
+    (save-excursion
+      (shell-command-on-region (point) (mark) "perltidy -q" nil t)))
 
-(defun mhs-perl-mode-hook ()
-;  (mhs-redo-perlcolors)
-  (local-set-key [(control meta return)] 'mhs-insert-newline-perl)
+  (defun perltidy-defun ()
+    "Run perltidy on the current defun."
+    (interactive)
+    (save-excursion
+      (mark-defun) (perltidy-region)))
   )
-
-
-(defun perltidy-region ()
-  "Run perltidy on the current region."
-  (interactive)
-  (save-excursion
-    (shell-command-on-region (point) (mark) "perltidy -q" nil t)))
-
-(defun perltidy-defun ()
-  "Run perltidy on the current defun."
-  (interactive)
-  (save-excursion
-    (mark-defun) (perltidy-region)))
-
-
-
 
 (provide 'mhs-perl)
 ;;; MHS-PERL.EL ends here

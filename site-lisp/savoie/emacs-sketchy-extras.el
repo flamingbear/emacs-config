@@ -16,7 +16,7 @@
   "Location of my .org mode files" )
 
 (when (and (file-accessible-directory-p mhs-org-mode-directory)
-           (try-require 'mhs-org-mode))
+           (require 'mhs-org-mode))
   (set-variable 'comment-start 'nil)
   (setq org-agenda-custom-commands
         '(("Q" . "Custom queries") ;; gives label to "Q"
@@ -45,7 +45,7 @@
 
 ;; Yasnippet
 ;;-----------
-(when (try-require 'yasnippet) ;; not yasnippet-bundle
+(when (require 'yasnippet) ;; not yasnippet-bundle
   (yas-global-mode 1))
 
 ;;; Chrome editing.
