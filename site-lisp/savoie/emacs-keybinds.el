@@ -157,11 +157,6 @@ If a region is not selected and,
 (global-set-key (kbd "M-2") #'er/expand-region)
 
 
-;; Use the fancy rgrep if available. from magnars
-(use-package setup-rgrep
-  :config
-  (global-set-key (kbd "M-s s") 'rgrep-fullscreen)
-  (global-set-key (kbd "M-s s") 'rgrep))
 
 (use-package hydra :ensure t)
 (use-package multiple-cursors
@@ -192,9 +187,6 @@ If a region is not selected and,
 
   (define-key mhs-map [(f9)] 'multiple-cursors-hydra/body))
 
-
-(when (boundp 'mhs-searchmap)
-  (define-key mhs-searchmap "s" 'rgrep-fullscreen))
 
 
 ;; Ace Jumping mode.
