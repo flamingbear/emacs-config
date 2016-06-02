@@ -3,12 +3,14 @@
 ;; We're gonna need us a Python mode
 (require 'python)
 
+(use-package pyvenv :ensure t)
+
 (use-package elpy
   :ensure t
   :config
   (elpy-enable))
 
-(require 'pyvenv)
+
 
 
 ;; don't use flymake (elpy default), use flycheck

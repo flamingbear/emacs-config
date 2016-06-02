@@ -53,6 +53,8 @@ Report bugs to: Matthew H. Savoie <savoie@fsl.noaa.gov>")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; use cperl-mode by default
+(use-package anything :ensure t)
+(use-package perl-completion :ensure t)
 (use-package cperl-mode
   :ensure t
   :config
