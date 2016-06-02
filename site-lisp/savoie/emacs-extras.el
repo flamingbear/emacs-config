@@ -139,6 +139,12 @@
 ;; Try to set up a ruby on rails environment.
 ;(require 'mhs-ruby-stuff)
 
+(use-package paradox
+  :ensure t
+  :config
+  (setq paradox-automatically-star t)
+  (setq paradox-execute-asynchronously t))
+
 (use-package yaml-mode
   :ensure t
   :config
@@ -322,5 +328,10 @@
     (ansi-color-apply-on-region (point-min) (point-max))))
 (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
 
+
+;; Stuff out of my custom
+(setq save-abbrevs 't)
+(setq scroll-bar-mode 'right)
+(setq select-active-regions 't)
 
 (provide 'emacs-extras)
