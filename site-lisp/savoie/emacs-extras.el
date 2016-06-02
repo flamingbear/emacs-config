@@ -48,11 +48,6 @@
 (setq ediff-split-window-function 'split-window-horizontally)
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
-;(require 'smartparens-config)
-;(sp-use-smartparens-bindings)
-;(smartparens-global-mode t)
-
-
 
 ;; Bug in El Capitain with visible bell
 ;; https://debbugs.gnu.org/cgi/bugreport.cgi?bug=21662
@@ -68,7 +63,8 @@
 ;; What command should be run from dired with 'dired-do-shell-command'
 ;; I don't know why the \\' in tif. regex
 (setq dired-guess-shell-alist-user
-      '(("\\.tif\\'" "display")))
+      '(("\\.tif\\'" "display")
+        ("\\.png\\'" "display")))
 
 
 
@@ -113,11 +109,17 @@
 ;; To edit binary files
 ;; (remove-hook 'before-save-hook 'delete-trailing-whitespace)
 
-(global-flycheck-mode 't)
+(use-package flycheck
+  :ensure t
+  :config
+  (global-flycheck-mode 't))
 
 
 ;; Better file and buffer searching.
-(ivy-mode 1)
+(use-package ivy
+  :ensure t
+  :config
+  (ivy-mode 1))
 
 
 

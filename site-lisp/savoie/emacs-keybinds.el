@@ -159,18 +159,6 @@ If a region is not selected and,
     (global-set-key (kbd "M-s s") 'rgrep-fullscreen)
   (global-set-key (kbd "M-s s") 'rgrep))
 
-
-(when (try-require 'inline-string-rectangle)
-  (global-set-key (kbd "C-x r t") 'inline-string-rectangle))
-
-;; TODO [MHS, 2012-10-14] Not using mark-multiple anymore.  But will keep this here for a while.
-;; I haven't decided if inline-string-rectangle is still useful and I need mark-multiple to have it work
-;; (when (try-require 'mark-more-like-this)
-;;   (global-set-key (kbd "C-<") 'mark-previous-like-this)
-;;   (global-set-key (kbd "C->") 'mark-next-like-this)
-;;   (global-set-key (kbd "C-M-m") 'mark-more-like-this) ; like the other two, but takes an argument (negative is previous)
-;;   (global-set-key (kbd "C-*") 'mark-all-like-this))
-
 (when (try-require 'multiple-cursors)
    (global-set-key (kbd "C->") 'mc/mark-next-like-this)
    (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
@@ -196,6 +184,7 @@ If a region is not selected and,
     ("q" nil))
 
     (define-key mhs-map [(f9)] 'multiple-cursors-hydra/body))
+
 
 (when (boundp 'mhs-searchmap)
   (define-key mhs-searchmap "s" 'rgrep-fullscreen))

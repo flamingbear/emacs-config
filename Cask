@@ -110,6 +110,7 @@
 (depends-on "spinner")
 (depends-on "swiper")
 (depends-on "tern")
+(depends-on "use-package")
 (depends-on "web")
 (depends-on "websocket")
 (depends-on "wgrep")

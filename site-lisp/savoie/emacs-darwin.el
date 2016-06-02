@@ -8,12 +8,12 @@
 ;;; Code:
 
 (when running-macos
-  (require 'exec-path-from-shell)
-  (exec-path-from-shell-copy-env "NODE_PATH")
-  (exec-path-from-shell-copy-env "GIT_EDITOR")
-  (exec-path-from-shell-copy-env "EDITOR")
-  (exec-path-from-shell-copy-env "VIRTUAL_ENV")
-  (exec-path-from-shell-initialize))
+  (use-package exec-path-from-shell :ensure t
+    :config (exec-path-from-shell-copy-env "NODE_PATH")
+             (exec-path-from-shell-copy-env "GIT_EDITOR")
+             (exec-path-from-shell-copy-env "EDITOR")
+             (exec-path-from-shell-copy-env "VIRTUAL_ENV")
+             (exec-path-from-shell-initialize)))
 
 ;; These two below both preport to fixes bad cut/paste in osx for emacs 23.3
 ;; "Quit: "empty or unsupported pasteboard type""

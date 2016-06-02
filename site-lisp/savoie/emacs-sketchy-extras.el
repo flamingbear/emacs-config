@@ -36,7 +36,10 @@
 ;; Try company-mode instead of auto-complete
 ;;--------------------------
 (add-hook 'after-init-hook 'global-company-mode)
-(company-quickhelp-mode 1)
+(use-package company-quickhelp
+  :ensure t
+  :config
+  (company-quickhelp-mode 1))
 
 
 

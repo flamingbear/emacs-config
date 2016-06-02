@@ -35,11 +35,25 @@
 (setq user-init-file (or load-file-name (buffer-file-name)))
 (setq user-emacs-directory (file-name-directory user-init-file))
 
+;; Try use-package to setup package requirements and keybindings, etc
+(require 'package)
+(setq package-enable-at-startup nil)
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/"))
+
+(package-initialize)
+
+;; Bootstrap `use-package'
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+
 ;; use cask/pallet to set up and track external packages from gnu/melpa/melpa-stable
-(require 'cask (expand-file-name "~/.cask/cask.el"))
-(cask-initialize)
-(require 'pallet)
-(pallet-mode 't)
+;; (require 'cask (expand-file-name "~/.cask/cask.el"))
+;; (cask-initialize)
+;; (require 'pallet)
+;; (pallet-mode 't)
 
 ;; ** Custom Settings that are updated via << M-x customize >>
 ;; ** Generally Try to avoid putting things in here and prefer setting
@@ -90,8 +104,11 @@
 
 
 ;; Projectile is the BOMB!
-(projectile-global-mode)
-(setq projectile-completion-system 'ivy)
+(use-package projectile :ensure t
+  :config
+  (projectile-global-mode)
+  (setq projectile-completion-system 'ivy))
+
 
 
 
