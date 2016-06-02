@@ -19,22 +19,12 @@
 ;; Show keystrokes in progress
 (setq echo-keystrokes 0.3)
 
-;; Move files to trash when deleting
-(setq delete-by-moving-to-trash t)
-
-;; UTF-8 please
-;; (setq locale-coding-system 'utf-8) ; pretty
-;; (set-terminal-coding-system 'utf-8) ; pretty
-;; (set-keyboard-coding-system 'utf-8) ; pretty
-;; (set-selection-coding-system 'utf-8) ; please
-;; (prefer-coding-system 'utf-8) ; with sugar on top
 
 ;; Remove text in active region if inserting text
 (delete-selection-mode 1)
 
 ;; Lines should be 80 characters wide, not 72
 (setq fill-column 80)
-
 
 ;; Easily NavigateSillyCased words when set to 0
 (global-subword-mode 0)
@@ -44,15 +34,16 @@
 (setq-default truncate-lines t)
 
 ;; A saner ediff
-(setq ediff-diff-options "-w")
-(setq ediff-split-window-function 'split-window-horizontally)
-(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+;; (setq ediff-diff-options "-w")
+;; (setq ediff-split-window-function 'split-window-horizontally)
+;; (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
 
 ;; Bug in El Capitain with visible bell
 ;; https://debbugs.gnu.org/cgi/bugreport.cgi?bug=21662
 ;; This just fixes it sort of for a while.
-(setq ring-bell-function (lambda () (message "*woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* ")(sleep-for .15)))
+(setq ring-bell-function
+      #'(lambda () (message "*woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* ")(sleep-for .15)))
 
 
 ;; Extra Dired commands
@@ -65,12 +56,6 @@
 (setq dired-guess-shell-alist-user
       '(("\\.tif\\'" "display")
         ("\\.png\\'" "display")))
-
-
-
-(autoload 'skewer-start "setup-skewer" nil t)
-
-
 
 
 ;; stolen from KWB-emacs
@@ -126,6 +111,14 @@
 ;;----------------------------------------------------------------
 ;; Personal Lisp directory
 ;;----------------------------------------------------------------
+
+;; Projectile is the BOMB!
+(use-package projectile :ensure t
+  :config
+  (projectile-global-mode)
+  (setq projectile-completion-system 'ivy))
+
+
 
 ;; IDLWAVE Customizations
 ;; Load this before ruby because we want the jds history search.

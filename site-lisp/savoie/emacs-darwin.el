@@ -12,7 +12,6 @@
     :config (exec-path-from-shell-copy-env "NODE_PATH")
              (exec-path-from-shell-copy-env "GIT_EDITOR")
              (exec-path-from-shell-copy-env "EDITOR")
-             (exec-path-from-shell-copy-env "VIRTUAL_ENV")
              (exec-path-from-shell-initialize)))
 
 ;; These two below both preport to fixes bad cut/paste in osx for emacs 23.3

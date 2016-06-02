@@ -79,13 +79,11 @@ If a region is not selected and,
 
 (global-set-key [f1]          'mhs-insert-filename); F1
 (global-set-key [f2]                       'shell); F2
-(global-set-key [f3]                     'speedbar); F3
+;(global-set-key [f3]                     'speedbar); F3
 ;;(global-set-key [f4]      '); F4
 ;;(global-set-key [f5]       '); F5
 ;; (global-set-key [f6]              'gud-break) ; F7
 ;; (global-set-key [M-f6]            'gud-remove) ; F7
-
-
 
 
 ;; My Mapping Stuff, this is a prefix key that allows me access to more
@@ -195,9 +193,6 @@ If a region is not selected and,
   :config
   (define-key global-map (kbd "C-c x") 'ace-jump-mode))
 
-
-;; Find-name-dired
-(global-set-key (kbd "M-s f") 'find-name-dired)
 
 
 ;; Options for Macintosh Laptop

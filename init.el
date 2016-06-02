@@ -53,12 +53,6 @@
 (require 'bind-key)
 
 
-;; use cask/pallet to set up and track external packages from gnu/melpa/melpa-stable
-;; (require 'cask (expand-file-name "~/.cask/cask.el"))
-;; (cask-initialize)
-;; (require 'pallet)
-;; (pallet-mode 't)
-
 ;; ** Custom Settings that are updated via << M-x customize >>
 ;; ** Generally Try to avoid putting things in here and prefer setting
 ;; directly in your init files.
@@ -69,10 +63,6 @@
 ;; Set path to dependencies
 (setq site-lisp-dir
       (expand-file-name "site-lisp" user-emacs-directory))
-
-(setq settings-dir
-      (expand-file-name "settings" user-emacs-directory))
-
 
 
 ;; Add all site-lisp subdir projects to load path
@@ -88,15 +78,6 @@
   (add-to-list 'load-path mhs-private-dir)
   (require 'mhs-private-vars))
 
-
-;; Want backups in a separate directory under the user's dir
-(setq backup-directory-alist
-      `(("." . ,(expand-file-name
-                 (concat user-emacs-directory "backups")))))
-
-;; Still make backups even if vc.
-(setq vc-make-backup-files t)
-
 ;; Save point position between sessions
 (require 'saveplace)
 (setq-default save-place t)
@@ -105,17 +86,6 @@
 
 ;; couple of tweaks for browsers and handling emacs on mac osx
 (require 'mhs-environment)
-
-
-;; Projectile is the BOMB!
-(use-package projectile :ensure t
-  :config
-  (projectile-global-mode)
-  (setq projectile-completion-system 'ivy))
-
-
-
-
 (require 'emacs-extras)
 (require 'emacs-keybinds)
 (require 'emacs-sketchy-extras)
@@ -125,5 +95,5 @@
 
 
 ;; Work around for bug in macosx
-;; (when running-macos
-;;   (cd (getenv "HOME")))
+(when running-macos
+  (cd (getenv "HOME")))

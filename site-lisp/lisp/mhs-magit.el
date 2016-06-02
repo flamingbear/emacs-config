@@ -1,6 +1,6 @@
 ;;; mhs-magit.el ---                                 -*- lexical-binding: t; -*-
 
-
+(use-package git-timemachine :ensure t)
 (use-package magit
   :ensure t)
 (setq magit-last-seen-setup-instructions "1.4.0")

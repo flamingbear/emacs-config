@@ -10,7 +10,6 @@
 
 
 
-
 ;; See if you can run orgmode from this computer.
 (defvar mhs-org-mode-directory (expand-file-name "~savoie/Dropbox/orgs/")
   "Location of my .org mode files" )
@@ -42,20 +41,19 @@
   (company-quickhelp-mode 1))
 
 
-
 ;; Yasnippet
 ;;-----------
-(when (require 'yasnippet) ;; not yasnippet-bundle
+(use-package yasnippet
+  :ensure t
+  :config
   (yas-global-mode 1))
 
 ;;; Chrome editing.
-(when (require 'edit-server nil t)
+(use-package edit-server
+  :ensure t
+  :config
   (setq edit-server-new-frame nil)
   (edit-server-start))
-
-;; pandora music in the EMACS
-(autoload 'pianobar "pianobar" nil t)
-(setq pianobar-username "pandora@flamingbear.com")
 
 (provide 'emacs-sketchy-extras)
 ;;; EMACS-SKETCHY-EXTRAS.EL ends here
