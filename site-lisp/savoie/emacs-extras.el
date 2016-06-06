@@ -100,13 +100,6 @@
   (global-flycheck-mode 't))
 
 
-;; Better file and buffer searching.
-(use-package ivy
-  :ensure t
-  :config
-  (ivy-mode 1))
-
-
 
 ;;----------------------------------------------------------------
 ;; Personal Lisp directory

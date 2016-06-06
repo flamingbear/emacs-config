@@ -1,37 +1,30 @@
 ;; File for keybindings for emacs
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(global-set-key [M-left]  'backward-word)
-(global-set-key [M-right] 'forward-word)
-(global-set-key [M-up]    'beginning-of-line)
-(global-set-key [M-down]  'end-of-line)
-
-(global-set-key [home]       'beginning-of-line)
-(global-set-key [end]              'end-of-line)
-(global-set-key [\C-home]  'beginning-of-buffer)
-(global-set-key [\C-end]         'end-of-buffer)
-
 ;;;;;;;;
 ;; try swiper/ivy/counsel
 ;;;;;;;
-(use-package counsel  :ensure t)
 (use-package swiper  :ensure t)
+(use-package counsel
+  :ensure t
+  :bind (("C-x C-f" . counsel-find-file)
+         ("C-h f" . counsel-describe-function)
+         ("C-h v" . counsel-describe-variable)
+         ("C-c f" . counsel-git)
+         ("C-c j" . counsel-git-grep)))
 
-(ivy-mode 1)
-(setq ivy-use-virtual-buffers t)
-(setq ivy-count-format "(%d/%d) ")
-;; (global-set-key "\C-s" 'swiper) replace with modi/swiper
-(global-set-key (kbd "C-c C-r") 'ivy-resume)
-(global-set-key (kbd "<f6>") 'ivy-resume)
-(global-set-key (kbd "M-x") 'counsel-M-x)
-(global-set-key (kbd "C-x C-f") 'counsel-find-file)
+(use-package ivy
+  :ensure t
+  :config
+  (ivy-mode 1)
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-count-format "(%d/%d) ")
+  :bind (("C-c C-r" . ivy-resume)
+         ("<f6>" . ivy-resume)))
 
-(global-set-key (kbd "C-h f") 'counsel-describe-function)
-(global-set-key (kbd "C-h v") 'counsel-describe-variable)
-(global-set-key (kbd "C-c f") 'counsel-git)
-(global-set-key (kbd "C-c j") 'counsel-git-grep)
-(define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
 
+(use-package smex :ensure t
+  :bind ("M-x" . smex))
 
 ;;; Get symbol at point
 ;; https://github.com/Wilfred/ag.el
@@ -63,27 +56,19 @@ If a region is not selected and,
 
 ;; This seems way more natural to me.
 (global-set-key "\C-s" 'isearch-forward)
+(global-set-key "\C-r" 'isearch-backward)
 (define-key isearch-mode-map (kbd "M-i") 'swiper-from-isearch)
 
-
-
-
-
- ;; '(dabbrev-case-fold-search nil)
- ;; '(dabbrev-case-replace t)
- ;; '(dabbrev-upcase-means-case-search t)
-;(global-set-key (kbd "M-/") 'hippie-expand)
 (global-set-key (kbd "M-/") 'dabbrev-expand)
-
 
 
 (global-set-key [f1]          'mhs-insert-filename); F1
 (global-set-key [f2]                       'shell); F2
-;(global-set-key [f3]                     'speedbar); F3
+;;(global-set-key [f3]                     'speedbar); F3
 ;;(global-set-key [f4]      '); F4
 ;;(global-set-key [f5]       '); F5
-;; (global-set-key [f6]              'gud-break) ; F7
-;; (global-set-key [M-f6]            'gud-remove) ; F7
+;;(global-set-key [f6]              'gud-break) ; F7
+;;(global-set-key [M-f6]            'gud-remove) ; F7
 
 
 ;; My Mapping Stuff, this is a prefix key that allows me access to more
@@ -149,11 +134,6 @@ If a region is not selected and,
 ;; Font size
 (define-key global-map (kbd "C-+") 'text-scale-increase)
 (define-key global-map (kbd "C--") 'text-scale-decrease)
-
-
-;; Stuff from EmacsRocks guy Magnars.
-(global-set-key (kbd "M-2") #'er/expand-region)
-
 
 
 (use-package hydra :ensure t)
