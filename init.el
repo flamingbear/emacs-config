@@ -35,11 +35,23 @@
 (setq user-init-file (or load-file-name (buffer-file-name)))
 (setq user-emacs-directory (file-name-directory user-init-file))
 
-;; use cask/pallet to set up and track external packages from gnu/melpa/melpa-stable
-(require 'cask (expand-file-name "~/.cask/cask.el"))
-(cask-initialize)
-(require 'pallet)
-(pallet-mode 't)
+
+(require 'package)
+(setq package-enable-at-startup nil)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
+(package-initialize)
+
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(eval-when-compile
+  (require 'use-package))
+(require 'diminish)
+(require 'bind-key)
+
 
 ;; ** Custom Settings that are updated via << M-x customize >>
 ;; ** Generally Try to avoid putting things in here and prefer setting
@@ -51,10 +63,6 @@
 ;; Set path to dependencies
 (setq site-lisp-dir
       (expand-file-name "site-lisp" user-emacs-directory))
-
-(setq settings-dir
-      (expand-file-name "settings" user-emacs-directory))
-
 
 
 ;; Add all site-lisp subdir projects to load path
@@ -70,15 +78,6 @@
   (add-to-list 'load-path mhs-private-dir)
   (require 'mhs-private-vars))
 
-
-;; Want backups in a separate directory under the user's dir
-(setq backup-directory-alist
-      `(("." . ,(expand-file-name
-                 (concat user-emacs-directory "backups")))))
-
-;; Still make backups even if vc.
-(setq vc-make-backup-files t)
-
 ;; Save point position between sessions
 (require 'saveplace)
 (setq-default save-place t)
@@ -87,25 +86,11 @@
 
 ;; couple of tweaks for browsers and handling emacs on mac osx
 (require 'mhs-environment)
-
-
-;; Projectile is the BOMB!
-(projectile-global-mode)
-(setq projectile-completion-system 'ivy)
-
-
-
 (require 'emacs-extras)
 (require 'emacs-keybinds)
 (require 'emacs-sketchy-extras)
 (require 'emacs-custom-faces)
 (require 'mhs-cut-and-paste)
-
-
-;; If we found some packages that didn't load..Print them out.
-(if missing-packages-list
-    (progn (message "Packages not found: %S" missing-packages-list)))
-(put 'dired-find-alternate-file 'disabled nil)
 
 
 

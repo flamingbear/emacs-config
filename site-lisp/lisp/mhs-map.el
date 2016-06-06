@@ -56,9 +56,7 @@
 (define-key mhs-map "w"                  'delete-trailing-whitespace)
 (define-key mhs-map "y"                              'clipboard-yank)
 
-(if (or running-macos
-        (string-match "snowblower" (system-name)))
-    (define-key mhs-map "g" 'gnus))
+(if running-macos (define-key mhs-map "g" 'gnus))
 
 ;; set up the searchmap keys
 (define-key mhs-searchmap "f"               'mhs-occur-this-word-maybe)

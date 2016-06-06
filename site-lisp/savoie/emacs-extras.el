@@ -19,22 +19,12 @@
 ;; Show keystrokes in progress
 (setq echo-keystrokes 0.3)
 
-;; Move files to trash when deleting
-(setq delete-by-moving-to-trash t)
-
-;; UTF-8 please
-;; (setq locale-coding-system 'utf-8) ; pretty
-;; (set-terminal-coding-system 'utf-8) ; pretty
-;; (set-keyboard-coding-system 'utf-8) ; pretty
-;; (set-selection-coding-system 'utf-8) ; please
-;; (prefer-coding-system 'utf-8) ; with sugar on top
 
 ;; Remove text in active region if inserting text
 (delete-selection-mode 1)
 
 ;; Lines should be 80 characters wide, not 72
 (setq fill-column 80)
-
 
 ;; Easily NavigateSillyCased words when set to 0
 (global-subword-mode 0)
@@ -44,20 +34,16 @@
 (setq-default truncate-lines t)
 
 ;; A saner ediff
-(setq ediff-diff-options "-w")
-(setq ediff-split-window-function 'split-window-horizontally)
-(setq ediff-window-setup-function 'ediff-setup-windows-plain)
-
-;(require 'smartparens-config)
-;(sp-use-smartparens-bindings)
-;(smartparens-global-mode t)
-
+;; (setq ediff-diff-options "-w")
+;; (setq ediff-split-window-function 'split-window-horizontally)
+;; (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
 
 ;; Bug in El Capitain with visible bell
 ;; https://debbugs.gnu.org/cgi/bugreport.cgi?bug=21662
 ;; This just fixes it sort of for a while.
-(setq ring-bell-function (lambda () (message "*woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* ")(sleep-for .15)))
+(setq ring-bell-function
+      #'(lambda () (message "*woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* ")(sleep-for .15)))
 
 
 ;; Extra Dired commands
@@ -68,13 +54,8 @@
 ;; What command should be run from dired with 'dired-do-shell-command'
 ;; I don't know why the \\' in tif. regex
 (setq dired-guess-shell-alist-user
-      '(("\\.tif\\'" "display")))
-
-
-
-(autoload 'skewer-start "setup-skewer" nil t)
-
-
+      '(("\\.tif\\'" "display")
+        ("\\.png\\'" "display")))
 
 
 ;; stolen from KWB-emacs
@@ -113,11 +94,10 @@
 ;; To edit binary files
 ;; (remove-hook 'before-save-hook 'delete-trailing-whitespace)
 
-(global-flycheck-mode 't)
-
-
-;; Better file and buffer searching.
-(ivy-mode 1)
+(use-package flycheck
+  :ensure t
+  :config
+  (global-flycheck-mode 't))
 
 
 
@@ -125,28 +105,42 @@
 ;; Personal Lisp directory
 ;;----------------------------------------------------------------
 
+;; Projectile is the BOMB!
+(use-package projectile :ensure t
+  :config
+  (projectile-global-mode)
+  (setq projectile-completion-system 'ivy))
+
+
+
 ;; IDLWAVE Customizations
 ;; Load this before ruby because we want the jds history search.
-(try-require 'emacs-idlwave-support)
-
-;; set pivotal-tracker api tolken (defunct)
-(try-require 'mhs-pivotal)
+(require 'emacs-idlwave-support)
 
 ;; Use jira information
-(try-require 'mhs-jira)
+(require 'mhs-jira)
 
 ;; Python environment
-(try-require 'mhs-python)
+(require 'mhs-python)
 
-(when (try-require 'markdown-mode)
+(use-package markdown-mode
+  :ensure t
+  :config
   (setq auto-mode-alist
-         (cons '("\\.md" . markdown-mode) auto-mode-alist)))
+        (cons '("\\.md" . markdown-mode) auto-mode-alist)))
 
 ;; Try to set up a ruby on rails environment.
-(try-require 'mhs-ruby-stuff)
+;(require 'mhs-ruby-stuff)
 
+(use-package paradox
+  :ensure t
+  :config
+  (setq paradox-automatically-star t)
+  (setq paradox-execute-asynchronously t))
 
-(when (try-require 'yaml-mode)
+(use-package yaml-mode
+  :ensure t
+  :config
   (add-hook 'yaml-mode-hook
             '(lambda ()
                (define-key yaml-mode-map "\C-m" 'newline-and-indent))))
@@ -160,21 +154,10 @@
 
 
 ;; Javascript stuff
-(try-require 'mhs-javascript)
-
-;; If there's a clojure setup, use it.
-(try-require 'mhs-clojure)
-
-;; if external-lisp-dir has a slime directory, we will set up that
-(try-require 'mhs-clisp-stuff)
-
-;; Perl completion if possible
-(when (try-require 'anything)
-  (try-require 'perl-completion))
-
+(require 'mhs-javascript)
 
 ;; Load the BBDB if it's around.
-(try-require 'mhs-bbdb)
+(require 'mhs-bbdb)
 
 
 ;; if you are debugging emacs completely: open this file and it records keystrokes.
@@ -184,7 +167,7 @@
 (server-start)
 
 ;; Do binary diff in hexl-mode if files are binary format
-(try-require 'binary-diff)
+(require 'binary-diff)
 
 
 ;;--------------------------------------------------------------------------
@@ -284,19 +267,18 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; require the gnus stuff that I wrote...
-(try-require 'mhs-map)
-(try-require 'mhs-magit)
-(try-require 'mhs-extends)
-(try-require 'mhs-perl)
-(try-require 'mhs-grep)
-(try-require 'mhs-sii)
-(try-require 'mhs-cdr)
-(try-require 'mhs-masie)
-(try-require 'mhs-reindent)
+(require 'mhs-map)
+(require 'mhs-magit)
+(require 'mhs-extends)
+(require 'mhs-perl)
+(require 'mhs-grep)
+(require 'mhs-sii)
+(require 'mhs-masie)
+(require 'mhs-reindent)
 
 
-(try-require 'mhs-cmode)
-(try-require 'mhs-comment)
+(require 'mhs-cmode)
+(require 'mhs-comment)
 
 
 ;; Handle multiple locations for aspell.
@@ -339,5 +321,10 @@
     (ansi-color-apply-on-region (point-min) (point-max))))
 (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
 
+
+;; Stuff out of my custom
+(setq save-abbrevs 't)
+(setq scroll-bar-mode 'right)
+(setq select-active-regions 't)
 
 (provide 'emacs-extras)

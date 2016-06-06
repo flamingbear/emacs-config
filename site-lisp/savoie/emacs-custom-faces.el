@@ -1,15 +1,12 @@
-
-
+;; Add custom themes
 (setq custom-theme-directory (locate-user-emacs-file "themes"))
 (add-to-list 'custom-theme-load-path custom-theme-directory)
-
-
-
 
 
 ;; We like to know what machine we're running on.  So change the color
 ;; depending on where you're running from. Also set defaults like what idl
 ;; command to run for specific versions.
+(use-package rainbow-mode :ensure t)
 (setq my-menu-fg-color "#ffffff")
 (setq my-menu-bg-color "#a52a2a")
 
@@ -25,9 +22,6 @@
            (string-match "nise" (user-login-name))
            (string-match "cdr" (user-login-name)))
       (setq use-inconsolata nil))
-
-  ;; special case
-  (if running-on-dev-vm (setq use-inconsolata 'nil))
 
   (cond (use-inconsolata (mhs-use-inconsolata))
         (running-macos (progn (mhs-use-inconsolata)
@@ -216,17 +210,6 @@
        (progn (setq my-menu-fg-color "#00bfff")   ; deep sky blue
               (setq my-menu-bg-color "#adff2f"))) ;green yellow
 
-      ;; savoie.dev
-      (running-on-dev-vm
-       (progn
-         (setq idlwave-shell-explicit-file-name "my_idl.sh")
-         (setq my-menu-fg-color "#ff82ab")
-         (setq my-menu-bg-color "#8b0000")
-         (when (string-match "savoie.dev" (system-name))
-           (setq my-menu-fg-color "#b0c4de")
-           (setq my-menu-bg-color "#556b2f")
-           )
-         ))
 
       (running-macos
        (progn

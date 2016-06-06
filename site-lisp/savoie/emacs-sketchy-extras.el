@@ -10,13 +10,12 @@
 
 
 
-
 ;; See if you can run orgmode from this computer.
 (defvar mhs-org-mode-directory (expand-file-name "~savoie/Dropbox/orgs/")
   "Location of my .org mode files" )
 
 (when (and (file-accessible-directory-p mhs-org-mode-directory)
-           (try-require 'mhs-org-mode))
+           (require 'mhs-org-mode))
   (set-variable 'comment-start 'nil)
   (setq org-agenda-custom-commands
         '(("Q" . "Custom queries") ;; gives label to "Q"
@@ -36,23 +35,25 @@
 ;; Try company-mode instead of auto-complete
 ;;--------------------------
 (add-hook 'after-init-hook 'global-company-mode)
-(company-quickhelp-mode 1)
-
+(use-package company-quickhelp
+  :ensure t
+  :config
+  (company-quickhelp-mode 1))
 
 
 ;; Yasnippet
 ;;-----------
-(when (try-require 'yasnippet) ;; not yasnippet-bundle
+(use-package yasnippet
+  :ensure t
+  :config
   (yas-global-mode 1))
 
 ;;; Chrome editing.
-(when (require 'edit-server nil t)
+(use-package edit-server
+  :ensure t
+  :config
   (setq edit-server-new-frame nil)
   (edit-server-start))
-
-;; pandora music in the EMACS
-(autoload 'pianobar "pianobar" nil t)
-(setq pianobar-username "pandora@flamingbear.com")
 
 (provide 'emacs-sketchy-extras)
 ;;; EMACS-SKETCHY-EXTRAS.EL ends here

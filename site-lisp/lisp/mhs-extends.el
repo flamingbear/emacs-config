@@ -408,7 +408,7 @@ following the prefix character"
 (defun camelize (s)
   "Convert under_score string S to CamelCase string."
   (mapconcat 'identity (mapcar
-                        '(lambda (word) (capitalize (downcase word)))
+                        #'(lambda (word) (capitalize (downcase word)))
                         (split-string s "_")) ""))
 
 (defun camelize-method (s)
