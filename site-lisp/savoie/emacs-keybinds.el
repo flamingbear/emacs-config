@@ -10,6 +10,7 @@
   :bind (("C-x C-f" . counsel-find-file)
          ("C-h f" . counsel-describe-function)
          ("C-h v" . counsel-describe-variable)
+         ("M-x" . counsel-M-x)
          ("C-c f" . counsel-git)
          ("C-c j" . counsel-git-grep)))
 
@@ -22,9 +23,6 @@
   :bind (("C-c C-r" . ivy-resume)
          ("<f6>" . ivy-resume)))
 
-
-(use-package smex :ensure t
-  :bind ("M-x" . smex))
 
 ;;; Get symbol at point
 ;; https://github.com/Wilfred/ag.el
