@@ -1,7 +1,3 @@
 This is a collection of lisp files I have accumulated.
 
 There are probably lots of places and files I've cribbed from the interwebs.  I don't intend to take credit for these things, if you see something that is yours and I haven't credited you, please let me know and I'll fix it pronto.  In some places I've credited when I remember, but originally this was just my emacs configuration.
-
-* Install Cask and Pallet (full instructions at https://github.com/rdallasgray/pallet)
-  * `curl -fsSkL https://raw.github.com/cask/cask/master/go | python`
-  * cd to ~/.emacs.d and run `~/.cask/bin/cask install`
