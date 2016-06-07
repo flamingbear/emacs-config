@@ -111,6 +111,9 @@
   (projectile-global-mode)
   (setq projectile-completion-system 'ivy))
 
+(use-package wgrep :ensure t)
+
+(use-package puppet-mode :ensure t)
 
 
 ;; IDLWAVE Customizations
