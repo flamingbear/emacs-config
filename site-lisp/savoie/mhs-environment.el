@@ -20,7 +20,7 @@
 
 ;; Load emacs specials for mac osx only
 (when running-macos
-  (require 'emacs-darwin))
+  (use-package emacs-darwin))
 
 (provide 'mhs-environment)
 ;;; mhs-environment.el ends here

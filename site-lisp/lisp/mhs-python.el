@@ -1,9 +1,16 @@
 ;; Below: Stolen from KWB totally^H^H^H^H^H mostly.
 
 ;; We're gonna need us a Python mode
-(require 'python)
+(use-package python
+  :config
+  ;; Python is a dev mode
+  (add-hook 'python-mode-hook 'run-dev-hook))
 
-(use-package pyvenv :ensure t)
+(use-package pyvenv
+  :ensure t
+  :config
+  ;; track virtual environments if they are set dir locally
+  (setq pyvenv-tracking-mode 't))
 
 (use-package elpy
   :ensure t
@@ -15,16 +22,11 @@
 
 ;; don't use flymake (elpy default), use flycheck
 ;; https://github.com/jorgenschaefer/elpy/issues/137#issuecomment-55403160
-(when (require 'flycheck nil t)
+(use-package flycheck
+  :ensure t
+  :config
   (remove-hook 'elpy-modules 'elpy-module-flymake)
   (add-hook 'elpy-mode-hook 'flycheck-mode))
-
-
-;; track virtual environments if they are set dir locally
-(setq pyvenv-tracking-mode 't)
-
-;; Python is a dev mode
-(add-hook 'python-mode-hook 'run-dev-hook)
 
 
 
@@ -66,20 +68,9 @@
     (when (featurep 'auto-complete-config)
       (company-mode -1)
       (ac-config-default)
-      ;;    (setq gc-cons-threshold 100000000)
+      ;; ein hangs if garbage collection is too small.  Make it Yoooge!
+      ;; (setq gc-cons-threshold 100000000)
       (auto-complete-mode t))))
-
-
-;; (require 'ein-loaddefs)
-;; (eval-when-compile (require 'ein-notebooklist))
-;; (require 'ein)
-
-;; auto-complete superpack
-
-;; ein hangs if garbage collection is too small.  Make it Yoooge!
-
-
-
 
 
 (provide 'mhs-python)

@@ -52,6 +52,10 @@
 (require 'diminish)
 (require 'bind-key)
 
+;; time your emacs init
+;; call benchmark-init/show-durations-tree or benchmark-init/show-durations-tabulated
+(use-package benchmark-init :ensure t)
+
 
 ;; ** Custom Settings that are updated via << M-x customize >>
 ;; ** Generally Try to avoid putting things in here and prefer setting
