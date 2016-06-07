@@ -273,7 +273,6 @@
 (require 'mhs-perl)
 (require 'mhs-grep)
 (require 'mhs-sii)
-(require 'mhs-masie)
 (require 'mhs-reindent)
 
 
