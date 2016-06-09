@@ -24,7 +24,48 @@
 
 ;; This changes the default abbreviation character to a forward slash.  It
 ;; works great for me, but you might be using / for something else.
+
+
+(setq idlwave-reserved-word-upcase nil)
+(setq idlwave-shell-automatic-electric-debug t)
+(setq idlwave-shell-automatic-start t)
+(setq idlwave-shell-debug-modifiers (quote (super)))
+(setq idlwave-shell-electric-stop-color "#9400d3")
+(setq idlwave-shell-explicit-file-name "my_idl.sh")
+(setq idlwave-shell-reset-no-prompt t)
+(setq idlwave-shell-separate-examine-output nil)
+(setq idlwave-shell-show-commands (quote (run breakpoint debug misc)))
+(setq idlwave-shell-use-dedicated-frame nil)
+(setq idlwave-shell-use-dedicated-window nil)
+(setq idlwave-surround-by-blank t)
+(setq idlwave-query-class
+      '((method-default)
+        (keyword-default)
+        ("INIT" . t)
+        ("CLEANUP" . t)
+        ("SETPROPERTY" . t)
+        ("GETPROPERTY" . t)))
 (setq idlwave-abbrev-start-char "/")
+(setq idlwave-block-indent 3)
+(setq idlwave-completion-force-default-case t)
+(setq idlwave-completion-show-classes 10)
+(setq idlwave-continuation-indent 3)
+(setq idlwave-do-actions t)
+(setq idlwave-end-offset -3)
+(setq idlwave-expand-generic-end t)
+(setq idlwave-indent-to-open-paren nil)
+(setq idlwave-init-rinfo-when-idle-after 2)
+(setq idlwave-main-block-indent 3)
+(setq idlwave-max-extra-continuation-indent 60)
+(setq idlwave-pad-keyword t)
+(setq idlwave-completion-case
+      '((routine . preserve)
+        (keyword . downcase)
+        (class . preserve)
+        (method . preserve)))
+
+
+
 
 ;; Load the idlwave mode and shell, and associate the .pro files with that mode.
 (autoload 'idlwave-mode "idlwave" "IDLWAVE Mode" t)
