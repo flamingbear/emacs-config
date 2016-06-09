@@ -8,23 +8,13 @@
 ;;; Code:
 
 (use-package exec-path-from-shell :ensure t
+  :defer 2
   :config
   (exec-path-from-shell-copy-env "NODE_PATH")
   (exec-path-from-shell-copy-env "GIT_EDITOR")
   (exec-path-from-shell-copy-env "EDITOR")
   (exec-path-from-shell-initialize)
 )
-
-;; These two below both preport to fixes bad cut/paste in osx for emacs 23.3
-;; "Quit: "empty or unsupported pasteboard type""
-
-;; (when (eq window-system 'ns)
-;;   (defadvice ns-get-pasteboard (around hack-empty-pasteboard compile activate)
-;;     (condition-case err
-;;         ad-do-it
-;;       (quit (message "%s" (cadr err))
-;;             nil))))
-;; (setq save-interprogram-paste-before-kill nil)
 
 (provide 'emacs-darwin)
 ;;; emacs-darwin.el ends here
