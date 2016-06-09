@@ -13,6 +13,25 @@
 ;; See if you can run orgmode from this computer.
 (use-package org
   :config
+  (setq org-agenda-files "~/Dropbox/orgs/org-agenda-files")
+  (setq org-clock-persist (quote history))
+  (setq org-clock-persist-file "~/Dropbox/orgs/org-clock-save.el")
+  (setq org-log-done (quote note))
+  (setq org-refile-targets (quote ((org-agenda-files :maxlevel . 5))))
+  (setq org-remember-default-headline "TASKS.org")
+  (setq org-remember-templates
+        '(("todo" 116 "* TODO %? %u %a" nil nil nil)
+          ("note" 110 "* %?" nil nil nil)
+          ("Url" 117 "* %^{Title} Source: %u, %c	%i" nil nil nil)))
+  (setq org-tag-alist   '(("daac" . 100)
+                          ("programmer" . 112)
+                          ("erik" . 101)
+                          ("management" . 109)
+                          ("services" . 115)
+                          ("masie" . 105)
+                          ("annual_review" . 97)))
+  (setq org-todo-keywords '((sequence "TODO" "WAITING" "|" "DONE" "DELEGATED" "CANCELLED")))
+
   (defvar mhs-org-mode-directory (expand-file-name "~savoie/Dropbox/orgs/")
     "Location of my .org mode files" )
 

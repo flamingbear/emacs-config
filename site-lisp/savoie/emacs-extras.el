@@ -32,7 +32,16 @@
   (setq smtpmail-smtp-service "587")
   (setq smtpmail-smtp-user "savoie")
   (setq smtpmail-stream-type (quote starttls))
-
+  (setq send-mail-function 'smtpmail-send-it)
+  (setq nnmail-crosspost nil)
+  (setq nnmail-expiry-wait 3)
+  (setq starttls-extra-arguments '("--no-ca-verification"))
+  (setq message-cite-function 'message-cite-original-without-signature)
+  (setq message-mode-hook '(turn-on-flyspell turn-off-auto-fill turn-on-visual-line-mode))
+  (setq message-send-mail-partially-limit nil)
+  (setq mm-verify-option 'always)
+  (setq mail-source-delete-incoming t)
+  (setq mail-user-agent 'message-user-agent)
   )
 
 
@@ -112,6 +121,7 @@
 
 ;; show empty lines at the end of the file
 (set-default 'indicate-empty-lines t)
+(setq show-trailing-whitespace t)
 
 ;; automatically sync up external changes to files
 ;; (global-auto-revert-mode nil)
@@ -296,18 +306,29 @@
 
 
 ;; unique buffer names
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'forward)
+(use-package uniquify
+  :config
+  (setq uniquify-buffer-name-style 'forward))
 
 ;; ------------------------------------------------------------
 ;; auto-insert madness
 ;; ------------------------------------------------------------
-(auto-insert-mode 1)
-(add-hook 'find-file-hook 'auto-insert)
-(setq auto-insert-directory (concat (file-name-as-directory user-emacs-directory) "autoinsert/"))
-(add-to-list 'auto-insert-alist '("\\.pro$" . "idlwave-insert.pro"))
+(use-package autoinsert
+  :config
+  (setq auto-insert-path '("~savoie/.emacs.d/autoinsert/insert/"))
+  (auto-insert-mode 1)
+  (add-hook 'find-file-hook 'auto-insert)
+  (setq auto-insert-directory (concat (file-name-as-directory user-emacs-directory) "autoinsert/"))
+  (add-to-list 'auto-insert-alist '("\\.pro$" . "idlwave-insert.pro")))
 
+(use-package jka-compr
+  :defer 5
+  :config
+  (setq auto-compression-mode t))
 
+(use-package bookmark
+  :config
+  (setq bookmark-save-flag 1))
 
 
 (autoload 'css-mode "css-mode")
@@ -344,6 +365,10 @@
 ;; Use these to override stupid defaults for the ! command in dired.
 
 ;; Dired extra commands
+(use-package dired
+  :config
+  (setq dired-listing-switches "-al"))
+
 (use-package dired-x
   :config
   (setq dired-guess-shell-alist-user

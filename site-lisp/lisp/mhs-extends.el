@@ -427,13 +427,14 @@ following the prefix character"
     (shell-command-on-region (mark) (point) "python -m json.tool" (buffer-name) t)))
 
 
-;; Not a perfect solution, but this will modify ansi colors in a region very
-;; good for reading puppet output, but it modifies the buffer so you
-;; shouldn't save any changes.
+(setq column-number-mode t)
+(setq comment-column 32)
 
 (use-package ansi-color
   :defer 5
   :config
+  ;; Use these colors for solarized iterm2 windows
+  (setq ansi-color-names-vector  ["#454545" "#cd5542" "#6aaf50" "#baba36" "#5180b3" "#ab75c3" "#bdbc61" "#bdbdb3"])
   (ansi-color-for-comint-mode-on)
   (defun display-ansi-colors ()
     (interactive)

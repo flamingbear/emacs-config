@@ -30,6 +30,7 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
   :defer 5
   :ensure t
   :config
+  (setq bbdb-use-pop-up nil)
   (if running-macos
       (bbdb-initialize 'gnus 'message)
     (bbdb-initialize 'gnus 'message 'sc)))

@@ -4,150 +4,15 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(Info-additional-directory-list (quote ("~savoie/local/info/")))
- '(ansi-color-names-vector
-   ["#454545" "#cd5542" "#6aaf50" "#baba36" "#5180b3" "#ab75c3" "#bdbc61" "#bdbdb3"])
- '(auto-compression-mode t nil (jka-compr))
- '(auto-insert-path (quote ("~savoie/.emacs.d/autoinsert/insert/")) t)
- '(bbdb-use-pop-up nil)
- '(bookmark-save-flag 1)
  '(canlock-password "b908e6544be0e18bb190e50cf9afc8279754b5a4" t)
- '(column-number-mode t)
- '(comment-column 32)
- '(ctypes-file-name "~savoie/.ctypes" t)
  '(custom-safe-themes t)
  '(custom-unlispify-menu-entries nil)
  '(custom-unlispify-tag-names nil)
- '(debug-on-error nil)
- '(default-abbrev-mode t t)
- '(default-major-mode (quote indented-text-mode) t)
- '(delete-by-moving-to-trash nil)
- '(dired-listing-switches "-al")
- '(display-time-24hr-format t)
- '(ess-indent-level 4)
- '(fci-rule-color "#2e2e2e")
- '(font-lock-global-modes t)
- '(font-lock-maximum-decoration t)
- '(font-lock-support-mode (quote jit-lock-mode))
- '(global-font-lock-mode t nil (font-lock))
- '(highlight-changes-global-initial-state (quote passive))
- '(highlight-changes-global-modes t)
- '(highlight-changes-initial-state (quote passive))
-
- '(longlines-show-hard-newlines t)
- '(lpr-command "/usr/bin/lpr")
  '(magit-branch-arguments nil)
  '(magit-fetch-arguments (quote ("--prune")))
  '(magit-log-arguments (quote ("--graph" "--color" "--decorate" "-n256")))
  '(magit-pull-arguments nil)
- '(mail-self-address "<savoie@nsidc.org>" t)
- '(mail-source-delete-incoming t)
- '(mail-user-agent (quote message-user-agent))
  '(markdown-command "Markdown.pl")
- '(message-cite-function (quote message-cite-original-without-signature))
- '(message-mode-hook
-   (quote
-    (turn-on-flyspell turn-off-auto-fill turn-on-visual-line-mode)))
- '(message-send-mail-partially-limit nil)
- '(mm-verify-option (quote always))
- '(mouse-wheel-follow-mouse t)
- '(mouse-wheel-mode t nil (mwheel))
- '(nnmail-crosspost nil)
- '(nnmail-expiry-wait 3)
- '(org-agenda-files "~/Dropbox/orgs/org-agenda-files")
- '(org-clock-persist (quote history))
- '(org-clock-persist-file "~/Dropbox/orgs/org-clock-save.el")
- '(org-log-done (quote note))
- '(org-refile-targets (quote ((org-agenda-files :maxlevel . 5))))
- '(org-remember-default-headline "TASKS.org")
- '(org-remember-templates
-   (quote
-    (("todo" 116 "* TODO %? %u %a" nil nil nil)
-     ("note" 110 "* %?" nil nil nil)
-     ("Url" 117 "* %^{Title}
-	Source: %u, %c
-	%i" nil nil nil))))
- '(org-tag-alist
-   (quote
-    (("daac" . 100)
-     ("programmer" . 112)
-     ("erik" . 101)
-     ("management" . 109)
-     ("services" . 115)
-     ("masie" . 105)
-     ("annual_review" . 97))))
- '(org-todo-keywords
-   (quote
-    ((sequence "TODO" "WAITING" "|" "DONE" "DELEGATED" "CANCELLED"))))
-
- '(send-mail-function (quote smtpmail-send-it))
- '(show-trailing-whitespace t)
- '(sml/mode-width
-   (if
-       (eq powerline-default-separator
-           (quote arrow))
-       (quote right)
-     (quote full)))
- '(sml/pos-id-separator
-   (quote
-    (""
-     (:propertize " " face powerline-active1)
-     (:eval
-      (propertize " "
-                  (quote display)
-                  (funcall
-                   (intern
-                    (format "powerline-%s-%s" powerline-default-separator
-                            (car powerline-default-separator-dir)))
-                   (quote powerline-active1)
-                   (quote powerline-active2))))
-     (:propertize " " face powerline-active2))))
- '(sml/pos-minor-modes-separator
-   (quote
-    (""
-     (:propertize " " face powerline-active1)
-     (:eval
-      (propertize " "
-                  (quote display)
-                  (funcall
-                   (intern
-                    (format "powerline-%s-%s" powerline-default-separator
-                            (cdr powerline-default-separator-dir)))
-                   (quote powerline-active1)
-                   nil)))
-     (:propertize " " face sml/global))))
- '(sml/pre-id-separator
-   (quote
-    (""
-     (:propertize " " face sml/global)
-     (:eval
-      (propertize " "
-                  (quote display)
-                  (funcall
-                   (intern
-                    (format "powerline-%s-%s" powerline-default-separator
-                            (car powerline-default-separator-dir)))
-                   nil
-                   (quote powerline-active1))))
-     (:propertize " " face powerline-active1))))
- '(sml/pre-minor-modes-separator
-   (quote
-    (""
-     (:propertize " " face powerline-active2)
-     (:eval
-      (propertize " "
-                  (quote display)
-                  (funcall
-                   (intern
-                    (format "powerline-%s-%s" powerline-default-separator
-                            (cdr powerline-default-separator-dir)))
-                   (quote powerline-active2)
-                   (quote powerline-active1))))
-     (:propertize " " face powerline-active1))))
- '(starttls-extra-arguments (quote ("--no-ca-verification")))
- '(starttls-gnutls-program "gnutls-cli")
-
-
  )
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
