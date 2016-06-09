@@ -52,6 +52,7 @@
 ;;; Special configuration for ein:notebook autocomplete
 ;;;
 ;;; This is still a problem.
+(use-package auto-complete  :ensure t)
 
 (use-package ein
   :ensure t

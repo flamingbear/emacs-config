@@ -1,3 +1,4 @@
+
 (setq gnus-invalid-group-regexp "[:`'\"]\\|^$")
 
 ;; ---------------------------
@@ -22,7 +23,7 @@
 (setq gnus-buttonized-mime-types (quote ("multipart/signed")))
 (setq gnus-inhibit-mime-unbuttonizing nil)
 
-(require 'nnir)
+(use-package nnir :defer 5)
 
 
 (setq gnus-secondary-select-methods

@@ -80,21 +80,22 @@
 (defvar mhs-private-dir (locate-user-emacs-file "private"))
 (when (file-exists-p mhs-private-dir)
   (add-to-list 'load-path mhs-private-dir)
-  (require 'mhs-private-vars))
+  (use-package mhs-private-vars))
 
 ;; Save point position between sessions
-(require 'saveplace)
-(setq-default save-place t)
-(setq save-place-file (expand-file-name ".places" user-emacs-directory))
+(use-package saveplace
+  :config
+  (setq-default save-place t)
+  (setq save-place-file (expand-file-name ".places" user-emacs-directory)))
 
 
 ;; couple of tweaks for browsers and handling emacs on mac osx
-(require 'mhs-environment)
-(require 'emacs-extras)
-(require 'emacs-keybinds)
-(require 'emacs-sketchy-extras)
-(require 'emacs-custom-faces)
-(require 'mhs-cut-and-paste)
+(use-package mhs-environment)
+(use-package emacs-extras)
+(use-package emacs-keybinds)
+(use-package emacs-sketchy-extras)
+(use-package emacs-custom-faces)
+(use-package mhs-cut-and-paste)
 
 
 

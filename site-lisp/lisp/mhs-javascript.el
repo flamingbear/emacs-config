@@ -46,6 +46,7 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 
 
 (use-package js-comint
+  :defer 5
   :ensure t
   :config
   ;; Use node as our repl

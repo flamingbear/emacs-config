@@ -27,6 +27,7 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 
 ;; Location on macintosh machines.
 (use-package bbdb
+  :defer 5
   :ensure t
   :config
   (if running-macos

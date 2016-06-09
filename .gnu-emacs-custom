@@ -22,7 +22,6 @@
  '(default-abbrev-mode t t)
  '(default-major-mode (quote indented-text-mode) t)
  '(delete-by-moving-to-trash nil)
- '(delete-selection-mode nil)
  '(dired-listing-switches "-al")
  '(display-time-24hr-format t)
  '(ess-indent-level 4)
@@ -31,30 +30,6 @@
  '(font-lock-maximum-decoration t)
  '(font-lock-support-mode (quote jit-lock-mode))
  '(global-font-lock-mode t nil (font-lock))
- '(gnus-agent-expire-days 90)
- '(gnus-init-file "~savoie/.emacs.d/.gnus")
- '(gnus-select-method (quote (nntp "nntp.aioe.org")))
- '(gnus-spam-autodetect (quote (("mail-200" t))))
- '(gnus-spam-process-destinations (quote (("mail" "nnml+private:spam"))))
- '(gnus-spam-process-newsgroups
-   (quote
-    (("mail"
-      ((spam spam-use-bogofilter)
-       (spam spam-use-blacklist)
-       (ham spam-use-whitelist))))))
- '(gnus-thread-sort-functions (quote (gnus-thread-sort-by-number)))
- '(gnus-treat-body-boundary nil)
- '(gnus-treat-date-english (quote head))
- '(gnus-treat-display-x-face (quote head))
- '(gnus-treat-fill-article nil)
- '(gnus-treat-fill-long-lines nil)
- '(gnus-treat-hide-signature t)
- '(gnus-verbose 10)
- '(gnus-visible-headers
-   (quote
-    ("^From:" "^Newsgroups:" "^Subject:" "^Date:" "^Followup-To:" "^Reply-To:" "^Organization:" "^Summary:" "^Keywords:" "^To:" "^[BGF]?Cc:" "^Posted-To:" "^Mail-Copies-To:" "^Mail-Followup-To:" "^Apparently-To:" "^Gnus-Warning:" "^Resent-From:" "^X-Sent:" "^X-Gnus-Label:")))
- '(grep-find-command
-   "find . -name \".svn\" -prune -o -type f  -exec grep -nH \"\" {} \\;")
  '(highlight-changes-global-initial-state (quote passive))
  '(highlight-changes-global-modes t)
  '(highlight-changes-initial-state (quote passive))
@@ -156,8 +131,6 @@
     ((sequence "TODO" "WAITING" "|" "DONE" "DELEGATED" "CANCELLED"))))
 
  '(send-mail-function (quote smtpmail-send-it))
- '(show-paren-mode t)
- '(show-paren-style (quote parenthesis))
  '(show-trailing-whitespace t)
  '(sml/mode-width
    (if

@@ -5,7 +5,7 @@
 
 
 ;; This function is old and people shouldn't use it, mhs-dblstuff replaces it.
-(require 'mhs-dblstuff)
+(use-package mhs-dblstuff)
 
 (defun mhs-base-name ()
   "* inserts the current buffer's name where the mark is."
@@ -283,26 +283,6 @@ following the prefix character"
     (setq tok (read-char)))
   (mhs-under-this-c++-comment tok)))
 
-(defun mhs-under-this-c++-comment (tok)
-  ;;   // this is the comment.
-  (let (beg end-com white first end line comval ul)
-    (save-excursion
-      (beginning-of-line)
-      (setq beg (point))
-      (while (looking-at "[^/]") (forward-char))
-      (setq white (point))
-      (setq comval (buffer-substring (point) (+ 2 (point))))
-      (while (looking-at "[ \t]") (forward-char))
-      (setq first (point))
-      (setq white (make-string (- white beg) ? ))
-      (end-of-line)
-      (while (looking-at "[ \t\n]") (forward-char -1))
-      (setq end (1+ (point)))
-      (setq ul (make-string (-(- end first)2) tok))
-      (forward-line)
-      (beginning-of-line)
-      (insert (concat  white comval ul "\n")))))
-
 
 (defun jao-toggle-selective-display (column)
   (interactive "P")
@@ -325,14 +305,6 @@ following the prefix character"
   "Set ediff variable back to normal operations."
   (interactive)
   (set-variable 'ediff-diff-options ""))
-
-
-(defun mhs-convert-to-ftp-loc ()
-(interactive)
-(save-excursion)
-(replace-
- "/disks/sidads_incoming/savoie/"
- "ftp://sidads.colorado.edu/pub/incoming/savoie/"))
 
 
 (defun mhs-use-inconsolata ()
@@ -459,11 +431,13 @@ following the prefix character"
 ;; good for reading puppet output, but it modifies the buffer so you
 ;; shouldn't save any changes.
 
-(require 'ansi-color)
-
-(defun display-ansi-colors ()
-  (interactive)
-  (ansi-color-apply-on-region (point-min) (point-max)))
+(use-package ansi-color
+  :defer 5
+  :config
+  (ansi-color-for-comint-mode-on)
+  (defun display-ansi-colors ()
+    (interactive)
+    (ansi-color-apply-on-region (point-min) (point-max))))
 
 ;;(add-to-list 'auto-mode-alist '("\\.log\\'" . display-ansi-colors))
 

@@ -1,5 +1,31 @@
-;; File for extra emacs commands that are pretty standard, but useful
-;;--------------------------------------------------------------------
+
+ ;; '(gnus-spam-autodetect (quote (("mail-200" t))))
+ ;; '(gnus-spam-process-destinations (quote (("mail" "nnml+private:spam"))))
+ ;; '(gnus-spam-process-newsgroups
+ ;;   (quote
+ ;;    (("mail"
+ ;;      ((spam spam-use-bogofilter)
+ ;;       (spam spam-use-blacklist)
+ ;;       (ham spam-use-whitelist))))))
+
+ ;; '(gnus-treat-body-boundary nil)
+ ;; '(gnus-treat-date-english (quote head))
+
+ ;; '(gnus-treat-fill-article nil)
+ ;; '(gnus-treat-fill-long-lines nil)
+
+ ;
+(use-package gnus
+  :defer 5
+  :config
+  (setq gnus-select-method (quote (nntp "nntp.aioe.org")))
+  (setq gnus-verbose 10)
+  (setq gnus-treat-hide-signature t)
+  (setq gnus-treat-display-x-face 'head)
+  (setq gnus-thread-sort-functions '(gnus-thread-sort-by-number))
+  (setq gnus-init-file (locate-user-emacs-file ".gnus"))
+  (setq gnus-agent-expire-days '90)
+  )
 
 
 ;; Override having to type Yes or No with just Y or N
@@ -12,7 +38,6 @@
 ;; To determine when to split horizontally
 (setq split-width-threshold '1600)
 
-(ansi-color-for-comint-mode-on)
 
 ;; Some magnar's Sane Defaults.
 ;;------------------------------
@@ -46,16 +71,13 @@
       #'(lambda () (message "*woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* ")(sleep-for .15)))
 
 
-;; Extra Dired commands
-(add-hook 'dired-load-hook
-          (function (lambda () (load "dired-x"))))
+;; Dired extra commands
+(use-package dired-x
+  :config
+  (setq dired-guess-shell-alist-user
+        '(("\\.tif\\'" "display")
+          ("\\.png\\'" "display"))))
 
-
-;; What command should be run from dired with 'dired-do-shell-command'
-;; I don't know why the \\' in tif. regex
-(setq dired-guess-shell-alist-user
-      '(("\\.tif\\'" "display")
-        ("\\.png\\'" "display")))
 
 
 ;; stolen from KWB-emacs
@@ -111,9 +133,16 @@
   (projectile-global-mode)
   (setq projectile-completion-system 'ivy))
 
+(use-package grep
+  :defer 5
+  :config
+  (setq grep-find-command
+        "find . -name \".svn\" -prune -o -type f  -exec grep -nH \"\" {} \\;"))
+
 (use-package wgrep :ensure t)
 
 (use-package puppet-mode :ensure t)
+(use-package gist :ensure t)
 
 
 ;; IDLWAVE Customizations
@@ -148,8 +177,17 @@
             '(lambda ()
                (define-key yaml-mode-map "\C-m" 'newline-and-indent))))
 
-;; SICP
 
+(use-package paren
+  :defer 5
+  :config
+  (setq show-paren-mode t)
+  (setq show-paren-style 'parenthesis))
+
+
+
+
+;; SICP
 (add-to-list 'auto-mode-alist '("\\.scm$" . scheme-mode))
 (add-hook 'scheme-mode-hook
           '(lambda ()
