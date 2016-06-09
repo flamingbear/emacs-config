@@ -1,3 +1,6 @@
+;;; package --- Summary
+;;;   Just standard extra things to load
+;;; Commentary:
 
  ;; '(gnus-spam-autodetect (quote (("mail-200" t))))
  ;; '(gnus-spam-process-destinations (quote (("mail" "nnml+private:spam"))))
@@ -14,7 +17,7 @@
  ;; '(gnus-treat-fill-article nil)
  ;; '(gnus-treat-fill-long-lines nil)
 
- ;
+;;; Code:
 (use-package gnus
   :defer 5
   :config
@@ -25,6 +28,11 @@
   (setq gnus-thread-sort-functions '(gnus-thread-sort-by-number))
   (setq gnus-init-file (locate-user-emacs-file ".gnus"))
   (setq gnus-agent-expire-days '90)
+  (setq smtpmail-smtp-server "smtp.colorado.edu")
+  (setq smtpmail-smtp-service "587")
+  (setq smtpmail-smtp-user "savoie")
+  (setq smtpmail-stream-type (quote starttls))
+
   )
 
 
@@ -37,6 +45,10 @@
 (put 'narrow-to-region 'disabled nil)
 ;; To determine when to split horizontally
 (setq split-width-threshold '1600)
+
+(setq indent-tabs-mode nil)
+(setq inhibit-eol-conversion t)
+(setq inhibit-startup-screen t)
 
 
 ;; Some magnar's Sane Defaults.
@@ -63,20 +75,15 @@
 ;; (setq ediff-split-window-function 'split-window-horizontally)
 ;; (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
-
+(setq tab-always-indent 'complete)
+(tool-bar-mode -1)
+(setq transient-mark-mode 't)
 ;; Bug in El Capitain with visible bell
 ;; https://debbugs.gnu.org/cgi/bugreport.cgi?bug=21662
 ;; This just fixes it sort of for a while.
+(setq visible-bell 't)
 (setq ring-bell-function
       #'(lambda () (message "*woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* ")(sleep-for .15)))
-
-
-;; Dired extra commands
-(use-package dired-x
-  :config
-  (setq dired-guess-shell-alist-user
-        '(("\\.tif\\'" "display")
-          ("\\.png\\'" "display"))))
 
 
 
@@ -147,13 +154,13 @@
 
 ;; IDLWAVE Customizations
 ;; Load this before ruby because we want the jds history search.
-(require 'emacs-idlwave-support)
+(use-package emacs-idlwave-support)
 
 ;; Use jira information
-(require 'mhs-jira)
+(use-package mhs-jira)
 
 ;; Python environment
-(require 'mhs-python)
+(use-package mhs-python)
 
 (use-package markdown-mode
   :ensure t
@@ -195,10 +202,10 @@
 
 
 ;; Javascript stuff
-(require 'mhs-javascript)
+(use-package mhs-javascript)
 
 ;; Load the BBDB if it's around.
-(require 'mhs-bbdb)
+(use-package mhs-bbdb)
 
 
 ;; if you are debugging emacs completely: open this file and it records keystrokes.
@@ -208,7 +215,7 @@
 (server-start)
 
 ;; Do binary diff in hexl-mode if files are binary format
-(require 'binary-diff)
+(use-package binary-diff)
 
 
 ;;--------------------------------------------------------------------------
@@ -222,6 +229,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ediff cutomizations
 ;;;;;;;;;;;;;;;;;;;;;;;;
+(defvar ediff-ignore-similar-regions)
 (setq ediff-ignore-similar-regions 't)
 
 
@@ -257,7 +265,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Text mode (hook also run by related modes, e.g. Tex/LaTeX & outline)
-(setq-default fill-column 77) ; Change it locally with [C-x f]
+(setq-default fill-column 79) ; Change it locally with [C-x f]
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -308,17 +316,17 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; require the gnus stuff that I wrote...
-(require 'mhs-map)
-(require 'mhs-magit)
-(require 'mhs-extends)
-(require 'mhs-perl)
-(require 'mhs-grep)
-(require 'mhs-sii)
-(require 'mhs-reindent)
+(use-package mhs-map)
+(use-package mhs-magit)
+(use-package mhs-extends)
+(use-package mhs-perl)
+(use-package mhs-grep)
+(use-package mhs-sii)
+(use-package mhs-reindent)
 
 
-(require 'mhs-cmode)
-(require 'mhs-comment)
+(use-package mhs-cmode)
+(use-package mhs-comment)
 
 
 ;; Handle multiple locations for aspell.
@@ -334,17 +342,15 @@
 
 
 ;; Use these to override stupid defaults for the ! command in dired.
-(defvar dired-guess-shell-alist-user)
-(setq dired-guess-shell-alist-user
-      (list (list "\\.png\\'" "display")
-            (list "\\.jpg\\'" "display")
-            (list "\\.ps\\'" "gv")
-            (list "\\.eps\\'" "gv")
-            (list "\\.doc\\'" "ooffice")
-            (list "\\.xls\\'" "ooffice")
-            (list "\\.odg\\'" "ooffice")
-            (list "\\.ods\\'" "ooffice")
-            (list "\\.pdf\\'" "acroread") ))
+
+;; Dired extra commands
+(use-package dired-x
+  :config
+  (setq dired-guess-shell-alist-user
+        ;; '(("\\.tif\\'" "display")
+        ;;   ("\\.png\\'" "display"))
+        ))
+
 
 ;; Set registers to things that I type zillions of times.
 ;; ------------------------------------------------------
