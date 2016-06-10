@@ -436,10 +436,14 @@ following the prefix character"
   ;; Use these colors for solarized iterm2 windows
   (setq ansi-color-names-vector  ["#454545" "#cd5542" "#6aaf50" "#baba36" "#5180b3" "#ab75c3" "#bdbc61" "#bdbdb3"])
   (ansi-color-for-comint-mode-on)
+  (defun colorize-compilation-buffer ()
+    (let ((inhibit-read-only t))
+      (ansi-color-apply-on-region (point-min) (point-max))))
+  (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
+
   (defun display-ansi-colors ()
     (interactive)
     (ansi-color-apply-on-region (point-min) (point-max))))
 
-;;(add-to-list 'auto-mode-alist '("\\.log\\'" . display-ansi-colors))
 
 (provide 'mhs-extends)

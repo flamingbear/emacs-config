@@ -370,11 +370,11 @@
   (setq dired-listing-switches "-al"))
 
 (use-package dired-x
-  :config
-  (setq dired-guess-shell-alist-user
-        ;; '(("\\.tif\\'" "display")
-        ;;   ("\\.png\\'" "display"))
-        ))
+  ;; :config
+  ;; (setq dired-guess-shell-alist-user
+  ;;       ;; '(("\\.tif\\'" "display")
+  ;;       ;;   ("\\.png\\'" "display")))
+  )
 
 
 ;; Set registers to things that I type zillions of times.
@@ -385,12 +385,6 @@
  "ftp://sidads.colorado.edu/pub/incoming/savoie")
 
 
-;; colorize compilation buffer
-(require 'ansi-color)
-(defun colorize-compilation-buffer ()
-  (let ((inhibit-read-only t))
-    (ansi-color-apply-on-region (point-min) (point-max))))
-(add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
 
 
 ;; Stuff out of my custom
@@ -399,3 +393,4 @@
 (setq select-active-regions 't)
 
 (provide 'emacs-extras)
+;;; emacs-extras.el ends here
