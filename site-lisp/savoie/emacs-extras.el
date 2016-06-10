@@ -297,7 +297,6 @@
 (add-to-list 'auto-mode-alist '("\\.alias$" . sh-mode))
 
 
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
