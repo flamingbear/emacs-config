@@ -82,6 +82,13 @@
   (add-to-list 'load-path mhs-private-dir)
   (use-package mhs-private-vars))
 
+;; Want backups in a separate directory under the user's dir
+(setq backup-directory-alist
+      `(("." . ,(expand-file-name
+                 (concat user-emacs-directory "backups")))))
+
+
+
 ;; Save point position between sessions
 (use-package saveplace
   :config
