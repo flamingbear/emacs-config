@@ -198,9 +198,7 @@
 (use-package paren
   :defer 5
   :config
-  (setq show-paren-mode t)
-  (setq show-paren-style 'parenthesis))
-
+  (show-paren-mode t))
 
 
 
