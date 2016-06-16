@@ -75,6 +75,8 @@
        (setq my-menu-fg-color "#005000")
        (cond ((string-equal "shapefiles" my-project)
 	      (setq my-menu-bg-color "yellow"))
+	     ((string-equal "sea_ice_tools" my-project)
+	      (setq my-menu-bg-color "green"))
 	     )
        (cond ((string-equal "blue" my-environment)
 	      (setq my-menu-fg-color "#800000"))
