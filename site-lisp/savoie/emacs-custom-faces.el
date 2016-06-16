@@ -3,10 +3,19 @@
 (add-to-list 'custom-theme-load-path custom-theme-directory)
 
 ;; Set project and environment from out new VM file.
-(when (file-exists-p "/etc/profile.d/fqdn.txt")
-  (setq my-project "shapefiles")
-  (setq my-environment "DEV")
-  )
+(defvar my-project)
+(defvar my-environment)
+(defun parse-fqdn (fn)
+  (with-temp-buffer
+    (insert-file-contents fn)
+    (string-match "^\\(.*?\\)\\.\\(.*?\\)\\." (buffer-string))
+    (list (match-string 1 (buffer-string)) (match-string 2 (buffer-string)))))
+
+(defvar fqdn-filename "/etc/fqdn")
+(when (file-exists-p fqdn-filename)
+  (let ((results (parse-fqdn fqdn-filename)))
+    (setq my-environment (first results))
+    (setq my-project (second results))))
 
 
 
@@ -63,8 +72,15 @@
 
       ;; if you read from a project file /etc/profile.d/file
       ((boundp 'my-project)
-       (progn
-	 (setq my-menu-bg-color "yellow")))
+       (setq my-menu-fg-color "#005000")
+       (cond ((string-equal "shapefiles" my-project)
+	      (setq my-menu-bg-color "yellow"))
+	     )
+       (cond ((string-equal "blue" my-environment)
+	      (setq my-menu-fg-color "#800000"))
+	     ((string-equal "dev" my-environment)
+	      (setq my-menu-fg-color "#006000"))))
+
 
       ;; NOAA Combined
       ((string-match "n0046_dev" build)
