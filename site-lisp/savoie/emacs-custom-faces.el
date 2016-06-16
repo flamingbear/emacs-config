@@ -2,6 +2,13 @@
 (setq custom-theme-directory (locate-user-emacs-file "themes"))
 (add-to-list 'custom-theme-load-path custom-theme-directory)
 
+;; Set project and environment from out new VM file.
+(when (file-exists-p "/etc/profile.d/fqdn.txt")
+  (setq my-project "shapefiles")
+  (setq my-environment "DEV")
+  )
+
+
 
 ;; We like to know what machine we're running on.  So change the color
 ;; depending on where you're running from. Also set defaults like what idl
@@ -53,6 +60,11 @@
                 (setq my-menu-fg-color "#ffe4b5")
                 (setq my-menu-bg-color "#483d8b")) ; darkslateblue
                )))
+
+      ;; if you read from a project file /etc/profile.d/file
+      ((boundp 'my-project)
+       (progn
+	 (setq my-menu-bg-color "yellow")))
 
       ;; NOAA Combined
       ((string-match "n0046_dev" build)

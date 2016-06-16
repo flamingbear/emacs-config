@@ -172,11 +172,16 @@
 ;; Python environment
 (use-package mhs-python)
 
+(use-package dockerfile-mode :ensure t)
+
 (use-package markdown-mode
   :ensure t
   :config
   (setq auto-mode-alist
-        (cons '("\\.md" . markdown-mode) auto-mode-alist)))
+        (cons '("\\.md" . markdown-mode) auto-mode-alist))
+  (when running-macos
+    (setq markdown-command "Markdown.pl"))
+  )
 
 ;; Try to set up a ruby on rails environment.
 ;(require 'mhs-ruby-stuff)
