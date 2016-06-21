@@ -3,11 +3,12 @@
 
 (setq mc/cmds-to-run-for-all
       '(
-        kill-region
-        wgrep-finish-edit
-        ))
+	kill-region
+	wgrep-finish-edit
+	))
 
 (setq mc/cmds-to-run-once
       '(
-        multiple-cursors-hydra/mc/mark-next-like-this
-        ))
+	multiple-cursors-hydra/mc/mark-next-like-this
+	multiple-cursors-hydra/mc/skip-to-next-like-this
+	))
