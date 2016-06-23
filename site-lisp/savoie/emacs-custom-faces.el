@@ -73,15 +73,24 @@
       ;; if you read from a project file /etc/profile.d/file
       ((boundp 'my-project)
        (setq my-menu-fg-color "#005000")
-       (cond ((string-equal "shapefiles" my-project)
-	      (setq my-menu-bg-color "yellow"))
-	     ((string-equal "sea_ice_tools" my-project)
-	      (setq my-menu-bg-color "green"))
-	     )
+       ;; Set background colors based on machine environment.
        (cond ((string-equal "blue" my-environment)
 	      (setq my-menu-fg-color "#800000"))
 	     ((string-equal "dev" my-environment)
-	      (setq my-menu-fg-color "#006000"))))
+	      (setq my-menu-fg-color "#006000")))
+       ;; Set foreground color based on project name
+       (cond
+	((string-equal "shapefiles" my-project)
+	 (setq my-menu-bg-color "yellow"))
+
+	((string-equal "seaiceprojects" my-project)
+	 (setq my-menu-bg-color "#afff00")
+	 (setq idlwave-shell-explicit-file-name "idl83"))
+
+	((string-equal "sea_ice_tools" my-project)
+	 (setq my-menu-bg-color "green"))
+	)
+       )
 
 
       ;; NOAA Combined
@@ -91,10 +100,6 @@
               (setq idlwave-shell-explicit-file-name "idl82")
               )) ;cornflowerblue
 
-      ;; NRTSI-work. if NRTSITOP is defined use these
-      ((not (eq (getenv "NRTSITOP") nil))
-       (progn (setq my-menu-fg-color "color-28")
-              (setq my-menu-bg-color "color-154")))
 
 
       ;; Dev or apps VM - standard
