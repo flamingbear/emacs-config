@@ -21,7 +21,9 @@
   (setq ivy-use-virtual-buffers t)
   (setq ivy-count-format "(%d/%d) ")
   :bind (("C-c C-r" . ivy-resume)
-         ("<f6>" . ivy-resume)))
+         ("<f6>" . ivy-resume)
+	 :map ivy-minibuffer-map
+	 ("C-w" . ivy-yank-word)))
 
 
 ;;; Get symbol at point
