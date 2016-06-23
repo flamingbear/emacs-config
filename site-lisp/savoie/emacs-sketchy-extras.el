@@ -67,10 +67,10 @@
 
 ;; Yasnippet
 ;;-----------
-(use-package yasnippet
-  :ensure t
-  :config
-  (yas-global-mode 1))
+;; (use-package yasnippet
+;;   :ensure t
+;;   :config
+;;   (yas-global-mode 1))
 
 ;;; Chrome editing.
 (use-package edit-server
