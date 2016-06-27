@@ -83,6 +83,9 @@
 	((string-equal "shapefiles" my-project)
 	 (setq my-menu-bg-color "yellow"))
 
+	((string-equal "gsx" my-project)
+	 (setq my-menu-bg-color "#00aa00"))
+
 	((string-equal "seaiceprojects" my-project)
 	 (setq my-menu-bg-color "#afff00")
 	 (setq idlwave-shell-explicit-file-name "idl83"))
