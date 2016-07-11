@@ -63,6 +63,12 @@
 (setq custom-file (locate-user-emacs-file ".gnu-emacs-custom"))
 (load custom-file t t)
 
+(use-package auth-source
+  :config
+  (setq
+   auth-sources `(,(expand-file-name "private/.authinfo.gpg" user-emacs-directory)
+		  )
+   auth-source-debug 'nil))
 
 ;; Set path to dependencies
 (setq site-lisp-dir
@@ -75,12 +81,6 @@
     (add-to-list 'load-path project)))
 
 
-;; Store "Private" variables/files that don't get checked into revision control
-;; github-tokens etc in here.
-(defvar mhs-private-dir (locate-user-emacs-file "private"))
-(when (file-exists-p mhs-private-dir)
-  (add-to-list 'load-path mhs-private-dir)
-  (use-package mhs-private-vars))
 
 ;; Want backups in a separate directory under the user's dir
 (setq backup-directory-alist

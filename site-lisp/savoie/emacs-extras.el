@@ -187,10 +187,13 @@
 ;(require 'mhs-ruby-stuff)
 
 (use-package paradox
+  :defer t
   :ensure t
   :config
   (setq paradox-automatically-star t)
-  (setq paradox-execute-asynchronously t))
+  (setq paradox-execute-asynchronously t)
+  (load (expand-file-name "private/paradox-secrets.el.gpg" user-emacs-directory))
+  )
 
 (use-package yaml-mode
   :ensure t

@@ -7,6 +7,7 @@
 	kill-region
 	message-beginning-of-line
 	wgrep-finish-edit
+	yaml-electric-backspace
 	))
 
 (setq mc/cmds-to-run-once
