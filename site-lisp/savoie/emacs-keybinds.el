@@ -1,6 +1,6 @@
 ;; File for keybindings for emacs
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+(global-unset-key (kbd "C-z"))    	;; suspend-frame is crashy on osx.
 ;;;;;;;;
 ;; try swiper/ivy/counsel
 ;;;;;;;
