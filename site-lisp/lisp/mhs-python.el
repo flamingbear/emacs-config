@@ -30,15 +30,20 @@
 
 
 
+(use-package pyvenv
+  :ensure t
+  :init
+  (setenv "WORKON_HOME" "/Users/savoie/anaconda2/envs")
+  (pyvenv-mode 1)
+  (pyvenv-tracking-mode 1))
+;; now in your .dirp-locals.el put => ((nil . ((pyvenv-workon . "environmentname"))))
+
 ;; Be able to run nose tests with various keybindings
 (use-package nose
   :ensure t
   :config
   (add-hook 'python-mode-hook
             (lambda ()
-              ;(hack-local-variables)
-              (when (boundp 'project-venv-name)
-                (pyvenv-activate project-venv-name))
               (local-set-key "\C-ca" 'nosetests-all)
               (local-set-key "\C-cm" 'nosetests-module)
               (local-set-key "\C-c." 'nosetests-one)
