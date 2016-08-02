@@ -6,6 +6,8 @@
 	end-of-visual-line
 	kill-region
 	message-beginning-of-line
+	org-self-insert-command
+	org-shiftup
 	wgrep-finish-edit
 	yaml-electric-backspace
 	yaml-electric-bar-and-angle
