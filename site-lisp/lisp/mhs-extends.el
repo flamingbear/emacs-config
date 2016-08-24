@@ -391,7 +391,7 @@ following the prefix character"
                         (split-string s "_")) ""))
 
 
-(defun underscore-previous-camel (&optional beg end)
+(defun snake-previous-camel (&optional beg end)
   "unCamelize the previous camelCased string.
     If transient-mark-mode is active and a region is activated,
     snakify the region."

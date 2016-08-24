@@ -3,8 +3,12 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+	dabbrev-expand
+	electric-newline-and-maybe-indent
 	end-of-visual-line
+	indent-for-tab-command
 	kill-region
+	markdown-exdent-or-delete
 	message-beginning-of-line
 	org-self-insert-command
 	org-shiftup
@@ -16,6 +20,10 @@
 
 (setq mc/cmds-to-run-once
       '(
+	multiple-cursors-hydra/body
+	multiple-cursors-hydra/mc/edit-lines-and-exit
 	multiple-cursors-hydra/mc/mark-next-like-this
 	multiple-cursors-hydra/mc/skip-to-next-like-this
+	multiple-cursors-hydra/mc/unmark-next-like-this
+	swiper
 	))

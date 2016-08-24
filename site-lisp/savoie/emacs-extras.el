@@ -66,8 +66,8 @@
 (setq echo-keystrokes 0.3)
 
 
-;; Remove text in active region if inserting text
-(delete-selection-mode 1)
+;; Remove text in active region if inserting text in non-nil
+(setq delete-selection-mode 'nil)
 
 ;; Lines should be 80 characters wide, not 72
 (setq fill-column 80)

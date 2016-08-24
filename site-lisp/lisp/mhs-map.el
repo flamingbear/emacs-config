@@ -51,8 +51,8 @@
 (define-key mhs-map "p"            'mhs-idlwave-insert-do_ps-keyword)
 (define-key mhs-map "q"                             'gnus-group-exit)
 (define-key mhs-map "s"                               'mhs-searchmap)
-(define-key mhs-map "t"                            'mhs-insert-todo)
-(define-key mhs-map "u"                   'underscore-previous-camel)
+(define-key mhs-map "t"                             'mhs-insert-todo)
+(define-key mhs-map "u"                        'snake-previous-camel)
 (define-key mhs-map "w"                  'delete-trailing-whitespace)
 (define-key mhs-map "y"                              'clipboard-yank)
 

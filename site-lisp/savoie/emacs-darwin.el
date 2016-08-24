@@ -13,6 +13,7 @@
   (exec-path-from-shell-copy-env "NODE_PATH")
   (exec-path-from-shell-copy-env "GIT_EDITOR")
   (exec-path-from-shell-copy-env "EDITOR")
+  (exec-path-from-shell-copy-env "LC_ALL")
   (exec-path-from-shell-initialize)
 )
 
