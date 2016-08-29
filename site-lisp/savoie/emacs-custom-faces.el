@@ -86,6 +86,9 @@
 	((string-equal "gsx" my-project)
 	 (setq my-menu-bg-color "#00aa00"))
 
+	((string-equal "seaice" my-project)
+	 (setq my-menu-bg-color "color-177"))
+
 	((string-equal "seaiceprojects" my-project)
 	 (setq my-menu-bg-color "#afff00")
 	 (setq idlwave-shell-explicit-file-name "idl83"))
