@@ -20,13 +20,15 @@
 ;;; Code:
 (use-package gnus
   :defer 5
+  :init
+  (setq gnus-init-file (locate-user-emacs-file ".gnus"))
+  (load-file gnus-init-file)
   :config
   (setq gnus-select-method (quote (nntp "nntp.aioe.org")))
   (setq gnus-verbose 10)
   (setq gnus-treat-hide-signature t)
   (setq gnus-treat-display-x-face 'head)
   (setq gnus-thread-sort-functions '(gnus-thread-sort-by-number))
-  (setq gnus-init-file (locate-user-emacs-file ".gnus"))
   (setq gnus-agent-expire-days '90)
   (setq smtpmail-smtp-server "smtp.colorado.edu")
   (setq smtpmail-smtp-service "587")
