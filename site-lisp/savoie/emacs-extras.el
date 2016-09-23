@@ -89,13 +89,22 @@
 (setq tab-always-indent 'complete)
 (tool-bar-mode -1)
 (setq transient-mark-mode 't)
-;; Bug in El Capitain with visible bell
-;; https://debbugs.gnu.org/cgi/bugreport.cgi?bug=21662
-;; This just fixes it sort of for a while.
-(setq visible-bell 't)
-(setq ring-bell-function
-      #'(lambda () (message "*woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* ")(sleep-for .15)))
 
+;; Bug in El Capitain with visible bell and emacs 24.x
+;; https://debbugs.gnu.org/cgi/bugreport.cgi?bug=21662
+(defun my-zoidberg-bell ()
+  "Ring visible bell with text in minibuffer."
+  (message "*woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* ")
+  (sleep-for .15))
+
+(defun my-terminal-visible-bell ()
+  "A friendlier visual bell effect."
+  (invert-face 'mode-line)
+  (run-with-timer 0.1 nil 'invert-face 'mode-line))
+
+(setq visible-bell 't)
+(setq ring-bell-function #'my-terminal-visible-bell)
+;(setq ring-bell-function #'my-zoidberg-bell)
 
 
 ;; stolen from KWB-emacs
