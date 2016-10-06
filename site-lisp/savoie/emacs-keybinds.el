@@ -57,7 +57,8 @@ If a region is not selected and,
 ;; This seems way more natural to me. (isearch)
 ;;(global-set-key "\C-s" 'isearch-forward)
 (global-set-key "\C-s" 'swiper)
-(global-set-key "\C-r" 'isearch-backward)
+;(global-set-key "\C-r" 'isearch-backward)
+(global-set-key "\C-r" 'swiper)
 (define-key isearch-mode-map (kbd "M-i") 'swiper-from-isearch)
 
 (global-set-key (kbd "M-/") 'dabbrev-expand)
