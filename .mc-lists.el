@@ -5,12 +5,14 @@
       '(
 	clipboard-kill-ring-save
 	dabbrev-expand
+	ein:worksheet-split-cell-at-point
 	electric-newline-and-maybe-indent
 	end-of-visual-line
 	indent-for-tab-command
 	kill-region
 	markdown-exdent-or-delete
 	message-beginning-of-line
+	org-delete-char
 	org-self-insert-command
 	org-shiftup
 	org-yank
@@ -22,8 +24,11 @@
 
 (setq mc/cmds-to-run-once
       '(
+	counsel-M-x
+	dired-toggle-read-only
 	multiple-cursors-hydra/body
 	multiple-cursors-hydra/mc/edit-lines-and-exit
+	multiple-cursors-hydra/mc/mark-all-like-this-and-exit
 	multiple-cursors-hydra/mc/mark-next-like-this
 	multiple-cursors-hydra/mc/skip-to-next-like-this
 	multiple-cursors-hydra/mc/unmark-next-like-this
