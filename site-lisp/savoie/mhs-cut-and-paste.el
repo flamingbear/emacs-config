@@ -26,6 +26,7 @@
 ;; effect. Instead, we use of xsel, see
 ;; http://www.vergenet.net/~conrad/software/xsel/ -- "a command-line
 ;; program for getting and setting the contents of the X selection"
+(setq select-enable-clipboard t)
 (unless (or window-system (equal 'darwin system-type))
  (when (getenv "DISPLAY")
   ;; Callback for when user cuts
@@ -36,16 +37,25 @@
       ;; I prefer using the "clipboard" selection (the one the
       ;; typically is used by c-c/c-v) before the primary selection
       ;; (that uses mouse-select/middle-button-click)
-      (call-process-region (point-min) (point-max) "xsel" nil 0 nil "--clipboard" "--input")))
+      (call-process-region (point-min) (point-max) "xsel" nil 0 nil "--primary" "--input"))
+    ;; My debugging
+    ;; (message "Called xsel-cut-function")
+    ;; (sleep-for .15)
+    ;; (message (shell-command-to-string "xsel --primary --output"))
+    )
+
   ;; Call back for when user pastes
   (defun xsel-paste-function()
     ;; Find out what is current selection by xsel. If it is different
     ;; from the top of the kill-ring (car kill-ring), then return
     ;; it. Else, nil is returned, so whatever is in the top of the
     ;; kill-ring will be used.
-    (let ((xsel-output (shell-command-to-string "xsel --clipboard --output")))
+    (let ((xsel-output (shell-command-to-string "xsel --primary --output")))
       (unless (string= (car kill-ring) xsel-output)
-	xsel-output )))
+	xsel-output ))
+    ;; MHS debugging.
+    ;; (message "Called xsel-paste-function")
+    )
   ;; Attach callbacks to hooks
   (setq interprogram-cut-function 'xsel-cut-function)
   (setq interprogram-paste-function 'xsel-paste-function)
