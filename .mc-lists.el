@@ -26,6 +26,8 @@
       '(
 	counsel-M-x
 	dired-toggle-read-only
+	idlwave-shell-save-and-run
+	idlwave-shell-step
 	multiple-cursors-hydra/body
 	multiple-cursors-hydra/mc/edit-lines-and-exit
 	multiple-cursors-hydra/mc/mark-all-like-this-and-exit
