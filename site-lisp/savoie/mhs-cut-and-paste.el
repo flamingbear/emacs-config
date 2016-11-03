@@ -37,7 +37,7 @@
       ;; I prefer using the "clipboard" selection (the one the
       ;; typically is used by c-c/c-v) before the primary selection
       ;; (that uses mouse-select/middle-button-click)
-      (call-process-region (point-min) (point-max) "xsel" nil 0 nil "--primary" "--input"))
+      (call-process-region (point-min) (point-max) "xsel" nil 0 nil "--clipboard" "--input"))
     ;; My debugging
     ;; (message "Called xsel-cut-function")
     ;; (sleep-for .15)
@@ -50,7 +50,7 @@
     ;; from the top of the kill-ring (car kill-ring), then return
     ;; it. Else, nil is returned, so whatever is in the top of the
     ;; kill-ring will be used.
-    (let ((xsel-output (shell-command-to-string "xsel --primary --output")))
+    (let ((xsel-output (shell-command-to-string "xsel --clipboard --output")))
       (unless (string= (car kill-ring) xsel-output)
 	xsel-output ))
     ;; MHS debugging.
