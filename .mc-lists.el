@@ -16,6 +16,7 @@
 	org-self-insert-command
 	org-shiftup
 	org-yank
+	sgml-slash
 	wgrep-finish-edit
 	yaml-electric-backspace
 	yaml-electric-bar-and-angle
