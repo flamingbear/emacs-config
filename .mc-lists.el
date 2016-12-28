@@ -8,7 +8,9 @@
 	ein:worksheet-split-cell-at-point
 	electric-newline-and-maybe-indent
 	end-of-visual-line
+	forward-sexp
 	indent-for-tab-command
+	ivy-wgrep-change-to-wgrep-mode
 	kill-region
 	markdown-exdent-or-delete
 	message-beginning-of-line
@@ -16,6 +18,7 @@
 	org-self-insert-command
 	org-shiftup
 	org-yank
+	save-some-buffers
 	sgml-slash
 	wgrep-finish-edit
 	yaml-electric-backspace
@@ -25,15 +28,15 @@
 
 (setq mc/cmds-to-run-once
       '(
+	backward-kill-sentence
 	counsel-M-x
 	dired-toggle-read-only
-	idlwave-shell-save-and-run
-	idlwave-shell-step
 	multiple-cursors-hydra/body
 	multiple-cursors-hydra/mc/edit-lines-and-exit
 	multiple-cursors-hydra/mc/mark-all-like-this-and-exit
 	multiple-cursors-hydra/mc/mark-next-like-this
 	multiple-cursors-hydra/mc/skip-to-next-like-this
 	multiple-cursors-hydra/mc/unmark-next-like-this
+	next-error-no-select
 	swiper
 	))

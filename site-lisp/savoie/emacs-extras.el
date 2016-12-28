@@ -103,7 +103,7 @@
   (run-with-timer 0.1 nil 'invert-face 'mode-line))
 
 (setq visible-bell 't)
-(setq ring-bell-function #'my-terminal-visible-bell)
+(setq ring-bell-function #'my-zoidberg-bell)
 ;(setq ring-bell-function #'my-zoidberg-bell)
 
 
@@ -400,6 +400,11 @@
  (string-to-char "p")
  "ftp://sidads.colorado.edu/pub/incoming/savoie")
 
+;; run display on last "created" image
+(fset 'mhs-display-last-created-image
+      "\C-rcreat\C-m\C-[f\C-f\C-@\C-e\C-[w\C-[>display \C-y&")
+
+
 
 
 
@@ -407,6 +412,8 @@
 (setq save-abbrevs 't)
 (setq scroll-bar-mode 'right)
 (setq select-active-regions 't)
+
+(setq large-file-warning-threshold nil)
 
 (provide 'emacs-extras)
 ;;; emacs-extras.el ends here
