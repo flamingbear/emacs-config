@@ -14,8 +14,10 @@
 	kill-region
 	markdown-exdent-or-delete
 	message-beginning-of-line
+	nxml-electric-slash
 	org-delete-char
 	org-self-insert-command
+	org-shiftdown
 	org-shiftup
 	org-yank
 	save-some-buffers
