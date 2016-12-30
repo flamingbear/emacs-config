@@ -73,7 +73,7 @@
     (declare-function auto-complete-mode "auto-complete.el")
     (when (featurep 'auto-complete-config)
       (company-mode -1)
-      (ac-config-default)
+      (company-quickhelp-mode -1)
       ;; ein hangs if garbage collection is too small.  Make it Yoooge!
       ;; (setq gc-cons-threshold 100000000)
       (auto-complete-mode t))))
