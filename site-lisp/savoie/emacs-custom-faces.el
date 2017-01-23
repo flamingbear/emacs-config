@@ -92,6 +92,10 @@
 	((string-equal "seaiceservice" my-project)
 	 (setq my-menu-bg-color "blue"))
 
+	((string-equal "snotelpages" my-project)
+	 (setq my-menu-bg-color "#d7afff")
+	 (setq idlwave-shell-explicit-file-name "idl83"))
+
 	((string-equal "seaiceprojects" my-project)
 	 (setq my-menu-bg-color "#afff00")
 	 (setq idlwave-shell-explicit-file-name "idl83"))
