@@ -93,7 +93,7 @@
 	 (setq my-menu-bg-color "blue"))
 
 	((string-equal "snotelpages" my-project)
-	 (setq my-menu-bg-color "#d7afff")
+	 (setq my-menu-bg-color "#af5f00")
 	 (setq idlwave-shell-explicit-file-name "idl83"))
 
 	((string-equal "seaiceprojects" my-project)
