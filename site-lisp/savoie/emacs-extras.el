@@ -386,11 +386,10 @@
   (setq dired-listing-switches "-al"))
 
 (use-package dired-x
-  ;; :config
-  ;; (setq dired-guess-shell-alist-user
-  ;;       ;; '(("\\.tif\\'" "display")
-  ;;       ;;   ("\\.png\\'" "display")))
-  )
+  :config
+  (setq dired-guess-shell-alist-user
+	(list
+	 (list "\\.gif$" "display"))))
 
 
 ;; Set registers to things that I type zillions of times.
@@ -414,6 +413,8 @@
 (setq select-active-regions 't)
 
 (setq large-file-warning-threshold nil)
+
+
 
 (provide 'emacs-extras)
 ;;; emacs-extras.el ends here
