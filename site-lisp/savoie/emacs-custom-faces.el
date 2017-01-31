@@ -77,7 +77,10 @@
        (cond ((string-equal "blue" my-environment)
 	      (setq my-menu-fg-color "#800000"))
 	     ((string-equal "dev" my-environment)
-	      (setq my-menu-fg-color "#006000")))
+	      (setq my-menu-fg-color "#006000"))
+	     ((string-equal "integration" my-environment)
+	      (setq my-menu-fg-color "#d7d700"))
+	     )
        ;; Set foreground color based on project name
        (cond
 	((string-equal "shapefiles" my-project)
