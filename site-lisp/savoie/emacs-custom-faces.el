@@ -80,6 +80,8 @@
 	      (setq my-menu-fg-color "#006000"))
 	     ((string-equal "integration" my-environment)
 	      (setq my-menu-fg-color "#d7d700"))
+	     ((string-equal "qa" my-environment)
+	      (setq my-menu-fg-color "black"))
 	     )
        ;; Set foreground color based on project name
        (cond
