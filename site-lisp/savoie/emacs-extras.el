@@ -136,7 +136,9 @@
 
 ;; automatically sync up external changes to files
 ;; (global-auto-revert-mode nil)
+(add-to-list 'auto-mode-alist '("\\.log\\'" . auto-revert-mode))
 (defalias 'auto-revert-tail-mode 'tail-mode)
+
 
 ;; delete trailing whitespace
 ;; TODO [MHS, 2013-01-23] You should learn how to make this only for modes you want.

@@ -16,6 +16,7 @@
 	message-beginning-of-line
 	nxml-electric-slash
 	org-delete-char
+	org-end-of-line
 	org-self-insert-command
 	org-shiftdown
 	org-shiftup

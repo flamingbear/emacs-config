@@ -96,6 +96,11 @@
   (setq-default save-place t)
   (setq save-place-file (expand-file-name ".places" user-emacs-directory)))
 
+(use-package which-key
+  :config
+  (which-key-mode))
+
+
 
 ;; couple of tweaks for browsers and handling emacs on mac osx
 (use-package mhs-environment)
