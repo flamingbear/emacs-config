@@ -120,6 +120,12 @@
 
 
 
+      ;; Home Laptop: kitteh!!
+      ((string-match ".*kitteh.*" (system-name))
+       (progn (setq my-menu-fg-color "#ff40ff")
+              (setq my-menu-bg-color "#932092")))
+
+
       ;; Dev or apps VM - standard
       ((string-match "^v.*\.\\(dev\\|apps\\)\.int\.nsidc\.org" (system-name))
        (progn (setq my-menu-fg-color "#F2FF30")
@@ -198,12 +204,6 @@
                 (setq my-menu-bg-color "#b4cdcd")
                 )
 
-
-               ;; ((string-match build  "F17_snow")
-               ;;  (setq idlwave-shell-explicit-file-name "my_idl.7.0.sh")
-               ;;  (setq my-menu-fg-color "blue")
-               ;;  (setq my-menu-bg-color "burlywood")
-               ;;  )
                ((string-match build  "cdr_dev")
                 (setq idlwave-shell-explicit-file-name "my_idl.8.1.sh")
                 (setq my-menu-fg-color "#adff2f")
