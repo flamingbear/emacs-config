@@ -15,8 +15,10 @@
 	markdown-exdent-or-delete
 	message-beginning-of-line
 	nxml-electric-slash
+	org-beginning-of-line
 	org-delete-char
 	org-end-of-line
+	org-kill-line
 	org-self-insert-command
 	org-shiftdown
 	org-shiftup
