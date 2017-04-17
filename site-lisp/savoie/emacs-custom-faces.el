@@ -88,11 +88,12 @@
 	((string-equal "shapefiles" my-project)
 	 (setq my-menu-bg-color "yellow"))
 
-	((string-equal "gsx" my-project)
+	((or (string-equal "gsx" my-project)
+	     (string-equal "greenland_today" my-project))
 	 (setq my-menu-bg-color "#00aa00"))
 
 	((string-equal "seaice" my-project)
-	 (setq my-menu-bg-color "color-177"))
+	 (setq my-menu-bg-color "#d787ff"))
 
 	((string-equal "seaiceservice" my-project)
 	 (setq my-menu-bg-color "blue"))
