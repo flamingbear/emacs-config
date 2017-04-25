@@ -10,8 +10,8 @@
 (defun mhs-base-name ()
   "* inserts the current buffer's name where the mark is."
   (interactive)
-  (setq str (file-name-sans-suffix (file-name-nondirectory (buffer-file-name))))
-  (insert str))
+  (setq my-str (file-name-sans-suffix (file-name-nondirectory (buffer-file-name))))
+  (insert my-str))
 
 
 (defun mhs-browse-buffer-in-firefox ()

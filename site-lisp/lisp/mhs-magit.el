@@ -41,9 +41,7 @@
               "\\`.+bitbucket\\.org:\\(.+\\)\\.git\\'" "\\1"
               repo))))
 
-
   ;; browse to you CI machine if it is created normally.
-
   (defun mhs/visit-ci-machine ()
     "browse to this project's CI jenkins instance."
     (interactive)
@@ -62,10 +60,7 @@
     '(define-key mhs-map "c"
        #'mhs/visit-ci-machine))
 
-  (setq magit-completing-read-function 'ivy-completing-read)
-  ;; (when running-macos
-  ;;   (set-variable 'magit-emacsclient-executable (getenv "EDITOR")))
-  )
+  (setq magit-completing-read-function 'ivy-completing-read))
 
 (provide 'mhs-magit)
 ;;; mhs-magit.el ends here

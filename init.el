@@ -1,4 +1,4 @@
-;;; init.el --- staring up emacs since 18.58          -*- lexical-binding: t; -*-
+;;; init.el --- starting up emacs since 18.58          -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2015  Matt Savoie
 
