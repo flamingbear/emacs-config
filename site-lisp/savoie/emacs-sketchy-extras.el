@@ -57,6 +57,10 @@
 ;; Try company-mode instead of auto-complete
 ;;--------------------------
 
+(use-package company
+  :ensure t)
+
+
 (use-package company-quickhelp
   :ensure t
   :config

@@ -36,7 +36,7 @@
   (setenv "WORKON_HOME" "/Users/savoie/anaconda2/envs")
   (pyvenv-mode 1)
   (pyvenv-tracking-mode 1))
-;; now in your .dirp-locals.el put => ((nil . ((pyvenv-workon . "environmentname"))))
+;; now in your .dir-locals.el put => ((nil . ((pyvenv-workon . "environmentname"))))
 
 ;; Be able to run nose tests with various keybindings
 (use-package nose
@@ -53,30 +53,12 @@
 
 
 
-;;
-;;; Special configuration for ein:notebook autocomplete
-;;;
-;;; This is still a problem.
-(use-package auto-complete  :ensure t)
 
 (use-package ein
   :ensure t
   :config
-  (setq ein:use-auto-complete t)
-  (setq ein:use-auto-complete-superpack t)
   (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
-  (add-hook 'ein:notebook-mode-hook 'mhs-ein-notebook-hook)
-
-  (defun mhs-ein-notebook-hook ()
-    (interactive)
-    (require 'auto-complete-config nil t)
-    (declare-function auto-complete-mode "auto-complete.el")
-    (when (featurep 'auto-complete-config)
-      (company-mode -1)
-      (company-quickhelp-mode -1)
-      ;; ein hangs if garbage collection is too small.  Make it Yoooge!
-      ;; (setq gc-cons-threshold 100000000)
-      (auto-complete-mode t))))
+  (add-hook 'company-backends 'ein:company-backend))
 
 
 (provide 'mhs-python)
