@@ -312,7 +312,7 @@ following the prefix character"
   (progn (set-face-attribute 'default nil :inherit nil :stipple nil
                                :inverse-video nil :box nil
                                :strike-through nil :overline nil
-                               :underline nil  :height 150
+                               :underline nil  :height 180
                                :foundry "unknown" :family "Inconsolata")))
 
 
@@ -332,7 +332,7 @@ following the prefix character"
   (progn (set-face-attribute 'default nil :inherit nil :stipple nil
                              :inverse-video nil :box nil
                              :strike-through nil :overline nil
-                             :underline nil  :height 145
+                             :underline nil  :height 190 :width "normal"
                              :foundry "apple" :family "Menlo")))
 
 
