@@ -19,8 +19,10 @@
 	org-delete-char
 	org-end-of-line
 	org-kill-line
+	org-metaright
 	org-self-insert-command
 	org-shiftdown
+	org-shiftright
 	org-shiftup
 	org-yank
 	save-some-buffers
@@ -36,6 +38,7 @@
 	backward-kill-sentence
 	counsel-M-x
 	dired-toggle-read-only
+	ivy-switch-buffer
 	multiple-cursors-hydra/body
 	multiple-cursors-hydra/mc/edit-lines-and-exit
 	multiple-cursors-hydra/mc/mark-all-like-this-and-exit
@@ -43,5 +46,6 @@
 	multiple-cursors-hydra/mc/skip-to-next-like-this
 	multiple-cursors-hydra/mc/unmark-next-like-this
 	next-error-no-select
+	org-cycle
 	swiper
 	))
