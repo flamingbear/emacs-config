@@ -103,8 +103,7 @@
   (run-with-timer 0.1 nil 'invert-face 'mode-line))
 
 (setq visible-bell 't)
-(setq ring-bell-function #'my-zoidberg-bell)
-;(setq ring-bell-function #'my-zoidberg-bell)
+(if running-macos (setq ring-bell-function #'my-terminal-visible-bell) (setq ring-bell-function #'my-zoidberg-bell))
 
 
 ;; stolen from KWB-emacs
@@ -158,9 +157,10 @@
 ;;----------------------------------------------------------------
 
 ;; Projectile is the BOMB!
-(use-package projectile :ensure t
+(use-package projectile
+  :ensure t
   :config
-  (projectile-global-mode)
+  (projectile-mode)
   (setq projectile-completion-system 'ivy))
 
 (use-package grep
@@ -196,8 +196,6 @@
     (setq markdown-command "Markdown.pl"))
   )
 
-;; Try to set up a ruby on rails environment.
-;(require 'mhs-ruby-stuff)
 
 (use-package paradox
   :defer t
@@ -274,11 +272,10 @@
 
 ;; When you do this, you'll only see things that are actually different except
 ;; for things between dollar signs. like keywords.
-
-
-(setq-default ediff-regexp-hide-A "^.*\$.*\$.*$")
-(setq-default ediff-regexp-hide-B "^.*\$.*\$.*$")
-(setq-default ediff-regexp-hide-C "^.*\$.*\$.*$")
+;; 2017-04-25:  I think this is OBE.
+;; (setq-default ediff-regexp-hide-A "^.*\$.*\$.*$")
+;; (setq-default ediff-regexp-hide-B "^.*\$.*\$.*$")
+;; (setq-default ediff-regexp-hide-C "^.*\$.*\$.*$")
 
 
 
@@ -314,13 +311,6 @@
 
 ;; Sh mode for some common files
 (add-to-list 'auto-mode-alist '("\\.alias$" . sh-mode))
-
-
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; set up some print commands
-(setq lpr-command "/usr/bin/lpr -PHP4700 -h")
 
 
 ;; unique buffer names
@@ -404,7 +394,6 @@
 ;; run display on last "created" image
 (fset 'mhs-display-last-created-image
       "\C-rcreat\C-m\C-[f\C-f\C-@\C-e\C-[w\C-[>display \C-y&")
-
 
 
 
