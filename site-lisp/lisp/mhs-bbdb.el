@@ -31,6 +31,7 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
   :ensure t
   :config
   (setq bbdb-use-pop-up nil)
+  (setq bbdb-file (expand-file-name "private/.bbdb.gpg" user-emacs-directory))
   (if running-macos
       (bbdb-initialize 'gnus 'message)
     (bbdb-initialize 'gnus 'message 'sc)))
