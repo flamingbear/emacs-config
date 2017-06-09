@@ -19,7 +19,7 @@
 
 ;;; Code:
 (use-package gnus
-  :defer 5
+  :defer 3
   :init
   (setq gnus-init-file (locate-user-emacs-file ".gnus"))
   (load-file gnus-init-file)
@@ -164,7 +164,7 @@
   (setq projectile-completion-system 'ivy))
 
 (use-package grep
-  :defer 5
+  :defer 3
   :config
   (setq grep-find-command
         "find . -name \".svn\" -prune -o -type f  -exec grep -nH \"\" {} \\;"))
@@ -215,7 +215,7 @@
 
 
 (use-package paren
-  :defer 5
+  :defer 3
   :config
   (show-paren-mode t))
 
@@ -330,7 +330,7 @@
   (add-to-list 'auto-insert-alist '("\\.pro$" . "idlwave-insert.pro")))
 
 (use-package jka-compr
-  :defer 5
+  :defer 3
   :config
   (setq auto-compression-mode t))
 

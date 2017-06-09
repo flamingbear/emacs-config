@@ -27,7 +27,7 @@ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 
 ;; Location on macintosh machines.
 (use-package bbdb
-  :defer 5
+  :defer 3
   :ensure t
   :config
   (setq bbdb-use-pop-up nil)

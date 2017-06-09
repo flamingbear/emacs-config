@@ -1,6 +1,6 @@
 ;;; mhs-magit.el ---                                 -*- lexical-binding: t; -*-
 
-(use-package git-timemachine :ensure t :defer 5)
+(use-package git-timemachine :ensure t :defer 3)
 (use-package magit
   :ensure t
   :config

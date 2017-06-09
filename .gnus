@@ -23,7 +23,7 @@
 (setq gnus-buttonized-mime-types (quote ("multipart/signed")))
 (setq gnus-inhibit-mime-unbuttonizing nil)
 
-(use-package nnir :defer 5)
+(use-package nnir :defer 3)
 
 
 (setq gnus-secondary-select-methods

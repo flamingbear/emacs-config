@@ -431,7 +431,7 @@ following the prefix character"
 (setq comment-column 32)
 
 (use-package ansi-color
-  :defer 5
+  :defer 3
   :config
   ;; Use these colors for solarized iterm2 windows
   (setq ansi-color-names-vector  ["#454545" "#cd5542" "#6aaf50" "#baba36" "#5180b3" "#ab75c3" "#bdbc61" "#bdbdb3"])
