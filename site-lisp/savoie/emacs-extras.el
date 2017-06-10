@@ -185,7 +185,18 @@
 ;; Python environment
 (use-package mhs-python)
 
-(use-package dockerfile-mode :ensure t)
+;; Now we're a docker house.
+(use-package dockerfile-mode
+  :ensure t)
+(use-package docker
+  :ensure t
+  :config
+  (docker-global-mode))
+
+(use-package which-key
+  :ensure t
+  :config
+  (which-key-mode))
 
 (use-package markdown-mode
   :ensure t
