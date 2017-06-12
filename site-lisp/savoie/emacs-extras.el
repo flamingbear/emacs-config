@@ -2,20 +2,6 @@
 ;;;   Just standard extra things to load
 ;;; Commentary:
 
- ;; '(gnus-spam-autodetect (quote (("mail-200" t))))
- ;; '(gnus-spam-process-destinations (quote (("mail" "nnml+private:spam"))))
- ;; '(gnus-spam-process-newsgroups
- ;;   (quote
- ;;    (("mail"
- ;;      ((spam spam-use-bogofilter)
- ;;       (spam spam-use-blacklist)
- ;;       (ham spam-use-whitelist))))))
-
- ;; '(gnus-treat-body-boundary nil)
- ;; '(gnus-treat-date-english (quote head))
-
- ;; '(gnus-treat-fill-article nil)
- ;; '(gnus-treat-fill-long-lines nil)
 
 ;;; Code:
 (use-package gnus
