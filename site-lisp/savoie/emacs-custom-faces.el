@@ -75,7 +75,7 @@
        (setq my-menu-fg-color "#005000")
        ;; Set background colors based on machine environment.
        (cond ((string-equal "blue" my-environment)
-	      (setq my-menu-fg-color "#800000"))
+	      (setq my-menu-fg-color "#A00000"))
 	     ((string-equal "dev" my-environment)
 	      (setq my-menu-fg-color "#006000"))
 	     ((string-equal "integration" my-environment)
@@ -99,7 +99,7 @@
 	 (setq my-menu-bg-color "blue"))
 
 	((string-equal "morph-vm" my-project)
-	 (setq my-menu-bg-color "#d787d7"))
+	 (setq my-menu-bg-color "blue"))
 
 	((string-equal "snotelpages" my-project)
 	 (setq my-menu-bg-color "#af5f00")
