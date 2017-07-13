@@ -85,6 +85,7 @@
     ("Subject" ".*\\[gdal-dev\\].*" "maild/lists")
     ("Subject" ".*\\[Prod_changes\\].*" "maild/jira-production")
     ("Subject" ".*\\[Asina\\].*" "maild/asina")
+    ("Subject" ".*\\[Greenlandtoday\\].*" "maild/greenlandtoday")
     ("Subject" ".*Esip-documentation.*" "maild/esip-documentation")
     ("Subject" ".*Esip-sciencesoftware.*" "maild/esip-documentation")
     ("Subject" ".*ESIP Update.*" "maild/esip-documentation")
