@@ -270,8 +270,8 @@
 
       (running-macos
        (progn
-         (setq my-menu-fg-color "#baf257")
-         (setq my-menu-bg-color "#738466")))
+         (setq my-menu-fg-color "#5d478b")
+         (setq my-menu-bg-color "#ab82ff")))
 
       ;; Default values
       (t (progn (setq my-menu-fg-color "#ffd700")

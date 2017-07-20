@@ -33,7 +33,7 @@
 (use-package pyvenv
   :ensure t
   :init
-  (setenv "WORKON_HOME" "/Users/savoie/anaconda2/envs")
+  (setenv "WORKON_HOME" "/Users/savoie/miniconda3/envs")
   (pyvenv-mode 1)
   (pyvenv-tracking-mode 1))
 ;; now in your .dir-locals.el put => ((nil . ((pyvenv-workon . "environmentname"))))
@@ -56,9 +56,11 @@
 
 (use-package ein
   :ensure t
+  :init
+  (setq ein:completion-backend 'ein:use-company-backend)
   :config
   (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
-  (add-hook 'company-backends 'ein:company-backend))
+  )
 
 
 (provide 'mhs-python)
