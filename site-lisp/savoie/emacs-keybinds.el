@@ -175,6 +175,18 @@ If a region is not selected and,
   :config
   (define-key global-map (kbd "C-c x") 'ace-jump-mode))
 
+(use-package ace-window
+  ;; https://github.com/abo-abo/ace-window
+  :ensure t
+  :config
+  (global-set-key (kbd "M-p") 'ace-window)
+  (global-set-key (kbd "C-x o") 'ace-window)
+  (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+  ;; Must be true if you want to use fancy changing actions midway.
+  (setq aw-dispatch-always 'nil)
+  )
+
+
 
 
 ;; Options for Macintosh Laptop
