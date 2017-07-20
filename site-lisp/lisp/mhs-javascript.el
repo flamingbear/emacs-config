@@ -15,10 +15,15 @@
 
 ;;; Code:
 
-(defconst mhs-javascript-version "0.1.0"
-  "$Id$
+(defconst mhs-javascript-version "0.2.0"
+  "Report bugs to: Matt Savoie <emacs@flamingbear.com>.")
 
-Report bugs to: Matt Savoie <emacs@flamingbear.com>")
+(use-package js2-mode
+  :ensure t
+  :mode ("\\.jsx?\\'" . js2-jsx-mode)
+  :mode ("\\.js\\'" . js2-mode)
+  :config
+  (setq js-indent-level 2))
 
 ;; Declaring bankrupcy on my javascript mode until I start working in JS again.
 (provide 'mhs-javascript)

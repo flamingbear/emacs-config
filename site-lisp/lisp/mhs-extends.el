@@ -420,6 +420,9 @@ following the prefix character"
       (goto-char beg)
       (insert c))))
 
+(use-package json-mode
+  :config
+  (setq json-reformat:indent-width 2))
 
 (defun json-format ()
   (interactive)
