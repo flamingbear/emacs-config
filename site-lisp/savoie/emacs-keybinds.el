@@ -129,7 +129,7 @@ If a region is not selected and,
 (global-set-key "\C-c]"                'mhs-sqbracket-region)
 (global-set-key "\C-c<"                'mhs-anglebracket-region)
 (global-set-key "\C-c>"                'mhs-anglebracket-region)
-(global-set-key (kbd "C-c p") 'perldb)
+; (global-set-key (kbd "C-c p") 'perldb)
 (global-set-key (kbd "C-x SPC") 'push-mark-command)
 
 
@@ -182,7 +182,7 @@ If a region is not selected and,
   (global-set-key (kbd "M-p") 'ace-window)
   (global-set-key (kbd "C-x o") 'ace-window)
   (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
-  ;; Must be true if you want to use fancy changing actions midway.
+  ;; aw-dispatch-always Must be true if you want to use fancy changing actions midway.
   (setq aw-dispatch-always 'nil)
   )
 

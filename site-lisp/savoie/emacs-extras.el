@@ -146,7 +146,7 @@
 (use-package projectile
   :ensure t
   :config
-  (projectile-mode)
+  (projectile-global-mode t)
   (setq projectile-completion-system 'ivy))
 
 (use-package grep

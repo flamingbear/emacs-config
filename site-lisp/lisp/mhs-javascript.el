@@ -25,6 +25,10 @@
   :config
   (setq js-indent-level 2))
 
+(use-package indium
+  :ensure t
+)
+
 ;; Declaring bankrupcy on my javascript mode until I start working in JS again.
 (provide 'mhs-javascript)
 
