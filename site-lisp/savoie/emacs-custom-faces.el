@@ -101,6 +101,9 @@
 	((string-equal "morph-vm" my-project)
 	 (setq my-menu-bg-color "blue"))
 
+	((string-equal "dapaggr" my-project)
+	 (setq my-menu-bg-color "#5c5cff"))
+
 	((string-equal "snotelpages" my-project)
 	 (setq my-menu-bg-color "#af5f00")
 	 (setq idlwave-shell-explicit-file-name "idl83"))
