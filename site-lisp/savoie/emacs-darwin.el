@@ -8,7 +8,6 @@
 ;;; Code:
 
 (use-package exec-path-from-shell :ensure t
-  :defer 2
   :config
   (exec-path-from-shell-copy-env "NODE_PATH")
   (exec-path-from-shell-copy-env "GIT_EDITOR")
