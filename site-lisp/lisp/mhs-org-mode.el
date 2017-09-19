@@ -74,23 +74,15 @@
     (while (search-forward-regexp "[0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\}" (line-end-position) t)
       (replace-match (format-time-string "%Y-%m-%d")))))
 
-
-(defun my-org-clocktable-indent-string (level)
-  (if (= level 1) ""
-    (let ((str " "))
-      (dotimes (k (1- level) str)
-	(setq str (concat ".." str))))))
-
-(advice-add 'org-clocktable-indent-string :override #'my-org-clocktable-indent-string)
+;; 2017-09-19 old override for clocktable string bug. fixed in org-9.1.1
 
 ;; (defun my-org-clocktable-indent-string (level)
-;;   (if (= level 1)
-;;       ""
+;;   (if (= level 1) ""
 ;;     (let ((str " "))
-;;       (while (> level 2)
-;;         (setq level (1- level)
-;;               str (concat str "  ")))
-;;       (concat str "   "))))
+;;       (dotimes (k (1- level) str)
+;; 	(setq str (concat ".." str))))))
+;; (advice-add 'org-clocktable-indent-string :override #'my-org-clocktable-indent-string)
+
 
 
 
