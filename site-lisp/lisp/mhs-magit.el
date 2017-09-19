@@ -1,6 +1,10 @@
 ;;; mhs-magit.el ---                                 -*- lexical-binding: t; -*-
 
 (use-package git-timemachine :ensure t :defer 3)
+(use-package git-messenger :ensure t :defer 3
+  :config
+  (global-set-key (kbd "C-x v p") 'git-messenger:popup-message))
+
 (use-package magit
   :ensure t
   :config
