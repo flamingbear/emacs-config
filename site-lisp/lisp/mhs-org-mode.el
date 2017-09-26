@@ -40,6 +40,11 @@
    "$Id$ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
 ;; ORG MODE information
 ;;----------------------
+
+(use-package org
+  :config
+  (setq org-duration-format 'h:mm))
+
 (require 'org-protocol)
 
 ;; Keep a clock across working sessions.
