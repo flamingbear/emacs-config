@@ -397,7 +397,9 @@ at the top level of DIRECTORY."
   :config
   (setq dired-guess-shell-alist-user
 	(list
-	 (list "\\.gif$" "display"))))
+	 '("\\.gif$" "display")
+	 '("\\.pdf" "open")
+	 )))
 
 
 ;; Set registers to things that I type zillions of times.
