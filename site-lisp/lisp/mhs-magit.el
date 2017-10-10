@@ -10,8 +10,10 @@
   :config
   (setq magit-last-seen-setup-instructions "1.4.0")
   (setq magit-push-always-verify nil)
+  (setq magit-diff-refine-hunk 'all)
+
   ;; Code:
-  ;; Originally idea for Github PR Stolen from here:
+  ;; Originally idea for Github PR Stolen (well) from here:
   ;; http://endlessparentheses.com/easily-create-github-prs-from-magit.html?source=rss
 
   (defun endless/visit-pull-request-url ()
