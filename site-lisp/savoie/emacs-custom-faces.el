@@ -298,9 +298,17 @@
 ;; We can choose different themes if you don't have full colors (like in terminal)
 ;; (require 'moe-theme)
 ;; (require 'solarized)
+
+(use-package nord-theme
+  :ensure t
+  :config
+  (setq nord-comment-brightness 18)
+  (setq nord-region-highlight "frost")
+  )
+
 (if (<= (display-color-cells) 256)
-    (load-theme 'ample-savoie t)
-  (load-theme 'ample-savoie t))
+    (load-theme 'nord t)
+  (load-theme 'nord t))
 
 (mhs-update-mode-line)
 (provide 'emacs-custom-faces)
