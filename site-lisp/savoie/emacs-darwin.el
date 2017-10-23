@@ -6,13 +6,25 @@
 ;; Keywords:
 ;;; Commentary:
 ;;; Code:
+(defun append-to-list (list-var elements)
+  "Append ELEMENTS to the end of LIST-VAR.
 
-(use-package exec-path-from-shell :ensure t
+The return value is the new value of LIST-VAR."
+  (unless (consp elements)
+    (error "ELEMENTS must be a list"))
+  (let ((list (symbol-value list-var)))
+    (if list
+        (setcdr (last list) elements)
+      (set list-var elements)))
+  (symbol-value list-var))
+
+
+(use-package exec-path-from-shell
+  :ensure t
+  :defer 5
   :config
-  (exec-path-from-shell-copy-env "NODE_PATH")
-  (exec-path-from-shell-copy-env "GIT_EDITOR")
-  (exec-path-from-shell-copy-env "EDITOR")
-  (exec-path-from-shell-copy-env "LC_ALL")
+  (append-to-list 'exec-path-from-shell-variables
+		  '("NODE_PATH" "GIT_EDITOR" "EDITOR" "LC_ALL" "NVM_DIR"))
   (exec-path-from-shell-initialize)
 )
 
