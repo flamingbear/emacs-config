@@ -52,6 +52,19 @@
               (local-set-key "\C-cp." 'nosetests-pdb-one))))
 
 
+;; Stole this:  Might be useful if we go to pytest.
+;; https://github.com/cryptomaniac512/.emacs.d/blob/master/conf/plugins.el
+;; (use-package pytest
+;;     :config
+;;   (add-to-list 'pytest-project-root-files "pytest.ini")
+;;   (setq pytest-cmd-flags "-p no:sugar")
+;;   :bind (("C-c C-t C-a" . pytest-all)
+;; 	 ("C-c C-t C-m" . pytest-module)
+;; 	 ("C-c C-t C-o" . pytest-one)
+;; 	 ("C-c C-t C-d" . pytest-directory)
+;; 	 ("C-c C-t C-p C-a" . pytest-pdb-all)
+;; 	 ("C-c C-t C-p C-m" . pytest-pdb-module)
+;; 	 ("C-c C-t C-p C-o" . pytest-pdb-one)))
 
 
 (use-package ein
