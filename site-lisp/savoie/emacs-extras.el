@@ -145,7 +145,6 @@
 ;; Projectile is the BOMB!
 (use-package projectile
   :ensure t
-  :pin melpa-stable
   :config
   (projectile-global-mode t)
   (setq projectile-completion-system 'ivy)
@@ -169,9 +168,7 @@
        subdirs)))
 
     ;; "Fix" for stupidly slow emacs https://github.com/bbatsov/projectile/issues/1183
-    (setq projectile-mode-line '(:eval (format " Projectile[%s]" (projectile-project-name))))
-
-  )
+    (setq projectile-mode-line '(:eval (format " Projectile[%s]" (projectile-project-name)))))
 
 (use-package grep
   :defer 3
