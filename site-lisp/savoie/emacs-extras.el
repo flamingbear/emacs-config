@@ -85,18 +85,18 @@
 
 (when (file-exists-p (locate-file "highlight-indentation.el" load-path))
   (load-file (locate-file "highlight-indentation.el" load-path))
+  ;; These colors are good for nord theme
   (set-face-background 'highlight-indentation-face "#454D5F")
-  (set-face-background 'highlight-indentation-current-column-face "#566176"))
+  (set-face-background 'highlight-indentation-current-column-face "#566176")
+  (highlight-indentation-mode)
+  (add-hook 'yaml-mode-hook 'highlight-indentation-mode)
+  (add-hook 'yaml-mode-hook 'highlight-indentation-current-column-mode))
 
 (use-package smart-shift
   :ensure t
   :config
   (global-smart-shift-mode 1))
 
-;; A saner ediff
-;; (setq ediff-diff-options "-w")
-;; (setq ediff-split-window-function 'split-window-horizontally)
-;; (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
 (setq tab-always-indent 'complete)
 (tool-bar-mode -1)
@@ -106,7 +106,7 @@
 ;; https://debbugs.gnu.org/cgi/bugreport.cgi?bug=21662
 (defun my-zoidberg-bell ()
   "Ring visible bell with text in minibuffer."
-  (message "*woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* ")
+  (message "*woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop* *woop*")
   (sleep-for .15))
 
 (defun my-terminal-visible-bell ()
