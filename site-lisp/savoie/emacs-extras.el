@@ -83,7 +83,10 @@
     (set-selective-display arg)))
 (global-set-key (kbd "C-x $") 'set-selective-display-current)
 
-
+(when (file-exists-p (locate-file "highlight-indentation.el" load-path))
+  (load-file (locate-file "highlight-indentation.el" load-path))
+  (set-face-background 'highlight-indentation-face "#454D5F")
+  (set-face-background 'highlight-indentation-current-column-face "#566176"))
 
 ;; A saner ediff
 ;; (setq ediff-diff-options "-w")
