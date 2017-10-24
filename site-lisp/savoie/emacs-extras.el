@@ -67,6 +67,24 @@
 ;;  But use mhs-trunc-lines to toggle bound to [C-c t]
 (setq-default truncate-lines t)
 
+;; Toggle selective display based on current column
+;; https://stackoverflow.com/questions/1587972/how-to-display-indentation-guides-in-emacs/4459159#4459159
+;; Use C-u C-u to set selective display to current line's indentation.
+(defun set-selective-display-current (arg)
+  "Toggle fold all lines larger than indentation on current line"
+  (interactive "P")
+  (if (eq (first arg) 16)
+      (let ((col 1))
+	(save-excursion
+	  (back-to-indentation)
+	  (setq col (+ 1 (current-column)))
+	  (set-selective-display
+	   (if selective-display nil (or col 1)))))
+    (set-selective-display arg)))
+(global-set-key (kbd "C-x $") 'set-selective-display-current)
+
+
+
 ;; A saner ediff
 ;; (setq ediff-diff-options "-w")
 ;; (setq ediff-split-window-function 'split-window-horizontally)
