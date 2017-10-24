@@ -284,12 +284,6 @@ following the prefix character"
   (mhs-under-this-c++-comment tok)))
 
 
-(defun jao-toggle-selective-display (column)
-  (interactive "P")
-  (set-selective-display
-   (or column                          ; disable toggle if column was supplied
-       (unless selective-display 1))))
-
 
 (defun mhs-trunc-lines ()
   (interactive)
@@ -301,10 +295,12 @@ following the prefix character"
   (interactive)
   (set-variable 'ediff-diff-options "--ignore-matching-lines=^.*\\$.*\\$.*$"))
 
+
 (defun mhs-ediff-normal ()
   "Set ediff variable back to normal operations."
   (interactive)
   (set-variable 'ediff-diff-options ""))
+
 
 
 (defun mhs-use-inconsolata ()
