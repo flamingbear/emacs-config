@@ -88,6 +88,11 @@
   (set-face-background 'highlight-indentation-face "#454D5F")
   (set-face-background 'highlight-indentation-current-column-face "#566176"))
 
+(use-package smart-shift
+  :ensure t
+  :config
+  (global-smart-shift-mode 1))
+
 ;; A saner ediff
 ;; (setq ediff-diff-options "-w")
 ;; (setq ediff-split-window-function 'split-window-horizontally)
