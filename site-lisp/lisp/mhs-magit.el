@@ -16,13 +16,18 @@
   ;; Originally idea for Github PR Stolen (well) from here:
   ;; http://endlessparentheses.com/easily-create-github-prs-from-magit.html?source=rss
 
+
   (defun endless/visit-pull-request-url ()
     "Visit the current branch's PR on Github."
     (interactive)
-    (let ((repo (magit-get "remote" (magit-get-remote) "url")))
-      (if (string-match "github\\.com" repo)
-          (visit-gh-pull-request repo)
-        (visit-bb-pull-request repo))))
+    (browse-url
+     (format "https://github.com/%s/pull/new/%s"
+	     (replace-regexp-in-string
+	      "\\`.+github\\.com:\\(.+\\)\\.git\\'" "\\1"
+	      (magit-get "remote"
+			 (magit-get-push-remote)
+			 "url"))
+	     (magit-get-current-branch))))
 
 
   (defun visit-gh-pull-request (repo)
