@@ -77,6 +77,7 @@
     ("Subject" ".*\\[confluence\\].*" "maild/confluence")
     (any "Proofpoint Essentials" "mail/lists")
     ("Subject" ".*\\[cumulus-nasa/cumulus\\].*" "maild/bitbucket")
+    ("To" ".*@noreply.github.com" "maild/bitbucket")
     ("Subject" ".*Bitbucket.*" "maild/bitbucket")
     (from ".*Travis CI.*" "maild/travis")
     ("Subject" ".*\\[eosdis-ux\\].*" "maild/lists")
