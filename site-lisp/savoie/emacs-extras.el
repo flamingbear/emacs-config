@@ -221,10 +221,14 @@
 ;; Now we're a docker house.
 (use-package dockerfile-mode
   :ensure t)
+
 (use-package docker
   :ensure t
   :config
   (docker-global-mode))
+
+(use-package docker-compose-mode
+  :ensure t)
 
 (use-package which-key
   :ensure t
