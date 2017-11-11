@@ -285,11 +285,10 @@
   :config
   (show-paren-mode t))
 
-(use-package rainbow-delimeters
+(use-package rainbow-delimiters
   :ensure t
-  :config
-  (prog
-   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)))
+  :init
+  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
 ;; SICP
 (add-to-list 'auto-mode-alist '("\\.scm$" . scheme-mode))
