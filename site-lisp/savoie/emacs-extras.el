@@ -262,12 +262,34 @@
                (define-key yaml-mode-map "\C-m" 'newline-and-indent))))
 
 
+;; Try company-mode instead of auto-complete
+;;--------------------------
+
+(use-package company
+  :ensure t
+  :config
+  (add-to-list 'company-backends 'company-tern)
+  (add-to-list 'company-backends 'company-jedi)
+  )
+
+
+(use-package company-quickhelp
+  :ensure t
+  :config
+  (company-quickhelp-mode 1)
+  (add-hook 'after-init-hook 'global-company-mode)
+  )
+
 (use-package paren
   :defer 3
   :config
   (show-paren-mode t))
 
-
+(use-package rainbow-delimeters
+  :ensure t
+  :config
+  (prog
+   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)))
 
 ;; SICP
 (add-to-list 'auto-mode-alist '("\\.scm$" . scheme-mode))
