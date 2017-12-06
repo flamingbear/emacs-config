@@ -465,7 +465,22 @@
   :ensure t
   :diminish global-emojify-mode
   :config
-  (global-emojify-mode t))
+  (global-emojify-mode nil))
+
+
+
+(use-package shell-pop
+  :ensure
+  :bind (([f3] . shell-pop))
+  :config
+  (setq shell-pop-shell-type (quote ("ansi-term" "*ansi-term*" (lambda nil (ansi-term shell-pop-term-shell)))))
+  (setq shell-pop-term-shell "/bin/bash")
+  (setq shell-pop-window-size 30)
+  (setq shell-pop-full-span t)
+  (setq shell-pop-window-position "bottom")
+  ;; may need to do this manually or not picked up by `shell-pop'
+  (shell-pop--set-shell-type 'shell-pop-shell-type shell-pop-shell-type)
+  )
 
 
 ;; Set registers to things that I type zillions of times.
@@ -478,7 +493,6 @@
 ;; run display on last "created" image
 (fset 'mhs-display-last-created-image
       "\C-rcreat\C-m\C-[f\C-f\C-@\C-e\C-[w\C-[>display \C-y&")
-
 
 
 

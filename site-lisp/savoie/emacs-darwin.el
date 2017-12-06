@@ -24,7 +24,7 @@ The return value is the new value of LIST-VAR."
   :defer 5
   :config
   (append-to-list 'exec-path-from-shell-variables
-		  '("NODE_PATH" "GIT_EDITOR" "EDITOR" "LC_ALL" "NVM_DIR"))
+		  '("NODE_PATH" "GIT_EDITOR" "EDITOR" "LC_ALL" "NVM_DIR" "NVM_BIN"))
   (exec-path-from-shell-initialize)
 )
 
