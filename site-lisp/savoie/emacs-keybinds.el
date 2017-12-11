@@ -20,6 +20,7 @@
   (ivy-mode 1)
   (setq ivy-use-virtual-buffers t)
   (setq ivy-count-format "(%d/%d) ")
+  (setq ivy-use-selectable-prompt t)
   :bind (("C-c C-r" . ivy-resume)
          ("<f6>" . ivy-resume)
 	 :map ivy-minibuffer-map
