@@ -306,9 +306,12 @@
   (setq nord-region-highlight "frost")
   )
 
+(use-package ample-theme
+  :ensure t)
+
 (if (<= (display-color-cells) 256)
-    (load-theme 'nord t)
-  (load-theme 'nord t))
+    (load-theme 'ample-flat t)
+  (load-theme 'ample-flat t))
 
 (mhs-update-mode-line)
 (provide 'emacs-custom-faces)
