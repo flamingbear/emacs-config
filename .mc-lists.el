@@ -8,6 +8,7 @@
 	ein:worksheet-split-cell-at-point
 	electric-newline-and-maybe-indent
 	end-of-visual-line
+	eval-print-last-sexp
 	forward-sexp
 	indent-for-tab-command
 	ivy-wgrep-change-to-wgrep-mode

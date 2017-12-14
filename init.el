@@ -50,7 +50,7 @@
 
 (eval-when-compile
   (require 'use-package))
-(require 'diminish)
+(use-package diminish :ensure t)
 (require 'bind-key)
 
 ;; time your emacs init

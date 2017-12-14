@@ -85,7 +85,8 @@
 	     )
        ;; Set foreground color based on project name
        (cond
-	((string-equal "shapefiles" my-project)
+	((or (string-equal "shapefiles" my-project)
+	     (string-equal "soac-data" my-project))
 	 (setq my-menu-bg-color "yellow"))
 
 	((or (string-equal "gsx" my-project)
