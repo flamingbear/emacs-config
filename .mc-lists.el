@@ -19,6 +19,7 @@
 	org-beginning-of-line
 	org-delete-char
 	org-end-of-line
+	org-evaluate-time-range
 	org-kill-line
 	org-metaright
 	org-self-insert-command
