@@ -46,12 +46,9 @@
 
 (use-package add-node-modules-path :ensure t
   :config
-  (eval-after-load 'js2-mode
-    '(add-hook 'js2-mode-hook #'add-node-modules-path))
-  (eval-after-load 'projectile-mode
-    (add-hook 'projectile-after-switch-project-hook #'add-node-modules-path))
+  (eval-after-load 'js2-mode '(add-hook 'js2-mode-hook #'add-node-modules-path))
+  (eval-after-load 'projectile-mode (add-hook 'projectile-after-switch-project-hook #'add-node-modules-path))
   )
-
 
 (use-package js2-mode
   :ensure t
@@ -59,6 +56,13 @@
   :mode ("\\.js\\'" . js2-mode)
   :config
   (setq js-indent-level 2))
+
+
+(use-package prettier-js :ensure t
+  :config
+  (add-hook 'js2-mode-hook 'prettier-js-mode)
+  )
+
 
 (use-package tern :ensure t
   :config
