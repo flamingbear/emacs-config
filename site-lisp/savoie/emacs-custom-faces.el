@@ -300,13 +300,6 @@
 ;; (require 'moe-theme)
 ;; (require 'solarized)
 
-(use-package nord-theme
-  :ensure t
-  :config
-  (setq nord-comment-brightness 18)
-  (setq nord-region-highlight "frost")
-  )
-
 (use-package ample-theme
   :ensure t)
 
