@@ -30,6 +30,8 @@
   (setq mm-verify-option 'always)
   (setq mail-source-delete-incoming t)
   (setq mail-user-agent 'message-user-agent)
+  (setq gnus-suppress-duplicates t)
+  (setq gnus-summary-ignore-duplicates t)
   )
 
 
@@ -460,13 +462,6 @@
   (bind-keys :map dired-mode-map
              ("i" . dired-subtree-insert)
              (";" . dired-subtree-remove)))
-
-(use-package emojify
-  :ensure t
-  :diminish global-emojify-mode
-  :config
-  (global-emojify-mode nil))
-
 
 
 (use-package shell-pop
