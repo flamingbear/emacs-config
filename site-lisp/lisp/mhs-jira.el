@@ -36,7 +36,15 @@
         (upcase
          (if (use-region-p)
              (buffer-substring-no-properties (region-beginning) (region-end))
-           (read-from-minibuffer "Enter ticket number: " "PM-")))))
+           (read-from-minibuffer "Enter ticket number: " "PM-"))))
+  (mhs-jira--update-url-base  mhs-jira--current-ticket-number))
+
+
+(defun mhs-jira--update-url-base (ticket-number)
+  "Handle multiple JIRA ticket locations."
+  (if (string-prefix-p "NDCUM" ticket-number)
+      (setq mhs-jira--url-base "https://bugs.earthdata.nasa.gov/browse/")
+    (setq mhs-jira--url-base "https://nsidc.org/jira/browse/")))
 
 
 (defun mhs-jira--ticket-uri ()
