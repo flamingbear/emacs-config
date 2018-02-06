@@ -62,12 +62,13 @@
 ;;   :config
 ;;   (yas-global-mode 1))
 
-;;; Chrome editing.
-(use-package edit-server
+
+;; Replacement for edit-server?
+;; https://github.com/alpha22jp/atomic-chrome
+(use-package atomic-chrome
   :ensure t
   :config
-  (setq edit-server-new-frame nil)
-  (edit-server-start))
+  (atomic-chrome-start-server))
 
 (provide 'emacs-sketchy-extras)
 ;;; EMACS-SKETCHY-EXTRAS.EL ends here
