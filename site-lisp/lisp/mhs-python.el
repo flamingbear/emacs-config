@@ -6,11 +6,7 @@
   ;; Python is a dev mode
   (add-hook 'python-mode-hook 'run-dev-hook))
 
-(use-package pyvenv
-  :ensure t
-  :config
-  ;; track virtual environments if they are set dir locally
-  (setq pyvenv-tracking-mode 't))
+
 
 (use-package elpy
   :ensure t
@@ -18,6 +14,13 @@
   (elpy-enable))
 
 
+(use-package pyvenv
+  :ensure t
+  :init
+  (setenv "WORKON_HOME" "/Users/savoie/miniconda3/envs")
+  (pyvenv-mode 1)
+  (pyvenv-tracking-mode 1))
+;; now in your .dir-locals.el put => ((nil . ((pyvenv-workon . "environmentname"))))
 
 
 ;; don't use flymake (elpy default), use flycheck
@@ -29,14 +32,6 @@
   (add-hook 'elpy-mode-hook 'flycheck-mode))
 
 
-
-(use-package pyvenv
-  :ensure t
-  :init
-  (setenv "WORKON_HOME" "/Users/savoie/miniconda3/envs")
-  (pyvenv-mode 1)
-  (pyvenv-tracking-mode 1))
-;; now in your .dir-locals.el put => ((nil . ((pyvenv-workon . "environmentname"))))
 
 ;; Be able to run nose tests with various keybindings
 (use-package nose
