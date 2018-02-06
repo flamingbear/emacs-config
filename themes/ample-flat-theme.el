@@ -119,7 +119,7 @@
  '(magit-log-graph ((t (:foreground "grey80" :background nil))))
  '(magit-tag ((t (:foreground "#91a0b3" :background nil))))
  '(highlight-indentation-current-column-face ((t (:foreground nil :background "#857575"))))
- '(highlight-indentation-face ((t (:foreground nil :background "gray30"))))
+ '(highlight-indentation-face ((t (:foreground nil :background "gray20"))))
  '(trailing-whitespace ((t (:background "white" :bold t))))
  '(custom-button ((t (:foreground nil :background nil))))
  '(custom-button-mouse ((t (:foreground nil :background nil))))
