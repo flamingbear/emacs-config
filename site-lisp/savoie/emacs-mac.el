@@ -1,4 +1,4 @@
-;;; .EMACS-DARWIN.EL --- Emacs customizations for Darwin only
+;;; .EMACS-MAC.EL --- Emacs customizations for Mac only
 ;; Copyright (C) 2011 Matt Savoie
 ;; Author: Matt Savoie <emacs@flamingbear.com>
 ;; Created: 21 Sep 2011
@@ -28,5 +28,5 @@ The return value is the new value of LIST-VAR."
   (exec-path-from-shell-initialize)
 )
 
-(provide 'emacs-darwin)
-;;; emacs-darwin.el ends here
+(provide 'emacs-mac)
+;;; emacs-mac.el ends here

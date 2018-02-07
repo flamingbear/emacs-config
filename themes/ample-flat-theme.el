@@ -22,7 +22,7 @@
  '(font-lock-constant-face ((t (:foreground "#ab85a3"))))
  '(font-lock-warning-face ((t (:foreground "red" :bold t))))
  '(font-lock-variable-name-face ((t (:foreground "#ebcb8a"))))
- '(font-lock-doc-face ((t (:foreground "#7c7565"))))
+ '(font-lock-doc-face ((t (:foreground "#bc8f8f"))))
  '(mode-line-inactive ((t (:background "#504545" :foreground "cornsilk4"))))
  '(mode-line ((t (:background "cornsilk4" :foreground "#302525"))))
  '(header-line ((t (:background "#bdbdb3" :foreground "gray15"))))
