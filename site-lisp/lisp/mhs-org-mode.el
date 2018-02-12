@@ -42,8 +42,11 @@
 ;;----------------------
 
 (use-package org
+  :pin org
+  :ensure org-plus-contrib
   :config
   (setq org-duration-format 'h:mm))
+
 
 (require 'org-protocol)
 
