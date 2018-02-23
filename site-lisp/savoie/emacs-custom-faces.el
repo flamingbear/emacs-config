@@ -146,7 +146,7 @@
                 (setq idlwave-shell-explicit-file-name "my_idl.8.1.sh")
                 (setq my-menu-fg-color "#b8860b")
                 (setq my-menu-bg-color "#b4cdcd"))
-               ))
+               )))
 
       (running-macos
        (progn
