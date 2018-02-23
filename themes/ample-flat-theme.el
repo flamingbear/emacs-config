@@ -1,9 +1,9 @@
 (deftheme ample-flat
   "Created 2017-12-10.")
 
-(custom-theme-set-variables
- 'ample-flat
- '(ansi-color-names-vector ["#504545" "#bf616a" "#a9df90" "#ebcb8b" "#91a0b3" "#ab85a3" "#afcfef" "#bdbdb3"]))
+;; (custom-theme-set-variables
+;;  'ample-flat
+;;  '(ansi-color-names-vector ["#504545" "#bf616a" "#a9df90" "#ebcb8b" "#91a0b3" "#ab85a3" "#afcfef" "#bdbdb3"]))
 
 (custom-theme-set-faces
  'ample-flat
