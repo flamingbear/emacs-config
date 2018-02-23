@@ -226,6 +226,7 @@
 
 (use-package docker
   :ensure t
+  :diminish docker-mode
   :config
   (docker-global-mode))
 

@@ -5,6 +5,13 @@
   :config
   (global-set-key (kbd "C-x v p") 'git-messenger:popup-message))
 
+(use-package git-gutter
+  :ensure
+  :defer 3
+  :diminish git-gutter-mode
+  :init
+  (global-git-gutter-mode 't))
+
 (use-package magit
   :ensure t
   :config

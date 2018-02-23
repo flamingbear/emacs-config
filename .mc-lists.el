@@ -11,6 +11,7 @@
 	eval-print-last-sexp
 	forward-sexp
 	indent-for-tab-command
+	insert-register
 	ivy-wgrep-change-to-wgrep-mode
 	kill-region
 	markdown-exdent-or-delete

@@ -16,6 +16,7 @@
 
 (use-package ivy
   :ensure t
+  :diminish ivy-mode
   :config
   (ivy-mode 1)
   (setq ivy-use-virtual-buffers t)

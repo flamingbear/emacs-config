@@ -69,6 +69,7 @@
   :ensure t
   :config
   (atomic-chrome-start-server))
+;; keybinding command-e => start editing this cell
 
 (provide 'emacs-sketchy-extras)
 ;;; EMACS-SKETCHY-EXTRAS.EL ends here
