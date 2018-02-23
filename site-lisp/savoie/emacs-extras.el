@@ -148,7 +148,7 @@
 (setq show-trailing-whitespace t)
 
 ;; automatically sync up external changes to files
-;; (global-auto-revert-mode nil)
+(global-auto-revert-mode nil)
 (add-to-list 'auto-mode-alist '("\\.log\\'" . auto-revert-mode))
 (defalias 'auto-revert-tail-mode 'tail-mode)
 
@@ -235,6 +235,7 @@
 
 (use-package which-key
   :ensure t
+  :diminish which-key-mode
   :config
   (which-key-mode))
 

@@ -41,7 +41,6 @@
   ;; Originally idea for Github PR Stolen (well) from here:
   ;; http://endlessparentheses.com/easily-create-github-prs-from-magit.html?source=rss
 
-
   (defun endless/visit-pull-request-url ()
     "Visit the current branch's PR on Github."
     (interactive)
@@ -96,7 +95,8 @@
     '(define-key mhs-map "c"
        #'mhs/visit-ci-machine))
 
-  (setq magit-completing-read-function 'ivy-completing-read))
+  (setq magit-completing-read-function 'ivy-completing-read)
+  )
 
 (provide 'mhs-magit)
 ;;; mhs-magit.el ends here
