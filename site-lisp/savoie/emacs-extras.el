@@ -87,9 +87,6 @@
 
 (when (file-exists-p (locate-file "highlight-indentation.el" load-path))
   (load-file (locate-file "highlight-indentation.el" load-path))
-  ;; These colors are good for nord theme
-  (set-face-background 'highlight-indentation-face "#454D5F")
-  (set-face-background 'highlight-indentation-current-column-face "#566176")
   (highlight-indentation-mode)
   (add-hook 'yaml-mode-hook 'highlight-indentation-mode)
   (add-hook 'yaml-mode-hook 'highlight-indentation-current-column-mode))
