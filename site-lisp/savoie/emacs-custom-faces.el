@@ -174,8 +174,8 @@
   :ensure t)
 
 (if (<= (display-color-cells) 256)
-    (load-theme 'ample-flat t)
-  (load-theme 'ample-flat t))
+    (load-theme 'ample-flat-256 t)
+  (load-theme 'ample-flat-plus t))
 
 (mhs-update-mode-line)
 (provide 'emacs-custom-faces)
