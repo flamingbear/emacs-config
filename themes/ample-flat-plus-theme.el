@@ -163,7 +163,7 @@
  '(git-gutter:modified ((t (:foreground "#ab85a3" :background nil :bold t))))
  '(git-gutter:separator ((t (:foreground "#cF9570" :background nil :bold t))))
  '(git-gutter:unchanged ((t (:foreground "#cdad00" :background nil))))
- '(highlight-indentation-current-column-face ((t (:foreground nil :background "#857575"))))
+ '(highlight-indentation-current-column-face ((t (:foreground nil :background "#505050"))))
  '(highlight-indentation-face ((t (:foreground nil :background "#303030"))))
  '(trailing-whitespace ((t (:background "white" :bold t))))
  '(custom-button ((t (:foreground nil :background nil))))
