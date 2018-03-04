@@ -6,21 +6,18 @@
   ;; Python is a dev mode
   (add-hook 'python-mode-hook 'run-dev-hook))
 
-
+(use-package pipenv
+  :ensure t
+  :hook (python-mode . pipenv-mode)
+  :init
+  (setq
+   pipenv-projectile-after-switch-function
+   #'pipenv-projectile-after-switch-extended))
 
 (use-package elpy
   :ensure t
   :config
   (elpy-enable))
-
-
-(use-package pyvenv
-  :ensure t
-  :init
-  (setenv "WORKON_HOME" "/Users/savoie/miniconda3/envs")
-  (pyvenv-mode 1)
-  (pyvenv-tracking-mode 1))
-;; now in your .dir-locals.el put => ((nil . ((pyvenv-workon . "environmentname"))))
 
 
 ;; don't use flymake (elpy default), use flycheck
