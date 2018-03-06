@@ -4,7 +4,13 @@
 ;;;;;;;;
 ;; try swiper/ivy/counsel
 ;;;;;;;
-(use-package swiper  :ensure t)
+
+(use-package swiper
+  :ensure t
+  :bind (
+	 ("C-c j" . counsel-rg)  #use ripgrep
+	 ))
+
 (use-package counsel
   :ensure t
   :bind (("C-x C-f" . counsel-find-file)
@@ -12,7 +18,8 @@
          ("C-h v" . counsel-describe-variable)
          ("M-x" . counsel-M-x)
          ("C-c f" . counsel-git)
-         ("C-c j" . counsel-git-grep)))
+         ("C-c j" . counsel-git-grep)
+	 ))
 
 (use-package ivy
   :ensure t
