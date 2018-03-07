@@ -6,9 +6,7 @@
 ;;;;;;;
 
 (use-package swiper
-  :ensure t
-  :bind ("C-c j" . counsel-rg)  ;; use ripgrep executable to have this work
-  )
+  :ensure t)
 
 (use-package counsel
   :ensure t
@@ -17,8 +15,12 @@
          ("C-h v" . counsel-describe-variable)
          ("M-x" . counsel-M-x)
          ("C-c f" . counsel-git)
-	 )
-  )
+	 ("C-c j" . counsel-git-grep)
+	 ))
+
+;; Use ripgrep only if available.
+(when (executable-find "rg")
+  (global-set-key (kbd "C-c j") 'counsel-rg))
 
 (use-package ivy
   :ensure t
