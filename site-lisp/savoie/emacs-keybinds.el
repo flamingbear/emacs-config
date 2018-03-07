@@ -7,9 +7,8 @@
 
 (use-package swiper
   :ensure t
-  :bind (
-	 ("C-c j" . counsel-rg)  #use ripgrep
-	 ))
+  :bind ("C-c j" . counsel-rg)  ;; use ripgrep executable to have this work
+  )
 
 (use-package counsel
   :ensure t
@@ -18,8 +17,8 @@
          ("C-h v" . counsel-describe-variable)
          ("M-x" . counsel-M-x)
          ("C-c f" . counsel-git)
-         ("C-c j" . counsel-git-grep)
-	 ))
+	 )
+  )
 
 (use-package ivy
   :ensure t
