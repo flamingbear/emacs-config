@@ -10,9 +10,9 @@
   :ensure t
   :hook (python-mode . pipenv-mode)
   :init
-  (setq
-   pipenv-projectile-after-switch-function
-   #'pipenv-projectile-after-switch-extended))
+  (setq pipenv-projectile-after-switch-function #'pipenv-projectile-after-switch-extended)
+  (pyvenv-mode -1)
+  )
 
 (use-package elpy
   :ensure t
@@ -27,7 +27,6 @@
   :config
   (remove-hook 'elpy-modules 'elpy-module-flymake)
   (add-hook 'elpy-mode-hook 'flycheck-mode))
-
 
 
 ;; Be able to run nose tests with various keybindings
@@ -55,21 +54,7 @@
 	     (executable-find "nosetests")
 	   nose-global-name))))
     )
-
-
-;; Stole this:  Might be useful if we go to pytest.
-;; https://github.com/cryptomaniac512/.emacs.d/blob/master/conf/plugins.el
-;; (use-package pytest
-;;     :config
-;;   (add-to-list 'pytest-project-root-files "pytest.ini")
-;;   (setq pytest-cmd-flags "-p no:sugar")
-;;   :bind (("C-c C-t C-a" . pytest-all)
-;; 	 ("C-c C-t C-m" . pytest-module)
-;; 	 ("C-c C-t C-o" . pytest-one)
-;; 	 ("C-c C-t C-d" . pytest-directory)
-;; 	 ("C-c C-t C-p C-a" . pytest-pdb-all)
-;; 	 ("C-c C-t C-p C-m" . pytest-pdb-module)
-;; 	 ("C-c C-t C-p C-o" . pytest-pdb-one)))
+)
 
 
 (use-package ein
@@ -77,8 +62,7 @@
   :init
   (setq ein:completion-backend 'ein:use-company-backend)
   :config
-  (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
-  )
+  (add-hook 'ein:connect-mode-hook 'ein:jedi-setup))
 
 
 (provide 'mhs-python)

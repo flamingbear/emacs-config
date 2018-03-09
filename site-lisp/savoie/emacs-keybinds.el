@@ -15,12 +15,15 @@
          ("C-h v" . counsel-describe-variable)
          ("M-x" . counsel-M-x)
          ("C-c f" . counsel-git)
-	 ))
+	 )
+  :init
+  (if (executable-find "rg")
+      (bind-key "C-c j" 'counsel-rg)
+    (bind-key "C-c j" 'counsel-git-grep))
+  )
 
 ;; Use ripgrep only if available.
-(if (executable-find "rg")
-  (global-set-key (kbd "C-c j") 'counsel-rg)
-  (global-set-key (kbd "C-c j") 'counsel-git-grep))
+
 
 (use-package ivy
   :ensure t
