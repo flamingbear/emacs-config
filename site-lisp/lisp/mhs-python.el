@@ -43,47 +43,18 @@
               (local-set-key "\C-cpm" 'nosetests-pdb-module)
               (local-set-key "\C-cp." 'nosetests-pdb-one)))
 
-  ;; Added this so that full path to nosetests would work.  This just replaces
-  ;; nosetests with full/path/nosetests.  I don't know why it wouldn't work
-  ;; before.
-  (defun run-nose (&optional tests debug failed)
-    "run nosetests"
-    (setq nose--last-run-params (list tests debug failed))
-
-    (let* ((nose (executable-find "nosetests"))
-	   (where (or nose-local-project-root (nose-find-project-root)))
-	   (args (concat (if debug "--pdb" "")
-			 " "
-			 (if failed "--failed" "")))
-	   (tnames (if tests tests "")))
-      (if (not where)
-	  (error
-	   (format (concat "abort: nosemacs couldn't find a project root, "
-			   "looked for any of %S") nose-project-root-files)))
-
-      ;; Execute nosetests and display the result in a compilation buffer.
-      ;;
-      ;; Store the active project root in a buffer-local variable, so that nose
-      ;; can invoked from it by the user after execution is complete. This is
-      ;; necessary because the compilation buffer doesn't have a filename from
-      ;; which it could be discovered.
-      (funcall (if debug
-		   'pdb
-		 '(lambda (command)
-		    (let ((compilation-error-regexp-alist
-			   '(("  File \"\\(.*\\)\", line \\([0-9]+\\), in test_" 1 2))))
-		      (save-current-buffer
-			(set-buffer (compilation-start command
-						       nil
-						       (lambda (mode) (concat "*nosetests*"))))
-			(setq-local nose-local-project-root where)))))
-	       (format
-		(concat "%s "
-			(if nose-use-verbose "-v " "")
-			"%s -w %s -c %ssetup.cfg %s")
-		nose args where where tnames)))
+  ;; This could probably be even smarter.
+  (defun nose-find-test-runner ()
+    (message
+     (let ((result
+	    (reduce '(lambda (x y) (or x y))
+		    (mapcar 'nose-find-test-runner-names nose-project-names))))
+       (if result
+	   result
+	 (if (executable-find "nosetests")
+	     (executable-find "nosetests")
+	   nose-global-name))))
     )
-  )
 
 
 ;; Stole this:  Might be useful if we go to pytest.
