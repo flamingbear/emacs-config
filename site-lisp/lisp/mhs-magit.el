@@ -44,14 +44,11 @@
   (defun endless/visit-pull-request-url ()
     "Visit the current branch's PR on Github."
     (interactive)
-    (browse-url
-     (format "https://github.com/%s/pull/new/%s"
-	     (replace-regexp-in-string
-	      "\\`.+github\\.com:\\(.+\\)\\.git\\'" "\\1"
-	      (magit-get "remote"
-			 (magit-get-push-remote)
-			 "url"))
-	     (magit-get-current-branch))))
+    (let ((repo (magit-get "remote" (magit-get-remote) "url")))
+      (if (string-match "github\\.com" repo)
+          (visit-gh-pull-request repo)
+        (visit-bb-pull-request repo))))
+
 
 
   (defun visit-gh-pull-request (repo)
