@@ -77,7 +77,8 @@
 	 (setq my-menu-bg-color "yellow"))
 
 	((or (string-equal "gsx" my-project)
-	     (string-equal "greenland_today" my-project))
+	     (string-equal "greenland_today" my-project)
+	     (string-equal "pm_metadata" my-project))
 	 (setq my-menu-bg-color "#00aa00"))
 
 	((string-equal "seaice" my-project)
