@@ -21,6 +21,7 @@ The return value is the new value of LIST-VAR."
 
 (use-package exec-path-from-shell
   :ensure t
+  :defer 2
   :config
   (append-to-list 'exec-path-from-shell-variables
 		  '("NODE_PATH" "GIT_EDITOR" "EDITOR" "LC_ALL" "NVM_DIR" "NVM_BIN"))
