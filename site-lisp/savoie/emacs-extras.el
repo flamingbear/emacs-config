@@ -265,7 +265,7 @@
 
 ;; Try company-mode instead of auto-complete
 ;;--------------------------
-
+(use-package company-jedi :ensure t)
 (use-package company
   :ensure t
   :config
