@@ -171,14 +171,47 @@
  (set-face-background 'menu my-menu-bg-color))
 
 
+;; (use-package zerodark-theme :ensure t)
+;; (zerodark-setup-modeline-format)
+
+(use-package all-the-icons :ensure t)
+(use-package spaceline :ensure t)
+(use-package spaceline-all-the-icons
+  :ensure t
+  :after spaceline
+  :config
+  (if (> (display-color-cells) 256)
+      (spaceline-all-the-icons-theme))
+  )
+
 (use-package ample-theme
   :ensure t)
 
-(if (<= (display-color-cells) 256)
-    (load-theme 'ample-flat-256 t)
-  (load-theme 'ample-flat-plus t))
 
-(mhs-update-mode-line)
+(defface mhs-spaceline-highlight-face
+  `((t (:background "#932092" :foreground "#3E3D31" :inherit 'mode-line)))
+  "Default highlight face for spaceline.")
+
+
+(if (<= (display-color-cells) 256)
+    (progn
+      ;; low color/terminal window.
+      (load-theme 'ample-flat-256 t)
+      (mhs-update-mode-line)
+      )
+  (progn
+    (load-theme 'ample-flat-plus t)
+    (defun mhs-spaceline-highlight-face-default ()
+      "The default highlight face function.
+       Set `spaceline-highlight-face-func' to
+       `spaceline-highlight-face-default' to use this."
+      'mhs-spaceline-highlight-face)
+    (setq spaceline-highlight-face-func 'mhs-spaceline-highlight-face-default)
+    (setq auto-revert-check-vc-info t)
+    )
+  )
+
+
 (provide 'emacs-custom-faces)
 
 ;;; .EMACS-CUSTOM-FACES ends here
