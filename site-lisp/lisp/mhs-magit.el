@@ -7,7 +7,6 @@
 
 (use-package git-gutter
   :ensure
-  :defer 3
   :diminish git-gutter-mode
   :init
   (global-git-gutter-mode 't))
