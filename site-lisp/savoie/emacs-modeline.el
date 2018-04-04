@@ -25,7 +25,7 @@
     'mhs-spaceline-highlight-face)
 
   (setq spaceline-highlight-face-func 'mhs-spaceline-highlight-face-default)
-  (setq auto-revert-check-vc-info t)
+  (setq auto-revert-check-vc-info nil)
   )
 
 
