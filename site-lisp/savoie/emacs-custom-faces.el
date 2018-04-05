@@ -72,7 +72,7 @@
 
    ((or (string-equal "gsx" my-project)
 	(string-equal "greenland_today" my-project)
-	(string-equal "pm_metadata" my-project))
+	(string-equal "pm_metadata_vm" my-project))
     (setq my-modeline-bg-color "#00aa00"))
 
    ((string-equal "seaice" my-project)
