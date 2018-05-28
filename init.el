@@ -102,8 +102,6 @@
   (which-key-mode))
 
 
-
-;; couple of tweaks for browsers and handling emacs on mac osx
 (use-package mhs-environment)
 (use-package emacs-extras)
 (use-package emacs-keybinds)

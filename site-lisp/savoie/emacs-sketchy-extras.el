@@ -65,10 +65,10 @@
 
 ;; Replacement for edit-server?
 ;; https://github.com/alpha22jp/atomic-chrome
-(use-package atomic-chrome
-  :ensure t
-  :config
-  (atomic-chrome-start-server))
+;; (use-package atomic-chrome
+;;   :ensure t)
+  ;; :config
+  ;;(atomic-chrome-start-server))
 ;; keybinding command-e => start editing this cell
 
 (provide 'emacs-sketchy-extras)

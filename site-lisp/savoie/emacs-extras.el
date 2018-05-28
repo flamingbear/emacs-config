@@ -1,6 +1,5 @@
 ;;; package --- Summary
-;;;   Just standard extra things to load
-;;; Commentary:
+;;;   Just standard extra things to load when I start emacs.
 
 
 ;;; Code:
@@ -44,6 +43,8 @@
 (put 'narrow-to-region 'disabled nil)
 ;; To determine when to split horizontally
 (setq split-width-threshold '1600)
+(setq gc-cons-threshold 20000000)
+
 
 (setq indent-tabs-mode nil)
 (setq inhibit-eol-conversion t)
@@ -381,6 +382,11 @@
 
 ;; Sh mode for some common files
 (add-to-list 'auto-mode-alist '("\\.alias$" . sh-mode))
+
+
+;; try windmove
+(when (fboundp 'windmove-default-keybindings)
+  (windmove-default-keybindings))
 
 
 ;; unique buffer names
