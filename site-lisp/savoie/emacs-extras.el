@@ -482,11 +482,19 @@
   (shell-pop--set-shell-type 'shell-pop-shell-type shell-pop-shell-type)
   )
 
+(use-package pinentry
+  :ensure t
+  :config
+  (pinentry-start)
+  (setq epa-pinentry-mode 'loopback)
+   ;;(setq epg-gpg-program "/usr/local/bin/gpg")
+  )
+
+;; possible packages     (pinentry anything auto-complete)
 
 (use-package helpful
-  ;; Helpful is an alternative to the built-in Emacs help that provides much more contextual information.
-
-
+  ;; Helpful is an alternative to the built-in Emacs help that provides much
+  ;; more contextual information.
   :ensure t
   :config
   ;; Note that the built-in `describe-function' includes both functions
