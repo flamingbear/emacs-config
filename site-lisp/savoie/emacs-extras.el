@@ -387,6 +387,11 @@
 ;; try windmove
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
+;; Frame move
+(when (file-exists-p (locate-file "framemove.el" load-path))
+  (load-file (locate-file "framemove.el" load-path))
+  (windmove-default-keybindings)
+  (setq framemove-hook-into-windmove t))
 
 
 ;; unique buffer names

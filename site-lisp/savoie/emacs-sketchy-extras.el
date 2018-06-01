@@ -8,8 +8,6 @@
 ;; Version: 1.0
 ;; Keywords:
 
-
-
 ;; See if you can run orgmode from this computer.
 (use-package org
   :config
