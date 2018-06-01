@@ -46,13 +46,6 @@
 	(nnml "private" )))
 
 
-
-;(setq nnimap-split-inbox '("INBOX"))
-;(setq nnimap-split-predicate "UNDELETED")
-;(setq nnimap-split-crosspost nil)
-
-;(setq nnimap-split-rule '(("kryos" ("INBOX" nnimap-split-fancy))))
-
 (defvar default-mailbox (concat "maild/mail-" (format-time-string "%Y")))
 
 
@@ -242,7 +235,6 @@
 (setq gnus-thread-hide-subtree 't)
 
 (add-hook 'gnus-select-article-hook 'gnus-summary-show-thread)
-
 
 
 ;; Set automatic days to expire on some groups
