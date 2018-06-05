@@ -13,7 +13,7 @@
 (setq nnmail-expiry-target mhs-expired-group)
 
 
-;; Do we really want the auto-fill turned on.  I dont' think so
+;; Do we really want the auto-fill turned on. I don't think so
 (setq message-fill-column 'nil)
 
 ;; (setq mml2015-signers '("1AFA6998")) # flamingbear
