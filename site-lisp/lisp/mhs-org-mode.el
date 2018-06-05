@@ -1,89 +1,88 @@
-;;; MHS-ORG-MODE.EL --- Commands for ORG Mode operation.
+;;; mhs-org-mode.el
 
 ;; Copyright (C) 2011 Matt Savoie
 
 ;; Author: Matt Savoie <emacs@flamingbear.com>
 ;; Maintainer: Matt Savoie <emacs@flamingbear.com>
-;; Created: 13 May 2011
+;; Created: 14 Jan 2011
 ;; Version: 1.0
 ;; Keywords:
 
-
-;; This program is free software; you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation; either version 1, or (at your option)
-;; any later version.
-
-;; This program is distributed in the hope that it will be useful,
-;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;; GNU General Public License for more details.
-
-;; A copy of the GNU General Public License can be obtained from this
-;; program's author (send electronic mail to <emacs@flamingbear.com>) or from the
-;; Free Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
-;; LCD Archive Entry:
-;; mhs-org-mode|Matt Savoie|<emacs@flamingbear.com>
-;; |Commands for ORG Mode operation.
-;; |$Date$|$Revision: 19387 $|~/packages/mhs-org-mode.el
-
-;;; Commentary:
-
-;;; Change log:
-;; $Log$
-;;
-
-;;; Code:
-
-(defconst mhs-org-mode-version (substring "$Revision: 19387 $" 11 -2)
-   "$Id$ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
-;; ORG MODE information
-;;----------------------
-
+;; See if you can run orgmode from this computer.
 (use-package org
   :pin org
   :ensure org-plus-contrib
   :config
-  (setq org-duration-format 'h:mm))
+  (setq org-duration-format 'h:mm)
+  (setq org-agenda-files "~/Dropbox/orgs/org-agenda-files")
+  (setq org-clock-persist (quote history))
+  (setq org-clock-persist-file "~/Dropbox/orgs/org-clock-save.el")
+  (setq org-log-done (quote note))
+  (setq org-refile-targets (quote ((org-agenda-files :maxlevel . 5))))
+  (setq org-remember-default-headline "TASKS.org")
+  (setq org-remember-templates
+        '(("todo" 116 "* TODO %? %u %a" nil nil nil)
+          ("note" 110 "* %?" nil nil nil)
+          ("Url" 117 "* %^{Title} Source: %u, %c	%i" nil nil nil)))
+  (setq org-tag-alist   '(("daac" . 100)
+                          ("programmer" . 112)
+                          ("erik" . 101)
+                          ("management" . 109)
+                          ("services" . 115)
+                          ("masie" . 105)
+                          ("annual_review" . 97)))
+  (setq org-todo-keywords '((sequence "TODO" "WAITING" "BLOCKED" "|" "DONE" "DELEGATED" "CANCELLED")))
+
+  (defvar mhs-org-mode-directory (expand-file-name "~savoie/Dropbox/orgs/")
+    "Location of my .org mode files" )
+
+  (when (and (file-accessible-directory-p mhs-org-mode-directory))
+    (set-variable 'comment-start 'nil)
+    (setq org-agenda-custom-commands
+          '(("Q" . "Custom queries") ;; gives label to "Q"
+            ("Qa" "Archive search" search ""
+             ((org-agenda-files (file-expand-wildcards "~/Dropbox/orgs/*.org_archive"))))
+            ("Qb" "Projects and Archive" search ""
+             ((org-agenda-text-search-extra-files (file-expand-wildcards "~/Dropbox/orgs/*.org_archive"))))
+            ;; searches both projects and archive directories
+            ("QA" "Archive tags search" org-tags-view ""
+             ((org-agenda-files (file-expand-wildcards "~/Dropbox/orgs/*.org_archive"))))))
+    "mhs-org mode loaded"  )
+
+  (require 'org-protocol)
+
+  ;; Keep a clock across working sessions.
+  (org-clock-persistence-insinuate)
+
+  ;; The following lines are always needed.
+  (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+  (define-key global-map "\C-cl" 'org-store-link)
+  (define-key global-map "\C-ca" 'org-agenda)
+  (define-key global-map "\C-cb" 'org-iswitchb)
+
+  (require 'org-capture)
+  (setq org-directory "~/Dropbox/orgs")
+  (setq org-default-notes-file (concat org-directory "/notes.org"))
+
+  ;; Prefer capture to remember.
+ ;;(define-key global-map "\C-cr" 'org-remember)
+  (define-key global-map "\C-cr" 'org-capture)
+
+  (setq org-fontify-done-headline t)
 
 
-(require 'org-protocol)
-
-;; Keep a clock across working sessions.
-(org-clock-persistence-insinuate)
-
-;; The following lines are always needed.
-(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
-(define-key global-map "\C-cl" 'org-store-link)
-(define-key global-map "\C-ca" 'org-agenda)
-(define-key global-map "\C-cb" 'org-iswitchb)
-
-(require 'org-capture)
-(setq org-directory "~/Dropbox/orgs")
-(setq org-default-notes-file (concat org-directory "/notes.org"))
-
-;; Prefer capture to remember.
-;(define-key global-map "\C-cr" 'org-remember)
-(define-key global-map "\C-cr" 'org-capture)
-
-(setq org-fontify-done-headline t)
-
-;; From keelerm84 on
-;; (require 'org-latex)
-;; (setq org-export-latex-listings 'minted)
-;; (add-to-list 'org-export-latex-packages-alist '("" "minted"))
-;; (setq org-src-fontify-natively t)
-
-(defun mhs-update-today ()
-  (interactive)
-  (save-excursion
-    (beginning-of-line)
-    (while (search-forward-regexp "[0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\}" (line-end-position) t)
-      (replace-match (format-time-string "%Y-%m-%d")))))
+  (defun mhs-update-today ()
+    (interactive)
+    (save-excursion
+      (beginning-of-line)
+      (while (search-forward-regexp "[0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\}" (line-end-position) t)
+	(replace-match (format-time-string "%Y-%m-%d")))))
 
 
+
+  (setq org-time-clocksum-format
+        '(:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t))
+  )
 
 (provide 'mhs-org-mode)
-
-;;; MHS-ORG-MODE.EL ends here
+;;; mhs-org-mode.el ends here
