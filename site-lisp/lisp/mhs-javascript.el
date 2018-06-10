@@ -47,8 +47,7 @@
 (use-package add-node-modules-path :ensure t
   :config
   (eval-after-load 'js2-mode '(add-hook 'js2-mode-hook #'add-node-modules-path))
-  (eval-after-load 'projectile-mode (add-hook 'projectile-after-switch-project-hook #'add-node-modules-path))
-  )
+  (eval-after-load 'projectile-mode (add-hook 'projectile-after-switch-project-hook #'add-node-modules-path)))
 
 (use-package js2-mode
   :ensure t
@@ -60,14 +59,15 @@
 
 (use-package prettier-js :ensure t
   :config
-  (add-hook 'js2-mode-hook 'prettier-js-mode)
-  )
+  (add-hook 'js2-mode-hook 'prettier-js-mode))
 
 
 (use-package tern :ensure t
   :config
-  (add-hook 'js2-mode-hook (lambda () (tern-mode t)))
-  (add-hook 'nodejs-repl-mode-hook (lambda () (tern-mode t))))
+  (add-hook 'js2-mode-hook (lambda ()
+			     (tern-mode)))
+  (add-hook 'nodejs-repl-mode-hook (lambda ()
+				     (tern-mode))))
 
 (use-package company-tern  :ensure t)
 
@@ -84,7 +84,7 @@
 (use-package indium
   :ensure t)
 
-;; Declaring bankrupcy on my javascript mode until I start working in JS again.
+
 (provide 'mhs-javascript)
 
 ;;; MHS-JAVASCRIPT.EL ends here
