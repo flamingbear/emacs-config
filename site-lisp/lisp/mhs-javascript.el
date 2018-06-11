@@ -61,6 +61,10 @@
   :config
   (add-hook 'js2-mode-hook 'prettier-js-mode))
 
+;; Let's try smart parens in javascript.
+(when (featurep 'smartparens)
+    (add-hook 'js2-mode-hook #'smartparens-mode))
+
 
 (use-package tern :ensure t
   :config
@@ -81,9 +85,8 @@
 			      (local-set-key "\C-cl" 'nodejs-repl-load-file)
 			      (local-set-key "\C-c\C-z" 'nodejs-repl-switch-to-repl))))
 
-(use-package indium
-  :ensure t)
-
+;; (use-package indium
+;;   :ensure t)
 
 (provide 'mhs-javascript)
 

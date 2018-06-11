@@ -287,6 +287,11 @@
   :config
   (show-paren-mode t))
 
+(use-package smartparens
+  :ensure t
+  :config
+  (require 'smartparens-config))
+
 (use-package rainbow-delimiters
   :ensure t
   :init
