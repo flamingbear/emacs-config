@@ -492,6 +492,14 @@
   (shell-pop--set-shell-type 'shell-pop-shell-type shell-pop-shell-type)
   )
 
+
+(use-package yasnippet
+  :ensure t
+  :config
+  (yas-global-mode 1)
+  (require 'es6-snippets))
+
+
 (use-package pinentry
   :ensure t
   :config

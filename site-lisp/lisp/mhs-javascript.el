@@ -57,9 +57,15 @@
   (setq js-indent-level 2))
 
 
-(use-package prettier-js :ensure t
-  :config
-  (add-hook 'js2-mode-hook 'prettier-js-mode))
+;; Can't use prettier-js with an existing package that uses
+;; (use-package prettier-js :ensure t
+;;   :config
+;;   (add-hook 'js2-mode-hook 'prettier-js-mode)
+;;   (setq prettier-js-args '(
+;; 			   "--trailing-comma" "all"
+;; 			   "--bracket-spacing" "true"
+;; 			   "--single-quote" "true"
+;; 			   )) )
 
 ;; Let's try smart parens in javascript.
 (when (featurep 'smartparens)
