@@ -46,7 +46,7 @@
  '(ido-incomplete-regexp ((t (:foreground "#cd5c5c"))))
  '(ido-subdir ((t (:foreground "#cdad00"))))
  '(js2-external-variable ((t (:foreground "#cF9570" :background nil))))
- '(js2-function-param ((t (:foreground "#596f50" :background nil))))
+ '(js2-function-param ((t (:foreground "#7ccd7c" :background nil))))
  '(js2-instance-member ((t (:foreground "#ab85a3" :background nil))))
  '(js2-jsdoc-html-tag-delimiter ((t (:foreground "#706565" :background nil))))
  '(js2-jsdoc-html-tag-name ((t (:foreground "#302525" :background nil))))

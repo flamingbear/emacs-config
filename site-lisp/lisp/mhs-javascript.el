@@ -67,6 +67,9 @@
 ;; 			   "--single-quote" "true"
 ;; 			   )) )
 
+;; This might come in handy
+(use-package eslint-fix :ensure t)
+
 ;; Let's try smart parens in javascript.
 (when (featurep 'smartparens)
     (add-hook 'js2-mode-hook #'smartparens-mode))
@@ -93,6 +96,12 @@
 
 ;; (use-package indium
 ;;   :ensure t)
+
+
+;; Theme items to fix
+ ;; '(js2-object-property-access ((t (:foreground "#ddbc11" :background nil))))
+ ;; '(js2-object-property ((t (:foreground "#ddbc11" :background nil))))
+
 
 (provide 'mhs-javascript)
 
