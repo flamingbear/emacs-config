@@ -118,11 +118,6 @@
 (if running-macos (setq ring-bell-function #'my-terminal-visible-bell) (setq ring-bell-function #'my-zoidberg-bell))
 
 
-;; stolen from KWB-emacs
-;;----------------------
-;; show me the line numbers in source
-(defun add-line-numbers ()
-  (linum-mode 1))
 
 ;; auto wrap, but only in comments
 (defun local-comment-auto-fill ()
