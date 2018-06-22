@@ -130,7 +130,11 @@
   (set-face-background 'mode-line my-modeline-bg-color)
 
   (set-face-foreground 'menu my-modeline-fg-color)
-  (set-face-background 'menu my-modeline-bg-color))
+  (set-face-background 'menu my-modeline-bg-color)
+
+  (set-face-foreground 'vertical-border my-modeline-fg-color)
+  (set-face-background 'vertical-border my-modeline-bg-color)
+  )
 
 
 (use-package ample-theme :ensure t)
