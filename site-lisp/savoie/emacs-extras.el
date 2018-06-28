@@ -74,7 +74,7 @@
 ;; https://stackoverflow.com/questions/1587972/how-to-display-indentation-guides-in-emacs/4459159#4459159
 ;; Use C-u C-u to set selective display to current line's indentation.
 (defun set-selective-display-current (arg)
-  "Toggle fold all lines larger than indentation on current line"
+  "Toggle fold all lines larger than indentation on current line."
   (interactive "P")
   (if (eq (first arg) 16)
       (let ((col 1))
@@ -281,6 +281,10 @@
   :defer 3
   :config
   (show-paren-mode t))
+
+
+(use-package restclient
+  :ensure t)
 
 (use-package smartparens
   :ensure t
