@@ -219,9 +219,7 @@
 
 (use-package docker
   :ensure t
-  :diminish docker-mode
-  :config
-  (docker-global-mode))
+  :diminish docker-mode)
 
 (use-package docker-compose-mode
   :ensure t)
