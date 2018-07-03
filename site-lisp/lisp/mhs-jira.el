@@ -42,9 +42,11 @@
 
 (defun mhs-jira--update-url-base (ticket-number)
   "Handle multiple JIRA ticket locations."
-  (if (string-prefix-p "NDCUM" ticket-number)
-      (setq mhs-jira--url-base "https://bugs.earthdata.nasa.gov/browse/")
-    (setq mhs-jira--url-base "https://nsidc.org/jira/browse/")))
+  (cond ((string-prefix-p "NDCUM" ticket-number)
+	 (setq mhs-jira--url-base "https://bugs.earthdata.nasa.gov/browse/"))
+	((string-prefix-p "CUMULUS" ticket-number)
+	 (setq mhs-jira--url-base "https://bugs.earthdata.nasa.gov/browse/"))
+	(t (setq mhs-jira--url-base "https://nsidc.org/jira/browse/"))))
 
 
 (defun mhs-jira--ticket-uri ()
