@@ -49,7 +49,7 @@
  '(js2-function-param ((t (:foreground "#7ccd7c" :background nil))))
  '(js2-instance-member ((t (:foreground "#ab85a3" :background nil))))
  '(js2-jsdoc-html-tag-delimiter ((t (:foreground "#706565" :background nil))))
- '(js2-jsdoc-html-tag-name ((t (:foreground "#302525" :background nil))))
+ '(js2-jsdoc-html-tag-name ((t (:foreground "#801545" :background nil))))
  '(js2-jsdoc-tag ((t (:foreground "#8a0f00" :background nil))))
  '(js2-jsdoc-type ((t (:foreground "#cd5c5c" :background nil))))
  '(js2-jsdoc-value ((t (:foreground "#ddbc91" :background nil))))

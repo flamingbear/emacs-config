@@ -54,7 +54,23 @@
   :mode ("\\.jsx?\\'" . js2-jsx-mode)
   :mode ("\\.js\\'" . js2-mode)
   :config
+  (add-hook 'js2-mode-hook (lambda ()  (setq indent-tabs-mode nil)))
   (setq js-indent-level 2))
+
+
+(use-package js-doc
+  :ensure t
+  :config
+  (setq js-doc-mail-address "savoie@nsidc.org"
+	js-doc-author (format "Matt Savoie <%s>" js-doc-mail-address)
+	js-doc-url ""
+	js-doc-license "")
+
+  (add-hook 'js2-mode-hook
+            #'(lambda ()
+		(define-key js2-mode-map "\C-ci" 'js-doc-insert-function-doc)
+		(define-key js2-mode-map "@" 'js-doc-insert-tag))))
+
 
 
 ;; Can't use prettier-js with an existing package that uses
