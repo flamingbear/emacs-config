@@ -11,8 +11,8 @@
 (use-package counsel
   :ensure t
   :bind (("C-x C-f" . counsel-find-file)
-         ("C-h f" . counsel-describe-function)
-         ("C-h v" . counsel-describe-variable)
+         ;; ("C-h f" . counsel-describe-function)  ;; prefer helpful versions
+         ;; ("C-h v" . counsel-describe-variable)
          ("M-x" . counsel-M-x)
          ("C-c f" . counsel-git)
 	 )

@@ -68,6 +68,7 @@
     (any ".*savoie@kryos.colorado.edu.*" "spam")
     ("Delivered-To" "savoie@kryos.colorado.edu" "spam")
     ("Subject" ".*\\[confluence\\].*" "maild/confluence")
+    ("Subject" ".*\\[Bamboo\\].*" "maild/bitbucket")
     (any "Proofpoint Essentials" "mail/lists")
     ("Subject" ".*\\[cumulus-nasa/cumulus.*\\].*" "maild/bitbucket")
     ("Subject" ".*CUMULUS/nsidc-deploy.*" "maild/bitbucket")

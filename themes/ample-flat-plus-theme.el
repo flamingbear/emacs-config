@@ -10,7 +10,7 @@
  '(cursor ((t (:foreground "gray15" :background "#afffef"))))
  '(fringe ((t (:background "#262424"))))
  '(link ((t (:foreground "#afcfef" :underline t))))
- '(region ((t (:background "#343030"))))
+ '(region ((t (:background "#505050"))))
  '(font-lock-builtin-face ((t (:foreground "#9fbfdf"))))
  '(font-lock-comment-face ((t (:foreground "#857575"))))
  '(font-lock-comment-delimiter-face ((t (:foreground "#706565"))))

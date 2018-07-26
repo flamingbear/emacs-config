@@ -166,8 +166,10 @@
 ;; Projectile is the BOMB!
 (use-package projectile
   :ensure t
+  :init
+  (setq projectile-keymap-prefix (kbd "C-c p"))  ;; You should try to learn the new way. but you wont
   :config
-  (projectile-global-mode t)
+  (projectile-mode t)
   (setq projectile-completion-system 'ivy)
 
   ;; HACK until this is fixed: https://github.com/bbatsov/projectile/issues/1165
@@ -520,7 +522,9 @@
   (global-set-key (kbd "C-h v") #'helpful-variable)
   (global-set-key (kbd "C-h k") #'helpful-key)
   ;; I also recommend you configure helpful-at-point to a convenient keybinding:
-  (global-set-key (kbd "C-c C-.") #'helpful-at-point) )
+  (global-set-key (kbd "C-c C-.") #'helpful-at-point)
+  (global-set-key (kbd "C-h C") #'helpful-command))
+
 
 
 ;; Set registers to things that I type zillions of times.
