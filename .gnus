@@ -245,6 +245,7 @@
               ((string= group  "jira-production") 30)
               ((string= group  "jira-tickets") 30)
               ((string= group  "bitbucket") 30)
+	      ((string= group  "travis") 30)
               ((string= group "confluence") 30)
               ((string= group "glas_requests") 10)
               ((string= group "spam") 7)
