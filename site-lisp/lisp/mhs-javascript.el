@@ -91,14 +91,28 @@
     (add-hook 'js2-mode-hook #'smartparens-mode))
 
 
-(use-package tern :ensure t
-  :config
-  (add-hook 'js2-mode-hook (lambda ()
-			     (tern-mode)))
-  (add-hook 'nodejs-repl-mode-hook (lambda ()
-				     (tern-mode))))
+;; (use-package tern :ensure t
+;;   :config
+;;   (add-hook 'js2-mode-hook (lambda ()
+;; 			     (tern-mode)))
+;;   (add-hook 'nodejs-repl-mode-hook (lambda ()
+;; 				     (tern-mode))))
+;; (use-package company-tern  :ensure t)
 
-(use-package company-tern  :ensure t)
+(use-package tide
+  :ensure t
+  :after (company flycheck js2-mode)
+  :hook ((js2-mode . tide-setup))
+  :config
+  (flycheck-add-next-checker 'javascript-eslint 'javascript-tide 'append)
+  (tide-hl-identifier-mode +1)
+  (company-mode +1)
+  (eldoc-mode +1)
+  (flycheck-mode +1)
+  (setq company-tooltip-align-annotations t)
+  ;; (setq tide-tsserver-executable "node_modules/.bin/tsserver"))  ;; kev has this but I don't know if it's useful
+  )
+
 
 (use-package nodejs-repl :ensure t
   :config
