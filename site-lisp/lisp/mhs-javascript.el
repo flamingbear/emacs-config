@@ -99,18 +99,25 @@
 ;; 				     (tern-mode))))
 ;; (use-package company-tern  :ensure t)
 
-(use-package tide
-  :ensure t
-  :after (company flycheck js2-mode)
-  :hook ((js2-mode . tide-setup))
-  :config
-  (flycheck-add-next-checker 'javascript-eslint 'javascript-tide 'append)
+(defun setup-tide-mode ()
+  "Setup tide mode for js"
+  (interactive)
   (tide-hl-identifier-mode +1)
   (company-mode +1)
   (eldoc-mode +1)
   (flycheck-mode +1)
-  (setq company-tooltip-align-annotations t)
+  (setq company-tooltip-align-annotations t))
   ;; (setq tide-tsserver-executable "node_modules/.bin/tsserver"))  ;; kev has this but I don't know if it's useful
+  ;; to debug tide-mode
+  ;; (setq tide-tsserver-process-environment '("TSS_LOG=-level verbose -file /Users/savoie/tmp/tss.log"))
+
+(use-package tide
+  :ensure t
+  :after (company flycheck js2-mode)
+  :hook ((js2-mode . tide-setup)
+	 (js2-mode . setup-tide-mode))
+  :config
+  (flycheck-add-next-checker 'javascript-eslint 'javascript-tide 'append)
   )
 
 
