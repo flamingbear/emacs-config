@@ -429,6 +429,21 @@ following the prefix character"
 (setq column-number-mode t)
 (setq comment-column 32)
 
+
+(when (file-exists-p (locate-file "tty-format.el" load-path))
+  (load-file (locate-file "tty-format.el" load-path))
+  (require 'tty-format)
+;; M-x display-ansi-colors to explicitly decode ANSI color escape sequences
+  (defun display-ansi-colors ()
+    (interactive)
+    (format-decode-buffer 'ansi-colors))
+  ;; decode ANSI color escape sequences for *.txt or README files
+  (add-hook 'find-file-hooks 'tty-format-guess)
+  ;; decode ANSI color escape sequences for .log files
+  ;;(add-to-list 'auto-mode-alist '("\\.log\\'" . display-ansi-colors))
+  )
+
+
 (use-package ansi-color
   :defer 3
   :config
@@ -440,7 +455,7 @@ following the prefix character"
       (ansi-color-apply-on-region (point-min) (point-max))))
   (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
 
-  (defun display-ansi-colors ()
+  (defun destructive-display-ansi-colors ()
     (interactive)
     (ansi-color-apply-on-region (point-min) (point-max))))
 
