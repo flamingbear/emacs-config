@@ -17,7 +17,7 @@
   (setq org-agenda-files "~/Dropbox/orgs/org-agenda-files")
   (setq org-clock-persist (quote history))
   (setq org-clock-persist-file "~/Dropbox/orgs/org-clock-save.el")
-  (setq org-log-done (quote note))
+  (setq org-log-done (quote time))
   (setq org-refile-targets (quote ((org-agenda-files :maxlevel . 5))))
   (setq org-remember-default-headline "TASKS.org")
   (setq org-remember-templates
