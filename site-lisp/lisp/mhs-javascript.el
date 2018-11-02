@@ -120,6 +120,16 @@
   (flycheck-add-next-checker 'javascript-eslint 'javascript-tide 'append)
   )
 
+(defun mhs/use-eslint-from-project-root-node-modules (executable)
+  "Use configured eslint from root of project if exists, otherwise, fall back to flycheck default."
+  (let ((root-eslint-bin (expand-file-name (concat "node_modules/.bin/" executable) (projectile-project-root))))
+    (if (file-exists-p root-eslint-bin)
+	root-eslint-bin
+      (flycheck-default-executable-find "eslint"))))
+
+
+(setq flycheck-executable-find 'mhs/use-eslint-from-project-root-node-modules)
+
 
 (use-package nodejs-repl :ensure t
   :config
@@ -131,8 +141,8 @@
 			      (local-set-key "\C-cl" 'nodejs-repl-load-file)
 			      (local-set-key "\C-c\C-z" 'nodejs-repl-switch-to-repl))))
 
-;; (use-package indium
-;;   :ensure t)
+(use-package indium
+  :ensure t)
 
 
 ;; Theme items to fix
