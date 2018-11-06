@@ -44,6 +44,9 @@
 (defconst mhs-javascript-version "0.2.0"
   "Report bugs to: Matt Savoie <emacs@flamingbear.com>.")
 
+;; 2018-11-03 - this might not be what we want, and could be causing the
+;; problems with old lint in my cumulus repo dependencies. causing me to write
+;; the mhs/use-eslint-from-project-root-node-modules hack.
 (use-package add-node-modules-path :ensure t
   :config
   (eval-after-load 'js2-mode '(add-hook 'js2-mode-hook #'add-node-modules-path))
@@ -58,6 +61,7 @@
   (setq js-indent-level 2))
 
 
+;; Insert pretty javadocs.
 (use-package js-doc
   :ensure t
   :config
@@ -73,7 +77,7 @@
 
 
 
-;; Can't use prettier-js with an existing package that uses
+;; Can't use prettier-js with an existing package that uses different eslint
 ;; (use-package prettier-js :ensure t
 ;;   :config
 ;;   (add-hook 'js2-mode-hook 'prettier-js-mode)
@@ -91,14 +95,8 @@
     (add-hook 'js2-mode-hook #'smartparens-mode))
 
 
-;; (use-package tern :ensure t
-;;   :config
-;;   (add-hook 'js2-mode-hook (lambda ()
-;; 			     (tern-mode)))
-;;   (add-hook 'nodejs-repl-mode-hook (lambda ()
-;; 				     (tern-mode))))
-;; (use-package company-tern  :ensure t)
-
+;; Use Tide for javascript goodness. It supports linting, rename, find
+;; references/go to definition, and look up documentation.
 (defun setup-tide-mode ()
   "Setup tide mode for js"
   (interactive)
@@ -106,19 +104,17 @@
   (company-mode +1)
   (eldoc-mode +1)
   (flycheck-mode +1)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
   (setq company-tooltip-align-annotations t))
-  ;; (setq tide-tsserver-executable "node_modules/.bin/tsserver"))  ;; kev has this but I don't know if it's useful
   ;; to debug tide-mode
   ;; (setq tide-tsserver-process-environment '("TSS_LOG=-level verbose -file /Users/savoie/tmp/tss.log"))
 
 (use-package tide
   :ensure t
   :after (company flycheck js2-mode)
-  :hook ((js2-mode . tide-setup)
-	 (js2-mode . setup-tide-mode))
+  :hook ((js2-mode . tide-setup))
   :config
-  (flycheck-add-next-checker 'javascript-eslint 'javascript-tide 'append)
-  )
+  (flycheck-add-next-checker 'javascript-eslint 'javascript-tide 'append))
 
 (defun mhs/use-eslint-from-project-root-node-modules (executable)
   "Use configured eslint from root of project if exists, otherwise, fall back to flycheck default."
@@ -141,14 +137,15 @@
 			      (local-set-key "\C-cl" 'nodejs-repl-load-file)
 			      (local-set-key "\C-c\C-z" 'nodejs-repl-switch-to-repl))))
 
+
 (use-package indium
-  :ensure t)
-
-
-;; Theme items to fix
- ;; '(js2-object-property-access ((t (:foreground "#ddbc11" :background nil))))
- ;; '(js2-object-property ((t (:foreground "#ddbc11" :background nil))))
-
+  :ensure t
+  :after js2-mode
+  :hook
+  (js2-mode . indium-interaction-mode)
+  :config
+  (setq indium-client-debug 't)
+  )
 
 (provide 'mhs-javascript)
 
