@@ -58,6 +58,7 @@
   :mode ("\\.js\\'" . js2-mode)
   :config
   (add-hook 'js2-mode-hook (lambda ()  (setq indent-tabs-mode nil)))
+  (setq js-switch-indent-offset 2)
   (setq js-indent-level 2))
 
 
@@ -115,17 +116,6 @@
   :hook ((js2-mode . tide-setup))
   :config
   (flycheck-add-next-checker 'javascript-eslint 'javascript-tide 'append))
-
-(defun mhs/use-eslint-from-project-root-node-modules (executable)
-  "Use configured eslint from root of project if exists, otherwise, fall back to flycheck default."
-  (let ((root-eslint-bin (expand-file-name (concat "node_modules/.bin/" executable) (projectile-project-root))))
-    (if (file-exists-p root-eslint-bin)
-	root-eslint-bin
-      (flycheck-default-executable-find "eslint"))))
-
-
-(setq flycheck-executable-find 'mhs/use-eslint-from-project-root-node-modules)
-
 
 (use-package nodejs-repl :ensure t
   :config
