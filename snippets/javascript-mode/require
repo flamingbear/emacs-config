@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-#name : require
-#key: rq
-# --
-const $1 = require('$0');
