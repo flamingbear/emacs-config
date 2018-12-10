@@ -31,7 +31,7 @@
                           ("services" . 115)
                           ("masie" . 105)
                           ("annual_review" . 97)))
-  (setq org-todo-keywords '((sequence "TODO" "WAITING" "BLOCKED" "|" "DONE" "DELEGATED" "CANCELLED")))
+  (setq org-todo-keywords '((sequence "TODO" "WAITING" "BLOCKED" "|" "DONE" "DELEGATED" "CANCELED")))
 
   (defvar mhs-org-mode-directory (expand-file-name "~savoie/Dropbox/orgs/")
     "Location of my .org mode files" )
