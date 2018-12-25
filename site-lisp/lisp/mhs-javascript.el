@@ -61,23 +61,6 @@
   (setq js-switch-indent-offset 2)
   (setq js-indent-level 2))
 
-
-;; Insert pretty javadocs.
-(use-package js-doc
-  :ensure t
-  :config
-  (setq js-doc-mail-address "savoie@nsidc.org"
-	js-doc-author (format "Matt Savoie <%s>" js-doc-mail-address)
-	js-doc-url ""
-	js-doc-license "")
-
-  (add-hook 'js2-mode-hook
-            #'(lambda ()
-		(define-key js2-mode-map "\C-ci" 'js-doc-insert-function-doc)
-		(define-key js2-mode-map "@" 'js-doc-insert-tag))))
-
-
-
 ;; Can't use prettier-js with an existing package that uses different eslint
 ;; (use-package prettier-js :ensure t
 ;;   :config
@@ -113,9 +96,12 @@
 (use-package tide
   :ensure t
   :after (company flycheck js2-mode)
-  :hook ((js2-mode . tide-setup))
+  :hook ((js2-mode . tide-setup)
+	 (js2-mode . setup-tide-mode))
   :config
-  (flycheck-add-next-checker 'javascript-eslint 'javascript-tide 'append))
+  (flycheck-add-next-checker 'javascript-eslint 'javascript-tide 'append)
+  (define-key js2-mode-map "\C-ci" 'tide-jsdoc-template)
+  )
 
 (use-package nodejs-repl :ensure t
   :config

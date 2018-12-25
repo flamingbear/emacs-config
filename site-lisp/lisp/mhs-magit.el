@@ -18,7 +18,6 @@
   (setq magit-push-always-verify nil)
   (setq magit-diff-refine-hunk 'all)
 
-
   ;; http://endlessparentheses.com/automatically-configure-magit-to-access-github-prs.html
   (defun endless/add-PR-fetch ()
   "If refs/pull is not defined on a GH repo, define it."
@@ -93,6 +92,10 @@
 
   (setq magit-completing-read-function 'ivy-completing-read)
   )
+
+(use-package forge
+  :after magit
+  :ensure t)
 
 (provide 'mhs-magit)
 ;;; mhs-magit.el ends here
