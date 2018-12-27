@@ -1,9 +1,12 @@
 ;; This sets up fancy modelines on non-terminal displays.
 
 (use-package all-the-icons :ensure t)
-(use-package spaceline :ensure t)
+(use-package spaceline
+  :ensure t
+  :pin melpa-stable)
 (use-package spaceline-all-the-icons
   :ensure t
+  :pin melpa-stable
   :after spaceline
   :config
   (if (> (display-color-cells) 256)
