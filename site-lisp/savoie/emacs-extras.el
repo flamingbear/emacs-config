@@ -166,6 +166,7 @@
 ;; Projectile is the BOMB!
 (use-package projectile
   :ensure t
+  :diminish
   :init
   (setq projectile-keymap-prefix (kbd "C-c p"))  ;; You should try to learn the new way. but you wont
   :config
@@ -288,11 +289,13 @@
 
 (use-package smartparens
   :ensure t
+  :diminish
   :config
   (require 'smartparens-config))
 
 (use-package rainbow-delimiters
   :ensure t
+  :diminish
   :init
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
@@ -358,6 +361,7 @@
 ;; read personal abbreviations each time
 (quietly-read-abbrev-file (locate-user-emacs-file ".abbrev_defs"))
 (setq abbrev-mode t)
+
 
 
 

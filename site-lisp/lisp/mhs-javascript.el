@@ -116,6 +116,7 @@
 
 (use-package indium
   :ensure t
+  :diminish
   :after js2-mode
   :hook
   (js2-mode . indium-interaction-mode)
