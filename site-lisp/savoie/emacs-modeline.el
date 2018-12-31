@@ -3,12 +3,12 @@
 
 (use-package spaceline
   :ensure t
+  :init
+  (setq powerline-default-separator 'wave)
   :config
   (require 'spaceline-config)
   (spaceline-emacs-theme)
   (setq powerline-image-apple-rgb t)
-  ;; (setq powerline-default-separator 'wave)
-  ;; (spaceline-compile)
   (diminish 'auto-revert-mode)
 
   ;; If you want the leftmost to match your custom faces, use this.
@@ -22,7 +22,6 @@
   ;;   'mhs-spaceline-highlight-face)
   ;; (setq spaceline-highlight-face-func 'mhs-spaceline-highlight-face-default)
   (setq spaceline-highlight-face-func 'spaceline-highlight-face-modified)
-
   )
 
 (provide 'emacs-modeline)
