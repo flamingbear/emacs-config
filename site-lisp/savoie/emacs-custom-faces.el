@@ -9,7 +9,7 @@
   "Variable to be filled with the name of the environment parsed from /etc/fqdn.")
 
 (defun parse-fqdn (fn)
-  "Parse /etc/fqdn file to get maching information.  FN is the filename, always /etc/fqdn."
+  "Parse /etc/fqdn file to get machine information.  FN is the filename, always /etc/fqdn."
   (with-temp-buffer
     (insert-file-contents fn)
     (string-match "^\\(.*?\\)\\.\\(.*?\\)\\." (buffer-string))

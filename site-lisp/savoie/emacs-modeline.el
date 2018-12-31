@@ -9,6 +9,7 @@
   :config
   (require 'spaceline-config)
   (spaceline-spacemacs-theme)
+  (setq powerline-image-apple-rgb t)
   (diminish 'auto-revert-mode))
 
 ;; (use-package spaceline-all-the-icons
