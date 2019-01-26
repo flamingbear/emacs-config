@@ -4,12 +4,12 @@
 ;; ---------------------------
 ;; What do I do with old mail?
 (defvar mhs-imap-archive-group)
-(setq mhs-imap-archive-group  "nnimap+kryos:Sent")
+(setq mhs-imap-archive-group  "Sent")
 (setq gnus-message-archive-group mhs-imap-archive-group)
 
 ;; Where should expired articles end up?
 ;;---------------------------------------
-(defvar mhs-expired-group "nnimap+kryos:Trash")
+(defvar mhs-expired-group "Trash")
 (setq nnmail-expiry-target mhs-expired-group)
 
 
@@ -23,26 +23,25 @@
 (setq gnus-buttonized-mime-types (quote ("multipart/signed")))
 (setq gnus-inhibit-mime-unbuttonizing nil)
 
-(use-package nnir :defer 3)
+(use-package nnir :defer 2)
 
+(setq gnus-select-method
+      '(nnimap "kryos"
+	       (nnimap-inbox "INBOX")
+               (nnimap-address "kryos.colorado.edu")
+               (nnimap-server-port 993)
+               (nnimap-stream ssl)
+               (nnir-search-engine imap)
+               (nnimap-authinfo-file "~/.authinfo.gpg")
+	       (nnimap-record-commands t)))
 
 (setq gnus-secondary-select-methods
-      '(
-        (nnimap "kryos"
-                (nnimap-inbox "INBOX")
-                (nnimap-address "kryos.colorado.edu")
-                (nnimap-server-port 993)
-                (nnimap-stream ssl)
-                (nnir-search-engine imap)
-                (nnimap-authinfo-file "~/.authinfo.gpg")
-                )
-        (nnimap "CU-exchange"
+      '((nnimap "CU-exchange"
                 (nnimap-address "outlook.office365.com")
                 (nnimap-server-port 993)
                 (nnimap-stream ssl)
                 (nnir-search-engine imap)
-                (nnimap-authinfo-file "~/.authinfo.gpg")
-                )
+                (nnimap-authinfo-file "~/.authinfo.gpg"))
 	(nnml "private" )))
 
 
@@ -241,20 +240,18 @@
 ;; Set automatic days to expire on some groups
 (setq nnmail-expiry-wait-function
       (lambda (group)
-        (cond ((string= group "nsidc-notices") 90)
-              ((string= group  "jira-production") 30)
-              ((string= group  "jira-tickets") 30)
-              ((string= group  "bitbucket") 30)
-	      ((string= group  "maild/travis") 30)
-              ((string= group "confluence") 30)
-              ((string= group "glas_requests") 10)
-              ((string= group "spam") 7)
-              ((string= group "clojure-mail") 7)
+        (cond ((string-match "nsidc-notices" group) 90)
+              ((string-match "jira-production" group) 30)
+              ((string-match "jira-tickets" group) 30)
+              ((string-match "bitbucket" group) 30)
+	      ((string-match "maild/travis" group) 30)
+              ((string-match "confluence" group) 30)
+              ((string-match "spam" group) 7)
               ((string-match "mail-" group) 30)
-              ((string= group "lists") 200)
-              ((string= group "cf-metadata") 10)
-              ((string= group "saved") 'never)
-              (t 200))))
+              ((string-match "lists" group) 100)
+              ((string-match "cf-metadata" group) 10)
+              ((string-match "saved" group) 'never)
+              (t 100))))
 
 ;; Set the groups that are auto-expirable.
 (setq gnus-auto-expirable-newsgroups "\\(.*lists\\|.*bitbucket.*\\|.*jira.*\\|.*list\\|.*nsidc-notices\\|.*confluence\\|.*exchange:INBOX\\)")

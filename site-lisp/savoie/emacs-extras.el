@@ -8,8 +8,8 @@
   :init
   (setq gnus-init-file (locate-user-emacs-file ".gnus"))
   (load-file gnus-init-file)
+
   :config
-  (setq gnus-select-method (quote (nntp "nntp.aioe.org")))
   (setq gnus-verbose 10)
   (setq gnus-treat-hide-signature t)
   (setq gnus-treat-display-x-face 'head)
@@ -30,8 +30,7 @@
   (setq mail-source-delete-incoming t)
   (setq mail-user-agent 'message-user-agent)
   (setq gnus-suppress-duplicates t)
-  (setq gnus-summary-ignore-duplicates t)
-  )
+  (setq gnus-summary-ignore-duplicates t))
 
 
 ;; Override having to type Yes or No with just Y or N
