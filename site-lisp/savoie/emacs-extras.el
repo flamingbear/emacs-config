@@ -322,6 +322,10 @@
 ;; Do binary diff in hexl-mode if files are binary format
 (use-package binary-diff)
 
+;; Use system trash
+(setq delete-by-moving-to-trash 't)
+(setq trash-directory "~/.Trash/")
+
 
 ;;--------------------------------------------------------------------------
 ;; GIT has some quirks and normally, I don't want to do a regular diff when
