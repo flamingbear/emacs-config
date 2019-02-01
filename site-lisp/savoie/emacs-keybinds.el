@@ -142,7 +142,7 @@ If a region is not selected and,
 (global-set-key "\C-c]"                'mhs-sqbracket-region)
 (global-set-key "\C-c<"                'mhs-anglebracket-region)
 (global-set-key "\C-c>"                'mhs-anglebracket-region)
-; (global-set-key (kbd "C-c p") 'perldb)
+
 (global-set-key (kbd "C-x SPC") 'push-mark-command)
 
 
@@ -177,27 +177,26 @@ If a region is not selected and,
     ("M-p" mc/unmark-previous-like-this)
     ("r" mc/mark-all-in-region-regexp :exit t)
     ("q" nil))
-
   (define-key mhs-map [(f9)] 'multiple-cursors-hydra/body))
 
-
-
-;; Ace Jumping mode.
-(use-package ace-jump-mode
+(use-package avy
   :ensure t
   :config
-  (define-key global-map (kbd "C-c x") 'ace-jump-mode))
+  (global-set-key (kbd "C-c x") 'avy-goto-word-or-subword-1)
+  ;;  (global-set-key (kbd "s-.") 'avy-goto-word-or-subword-1)
+  ;; (global-set-key (kbd "s-w") 'ace-window)
+  )
 
-;; (use-package ace-window
-;;   ;; https://github.com/abo-abo/ace-window
-;;   :ensure t
-;;   :config
-;;   (global-set-key (kbd "M-o") 'ace-window)
-;;   (global-set-key (kbd "C-x o") 'ace-window)
-;;   (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
-;;   ;; aw-dispatch-always Must be true if you want to use fancy changing actions midway.
-;;   (setq aw-dispatch-always 'nil)
-;;   )
+(use-package ace-window
+  ;; https://github.com/abo-abo/ace-window
+  :ensure t
+  :config
+  (global-set-key (kbd "M-o") 'ace-window)
+  (global-set-key (kbd "C-x o") 'ace-window)
+  (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+  ;; aw-dispatch-always Must be true if you want to use fancy changing actions midway.
+  (setq aw-dispatch-always 'nil)
+  )
 
 
 
