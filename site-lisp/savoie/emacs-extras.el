@@ -268,7 +268,7 @@
   :config
   (add-to-list 'company-backends 'company-tern)
   (add-to-list 'company-backends 'company-jedi)
-  (setq company-idle-delay 0)
+  (setq company-idle-delay 0.005)
   )
 
 

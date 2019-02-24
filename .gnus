@@ -4,7 +4,7 @@
 ;; ---------------------------
 ;; What do I do with old mail?
 (defvar mhs-imap-archive-group)
-(setq mhs-imap-archive-group  "Sent")
+(setq mhs-imap-archive-group  "nnimap+kryos:Sent")
 (setq gnus-message-archive-group mhs-imap-archive-group)
 
 ;; Where should expired articles end up?
@@ -65,6 +65,7 @@
 (defvar my-split-methods
   '(|
     (any ".*savoie@kryos.colorado.edu.*" "spam")
+    ("Subject" ".*POTENTIAL SPAM.*" "spam")
     ("Delivered-To" "savoie@kryos.colorado.edu" "spam")
     ("Subject" ".*\\[confluence\\].*" "maild/confluence")
     ("Subject" ".*\\[Bamboo\\].*" "maild/bitbucket")

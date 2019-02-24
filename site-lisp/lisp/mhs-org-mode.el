@@ -9,10 +9,13 @@
 ;; Keywords:
 
 ;; See if you can run orgmode from this computer.
+
 (use-package org
   :pin org
   :ensure org-plus-contrib
+
   :config
+  (require 'org-tempo)
   (setq org-duration-format 'h:mm)
   (setq org-agenda-files "~/Dropbox/orgs/org-agenda-files")
   (setq org-clock-persist (quote history))

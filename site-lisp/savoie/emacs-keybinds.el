@@ -192,7 +192,7 @@ If a region is not selected and,
   :ensure t
   :config
   (global-set-key (kbd "M-o") 'ace-window)
-  (global-set-key (kbd "C-x o") 'ace-window)
+  (global-set-key (kbd "C-x o") 'other-window) ;; not ready for all acey yet.
   (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
   ;; aw-dispatch-always Must be true if you want to use fancy changing actions midway.
   (setq aw-dispatch-always 'nil)
