@@ -62,14 +62,15 @@
   (setq js-indent-level 2))
 
 ;; Can't use prettier-js with an existing package that uses different eslint
-;; (use-package prettier-js :ensure t
-;;   :config
-;;   (add-hook 'js2-mode-hook 'prettier-js-mode)
-;;   (setq prettier-js-args '(
-;; 			   "--trailing-comma" "all"
-;; 			   "--bracket-spacing" "true"
-;; 			   "--single-quote" "true"
-;; 			   )) )
+(use-package prettier-js :ensure t
+  :config
+  (add-hook 'js2-mode-hook 'prettier-js-mode)
+  (setq prettier-js-args '(
+			   "--trailing-comma" "all"
+			   "--bracket-spacing" "true"
+			   "--single-quote" "true"
+			   "--arrow-parens" "always"
+			   )) )
 
 ;; This might come in handy
 (use-package eslint-fix :ensure t)

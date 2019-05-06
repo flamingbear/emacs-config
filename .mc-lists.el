@@ -3,6 +3,7 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+	beginning-of-visual-line
 	clipboard-kill-ring-save
 	dabbrev-expand
 	ein:worksheet-split-cell-at-point
@@ -10,6 +11,7 @@
 	end-of-visual-line
 	eval-print-last-sexp
 	forward-sexp
+	handle-switch-frame
 	indent-for-tab-command
 	insert-register
 	ivy-wgrep-change-to-wgrep-mode
