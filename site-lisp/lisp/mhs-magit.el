@@ -17,6 +17,8 @@
   (setq magit-last-seen-setup-instructions "1.4.0")
   (setq magit-push-always-verify nil)
   (setq magit-diff-refine-hunk 'all)
+  ;; work around for bug. https://github.com/magit/ghub/issues/81
+  (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 
   ;; http://endlessparentheses.com/automatically-configure-magit-to-access-github-prs.html
   (defun endless/add-PR-fetch ()
