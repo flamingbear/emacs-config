@@ -56,7 +56,12 @@
 (define-key mhs-map "w"                  'delete-trailing-whitespace)
 (define-key mhs-map "y"                              'clipboard-yank)
 
-(if running-macos (define-key mhs-map "g" 'gnus))
+;; :( - not on the vpn.
+;; (if running-macos (define-key mhs-map "g" 'gnus))
+(defun whomp-whomp ()
+  (interactive)
+  (message "Whomp Whomp!"))
+(if running-macos (define-key mhs-map "g" 'whomp-whomp))
 
 ;; set up the searchmap keys
 (define-key mhs-searchmap "f"               'mhs-occur-this-word-maybe)

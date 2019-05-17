@@ -66,7 +66,6 @@
   :config
   (add-hook 'js2-mode-hook 'prettier-js-mode)
   (setq prettier-js-args '(
-			   "--trailing-comma" "all"
 			   "--bracket-spacing" "true"
 			   "--single-quote" "true"
 			   "--arrow-parens" "always"
