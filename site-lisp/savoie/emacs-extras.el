@@ -268,6 +268,10 @@
   :config
   (add-to-list 'company-backends 'company-tern)
   (add-to-list 'company-backends 'company-jedi)
+  (add-to-list 'company-dabbrev-code-modes 'js2-mode)
+  (add-to-list 'company-dabbrev-code-modes 'yaml-mode)
+  (add-to-list 'company-dabbrev-code-modes 'markdown-mode)
+  (add-to-list 'company-dabbrev-code-modes 'text-mode)
   (setq company-idle-delay 0.005)
   )
 
