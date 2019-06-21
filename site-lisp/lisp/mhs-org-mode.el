@@ -8,83 +8,82 @@
 ;; Version: 1.0
 ;; Keywords:
 
-;; See if you can run orgmode from this computer.
-
 (use-package org
   :pin org
   :ensure org-plus-contrib
 
   :config
-  (require 'org-tempo)
-  (setq org-duration-format 'h:mm)
+  ;; always open .org files in org-mode
+  (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+  (define-key global-map "\C-cl" 'org-store-link)
+
+  (define-key global-map "\C-ca" 'org-agenda)
   (setq org-agenda-files "~/Dropbox/orgs/org-agenda-files")
-  (setq org-clock-persist (quote history))
-  (setq org-clock-persist-file "~/Dropbox/orgs/org-clock-save.el")
+
+  ;; I don't want to see days in my time tracking
+  (setq org-duration-format 'h:mm)
+
+  ;; Optionally add notes or timestamps when you complete a task.
   (setq org-log-done (quote time))
-  (setq org-refile-targets (quote ((org-agenda-files :maxlevel . 5))))
-  (setq org-remember-default-headline "TASKS.org")
-  (setq org-remember-templates
-        '(("todo" 116 "* TODO %? %u %a" nil nil nil)
-          ("note" 110 "* %?" nil nil nil)
-          ("Url" 117 "* %^{Title} Source: %u, %c	%i" nil nil nil)))
-  (setq org-tag-alist   '(("daac" . 100)
-                          ("programmer" . 112)
-                          ("erik" . 101)
-                          ("management" . 109)
-                          ("services" . 115)
-                          ("masie" . 105)
-                          ("annual_review" . 97)))
   (setq org-todo-keywords '((sequence "TODO" "WAITING" "BLOCKED" "|" "DONE" "DELEGATED" "CANCELED")))
+
+  (require 'org-capture)
+  (define-key global-map "\C-cr" 'org-capture)
+  (setq org-directory "~/Dropbox/orgs")
+  (setq org-default-notes-file (concat org-directory "/notes.org"))
+
 
   (defvar mhs-org-mode-directory (expand-file-name "~savoie/Dropbox/orgs/")
     "Location of my .org mode files" )
 
+  ;; Fancy set up for querying old archived agenda files.
   (when (and (file-accessible-directory-p mhs-org-mode-directory))
-    (set-variable 'comment-start 'nil)
-    (setq org-agenda-custom-commands
-          '(("Q" . "Custom queries") ;; gives label to "Q"
-            ("Qa" "Archive search" search ""
-             ((org-agenda-files (file-expand-wildcards "~/Dropbox/orgs/*.org_archive"))))
-            ("Qb" "Projects and Archive" search ""
-             ((org-agenda-text-search-extra-files (file-expand-wildcards "~/Dropbox/orgs/*.org_archive"))))
-            ;; searches both projects and archive directories
-            ("QA" "Archive tags search" org-tags-view ""
-             ((org-agenda-files (file-expand-wildcards "~/Dropbox/orgs/*.org_archive"))))))
-    "mhs-org mode loaded"  )
+    (setq
+     org-agenda-custom-commands
+     '(("Q" . "Custom queries") ;; gives label to "Q"
+       ("Qa" "Archive search" search "" ((org-agenda-files (file-expand-wildcards "~/Dropbox/orgs/*.org_archive"))))
+       ("Qb" "Projects and Archive" search ""
+        ((org-agenda-text-search-extra-files (file-expand-wildcards "~/Dropbox/orgs/*.org_archive"))))
+       ;; searches both projects and archive directories
+       ("QA" "Archive tags search" org-tags-view ""
+        ((org-agenda-files (file-expand-wildcards "~/Dropbox/orgs/*.org_archive"))))))
+    "mhs-org mode loaded")
 
-  (require 'org-protocol)
+  (setq org-fontify-done-headline nil)
 
   ;; Keep a clock across working sessions.
+  (setq org-clock-persist (quote history))
+  (setq org-clock-persist-file "~/Dropbox/orgs/org-clock-save.el")
   (org-clock-persistence-insinuate)
-
-  ;; The following lines are always needed.
-  (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
-  (define-key global-map "\C-cl" 'org-store-link)
-  (define-key global-map "\C-ca" 'org-agenda)
-
-  (require 'org-capture)
-  (setq org-directory "~/Dropbox/orgs")
-  (setq org-default-notes-file (concat org-directory "/notes.org"))
-
-  ;; Prefer capture to remember.
- ;;(define-key global-map "\C-cr" 'org-remember)
-  (define-key global-map "\C-cr" 'org-capture)
-
-  (setq org-fontify-done-headline t)
-
+  ;;https://emacs.stackexchange.com/questions/38483/reminds-to-clock-out-or-just-clock-out-when-there-has-a-clock-running
+  (defun my/org-clock-query-out ()
+  "Ask the user before clocking out.
+This is a useful function for adding to `kill-emacs-query-functions'."
+  (if (and
+       (featurep 'org-clock)
+       (funcall 'org-clocking-p)
+       (y-or-n-p "You are currently clocking time, clock out? "))
+      (org-clock-out)
+    t)) ;; only fails on keyboard quit or error
+  (add-hook 'kill-emacs-query-functions 'my/org-clock-query-out)
 
   (defun mhs-update-today ()
     (interactive)
-    (save-excursion
-      (beginning-of-line)
-      (while (search-forward-regexp "[0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\}" (line-end-position) t)
-	(replace-match (format-time-string "%Y-%m-%d")))))
-
-
-
-  (setq org-time-clocksum-format
-        '(:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t))
-  )
+    (with-current-buffer (find-file-other-window "~/Dropbox/orgs/sprint_track.org")
+      (save-excursion
+	(text-mode)
+	(beginning-of-buffer)
+	(search-forward "TODAY")
+	(beginning-of-line)
+	(next-line)
+	(while (search-forward-regexp "[0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\}" (line-end-position) t)
+	  (replace-match (format-time-string "%Y-%m-%d")))
+	(org-mode)
+	(org-clock-report)
+	)
+      (save-buffer)
+      (org-show-all)
+      ))
 
 (provide 'mhs-org-mode)
 ;;; mhs-org-mode.el ends here
