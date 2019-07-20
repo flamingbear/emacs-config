@@ -149,6 +149,10 @@
 ;; delete trailing whitespace
 ;; TODO [MHS, 2013-01-23] You should learn how to make this only for modes you want.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+(add-hook 'text-mode-hook '(lambda ()
+			     (setq indent-tabs-mode nil)
+			     (setq tab-width 4)))
 ;; To edit binary files
 ;; (remove-hook 'before-save-hook 'delete-trailing-whitespace)
 
@@ -268,13 +272,13 @@
   :config
   (add-to-list 'company-backends 'company-tern)
   (add-to-list 'company-backends 'company-jedi)
+  (setq company-idle-delay 0.005)
+  (require 'company-dabbrev-code)
   (add-to-list 'company-dabbrev-code-modes 'js2-mode)
   (add-to-list 'company-dabbrev-code-modes 'yaml-mode)
   (add-to-list 'company-dabbrev-code-modes 'markdown-mode)
   (add-to-list 'company-dabbrev-code-modes 'text-mode)
-  (setq company-idle-delay 0.005)
   )
-
 
 (use-package company-quickhelp
   :ensure t

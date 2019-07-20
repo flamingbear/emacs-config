@@ -64,7 +64,7 @@
 ;; Can't use prettier-js with an existing package that uses different eslint
 (use-package prettier-js :ensure t
   :config
-  (add-hook 'js2-mode-hook 'prettier-js-mode)
+  ;; (add-hook 'js2-mode-hook 'prettier-js-mode)
   (setq prettier-js-args '(
 			   "--bracket-spacing" "true"
 			   "--single-quote" "true"

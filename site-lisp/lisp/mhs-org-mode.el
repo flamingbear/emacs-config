@@ -84,6 +84,6 @@ This is a useful function for adding to `kill-emacs-query-functions'."
       (save-buffer)
       (org-show-all)
       ))
-
+)
 (provide 'mhs-org-mode)
 ;;; mhs-org-mode.el ends here

@@ -32,6 +32,7 @@
 	org-yank
 	save-some-buffers
 	sgml-slash
+	sp-remove-active-pair-overlay
 	wgrep-finish-edit
 	yaml-electric-backspace
 	yaml-electric-bar-and-angle
@@ -44,6 +45,7 @@
 	counsel-M-x
 	dired-toggle-read-only
 	ivy-switch-buffer
+	markdown-outdent-or-delete
 	multiple-cursors-hydra/body
 	multiple-cursors-hydra/mc/edit-lines-and-exit
 	multiple-cursors-hydra/mc/mark-all-like-this-and-exit
