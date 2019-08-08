@@ -272,6 +272,7 @@
   :config
   (add-to-list 'company-backends 'company-tern)
   (add-to-list 'company-backends 'company-jedi)
+  (add-to-list 'company-backends 'company-terraform)
   (setq company-idle-delay 0.005)
   (require 'company-dabbrev-code)
   (add-to-list 'company-dabbrev-code-modes 'js2-mode)
@@ -570,6 +571,12 @@
 (setq select-active-regions 't)
 
 (setq large-file-warning-threshold nil)
+
+
+
+(use-package terraform-mode :ensure t)
+(use-package hcl-mode :ensure t)
+(use-package company-terraform :ensure t)
 
 
 
