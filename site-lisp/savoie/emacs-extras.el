@@ -201,9 +201,9 @@
 (use-package grep
   :defer 3
   :config
-  (setq grep-find-command
-        "find . -name \".svn\" -prune -o -type f  -exec grep -nH \"\" {} \\;"))
-
+  ;; (setq grep-find-command
+  ;;       "find . -name \".svn\" -prune -o -type f  -exec grep -nH \"\" {} \\;"))
+  )
 (use-package wgrep :ensure t)
 
 (use-package puppet-mode :ensure t)
