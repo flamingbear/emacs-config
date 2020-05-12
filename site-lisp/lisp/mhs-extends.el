@@ -418,9 +418,10 @@ following the prefix character"
 
 (use-package json-mode
   :config
-  (setq json-reformat:indent-width 2)
+  (setq json-reformat:indent-width 2))
 
-  )
+(use-package json-navigator
+  :ensure t)
 
 (defun json-format ()
   (interactive)

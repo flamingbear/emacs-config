@@ -559,9 +559,8 @@
  (string-to-char "p")
  "ftp://sidads.colorado.edu/pub/incoming/savoie")
 
-;; run display on last "created" image
-(fset 'mhs-display-last-created-image
-      "\C-rcreat\C-m\C-[f\C-f\C-@\C-e\C-[w\C-[>display \C-y&")
+(fset 'mhs-update-cumulus-token
+   [?\C-r ?y ?o ?u ?r ?_ ?t ?o ?k ?e ?n ?= ?\C-x ?\C-x ?\C-x ?\C-x ?\C-  ?\M-f ?\M-f ?\C-f ?\C-k ?\C-  ?\C-n ?\M-b ?\C-w ?\C-e ?\C-b ?\C-d ?\C-n ?\C-a])
 
 
 

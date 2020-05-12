@@ -54,12 +54,18 @@
 
 (use-package js2-mode
   :ensure t
-  :mode ("\\.jsx?\\'" . js2-jsx-mode)
   :mode ("\\.js\\'" . js2-mode)
   :config
   (add-hook 'js2-mode-hook (lambda ()  (setq indent-tabs-mode nil)))
   (setq js-switch-indent-offset 2)
   (setq js-indent-level 2))
+
+
+(use-package rjsx-mode :ensure t
+  :mode (("\\.jsx\\'" . rjsx-mode)
+	 ("component[s]?\\/.*\\.js\\'" . rjsx-mode))
+  )
+
 
 ;; Can't use prettier-js with an existing package that uses different eslint
 (use-package prettier-js :ensure t
@@ -91,7 +97,7 @@
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
   (setq company-tooltip-align-annotations t))
   ;; to debug tide-mode
-  ;; (setq tide-tsserver-process-environment '("TSS_LOG=-level verbose -file /Users/savoie/tmp/tss.log"))
+  ;;  (setq tide-tsserver-process-environment '("TSS_LOG=-level verbose -file /Users/savoie/tmp/tss.log"))
 
 (use-package tide
   :ensure t
@@ -111,7 +117,9 @@
 			      (local-set-key "\C-cr" 'nodejs-repl-send-region)
 			      (local-set-key "\C-cb" 'nodejs-repl-send-buffer)
 			      (local-set-key "\C-cl" 'nodejs-repl-load-file)
-			      (local-set-key "\C-c\C-z" 'nodejs-repl-switch-to-repl))))
+			      (local-set-key "\C-c\C-z" 'nodejs-repl-switch-to-repl)))
+  (setq nodejs-repl-arguments '("--experimental-repl-await"))
+  )
 
 
 (use-package indium
