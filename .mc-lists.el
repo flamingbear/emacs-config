@@ -16,6 +16,7 @@
 	insert-register
 	ivy-wgrep-change-to-wgrep-mode
 	kill-region
+	mark-whole-buffer
 	markdown-exdent-or-delete
 	message-beginning-of-line
 	nxml-electric-slash
@@ -30,6 +31,7 @@
 	org-shiftright
 	org-shiftup
 	org-yank
+	rjsx-delete-creates-full-tag
 	save-some-buffers
 	sgml-slash
 	sp-remove-active-pair-overlay
@@ -44,6 +46,7 @@
 	backward-kill-sentence
 	counsel-M-x
 	dired-toggle-read-only
+	ivy-occur-click
 	ivy-switch-buffer
 	markdown-outdent-or-delete
 	multiple-cursors-hydra/body
@@ -55,4 +58,5 @@
 	next-error-no-select
 	org-cycle
 	swiper
+	zap-up-to-char
 	))
