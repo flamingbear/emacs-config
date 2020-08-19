@@ -209,6 +209,10 @@
 (use-package puppet-mode :ensure t)
 (use-package gist :ensure t)
 
+(use-package so-long :ensure t
+  :config
+  (global-so-long-mode 1))
+
 
 ;; IDLWAVE Customizations
 ;; Load this before ruby because we want the jds history search.
@@ -441,8 +445,9 @@
   :config
   (setq bookmark-save-flag 1))
 
-
 (autoload 'css-mode "css-mode")
+(setq css-indent-offset 2)
+
 (setq auto-mode-alist
       (cons '("\\.css\\'" . css-mode) auto-mode-alist))
 
@@ -562,6 +567,8 @@
 (fset 'mhs-update-cumulus-token
    [?\C-r ?y ?o ?u ?r ?_ ?t ?o ?k ?e ?n ?= ?\C-x ?\C-x ?\C-x ?\C-x ?\C-  ?\M-f ?\M-f ?\C-f ?\C-k ?\C-  ?\C-n ?\M-b ?\C-w ?\C-e ?\C-b ?\C-d ?\C-n ?\C-a])
 
+(fset 'mhs-reformat-xml
+   [?\C-u escape ?| ?x ?m ?l ?l ?i ?n ?t ?  ?- ?- ?f ?o ?r ?m ?a ?t ?  ?- ?  return])
 
 
 ;; Stuff out of my custom

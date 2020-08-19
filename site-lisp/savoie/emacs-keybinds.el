@@ -18,10 +18,11 @@
 	 )
   :init
   ;; Use ripgrep only if available.
-  (if (executable-find "rg")
-      (bind-key "C-c j" 'counsel-rg)
-    (bind-key "C-c j" 'counsel-git-grep))
-  (setq counsel-rg-base-command  "rg -S --hidden --no-heading --line-number --color never %s .")
+  (bind-key "C-c j" 'counsel-rg)
+  ;; (if (executable-find "rg")
+  ;;     (bind-key "C-c j" 'counsel-rg)
+  ;;   (bind-key "C-c j" 'counsel-git-grep))
+  (setq counsel-rg-base-command  "rg -S -g !.git --hidden --no-heading --line-number --color never %s .")
   )
 
 

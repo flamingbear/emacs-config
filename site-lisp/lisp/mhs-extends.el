@@ -22,7 +22,7 @@
 
 (defun mhs-insert-todo ()
   (interactive)
-  (insert (concat "TODO [MHS, " (format-time-string "%Y-%m-%d") "] ")))
+  (insert (concat "TODO [MHS, " (format-time-string "%m/%d/%Y") "] ")))
 
 (defun mhs-insert-date (arg)
   (interactive "p")
