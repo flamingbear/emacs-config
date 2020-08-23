@@ -127,7 +127,6 @@
 
 (defvar dev-hook nil
   "Hook that gets run on activation of any programming mode.")
-(add-hook 'dev-hook 'add-line-numbers)
 (add-hook 'dev-hook 'local-comment-auto-fill)
 (add-hook 'dev-hook 'company-mode)
 
@@ -284,6 +283,10 @@
   (add-to-list 'company-dabbrev-code-modes 'markdown-mode)
   (add-to-list 'company-dabbrev-code-modes 'text-mode)
   )
+
+(use-package company-box :ensure t
+  :hook (company-mode . company-box-mode))
+
 
 (use-package company-quickhelp
   :ensure t

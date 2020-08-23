@@ -49,28 +49,17 @@
 ;; the mhs/use-eslint-from-project-root-node-modules hack.
 (use-package add-node-modules-path :ensure t
   :config
-  (eval-after-load 'js2-mode '(add-hook 'js2-mode-hook #'add-node-modules-path))
+  (add-hook 'js-mode-hook #'add-node-modules-path)
   (eval-after-load 'projectile-mode (add-hook 'projectile-after-switch-project-hook #'add-node-modules-path)))
 
-(use-package js2-mode
-  :ensure t
-  :mode ("\\.js\\'" . js2-mode)
-  :config
-  (add-hook 'js2-mode-hook (lambda ()  (setq indent-tabs-mode nil)))
-  (setq js-switch-indent-offset 2)
-  (setq js-indent-level 2))
-
-
-(use-package rjsx-mode :ensure t
-  :mode (("\\.jsx\\'" . rjsx-mode)
-	 ("component[s]?\\/.*\\.js\\'" . rjsx-mode))
-  )
-
+(add-hook 'js-mode-hook (lambda ()  (setq indent-tabs-mode nil)))
+(setq js-switch-indent-offset 2)
+(setq js-indent-level 2)'
 
 ;; Can't use prettier-js with an existing package that uses different eslint
 (use-package prettier-js :ensure t
   :config
-  ;; (add-hook 'js2-mode-hook 'prettier-js-mode)
+  ;; (add-hook 'js-mode-hook 'prettier-js-mode)
   (setq prettier-js-args '(
 			   "--bracket-spacing" "true"
 			   "--single-quote" "true"
@@ -82,7 +71,7 @@
 
 ;; Let's try smart parens in javascript.
 (when (featurep 'smartparens)
-    (add-hook 'js2-mode-hook #'smartparens-mode))
+    (add-hook 'js-mode-hook #'smartparens-mode))
 
 
 ;; Use Tide for javascript goodness. It supports linting, rename, find
@@ -101,18 +90,18 @@
 
 (use-package tide
   :ensure t
-  :after (company flycheck js2-mode)
-  :hook ((js2-mode . tide-setup)
-	 (js2-mode . setup-tide-mode))
+  :after (company flycheck)
+  :hook ((js-mode . tide-setup)
+	 (js-mode . setup-tide-mode))
   :config
   (flycheck-add-next-checker 'javascript-eslint 'javascript-tide 'append)
-  (define-key js2-mode-map "\C-ci" 'tide-jsdoc-template)
+  (define-key js-mode-map "\C-ci" 'tide-jsdoc-template)
   )
 
 (use-package nodejs-repl :ensure t
   :config
   ;; Setup key mappings for nodejs-repl.
-  (add-hook 'js2-mode-hook '(lambda ()
+  (add-hook 'js-mode-hook '(lambda ()
 			      (local-set-key "\C-x\C-e" 'nodejs-repl-send-last-sexp)
 			      (local-set-key "\C-cr" 'nodejs-repl-send-region)
 			      (local-set-key "\C-cb" 'nodejs-repl-send-buffer)
@@ -125,9 +114,7 @@
 (use-package indium
   :ensure t
   :diminish
-  :after js2-mode
-  :hook
-  (js2-mode . indium-interaction-mode)
+  :hook (js-mode . indium-interaction-mode)
   :config
   (setq indium-client-debug 't)
   )
