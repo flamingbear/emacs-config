@@ -24,7 +24,7 @@
 
 ;;; Code:
 
-(defvar mhs-jira--current-ticket-number "PM-xx"
+(defvar mhs-jira--current-ticket-number "CUMULUS-xx"
   "The current ticket number that is clocked in.")
 
 (defvar mhs-jira--url-base "https://nsidc.org/jira/browse/")
@@ -36,7 +36,7 @@
         (upcase
          (if (use-region-p)
              (buffer-substring-no-properties (region-beginning) (region-end))
-           (read-from-minibuffer "Enter ticket number: " "PM-"))))
+           (read-from-minibuffer "Enter ticket number: " "CUMULUS-"))))
   (mhs-jira--update-url-base  mhs-jira--current-ticket-number))
 
 

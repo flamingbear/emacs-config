@@ -28,6 +28,7 @@
 	org-metaright
 	org-self-insert-command
 	org-shiftdown
+	org-shiftleft
 	org-shiftright
 	org-shiftup
 	org-yank
@@ -48,6 +49,7 @@
 	dired-toggle-read-only
 	ivy-occur-click
 	ivy-switch-buffer
+	magit-status
 	markdown-outdent-or-delete
 	multiple-cursors-hydra/body
 	multiple-cursors-hydra/mc/edit-lines-and-exit

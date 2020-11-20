@@ -79,7 +79,7 @@ If a region is not selected and,
 
 
 (global-set-key [f1]          'mhs-insert-filename); F1
-(global-set-key [f2]                       'shell); F2
+(global-set-key [f2]                       'vterm); F2
 ;;(global-set-key [f3]                     'speedbar); F3
 ;;(global-set-key [f4]      '); F4
 ;;(global-set-key [f5]       '); F5
@@ -193,6 +193,7 @@ If a region is not selected and,
   :ensure t
   :config
   (global-set-key (kbd "M-o") 'ace-window)
+  (global-set-key (kbd "M-O") 'aw-flip-window)
   (global-set-key (kbd "C-x o") 'other-window) ;; not ready for all acey yet.
   (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
   ;; aw-dispatch-always Must be true if you want to use fancy changing actions midway.

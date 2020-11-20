@@ -583,6 +583,7 @@
 (use-package terraform-mode :ensure t)
 (use-package hcl-mode :ensure t)
 (use-package company-terraform :ensure t)
+(use-package vterm :ensure t)
 
 
 
