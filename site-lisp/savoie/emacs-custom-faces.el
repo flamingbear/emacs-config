@@ -50,6 +50,9 @@
 
 ;;-------------------------------------------------------------------
 ;; Customize the modeline and menu colors based on your environment.
+;;
+;; TODO [MHS, 11/24/2020] This is OBE since I swtiched to
+;;sanityinc-tomorrow-night can revisit later.
 ;;-------------------------------------------------------------------
 (cond
  (my-project
@@ -113,7 +116,8 @@
  (running-macos
   (progn
     (setq my-modeline-fg-color "#5d478b")
-    (setq my-modeline-bg-color "#ab82ff")))
+    (setq my-modeline-bg-color "#ab82ff")
+    ))
 
  ;; Default values if nothing else matched.
  (t (progn (setq my-modeline-fg-color "#ffd700")
@@ -136,15 +140,29 @@
   (set-face-background 'vertical-border my-modeline-bg-color)
   )
 
+(use-package color-theme-sanityinc-tomorrow
+  :ensure t
+  :config
+  (load-theme 'sanityinc-tomorrow-night t)
+  )
 
-(use-package ample-theme :ensure t)
-;; when you want to have fancy mode lines on App Emacs, but still deal with terminal windows...
-(if (<= (display-color-cells) 256)
-    (load-theme 'ample-flat-256 t)
-  (load-theme 'ample-flat-plus t))
+;; (use-package zenburn-theme
+;;   :ensure t
+;;   :config
+;;   (load-theme 'zenburn t)
+;;   )
 
-(mhs-update-mode-line)
+;; (use-package ample-theme
+;;   :ensure t
+;;   :config
+;;   (load-theme 'ample t))
+;; (use-package ample-theme :ensure t)
+;; ;; when you want to have fancy mode lines on App Emacs, but still deal with terminal windows...
+;; (if (<= (display-color-cells) 256)
+;;     (load-theme 'ample-flat-256 t)
+;;   (load-theme 'ample-flat-plus t))
 
+;; (mhs-update-mode-line)
 (provide 'emacs-custom-faces)
 
 ;;; .EMACS-CUSTOM-FACES ends here

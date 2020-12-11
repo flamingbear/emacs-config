@@ -1,6 +1,16 @@
 ;;; package --- Summary
 ;;;   Just standard extra things to load when I start emacs.
 
+(defun start-or-switch-to (function buffer-name)
+  "Invoke FUNCTION if there is no buffer with BUFFER-NAME.
+Otherwise switch to the buffer named BUFFER-NAME.  Don't clobber
+the current buffer."
+  (if (not (get-buffer buffer-name))
+      (progn
+        (split-window-sensibly (selected-window))
+        (other-window 1)
+        (funcall function))
+    (switch-to-buffer-other-window buffer-name)))
 
 ;;; Code:
 (use-package gnus
@@ -583,7 +593,14 @@
 (use-package terraform-mode :ensure t)
 (use-package hcl-mode :ensure t)
 (use-package company-terraform :ensure t)
-(use-package vterm :ensure t)
+
+(use-package vterm :ensure t
+  :init
+  (defun visit-vterm-buffer ()
+    "Create or visit a terminal buffer."
+    (interactive)
+    (start-or-switch-to (lambda () (vterm)) "vterm"))
+  )
 
 
 

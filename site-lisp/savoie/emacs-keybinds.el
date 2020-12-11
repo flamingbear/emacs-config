@@ -79,12 +79,7 @@ If a region is not selected and,
 
 
 (global-set-key [f1]          'mhs-insert-filename); F1
-(global-set-key [f2]                       'vterm); F2
-;;(global-set-key [f3]                     'speedbar); F3
-;;(global-set-key [f4]      '); F4
-;;(global-set-key [f5]       '); F5
-;;(global-set-key [f6]              'gud-break) ; F7
-;;(global-set-key [M-f6]            'gud-remove) ; F7
+(global-set-key [f2]          'visit-vterm-buffer)  ; F2
 
 
 ;; My Mapping Stuff, this is a prefix key that allows me access to more
@@ -95,8 +90,8 @@ If a region is not selected and,
 (global-set-key [f8]              'mhs-map) ; F7
 
 ;; This is so that I can get used to copy-paste in eclipse with mulgaSoft emacs+
-(global-set-key (kbd "C-x x") 'copy-to-register)
-(global-set-key (kbd "C-x g") 'insert-register)
+;; (global-set-key (kbd "C-x x") 'copy-to-register)
+;; (global-set-key (kbd "C-x g") 'insert-register)
 
 ;; This adds the function of being able to paste into other windows.
 (global-set-key (kbd "M-w") 'clipboard-kill-ring-save)
