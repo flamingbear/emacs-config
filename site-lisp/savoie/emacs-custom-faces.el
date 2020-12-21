@@ -140,11 +140,11 @@
   (set-face-background 'vertical-border my-modeline-bg-color)
   )
 
-(use-package color-theme-sanityinc-tomorrow
-  :ensure t
-  :config
-  (load-theme 'sanityinc-tomorrow-night t)
-  )
+;; (use-package color-theme-sanityinc-tomorrow
+;;   :ensure t
+;;   :config
+;;   (load-theme 'sanityinc-tomorrow-night t)
+;;   )
 
 ;; (use-package zenburn-theme
 ;;   :ensure t
@@ -152,10 +152,10 @@
 ;;   (load-theme 'zenburn t)
 ;;   )
 
-;; (use-package ample-theme
-;;   :ensure t
-;;   :config
-;;   (load-theme 'ample t))
+(use-package ample-theme
+  :ensure t
+  :config
+  (load-theme 'ample-flat t))
 ;; (use-package ample-theme :ensure t)
 ;; ;; when you want to have fancy mode lines on App Emacs, but still deal with terminal windows...
 ;; (if (<= (display-color-cells) 256)
