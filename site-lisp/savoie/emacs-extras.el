@@ -293,6 +293,7 @@ the current buffer."
   (add-to-list 'company-dabbrev-code-modes 'yaml-mode)
   (add-to-list 'company-dabbrev-code-modes 'markdown-mode)
   (add-to-list 'company-dabbrev-code-modes 'text-mode)
+  (setq company-dabbrev-downcase 'nil)
   )
 
 (use-package company-quickhelp
