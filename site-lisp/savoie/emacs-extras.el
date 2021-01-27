@@ -385,6 +385,10 @@ the current buffer."
 ;; (setq-default ediff-regexp-hide-C "^.*\$.*\$.*$")
 
 
+;; found on reddit to make ediff work in one window.
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; read personal abbreviations each time
