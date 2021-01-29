@@ -153,7 +153,8 @@
 ;;   )
 
 (use-package doom-modeline
-  :ensure t )
+  :ensure t
+  :init (doom-modeline-mode 1))
 
 ;; (use-package doom-themes :ensure t
 ;;   :config
