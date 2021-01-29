@@ -146,21 +146,21 @@
 ;;   (load-theme 'sanityinc-tomorrow-night t)
 ;;   )
 
-(use-package zenburn-theme
-  :ensure t
-  :config
-  (load-theme 'zenburn t)
-  )
+;; (use-package zenburn-theme
+;;   :ensure t
+;;   :config
+;;   (load-theme 'zenburn t)
+;;   )
 
 ;; (use-package doom-themes :ensure t
 ;;   :config
 ;;   (load-theme 'doom-gruvbox)
 ;;   (setq doom-gruvbox-dark-variant "hard"))
 
-;; (use-package ample-theme
-;;   :ensure t
-;;   :config
-;;   (load-theme 'ample-flat t))
+(use-package ample-theme
+  :ensure t
+  :config
+  (load-theme 'ample-flat t))
 ;; (use-package ample-theme :ensure t)
 ;; ;; when you want to have fancy mode lines on App Emacs, but still deal with terminal windows...
 ;; (if (<= (display-color-cells) 256)
