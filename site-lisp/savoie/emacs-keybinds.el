@@ -178,10 +178,7 @@ If a region is not selected and,
 (use-package avy
   :ensure t
   :config
-  (global-set-key (kbd "C-c x") 'avy-goto-word-or-subword-1)
-  ;;  (global-set-key (kbd "s-.") 'avy-goto-word-or-subword-1)
-  ;; (global-set-key (kbd "s-w") 'ace-window)
-  )
+  (global-set-key (kbd "C-c x") 'avy-goto-word-or-subword-1))
 
 (use-package ace-window
   ;; https://github.com/abo-abo/ace-window

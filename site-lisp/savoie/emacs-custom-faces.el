@@ -152,10 +152,13 @@
 ;;   (load-theme 'zenburn t)
 ;;   )
 
+(use-package doom-modeline
+  :ensure t )
+
 ;; (use-package doom-themes :ensure t
 ;;   :config
-;;   (load-theme 'doom-gruvbox)
-;;   (setq doom-gruvbox-dark-variant "hard"))
+;;   (load-theme 'doom-one)
+;; )
 
 (use-package ample-theme
   :ensure t

@@ -6,18 +6,15 @@
   ;; Python is a dev mode
   (add-hook 'python-mode-hook 'run-dev-hook))
 
-(use-package pipenv
-  :ensure t
-  :hook (python-mode . pipenv-mode)
-  :init
-  ;;  (setq pipenv-projectile-after-switch-function #'pipenv-projectile-after-switch-extended)
-  (pyvenv-mode -1)
-  )
-
 (use-package elpy
   :ensure t
   :config
   (elpy-enable))
+
+(use-package pyvenv
+  :ensure t
+  :config
+  (pyvenv-mode 1))
 
 
 ;; don't use flymake (elpy default), use flycheck

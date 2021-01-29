@@ -137,7 +137,7 @@ the current buffer."
 
 (defvar dev-hook nil
   "Hook that gets run on activation of any programming mode.")
-(add-hook 'dev-hook 'add-line-numbers)
+(add-hook 'dev-hook 'display-line-numbers-mode)
 (add-hook 'dev-hook 'local-comment-auto-fill)
 (add-hook 'dev-hook 'company-mode)
 
@@ -294,7 +294,11 @@ the current buffer."
   (add-to-list 'company-dabbrev-code-modes 'markdown-mode)
   (add-to-list 'company-dabbrev-code-modes 'text-mode)
   (setq company-dabbrev-downcase 'nil)
+  (global-set-key (kbd "<C-tab>") 'company-complete)
   )
+
+
+
 
 (use-package company-quickhelp
   :ensure t
