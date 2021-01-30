@@ -600,15 +600,21 @@ the current buffer."
 
 
 (use-package terraform-mode :ensure t)
+
 (use-package hcl-mode :ensure t)
 (use-package company-terraform :ensure t)
 
 (use-package vterm :ensure t
   :init
+  (setq vterm-always-compile-module t)
   (defun visit-vterm-buffer ()
     "Create or visit a terminal buffer."
     (interactive)
-    (start-or-switch-to (lambda () (vterm)) "vterm"))
+      (if (not (get-buffer "vterm"))
+      (progn
+        (split-window-sensibly (selected-window))
+        (vterm-other-window))
+    (switch-to-buffer-other-window "vterm")))
   )
 
 
