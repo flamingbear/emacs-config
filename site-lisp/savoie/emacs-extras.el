@@ -51,9 +51,9 @@ the current buffer."
 (put 'downcase-region 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
 ;; To determine when to split horizontally
-(setq split-width-threshold '1600)
+(setq split-width-threshold 1600)
 (setq gc-cons-threshold 20000000)
-
+(setq line-number-display-limit-width 1000)
 
 (setq indent-tabs-mode nil)
 (setq inhibit-eol-conversion t)

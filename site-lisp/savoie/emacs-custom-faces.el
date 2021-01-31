@@ -152,10 +152,6 @@
 ;;   (load-theme 'zenburn t)
 ;;   )
 
-(use-package doom-modeline
-  :ensure t
-  :init (doom-modeline-mode 1))
-
 ;; (use-package doom-themes :ensure t
 ;;   :config
 ;;   (load-theme 'doom-one)
@@ -165,6 +161,8 @@
   :ensure t
   :config
   (load-theme 'ample-flat t))
+
+
 ;; (use-package ample-theme :ensure t)
 ;; ;; when you want to have fancy mode lines on App Emacs, but still deal with terminal windows...
 ;; (if (<= (display-color-cells) 256)
