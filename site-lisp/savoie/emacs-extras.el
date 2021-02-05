@@ -606,15 +606,16 @@ the current buffer."
 
 (use-package vterm :ensure t
   :init
-  (setq vterm-always-compile-module t)
   (defun visit-vterm-buffer ()
     "Create or visit a terminal buffer."
     (interactive)
-      (if (not (get-buffer "vterm"))
-      (progn
-        (split-window-sensibly (selected-window))
-        (vterm-other-window))
-    (switch-to-buffer-other-window "vterm")))
+    (if (not (get-buffer "vterm"))
+	(progn
+          (split-window-sensibly (selected-window))
+          (vterm-other-window))
+      (switch-to-buffer-other-window "vterm")))
+  :config
+  (setq vterm-max-scrollback (* 32 1024))
   )
 
 
