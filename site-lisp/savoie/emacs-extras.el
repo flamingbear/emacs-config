@@ -85,7 +85,7 @@ the current buffer."
 (defun set-selective-display-current (arg)
   "Toggle fold all lines larger than indentation on current line."
   (interactive "P")
-  (if (eq (first arg) 16)
+  (if (eq (nth 0 arg) 16)
       (let ((col 1))
 	(save-excursion
 	  (back-to-indentation)

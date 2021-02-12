@@ -1,5 +1,5 @@
 (deftheme ample-flat
-  "Created 2021-02-01.")
+  "Created 2021-02-10.")
 
 (custom-theme-set-variables
  'ample-flat
@@ -67,6 +67,9 @@
  '(js2-private-function-call ((t (:foreground "#596f50" :background nil))))
  '(js2-private-member ((t (:foreground "#7c7565" :background nil))))
  '(js2-warning ((t (:foreground nil :background nil :underline "#cF9570"))))
+ '(js2-error ((t (:foreground "#CC9393" :weight bold))))
+ '(js2-object-property ((t (:foreground "#a1aeb5"))))
+ '(js2-function-call ((t (:foreground "#86d1c7"))))
  '(rainbow-delimiters-depth-1-face ((t (:foreground "#b1b0e3" :background nil))))
  '(rainbow-delimiters-depth-2-face ((t (:foreground "#a58585" :background nil))))
  '(rainbow-delimiters-depth-3-face ((t (:foreground "#9190a3" :background nil))))
