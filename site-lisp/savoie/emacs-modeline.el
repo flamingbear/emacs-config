@@ -25,8 +25,6 @@
   (setq spaceline-highlight-face-func 'spaceline-highlight-face-modified)
   )
 
-(provide 'emacs-modeline)
-
 ;; (use-package doom-modeline
 ;;   :ensure t
 ;;   :init (doom-modeline-mode 1))
