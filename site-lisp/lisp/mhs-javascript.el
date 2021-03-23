@@ -86,6 +86,22 @@
     (add-hook 'js2-mode-hook #'smartparens-mode))
 
 
+;; Stolen from rando https://github.com/CSRaghunandan/.emacs.d/blob/master/setup-files/setup-typescript.el
+;; typescript: major mode for editing typescript files
+;; https://github.com/ananthakumaran/typescript.el
+(use-package typescript-mode
+  :ensure t
+  :hook (
+	 (typescript-mode . tide-setup)
+	 (typescript-mode . setup-tide-mode)
+	 (typescript-mode . add-node-modules-path))
+  :bind ((:map typescript-mode-map
+               ("C-c C-t" . tide-documentation-at-point)
+   	       )
+	 )
+  )
+
+
 ;; Use Tide for javascript goodness. It supports linting, rename, find
 ;; references/go to definition, and look up documentation.
 (defun setup-tide-mode ()
