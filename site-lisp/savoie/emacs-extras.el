@@ -618,7 +618,10 @@ the current buffer."
   (setq vterm-max-scrollback (* 32 1024))
   )
 
-
+;; Found in docs for use-package
+(use-package unfill
+  :ensure t
+  :bind ([remap fill-paragraph] . unfill-toggle))
 
 (provide 'emacs-extras)
 ;;; emacs-extras.el ends here
