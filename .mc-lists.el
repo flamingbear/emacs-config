@@ -3,6 +3,7 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+	beginning-of-buffer
 	beginning-of-visual-line
 	clipboard-kill-ring-save
 	dabbrev-expand

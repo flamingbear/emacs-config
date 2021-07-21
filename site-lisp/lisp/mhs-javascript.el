@@ -75,7 +75,7 @@
 			   "--bracket-spacing" "true"
 			   "--single-quote" "true"
 			   "--arrow-parens" "always"
-			   "--trailing-comma" "all"
+			   "--trailing-comma" "es5"
 			   )) )
 
 ;; This might come in handy
@@ -112,15 +112,16 @@
   (eldoc-mode +1)
   (flycheck-mode +1)
   (setq tide-server-max-response-length 204800)
-  (setq tide-sync-request-timeout 3)
+  (setq tide-sync-request-timeout 4)
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
   (setq company-tooltip-align-annotations t)
   ;; to debug tide-mode
-  ;; (setq tide-tsserver-process-environment '("TSS_LOG=-level verbose -file /Users/savoie/tmp/tss.log"))
+  (setq tide-tsserver-process-environment '("TSS_LOG=-level verbose -file /Users/savoie/tmp/tss.log"))
   )
 
 (use-package tide
   :ensure t
+  :pin melpa-stable
   :after (company flycheck js2-mode)
   :hook ((js2-mode . tide-setup)
 	 (js2-mode . setup-tide-mode))
