@@ -589,6 +589,10 @@ the current buffer."
 (fset 'mhs-reformat-xml
    [?\C-u escape ?| ?x ?m ?l ?l ?i ?n ?t ?  ?- ?- ?f ?o ?r ?m ?a ?t ?  ?- ?  return])
 
+(defun mhs-next-bamboo-error ()
+  "find the next ✖ in the file."
+  (interactive)
+  (search-forward "✖"))
 
 ;; Stuff out of my custom
 (setq save-abbrevs 't)
