@@ -45,6 +45,7 @@
 
 (setq mc/cmds-to-run-once
       '(
+	ace-window
 	backward-kill-sentence
 	counsel-M-x
 	dired-toggle-read-only

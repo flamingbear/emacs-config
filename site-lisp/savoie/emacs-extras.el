@@ -112,6 +112,7 @@ the current buffer."
 (tool-bar-mode -1)
 (setq transient-mark-mode 't)
 
+
 ;; Bug in El Capitain with visible bell and emacs 24.x
 ;; https://debbugs.gnu.org/cgi/bugreport.cgi?bug=21662
 (defun my-zoidberg-bell ()
@@ -589,6 +590,10 @@ the current buffer."
 (fset 'mhs-reformat-xml
    [?\C-u escape ?| ?x ?m ?l ?l ?i ?n ?t ?  ?- ?- ?f ?o ?r ?m ?a ?t ?  ?- ?  return])
 
+(defun mhs-next-error ()
+  "find the next ✖ in the file."
+  (interactive)
+  (search-forward "✖"))
 
 ;; Stuff out of my custom
 (setq save-abbrevs 't)

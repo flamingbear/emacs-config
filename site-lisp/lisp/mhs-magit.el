@@ -99,5 +99,8 @@
   :after magit
   :ensure t)
 
+(use-package github-review
+  :ensure t)
+
 (provide 'mhs-magit)
 ;;; mhs-magit.el ends here
