@@ -99,6 +99,8 @@
                ("C-c C-t" . tide-documentation-at-point)
    	       )
 	 )
+  :init
+  (setq-default typescript-indent-level 2)
   )
 
 
@@ -115,13 +117,15 @@
   (setq tide-sync-request-timeout 4)
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
   (setq company-tooltip-align-annotations t)
+  (setq tide-node-flags '("--max-old-space-size=4096"))
+
   ;; to debug tide-mode
-  (setq tide-tsserver-process-environment '("TSS_LOG=-level verbose -file /Users/savoie/tmp/tss.log"))
+  ;; (setq tide-tsserver-process-environment '("TSS_LOG=-level verbose -file /Users/savoie/tmp/tss.log"))
   )
 
 (use-package tide
   :ensure t
-  :pin melpa-stable
+  ;; :pin melpa-stable
   :after (company flycheck js2-mode)
   :hook ((js2-mode . tide-setup)
 	 (js2-mode . setup-tide-mode))
