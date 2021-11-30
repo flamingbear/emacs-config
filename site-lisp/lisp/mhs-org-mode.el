@@ -8,10 +8,16 @@
 ;; Version: 1.0
 ;; Keywords:
 
-(use-package org
-  :pin org
-  :ensure org-plus-contrib
+;; some combination of the two below gave me what I needed to update for new org locations.
+;; https://www.reddit.com/r/emacs/comments/r11nqd/how_to_install_orgmode_now_that_org_emacs_lisp/
+;; https://github.com/jwiegley/use-package/issues/319#issuecomment-845214233
+;; (assq-delete-all 'org package--builtins)
+;; (assq-delete-all 'org package--builtin-versions)
 
+
+(use-package org
+  :pin gnu
+  :ensure t
   :config
   ;; always open .org files in org-mode
   (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
@@ -57,14 +63,14 @@
   (org-clock-persistence-insinuate)
   ;;https://emacs.stackexchange.com/questions/38483/reminds-to-clock-out-or-just-clock-out-when-there-has-a-clock-running
   (defun my/org-clock-query-out ()
-  "Ask the user before clocking out.
+    "Ask the user before clocking out.
 This is a useful function for adding to `kill-emacs-query-functions'."
-  (if (and
-       (featurep 'org-clock)
-       (funcall 'org-clocking-p)
-       (y-or-n-p "You are currently clocking time, clock out? "))
-      (org-clock-out)
-    t)) ;; only fails on keyboard quit or error
+    (if (and
+	 (featurep 'org-clock)
+	 (funcall 'org-clocking-p)
+	 (y-or-n-p "You are currently clocking time, clock out? "))
+	(org-clock-out)
+      t)) ;; only fails on keyboard quit or error
   (add-hook 'kill-emacs-query-functions 'my/org-clock-query-out)
 
   (defun mhs-update-today ()
@@ -84,6 +90,7 @@ This is a useful function for adding to `kill-emacs-query-functions'."
       (save-buffer)
       (org-show-all)
       ))
-)
+  )
+(use-package org-contrib :pin nongnu :ensure t)
 (provide 'mhs-org-mode)
 ;;; mhs-org-mode.el ends here

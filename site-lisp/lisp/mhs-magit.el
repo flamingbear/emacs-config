@@ -11,7 +11,7 @@
   :init
   (global-git-gutter-mode 't))
 
-(use-package git-link :ensure 't)
+(use-package git-link :ensure t)
 
 (use-package magit
   :ensure t
