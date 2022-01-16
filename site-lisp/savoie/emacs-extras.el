@@ -209,6 +209,8 @@ the current buffer."
     ;; "Fix" for stupidly slow emacs https://github.com/bbatsov/projectile/issues/1183
     (setq projectile-mode-line '(:eval (format " Projectile[%s]" (projectile-project-name)))))
 
+(use-package async :ensure t)
+
 (use-package grep
   :defer 3
   :config

@@ -101,13 +101,10 @@
   (interactive)
   (mhs-dblstuff (string-to-char "'")))
 
-
 (defun mhs-kill-current () "\
   Kills the current buffer if it has not been modified."
   (interactive)
   (kill-buffer (current-buffer)))
-
-
 
 (defun clipboard-copy-region (beg end)
   "copy the region, and save it in the X clipboard."
@@ -242,7 +239,6 @@
     (mouse-set-point event)
     (fixup-whitespace)))
 
-
 (defun mhs-under-this-line (tok)
   (let (beg end-com white first end line comstart comend comfinish ul)
     (save-excursion
@@ -263,8 +259,6 @@
       (beginning-of-line)
       (insert (concat white comment-start ul comment-end "\n")))))
 
-
-
 (defun mhs-underline-comment-maybe (j)
 "underine the current line putting the character in column 1 in column
 1 and changing the other characters to be either `-' or the character
@@ -276,67 +270,27 @@ following the prefix character"
     (setq tok (read-char)))
   (mhs-under-this-line tok)))
 
-
-
-(defun mhs-underline-c++-comment (j)
-"underine the current line putting the character in column 1 in column
-1 and changing the other characters to be either `-' or the character
-following the prefix character"
-(interactive "p")
-(let (setq tok 'nil)
-  (if (null current-prefix-arg)
-      (setq tok '?-)
-    (setq tok (read-char)))
-  (mhs-under-this-c++-comment tok)))
-
-
-
 (defun mhs-trunc-lines ()
   (interactive)
   (set-variable 'truncate-lines (null truncate-lines)))
-
 
 (defun mhs-ediff-ignore-dollars ()
   "Set the correct variable to ignore stuff between dollar signs during ediff"
   (interactive)
   (set-variable 'ediff-diff-options "--ignore-matching-lines=^.*\\$.*\\$.*$"))
 
-
 (defun mhs-ediff-normal ()
   "Set ediff variable back to normal operations."
   (interactive)
   (set-variable 'ediff-diff-options ""))
 
-
-
 (defun mhs-use-inconsolata ()
   (interactive)
-  (progn (set-face-attribute 'default nil :inherit nil :stipple nil
-                               :inverse-video nil :box nil
-                               :strike-through nil :overline nil
-                               :underline nil  :height 180
-                               :foundry "unknown" :family "Inconsolata")))
+  (progn (set-face-attribute 'default nil :height 210 :family "Inconsolata")))
 
-
-(defun mhs-use-monaco ()
-  "Switch from the current face to a nice coding font for macintosh machines"
+(defun mhs-use-meslo ()
   (interactive)
-  (progn (set-face-attribute 'default nil :inherit nil :stipple nil
-                             :inverse-video nil :box nil
-                             :strike-through nil :overline nil
-                             :underline nil  :height 145
-                             :foundry "apple" :family "Monaco")))
-
-
-(defun mhs-use-menlo ()
-  "Switch from the current face to a nice coding font for macintosh machines"
-  (interactive)
-  (progn (set-face-attribute 'default nil :inherit nil :stipple nil
-                             :inverse-video nil :box nil
-                             :strike-through nil :overline nil
-                             :underline nil  :height 190 :width "normal"
-                             :foundry "apple" :family "Menlo")))
-
+  (progn (set-face-attribute 'default nil  :height 200 :font "MesloLGS NF")))
 
 (defun mhs-increase-font-size ()
   "Increase the font height by 10"
@@ -350,7 +304,6 @@ following the prefix character"
   (interactive)
   (progn
     (set-face-attribute 'default nil :height (- (face-attribute 'default :height) 10) )))
-
 
 
 (defun mhs-use-normal-face ()

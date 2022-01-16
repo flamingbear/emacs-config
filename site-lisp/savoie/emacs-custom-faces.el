@@ -36,8 +36,7 @@
 (when (display-graphic-p)
   ;; If we're not running NX set the fonts like I like them.  Otherwise, we
   ;; default to 10x20
-  (cond (running-macos (progn (mhs-use-inconsolata)
-                              (set-face-attribute 'default nil :height 195)))
+  (cond (running-macos (progn (mhs-use-inconsolata)))
         (t (mhs-use-normal-face))))
 
 
