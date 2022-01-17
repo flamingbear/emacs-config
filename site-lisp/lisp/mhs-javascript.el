@@ -117,6 +117,7 @@
   (setq tide-sync-request-timeout 4)
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
   (setq company-tooltip-align-annotations t)
+  ;; fixes tsserver exit 6
   (setq tide-node-flags '("--max-old-space-size=4096"))
 
   ;; to debug tide-mode

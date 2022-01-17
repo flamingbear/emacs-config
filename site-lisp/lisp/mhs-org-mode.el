@@ -26,6 +26,9 @@
   (define-key global-map "\C-ca" 'org-agenda)
   (setq org-agenda-files "~/Dropbox/orgs/org-agenda-files")
 
+  ;; indent sanely?
+  (setq org-adapt-indentation 't)
+
   ;; I don't want to see days in my time tracking
   (setq org-duration-format 'h:mm)
 
