@@ -286,11 +286,11 @@ following the prefix character"
 
 (defun mhs-use-inconsolata ()
   (interactive)
-  (progn (set-face-attribute 'default nil :height 210 :family "Inconsolata")))
+  (progn (set-face-attribute 'default nil :height 200 :family "Inconsolata")))
 
 (defun mhs-use-meslo ()
   (interactive)
-  (progn (set-face-attribute 'default nil  :height 200 :font "MesloLGS NF")))
+  (progn (set-face-attribute 'default nil  :height 170 :font "MesloLGS NF")))
 
 (defun mhs-increase-font-size ()
   "Increase the font height by 10"
