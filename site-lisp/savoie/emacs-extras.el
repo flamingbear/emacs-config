@@ -13,7 +13,6 @@ the current buffer."
     (switch-to-buffer-other-window buffer-name)))
 
 
-
 ;; Override having to type Yes or No with just Y or N
 (fset 'yes-or-no-p 'y-or-n-p)
 (put 'scroll-left 'disabled nil)
@@ -30,18 +29,13 @@ the current buffer."
 (setq inhibit-eol-conversion t)
 (setq inhibit-startup-screen t)
 
-
 ;; Some magnar's Sane Defaults.
 ;;------------------------------
 ;; Show keystrokes in progress
 (setq echo-keystrokes 0.3)
 
-
 ;; Remove text in active region if inserting text in non-nil
 (setq delete-selection-mode 'nil)
-
-;; Lines should be 80 characters wide, not 72
-(setq fill-column 80)
 
 ;; Easily NavigateSillyCased words when set to 0
 (global-subword-mode 0)
@@ -76,7 +70,7 @@ the current buffer."
 (use-package smart-shift
   :ensure t
   :config
-  (global-smart-shift-mode 1))
+(global-smart-shift-mode 1))
 
 
 (setq tab-always-indent 'complete)
@@ -98,7 +92,6 @@ the current buffer."
 
 (setq visible-bell 't)
 (if running-macos (setq ring-bell-function #'my-terminal-visible-bell) (setq ring-bell-function #'my-zoidberg-bell))
-
 
 
 ;; auto wrap, but only in comments
@@ -159,26 +152,28 @@ the current buffer."
   (projectile-mode t)
   (setq projectile-completion-system 'ivy)
 
-  ;; HACK until this is fixed: https://github.com/bbatsov/projectile/issues/1165
-  (defun projectile-discover-projects-in-directory (directory)
-    "Discover any projects in DIRECTORY and add them to the projectile cache.
-  This function is not recursive and only adds projects with roots
-  at the top level of DIRECTORY."
-    (interactive
-     (list (read-directory-name "Starting directory: ")))
-    (let ((subdirs (directory-files directory t)))
-      (mapcar
-       (lambda (dir)
-         (when (and (file-directory-p dir)
-                    (not (member (file-name-nondirectory dir) '(".." "."))))
-           (let ((default-directory dir)
-                 (projectile-cached-project-root dir))
-             (when (projectile-project-p)
-               (projectile-add-known-project (projectile-project-root))))))
-       subdirs)))
+  ;; ;; HACK until this is fixed: https://github.com/bbatsov/projectile/issues/1165
+  ;; [MHS, 03/25/2022] Looks done
+  ;; (defun projectile-discover-projects-in-directory (directory)
+  ;;   "Discover any projects in DIRECTORY and add them to the projectile cache.
+  ;; This function is not recursive and only adds projects with roots
+  ;; at the top level of DIRECTORY."
+  ;;   (interactive
+  ;;    (list (read-directory-name "Starting directory: ")))
+  ;;   (let ((subdirs (directory-files directory t)))
+  ;;     (mapcar
+  ;;      (lambda (dir)
+  ;;        (when (and (file-directory-p dir)
+  ;;                   (not (member (file-name-nondirectory dir) '(".." "."))))
+  ;;          (let ((default-directory dir)
+  ;;                (projectile-cached-project-root dir))
+  ;;            (when (projectile-project-p)
+  ;;              (projectile-add-known-project (projectile-project-root))))))
+  ;;      subdirs)))
 
     ;; "Fix" for stupidly slow emacs https://github.com/bbatsov/projectile/issues/1183
-    (setq projectile-mode-line '(:eval (format " Projectile[%s]" (projectile-project-name)))))
+  ;; (setq projectile-mode-line '(:eval (format " Projectile[%s]" (projectile-project-name))))
+  )
 
 (use-package async :ensure t)
 
@@ -188,6 +183,7 @@ the current buffer."
   ;; (setq grep-find-command
   ;;       "find . -name \".svn\" -prune -o -type f  -exec grep -nH \"\" {} \\;"))
   )
+
 (use-package wgrep :ensure t)
 
 (use-package puppet-mode :ensure t)
@@ -200,6 +196,7 @@ the current buffer."
 
 ;; IDLWAVE Customizations
 ;; Load this before ruby because we want the jds history search.
+;; TODO [MHS, 03/25/2022] Someday I'm going to need this again...
 (use-package emacs-idlwave-support)
 
 ;; Use jira information
@@ -233,7 +230,6 @@ the current buffer."
   (when running-macos
     (setq markdown-command "Markdown.pl"))
   )
-
 
 (use-package paradox
   :defer t
@@ -271,9 +267,6 @@ the current buffer."
   (global-set-key (kbd "<C-tab>") 'company-complete)
   )
 
-
-
-
 (use-package company-quickhelp
   :ensure t
   :config
@@ -285,7 +278,6 @@ the current buffer."
   :defer 3
   :config
   (show-paren-mode t))
-
 
 (use-package restclient
   :ensure t)
@@ -302,11 +294,11 @@ the current buffer."
   :init
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
-;; SICP
-(add-to-list 'auto-mode-alist '("\\.scm$" . scheme-mode))
-(add-hook 'scheme-mode-hook
-          '(lambda ()
-             (paredit-mode 1)))
+;; ;; SICP
+;; (add-to-list 'auto-mode-alist '("\\.scm$" . scheme-mode))
+;; (add-hook 'scheme-mode-hook
+;;           '(lambda ()
+;;              (paredit-mode 1)))
 
 
 ;; Javascript stuff
@@ -314,7 +306,6 @@ the current buffer."
 
 ;; Load the BBDB if it's around.
 (use-package mhs-bbdb)
-
 
 ;; if you are debugging emacs completely: open this file and it records keystrokes.
 ;;(open-dribble-file "~/dribble")
@@ -333,7 +324,6 @@ the current buffer."
 ;;--------------------------------------------------------------------------
 ;; GIT has some quirks and normally, I don't want to do a regular diff when
 ;; looking at revisions.
-
 (eval-after-load "vc-hooks"
   '(define-key vc-prefix-map "=" 'ediff-revision))
 
@@ -343,7 +333,6 @@ the current buffer."
 ;;;;;;;;;;;;;;;;;;;;;;;;
 (defvar ediff-ignore-similar-regions)
 (setq ediff-ignore-similar-regions 't)
-
 
 ;; 2009-08-12: Actually I don't like this on by default... Just remember you
 ;; can customize this variable.
@@ -367,13 +356,10 @@ the current buffer."
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; read personal abbreviations each time
 (quietly-read-abbrev-file (locate-user-emacs-file ".abbrev_defs"))
 (setq abbrev-mode t)
-
-
 
 
 ;; Set the bookmark file in the right location.
@@ -401,11 +387,6 @@ the current buffer."
 
 ;; Sh mode for some common files
 (add-to-list 'auto-mode-alist '("\\.alias$" . sh-mode))
-
-
-;; try windmove
-(when (fboundp 'windmove-default-keybindings)
-  (windmove-default-keybindings))
 
 ;; unique buffer names
 (use-package uniquify
@@ -446,8 +427,6 @@ the current buffer."
 (use-package mhs-perl)
 (use-package mhs-grep)
 (use-package mhs-sii)
-(use-package mhs-reindent)
-
 
 (use-package mhs-cmode)
 (use-package mhs-comment)
@@ -460,9 +439,10 @@ the current buffer."
       ((file-exists-p "/usr/local/bin/aspell")
       (setq ispell-program-name "/usr/local/bin/aspell"))
       ((file-exists-p "/opt/local/bin/aspell")
-      (setq ispell-program-name "/opt/local/bin/aspell"))
+       (setq ispell-program-name "/opt/local/bin/aspell"))
+      ((file-exists-p "/opt/homebrew/bin/aspell")
+      (setq ispell-program-name "/opt/homebrew/bin/aspell"))
       (t (setq ispell-program-name "~savoie/local/bin/aspell")))
-
 
 
 ;; Use these to override stupid defaults for the ! command in dired.
@@ -486,21 +466,6 @@ the current buffer."
   (bind-keys :map dired-mode-map
              ("i" . dired-subtree-insert)
              (";" . dired-subtree-remove)))
-
-
-(use-package shell-pop
-  :ensure
-  :bind (([f3] . shell-pop))
-  :config
-  (setq shell-pop-shell-type (quote ("ansi-term" "*ansi-term*" (lambda nil (ansi-term shell-pop-term-shell)))))
-  (setq shell-pop-term-shell "/bin/bash")
-  (setq shell-pop-window-size 30)
-  (setq shell-pop-full-span t)
-  (setq shell-pop-window-position "bottom")
-  ;; may need to do this manually or not picked up by `shell-pop'
-  (shell-pop--set-shell-type 'shell-pop-shell-type shell-pop-shell-type)
-  )
-
 
 (use-package yasnippet
   :ensure t
@@ -547,13 +512,6 @@ the current buffer."
 ;; Set registers to things that I type zillions of times.
 ;; ------------------------------------------------------
 
-(set-register
- (string-to-char "p")
- "ftp://sidads.colorado.edu/pub/incoming/savoie")
-
-(fset 'mhs-update-cumulus-token
-   [?\C-r ?y ?o ?u ?r ?_ ?t ?o ?k ?e ?n ?= ?\C-x ?\C-x ?\C-x ?\C-x ?\C-  ?\M-f ?\M-f ?\C-f ?\C-k ?\C-  ?\C-n ?\M-b ?\C-w ?\C-e ?\C-b ?\C-d ?\C-n ?\C-a])
-
 (fset 'mhs-reformat-xml
    [?\C-u escape ?| ?x ?m ?l ?l ?i ?n ?t ?  ?- ?- ?f ?o ?r ?m ?a ?t ?  ?- ?  return])
 
@@ -568,8 +526,6 @@ the current buffer."
 (setq select-active-regions 't)
 
 (setq large-file-warning-threshold nil)
-
-
 
 (use-package terraform-mode :ensure t)
 
@@ -595,23 +551,6 @@ the current buffer."
   :ensure t
   :bind ([remap fill-paragraph] . unfill-toggle))
 
-
-(use-package edit-server
-  :ensure t
-  :commands edit-server-start
-  :init (if after-init-time
-              (edit-server-start)
-            (add-hook 'after-init-hook
-                      #'(lambda() (edit-server-start))))
-  :config (setq edit-server-new-frame-alist
-                '((name . "Edit with Emacs FRAME")
-                  (top . 200)
-                  (left . 200)
-                  (width . 80)
-                  (height . 25)
-                  (minibuffer . t)
-                  (menu-bar-lines . t)
-                  (window-system . x))))
 
 (provide 'emacs-extras)
 ;;; emacs-extras.el ends here

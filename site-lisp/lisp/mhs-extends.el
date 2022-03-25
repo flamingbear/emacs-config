@@ -382,12 +382,6 @@ following the prefix character"
 (use-package json-navigator
   :ensure t)
 
-(defun json-format ()
-  (interactive)
-  (save-excursion
-    (shell-command-on-region (mark) (point) "python -m json.tool" (buffer-name) t)))
-
-
 (setq column-number-mode t)
 (setq comment-column 32)
 

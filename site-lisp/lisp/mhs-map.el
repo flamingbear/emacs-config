@@ -11,10 +11,8 @@
 (defvar mhs-searchmap (make-keymap)
   "make a keymap for different grep options")
 
-
 (define-prefix-command 'mhs-map)
 (define-prefix-command 'mhs-searchmap)
-
 
 ;;;
 ;;; mhs-map key definitions

@@ -100,10 +100,6 @@
          (tool-bar-lines . 0)))
 
 
-(use-package which-key
-  :config
-  (which-key-mode))
-
 (use-package mhs-environment)
 (use-package emacs-extras)
 (use-package emacs-keybinds)

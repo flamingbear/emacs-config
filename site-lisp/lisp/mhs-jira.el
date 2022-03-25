@@ -46,6 +46,8 @@
 	 (setq mhs-jira--url-base "https://bugs.earthdata.nasa.gov/browse/"))
 	((string-prefix-p "CUMULUS" ticket-number)
 	 (setq mhs-jira--url-base "https://bugs.earthdata.nasa.gov/browse/"))
+	((string-prefix-p "DAS" ticket-number)
+	 (setq mhs-jira--url-base "https://bugs.earthdata.nasa.gov/browse/"))
 	(t (setq mhs-jira--url-base "https://nsidc.org/jira/browse/"))))
 
 
