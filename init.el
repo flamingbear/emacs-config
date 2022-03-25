@@ -65,6 +65,8 @@
 (setq custom-file (locate-user-emacs-file ".gnu-emacs-custom"))
 (load custom-file t t)
 
+
+;; Authorization information stored in gpg encrypted file.
 (use-package auth-source
   :config
   (setq
@@ -83,19 +85,11 @@
     (add-to-list 'load-path project)))
 
 
-
 ;; Want backups in a separate directory under the user's dir
 (setq backup-directory-alist
       `(("." . ,(expand-file-name
                  (concat user-emacs-directory "backups")))))
 
-
-
-;; Save point position between sessions
-(use-package saveplace
-  :config
-  (setq-default save-place t)
-  (setq save-place-file (expand-file-name ".places" user-emacs-directory)))
 
 (use-package which-key
   :config
