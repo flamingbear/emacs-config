@@ -12,35 +12,6 @@ the current buffer."
         (funcall function))
     (switch-to-buffer-other-window buffer-name)))
 
-;;; Code:
-(use-package gnus
-  :defer 3
-  :init
-  (setq gnus-init-file (locate-user-emacs-file ".gnus"))
-  (load-file gnus-init-file)
-
-  :config
-  (setq gnus-verbose 10)
-  (setq gnus-treat-hide-signature t)
-  (setq gnus-treat-display-x-face 'head)
-  (setq gnus-thread-sort-functions '(gnus-thread-sort-by-number))
-  (setq gnus-agent-expire-days '90)
-  (setq smtpmail-smtp-server "smtp.colorado.edu")
-  (setq smtpmail-smtp-service "587")
-  (setq smtpmail-smtp-user "savoie")
-  (setq smtpmail-stream-type (quote starttls))
-  (setq send-mail-function 'smtpmail-send-it)
-  (setq nnmail-crosspost nil)
-  (setq nnmail-expiry-wait 3)
-  (setq starttls-extra-arguments '("--no-ca-verification"))
-  (setq message-cite-function 'message-cite-original-without-signature)
-  (setq message-mode-hook '(turn-on-flyspell turn-off-auto-fill turn-on-visual-line-mode))
-  (setq message-send-mail-partially-limit nil)
-  (setq mm-verify-option 'always)
-  (setq mail-source-delete-incoming t)
-  (setq mail-user-agent 'message-user-agent)
-  (setq gnus-suppress-duplicates t)
-  (setq gnus-summary-ignore-duplicates t))
 
 
 ;; Override having to type Yes or No with just Y or N

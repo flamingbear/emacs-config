@@ -17,7 +17,6 @@
       browse-url-of-file-hook (quote (browse-url-generic-reload)))
 
 
-
 ;; Load emacs specials for mac osx only
 (when running-macos
   (use-package emacs-mac))
