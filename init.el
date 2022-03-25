@@ -90,11 +90,19 @@
       `(("." . ,(expand-file-name
                  (concat user-emacs-directory "backups")))))
 
+(setq default-frame-alist
+       '((height . 75)
+         (width . 200)
+         (left . 800)
+         (top . 200)
+         (vertical-scroll-bars . nil)
+         (horizontal-scroll-bars . nil)
+         (tool-bar-lines . 0)))
+
 
 (use-package which-key
   :config
   (which-key-mode))
-
 
 (use-package mhs-environment)
 (use-package emacs-extras)
