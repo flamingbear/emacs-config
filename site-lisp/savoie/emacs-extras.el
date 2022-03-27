@@ -23,10 +23,6 @@ the current buffer."
 ;; To determine when to split horizontally
 (setq split-width-threshold 1600)
 
-;; (setq gc-cons-threshold 20000000)
-;;(setq gc-cons-threshold 800000)
-(setq garbage-collection-messages 't)
-
 ;; What's this? https://bling.github.io/blog/2016/01/18/why-are-you-changing-gc-cons-threshold/
 (defun my-minibuffer-setup-hook ()
   (setq gc-cons-threshold most-positive-fixnum))
@@ -34,6 +30,10 @@ the current buffer."
   (setq gc-cons-threshold 800000))
 (add-hook 'minibuffer-setup-hook #'my-minibuffer-setup-hook)
 (add-hook 'minibuffer-exit-hook #'my-minibuffer-exit-hook)
+;; (setq gc-cons-threshold 20000000)
+;;(setq gc-cons-threshold 800000)
+(setq garbage-collection-messages 't)
+
 
 (setq line-number-display-limit-width 1000)
 
@@ -336,28 +336,8 @@ the current buffer."
   '(define-key vc-prefix-map "=" 'ediff-revision))
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ediff cutomizations
 ;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; 2009-08-12: Actually I don't like this on by default... Just remember you
-;; can customize this variable.
-
-;;  (ediff-diff-options "--ignore-matching-lines=^.*\\$.*\\$.*$")
-
-;; Normally you want to use cmp to compare bunches of directories, but
-;; sometimes, you really want to use diff with this option, If that's the
-;; case, you need to customize group ediff-diff, and change the cmp command (to diff)
-;; and ediff-cmp-options. (to --ignore-matching-lines=^.*\\$.*\\$.*$"
-
-;; When you do this, you'll only see things that are actually different except
-;; for things between dollar signs. like keywords.
-;; 2017-04-25:  I think this is OBE.
-;; (setq-default ediff-regexp-hide-A "^.*\$.*\$.*$")
-;; (setq-default ediff-regexp-hide-B "^.*\$.*\$.*$")
-;; (setq-default ediff-regexp-hide-C "^.*\$.*\$.*$")
-
-
 ;; found on reddit to make ediff work in one window.
 ;; (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
@@ -410,11 +390,6 @@ the current buffer."
   (setq auto-insert-directory (concat (file-name-as-directory user-emacs-directory) "autoinsert/"))
   (add-to-list 'auto-insert-alist '("\\.pro$" . "idlwave-insert.pro")))
 
-(use-package jka-compr
-  :defer 3
-  :config
-  (setq auto-compression-mode t))
-
 (use-package bookmark
   :config
   (setq bookmark-save-flag 1))
@@ -432,7 +407,6 @@ the current buffer."
 (use-package mhs-extends)
 (use-package mhs-perl)
 (use-package mhs-grep)
-(use-package mhs-sii)
 
 (use-package mhs-cmode)
 (use-package mhs-comment)
@@ -462,7 +436,7 @@ the current buffer."
   :config
   (setq dired-guess-shell-alist-user
 	(list
-	 '("\\.gif$" "display")
+	 '("\\.gif$" "open")
 	 '("\\.pdf" "open")
 	 )))
 
@@ -531,10 +505,9 @@ the current buffer."
 (setq scroll-bar-mode 'right)
 (setq select-active-regions 't)
 
-(setq large-file-warning-threshold nil)
+(setq large-file-warning-threshold 20000000)
 
 (use-package terraform-mode :ensure t)
-
 (use-package hcl-mode :ensure t)
 (use-package company-terraform :ensure t)
 
