@@ -239,8 +239,6 @@ the current buffer."
   :config
   (setq auto-mode-alist
         (cons '("\\.md" . markdown-mode) auto-mode-alist))
-  (when running-macos
-    (setq markdown-command "Markdown.pl"))
   )
 
 (use-package paradox
@@ -262,12 +260,13 @@ the current buffer."
 
 ;; Try company-mode instead of auto-complete
 ;;--------------------------
-(use-package company-jedi :ensure t)
+;; (use-package company-jedi :ensure t) ;; https://pypi.org/project/jedi/
+
 (use-package company
   :ensure t
   :config
   (add-to-list 'company-backends 'company-tern)
-  (add-to-list 'company-backends 'company-jedi)
+  ;; (add-to-list 'company-backends 'company-jedi)
   (add-to-list 'company-backends 'company-terraform)
   (setq company-idle-delay 0.005)
   (require 'company-dabbrev-code)
@@ -279,6 +278,7 @@ the current buffer."
   (global-set-key (kbd "<C-tab>") 'company-complete)
   )
 
+;; popups with company completion
 (use-package company-quickhelp
   :ensure t
   :config
@@ -294,30 +294,26 @@ the current buffer."
 (use-package restclient
   :ensure t)
 
+;; insert pairs of parens when coding.
 (use-package smartparens
   :ensure t
   :diminish
   :config
   (require 'smartparens-config))
 
+;; Show different colors on parens so you can visually identify the different hunks.
 (use-package rainbow-delimiters
   :ensure t
   :diminish
   :init
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
-;; ;; SICP
-;; (add-to-list 'auto-mode-alist '("\\.scm$" . scheme-mode))
-;; (add-hook 'scheme-mode-hook
-;;           '(lambda ()
-;;              (paredit-mode 1)))
-
 
 ;; Javascript stuff
 (use-package mhs-javascript)
 
-;; Load the BBDB if it's around.
-(use-package mhs-bbdb)
+;; ;; Load the BBDB if it's around. [MHS, 03/27/2022] spoiler alert, it's not.
+;; (use-package mhs-bbdb)
 
 ;; if you are debugging emacs completely: open this file and it records keystrokes.
 ;;(open-dribble-file "~/dribble")
@@ -343,8 +339,6 @@ the current buffer."
 ;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ediff cutomizations
 ;;;;;;;;;;;;;;;;;;;;;;;;
-(defvar ediff-ignore-similar-regions)
-(setq ediff-ignore-similar-regions 't)
 
 ;; 2009-08-12: Actually I don't like this on by default... Just remember you
 ;; can customize this variable.
@@ -365,7 +359,7 @@ the current buffer."
 
 
 ;; found on reddit to make ediff work in one window.
-(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+;; (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
