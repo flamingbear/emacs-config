@@ -22,7 +22,19 @@ the current buffer."
 (put 'narrow-to-region 'disabled nil)
 ;; To determine when to split horizontally
 (setq split-width-threshold 1600)
-(setq gc-cons-threshold 20000000)
+
+;; (setq gc-cons-threshold 20000000)
+;;(setq gc-cons-threshold 800000)
+(setq garbage-collection-messages 't)
+
+;; What's this? https://bling.github.io/blog/2016/01/18/why-are-you-changing-gc-cons-threshold/
+(defun my-minibuffer-setup-hook ()
+  (setq gc-cons-threshold most-positive-fixnum))
+(defun my-minibuffer-exit-hook ()
+  (setq gc-cons-threshold 800000))
+(add-hook 'minibuffer-setup-hook #'my-minibuffer-setup-hook)
+(add-hook 'minibuffer-exit-hook #'my-minibuffer-exit-hook)
+
 (setq line-number-display-limit-width 1000)
 
 (setq indent-tabs-mode nil)
