@@ -11,8 +11,6 @@
 (use-package counsel
   :ensure t
   :bind (("C-x C-f" . counsel-find-file)
-         ;; ("C-h f" . counsel-describe-function)  ;; prefer helpful versions
-         ;; ("C-h v" . counsel-describe-variable)
          ("M-x" . counsel-M-x)
          ("C-c f" . counsel-git)
 	 )
@@ -53,7 +51,7 @@ Otherwise, get the symbol at point, as a string."
 
 
 ;; https://github.com/kaushalmodi/.emacs.d/blob/master/setup-files/setup-search.el
-(defun modi/swiper (arg)
+(defun modi/swiper-isearch (arg)
   "Start swiper with input as the selected region.
 If a region is not selected and,
   - If ARG is nil, start swiper with the symbol at point as input.
@@ -63,20 +61,20 @@ If a region is not selected and,
       (let ((b (region-beginning))
             (e (region-end)))
         (deactivate-mark)
-        (swiper (buffer-substring-no-properties b e)))
+        (swiper-isearch (buffer-substring-no-properties b e)))
     (if arg
-        (swiper (modi/get-symbol-at-point)) ; C-u
-        (swiper))))
+        (swiper-isearch (modi/get-symbol-at-point)) ; C-u
+        (swiper-isearch))))
 
 ;; This seems way more natural to me. (isearch)
-(global-set-key "\C-s" 'isearch-forward)
-;(global-set-key "\C-s" 'swiper)
-(global-set-key "\C-r" 'isearch-backward)
-;(global-set-key "\C-r" 'swiper)
+;; (global-set-key "\C-s" 'isearch-forward)
+;; (global-set-key "\C-r" 'isearch-backward)
+;; https://oremacs.com/2019/04/07/swiper-isearch/
+(global-set-key "\C-s" 'modi/swiper-isearch)
+(global-set-key "\C-r" 'modi/swiper-isearch)
 (define-key isearch-mode-map (kbd "M-i") 'swiper-from-isearch)
 
 (global-set-key (kbd "M-/") 'dabbrev-expand)
-
 
 (global-set-key [f1]          'mhs-insert-filename); F1
 (global-set-key [f2]          'visit-vterm-buffer)  ; F2
@@ -84,9 +82,6 @@ If a region is not selected and,
 
 ;; My Mapping Stuff, this is a prefix key that allows me access to more
 ;; functions.  These are defined in ~/lisp/mhs-map.el
-
-;; let's break this habit
-;; (global-set-key [f7]              ') ; F7
 (global-set-key [f8]              'mhs-map) ; F7
 
 ;; This is so that I can get used to copy-paste in eclipse with mulgaSoft emacs+
