@@ -90,6 +90,11 @@
       `(("." . ,(expand-file-name
                  (concat user-emacs-directory "backups")))))
 
+(use-package saveplace
+  :config
+  (setq-default save-place t)
+  (setq save-place-file (expand-file-name ".places" user-emacs-directory)))
+
 (setq default-frame-alist
        '((height . 75)
          (width . 200)
