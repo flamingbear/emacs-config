@@ -17,3 +17,7 @@
 /emojis
 /network-security.data
 /site-lisp/es6-snippets/
+/.cache/
+/transient/
+/url/
+/var/
