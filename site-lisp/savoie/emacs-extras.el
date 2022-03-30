@@ -24,13 +24,13 @@ the current buffer."
 (setq split-width-threshold 1600)
 
 ;; What's this? https://bling.github.io/blog/2016/01/18/why-are-you-changing-gc-cons-threshold/
-(defun my-minibuffer-setup-hook ()
-  (setq gc-cons-threshold most-positive-fixnum))
-(defun my-minibuffer-exit-hook ()
-  (setq gc-cons-threshold 800000))
-(add-hook 'minibuffer-setup-hook #'my-minibuffer-setup-hook)
-(add-hook 'minibuffer-exit-hook #'my-minibuffer-exit-hook)
-;; (setq gc-cons-threshold 20000000)
+;; (defun my-minibuffer-setup-hook ()
+;;   (setq gc-cons-threshold most-positive-fixnum))
+;; (defun my-minibuffer-exit-hook ()
+;;   (setq gc-cons-threshold (* 80 1000 1000)))
+;; (add-hook 'minibuffer-setup-hook #'my-minibuffer-setup-hook)
+;; (add-hook 'minibuffer-exit-hook #'my-minibuffer-exit-hook)
+(setq gc-cons-threshold (* 8 1000 1000))
 ;;(setq gc-cons-threshold 800000)
 (setq garbage-collection-messages 't)
 

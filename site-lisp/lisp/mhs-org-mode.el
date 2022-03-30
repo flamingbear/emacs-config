@@ -45,6 +45,12 @@
   (defvar mhs-org-mode-directory (expand-file-name "~savoie/Dropbox/orgs/")
     "Location of my .org mode files" )
 
+  ;; Extra template expansions
+  (add-to-list 'org-structure-template-alist '("bash" . "src bash"))
+  (add-to-list 'org-structure-template-alist '("py" . "src python"))
+  (add-to-list 'org-structure-template-alist '("yaml" . "src yaml"))
+  (add-to-list 'org-structure-template-alist '("json" . "src json"))
+
   ;; Fancy set up for querying old archived agenda files.
   (when (and (file-accessible-directory-p mhs-org-mode-directory))
     (setq
@@ -64,10 +70,10 @@
   (setq org-clock-persist (quote history))
   (setq org-clock-persist-file "~/Dropbox/orgs/org-clock-save.el")
   (org-clock-persistence-insinuate)
+
   ;;https://emacs.stackexchange.com/questions/38483/reminds-to-clock-out-or-just-clock-out-when-there-has-a-clock-running
   (defun my/org-clock-query-out ()
-    "Ask the user before clocking out.
-This is a useful function for adding to `kill-emacs-query-functions'."
+    "Ask the user before clocking out. This is a useful function for adding to `kill-emacs-query-functions'."
     (if (and
 	 (featurep 'org-clock)
 	 (funcall 'org-clocking-p)
@@ -76,6 +82,7 @@ This is a useful function for adding to `kill-emacs-query-functions'."
       t)) ;; only fails on keyboard quit or error
   (add-hook 'kill-emacs-query-functions 'my/org-clock-query-out)
 
+  ;; Updates sprint track files with today's hours.
   (defun mhs-update-today ()
     (interactive)
     (with-current-buffer (find-file-other-window "~/Dropbox/orgs/sprint_track.org")
@@ -93,6 +100,8 @@ This is a useful function for adding to `kill-emacs-query-functions'."
       (save-buffer)
       (org-show-all)
       ))
+
+
   )
 (use-package org-contrib :pin nongnu :ensure t)
 (provide 'mhs-org-mode)

@@ -139,27 +139,14 @@
   (set-face-background 'vertical-border my-modeline-bg-color)
   )
 
-;; (use-package color-theme-sanityinc-tomorrow
-;;   :ensure t
-;;   :config
-;;   (load-theme 'sanityinc-tomorrow-night t)
-;;   )
-
-;; (use-package zenburn-theme
-;;   :ensure t
-;;   :config
-;;   (load-theme 'zenburn t)
-;;   )
-
-;; (use-package doom-themes :ensure t
-;;   :config
-;;   (load-theme 'doom-one)
-;; )
-
 (use-package ample-theme
   :ensure t
   :config
-  (load-theme 'ample-flat t))
+  (load-theme 'ample-flat t)
+  ;; Need this for lsp-breadcrumb faces
+  (custom-set-faces
+    '(header-line ((t (:inherit mode-line :background "#55486e")))))
+  )
 
 
 ;; (use-package ample-theme :ensure t)

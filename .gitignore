@@ -21,3 +21,5 @@
 /transient/
 /url/
 /var/
+/code-review-db-file.sqlite
+/forge-database.sqlite
