@@ -23,3 +23,5 @@
 /var/
 /code-review-db-file.sqlite
 /forge-database.sqlite
+/.dap-breakpoints
+/.lsp-session-v1

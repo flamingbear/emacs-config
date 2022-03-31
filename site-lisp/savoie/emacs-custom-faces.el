@@ -143,11 +143,10 @@
   :ensure t
   :config
   (load-theme 'ample-flat t)
-  ;; Need this for lsp-breadcrumb faces
+  ;; Need this for lsp-breadcrumb faces looking too grey on the header line
   (custom-set-faces
     '(header-line ((t (:inherit mode-line :background "#55486e")))))
   )
-
 
 ;; (use-package ample-theme :ensure t)
 ;; ;; when you want to have fancy mode lines on App Emacs, but still deal with terminal windows...

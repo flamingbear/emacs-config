@@ -38,15 +38,24 @@
    lsp-ui-sideline-show-diagnostics t
    lsp-ui-sideline-show-hover t
    lsp-ui-sideline-show-code-actions t
+   lsp-ui-sideline-update-mode 'point
    ;; ----------------------------------------
    lsp-ui-peek-enable t
    ;; lsp-ui-peek-list-width 60
    ;; lsp-ui-peek-peek-height 25
    ;; ----------------------------------------
    lsp-ui-doc-enable t
-   lsp-ui-doc-use-childframe t
    lsp-ui-doc-position 'bottom
-   ))
+   lsp-ui-doc-delay 0
+   lsp-ui-doc-show-with-cursor nil
+   lsp-ui-doc-show-with-mouse nil
+   lsp-ui-doc-enable t
+   lsp-ui-doc-use-childframe t
+   )
+  ;; Bad wrapping with sideline when you don't set this.
+  (custom-set-faces
+   '(markdown-code-face ((t (:inherit default)))))
+  )
 
 (use-package dap-mode
   :ensure t
@@ -68,9 +77,7 @@
 ;; https://github.com/jorgenschaefer/elpy/issues/137#issuecomment-55403160
 (use-package flycheck
   :ensure t
-  :config
-  (remove-hook 'elpy-modules 'elpy-module-flymake)
-  (add-hook 'elpy-mode-hook 'flycheck-mode))
+  )
 
 
 (use-package ein
@@ -78,7 +85,8 @@
   :init
   (setq ein:completion-backend 'ein:use-company-backend)
   :config
-  (add-hook 'ein:connect-mode-hook 'ein:jedi-setup))
+  (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
+  )
 
 
 (provide 'mhs-python)
