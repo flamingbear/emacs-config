@@ -36,6 +36,10 @@
 (setq user-emacs-directory (file-name-directory user-init-file))
 
 
+;; work around for bug. https://github.com/magit/ghub/issues/81
+;; this was originally a fix for magit, but I have discovered it also breaks package/paradox.
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+
 (require 'package)
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
