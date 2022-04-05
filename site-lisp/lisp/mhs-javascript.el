@@ -56,7 +56,7 @@
   :ensure t
   :mode ("\\.js\\'" . js2-mode)
   :config
-  (add-hook 'js2-mode-hook (lambda ()  (setq indent-tabs-mode nil)))
+  (add-hook 'js2-mode-hook #'(lambda ()  (setq indent-tabs-mode nil)))
   (setq js-switch-indent-offset 2)
   (setq js-indent-level 2))
 
@@ -138,7 +138,7 @@
 (use-package nodejs-repl :ensure t
   :config
   ;; Setup key mappings for nodejs-repl.
-  (add-hook 'js2-mode-hook '(lambda ()
+  (add-hook 'js2-mode-hook #'(lambda ()
 			      (local-set-key "\C-x\C-e" 'nodejs-repl-send-last-sexp)
 			      (local-set-key "\C-cr" 'nodejs-repl-send-region)
 			      (local-set-key "\C-cb" 'nodejs-repl-send-buffer)

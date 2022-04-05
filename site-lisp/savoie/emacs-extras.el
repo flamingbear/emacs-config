@@ -27,7 +27,7 @@ the current buffer."
 (defun my-minibuffer-setup-hook ()
   (setq gc-cons-threshold most-positive-fixnum))
 (defun my-minibuffer-exit-hook ()
-  (setq gc-cons-threshold 800000))
+  (setq gc-cons-threshold (* 1000 1000 1000)))
 
 (add-hook 'minibuffer-setup-hook #'my-minibuffer-setup-hook)
 (add-hook 'minibuffer-exit-hook #'my-minibuffer-exit-hook)
@@ -136,7 +136,7 @@ the current buffer."
 ;; TODO [MHS, 2013-01-23] You should learn how to make this only for modes you want.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-(add-hook 'text-mode-hook '(lambda ()
+(add-hook 'text-mode-hook #'(lambda ()
 			     (setq indent-tabs-mode nil)
 			     (setq tab-width 4)))
 ;; To edit binary files
@@ -253,7 +253,7 @@ the current buffer."
   :ensure t
   :config
   (add-hook 'yaml-mode-hook
-            '(lambda ()
+            #'(lambda ()
                (define-key yaml-mode-map "\C-m" 'newline-and-indent))))
 
 

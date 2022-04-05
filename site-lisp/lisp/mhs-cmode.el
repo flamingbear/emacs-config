@@ -25,7 +25,7 @@ Report bugs to: Matthew H. Savoie <mattie@innocent.com>")
 ;; Common to all C modes pulled from .gnu-emacs
 ;; ---------------------
 (add-hook 'c-mode-common-hook
-   '(lambda () (c-set-style "linux")
+   #'(lambda () (c-set-style "linux")
 	(c-set-offset 'case-label 4)
 	(setq c-basic-offset 4)))
 
@@ -152,4 +152,3 @@ Report bugs to: Matthew H. Savoie <mattie@innocent.com>")
 (provide 'mhs-cmode)
 
 ;;; mhs-cmode.el ends here
-
