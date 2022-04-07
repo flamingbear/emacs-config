@@ -20,10 +20,15 @@
   (insert my-str))
 
 
+;; (defun mhs-browse-buffer-in-firefox ()
+;;   "* load the current file into firefox pre 28?"
+;;   (interactive)
+;;   (browse-url (concat "file://" (buffer-file-name))))
+
 (defun mhs-browse-buffer-in-firefox ()
   "* load the current file into firefox"
   (interactive)
-  (browse-url (concat "file://" (buffer-file-name))))
+  (browse-url (buffer-file-name) 't))
 
 
 (defun mhs-insert-todo ()
