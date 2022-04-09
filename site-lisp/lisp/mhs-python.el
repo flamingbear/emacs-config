@@ -10,24 +10,29 @@
   :ensure t
   :hook ((python-mode . lsp)
          (lsp-mode . lsp-enable-which-key-integration))
-  :commands lsp
+  :commands (lsp lsp-deferred)
+  :init
+  (setq lsp-keymap-prefix "C-c l")
   :config
   (setq
-   read-process-output-max (* 1024 1024)
+   lsp-enable-snippet nil
    lsp-idle-delay 0.500
-   lsp-pyls-plugins-pydocstyle-enabled t
-   lsp-pyls-plugins-yapf-enabled t
    lsp-pyls-plugins-flake8-enabled t
    lsp-pyls-plugins-pycodestyle-enabled nil
+   lsp-pyls-plugins-pydocstyle-enabled t
    lsp-pyls-plugins-pyflakes-enabled nil
-   lsp-keymap-prefix "C-c C-l")
-  )
+   lsp-pyls-plugins-yapf-enabled t
+   lsp-pylsp-plugins-black-enabled t
+   read-process-output-max (* 1024 1024)
+   ))
 
-(use-package lsp-pyright
+(use-package lsp-treemacs
   :ensure t
-  :hook (python-mode . (lambda ()
-                          (require 'lsp-pyright)
-                          (lsp))))  ; or lsp-deferred
+  :after lsp)
+
+(use-package lsp-treemacs
+  :ensure t
+  :after lsp)
 
 (use-package lsp-ui
   :ensure t
@@ -37,12 +42,12 @@
    lsp-ui-sideline-enable t
    lsp-ui-sideline-show-diagnostics t
    lsp-ui-sideline-show-hover t
-   lsp-ui-sideline-show-code-actions t
+   lsp-ui-sideline-show-code-actions 'nil
    lsp-ui-sideline-update-mode 'point
    ;; ----------------------------------------
    lsp-ui-peek-enable t
-   ;; lsp-ui-peek-list-width 60
-   ;; lsp-ui-peek-peek-height 25
+   lsp-ui-peek-list-width 60
+   lsp-ui-peek-peek-height 25
    ;; ----------------------------------------
    lsp-ui-doc-enable t
    lsp-ui-doc-position 'bottom
@@ -59,19 +64,17 @@
 
 (use-package dap-mode
   :ensure t
+  :commands dap-debug
   :config
   (dap-auto-configure-mode 1)
-  ;; (dap-ui-mode 1)
-  ;; (dap-tooltip-mode 1)
+  (require 'dap-python)
   (setq dap-python-debugger 'debugpy)
-  (require 'dap-python))
-
+  )
 
 (use-package pyvenv
   :ensure t
   :config
   (pyvenv-mode 1))
-
 
 ;; don't use flymake (elpy default), use flycheck
 ;; https://github.com/jorgenschaefer/elpy/issues/137#issuecomment-55403160
