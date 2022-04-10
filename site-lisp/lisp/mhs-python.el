@@ -6,6 +6,8 @@
   ;; Python is a dev mode
   (add-hook 'python-mode-hook 'run-dev-hook))
 
+;; Need to install lsp in project you want to use this with.
+;; pip install "python-lsp-server[all]" provides pylsp- options
 (use-package lsp-mode
   :ensure t
   :hook ((python-mode . lsp)
@@ -15,16 +17,32 @@
   (setq lsp-keymap-prefix "C-c l")
   :config
   (setq
-   lsp-enable-snippet nil
-   lsp-idle-delay 0.500
-   lsp-pyls-plugins-flake8-enabled t
-   lsp-pyls-plugins-pycodestyle-enabled nil
-   lsp-pyls-plugins-pydocstyle-enabled t
-   lsp-pyls-plugins-pyflakes-enabled nil
-   lsp-pyls-plugins-yapf-enabled t
-   lsp-pylsp-plugins-black-enabled t
    read-process-output-max (* 1024 1024)
-   ))
+   lsp-idle-delay 0.500
+   lsp-pylsp-plugins-pydocstyle-enabled t
+   lsp-pylsp-plugins-yapf-enabled t
+   lsp-pylsp-plugins-flake8-enabled t
+   lsp-pylsp-plugins-pycodestyle-enabled nil
+   lsp-pylsp-plugins-pyflakes-enabled nil
+   )
+
+  ;; This appears to allow me to set black but I can't see the changes that are
+  ;; going to be made.
+  ;; (lsp-register-custom-settings
+  ;;  '(
+  ;;    ("pylsp.plugins.black.enabled" t)
+  ;;    ("pylsp.plugins.black.preview" t)
+  ;;    )
+  ;;  )
+  )
+
+(use-package lsp-pyright
+  :ensure t
+  :hook (python-mode . (lambda ()
+                          (require 'lsp-pyright)
+                          (lsp))))  ; or lsp-deferred
+
+
 
 (use-package lsp-treemacs
   :ensure t
