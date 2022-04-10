@@ -36,17 +36,12 @@
   ;;  )
   )
 
-(use-package lsp-pyright
-  :ensure t
-  :hook (python-mode . (lambda ()
-                          (require 'lsp-pyright)
-                          (lsp))))  ; or lsp-deferred
+;; (use-package lsp-pyright
+;;   :ensure t
+;;   :hook (python-mode . (lambda ()
+;;                           (require 'lsp-pyright)
+;;                           (lsp))))  ; or lsp-deferred
 
-
-
-(use-package lsp-treemacs
-  :ensure t
-  :after lsp)
 
 (use-package lsp-treemacs
   :ensure t
@@ -82,11 +77,15 @@
 
 (use-package dap-mode
   :ensure t
+  :hook
+  (dap-stopped-hook . (lambda (arg) (call-interactively #'dap-hydra)))
   :commands dap-debug
   :config
   (dap-auto-configure-mode 1)
   (require 'dap-python)
   (setq dap-python-debugger 'debugpy)
+
+
   )
 
 (use-package pyvenv
