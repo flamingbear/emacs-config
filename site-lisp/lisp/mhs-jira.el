@@ -36,7 +36,7 @@
         (upcase
          (if (use-region-p)
              (buffer-substring-no-properties (region-beginning) (region-end))
-           (read-from-minibuffer "Enter ticket number: " "DAS-"))))
+           (read-from-minibuffer "Enter ticket number: " mhs-jira--current-ticket-number))))
   (mhs-jira--update-url-base  mhs-jira--current-ticket-number))
 
 
