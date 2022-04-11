@@ -26,11 +26,6 @@
    lsp-pylsp-plugins-pyflakes-enabled nil
    lsp-disabled-clients '((python-mode . pyls))
    )
-
-  (use-package lsp-ivy
-    :ensure t
-    :after lsp)
-
   ;; This appears to allow me to set black but I can't see the changes that are
   ;; going to be made.
   ;; (lsp-register-custom-settings
@@ -39,7 +34,15 @@
   ;;    ("pylsp.plugins.black.preview" t)
   ;;    )
   ;;  )
+  ;; Need this for lsp-breadcrumb faces looking too grey on the header line
+  (custom-set-faces
+   '(header-line ((t (:inherit mode-line :background "#71458f")))))
+
   )
+
+  (use-package lsp-ivy
+    :ensure t
+    :after lsp)
 
 ;; (use-package lsp-pyright
 ;;   :ensure t

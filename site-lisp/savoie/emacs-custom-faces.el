@@ -143,9 +143,7 @@
   :ensure t
   :config
   (load-theme 'ample-flat t)
-  ;; Need this for lsp-breadcrumb faces looking too grey on the header line
-  (custom-set-faces
-    '(header-line ((t (:inherit mode-line :background "#9574a6")))))
+
   )
 
 ;; (use-package ample-theme :ensure t)
