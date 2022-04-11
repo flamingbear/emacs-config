@@ -24,7 +24,12 @@
    lsp-pylsp-plugins-flake8-enabled t
    lsp-pylsp-plugins-pycodestyle-enabled nil
    lsp-pylsp-plugins-pyflakes-enabled nil
+   lsp-disabled-clients '((python-mode . pyls))
    )
+
+  (use-package lsp-ivy
+    :ensure t
+    :after lsp)
 
   ;; This appears to allow me to set black but I can't see the changes that are
   ;; going to be made.
@@ -84,8 +89,6 @@
   (dap-auto-configure-mode 1)
   (require 'dap-python)
   (setq dap-python-debugger 'debugpy)
-
-
   )
 
 (use-package pyvenv

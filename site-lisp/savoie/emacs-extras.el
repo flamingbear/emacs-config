@@ -23,14 +23,7 @@ the current buffer."
 ;; To determine when to split horizontally
 (setq split-width-threshold 1600)
 
-
-(defun my-minibuffer-setup-hook ()
-  (setq gc-cons-threshold most-positive-fixnum))
-(defun my-minibuffer-exit-hook ()
-  (setq gc-cons-threshold (* 1000 1000 1000)))
-
-(add-hook 'minibuffer-setup-hook #'my-minibuffer-setup-hook)
-(add-hook 'minibuffer-exit-hook #'my-minibuffer-exit-hook)
+(setq gc-cons-threshold (* 1000 1000 1000))
 (setq garbage-collection-messages 't)
 
 
