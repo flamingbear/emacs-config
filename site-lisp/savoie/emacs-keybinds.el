@@ -67,11 +67,11 @@ If a region is not selected and,
         (swiper-isearch))))
 
 ;; This seems way more natural to me. (isearch)
-;; (global-set-key "\C-s" 'isearch-forward)
-;; (global-set-key "\C-r" 'isearch-backward)
+(global-set-key "\C-s" 'isearch-forward)
+(global-set-key "\C-r" 'isearch-backward)
 ;; https://oremacs.com/2019/04/07/swiper-isearch/
-(global-set-key "\C-s" 'modi/swiper-isearch)
-(global-set-key "\C-r" 'modi/swiper-isearch)
+;; (global-set-key "\C-s" 'modi/swiper-isearch)
+;; (global-set-key "\C-r" 'modi/swiper-isearch)
 (define-key isearch-mode-map (kbd "M-i") 'swiper-from-isearch)
 
 (global-set-key (kbd "M-/") 'dabbrev-expand)
