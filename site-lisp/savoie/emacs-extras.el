@@ -522,6 +522,10 @@ the current buffer."
   :ensure t
   :bind ([remap fill-paragraph] . unfill-toggle))
 
+(use-package flymake-shellcheck
+  :commands flymake-shellcheck-load
+  :init
+  (add-hook 'sh-mode-hook 'flymake-shellcheck-load))
 
 (provide 'emacs-extras)
 ;;; emacs-extras.el ends here
