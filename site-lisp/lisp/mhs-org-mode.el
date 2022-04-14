@@ -77,7 +77,7 @@
     (if (and
 	 (featurep 'org-clock)
 	 (funcall 'org-clocking-p)
-	 ;; (y-or-n-p "You are currently clocking time, clock out? ")
+	 (y-or-n-p "You are currently clocking time, clock out? ")
 	 )
 	(org-clock-out)
       t)) ;; only fails on keyboard quit or error
