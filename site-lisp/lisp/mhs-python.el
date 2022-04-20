@@ -63,7 +63,7 @@
    lsp-ui-sideline-enable t
    lsp-ui-sideline-show-diagnostics t
    lsp-ui-sideline-show-hover t
-   lsp-ui-sideline-show-code-actions 'nil
+   lsp-ui-sideline-show-code-actions t
    lsp-ui-sideline-update-mode 'point
    ;; ----------------------------------------
    lsp-ui-peek-enable t
@@ -71,12 +71,10 @@
    lsp-ui-peek-peek-height 25
    ;; ----------------------------------------
    lsp-ui-doc-enable t
-   lsp-ui-doc-position 'bottom
-   lsp-ui-doc-delay 0
-   lsp-ui-doc-show-with-cursor nil
+   lsp-ui-doc-use-childframe t
+   lsp-ui-doc-show-with-cursor t
    lsp-ui-doc-show-with-mouse nil
    lsp-ui-doc-enable t
-   lsp-ui-doc-use-childframe t
    )
   ;; Bad wrapping with sideline when you don't set this.
   (custom-set-faces
@@ -109,7 +107,9 @@
 (use-package ein
   :ensure t
   :init
-  (setq ein:completion-backend 'ein:use-company-backend)
+  (setq ein:worksheet-enable-undo t)
+  (setq ein:output-area-inlined-images t)
+  (setq ein:polymode t)
   :config
   (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
   )

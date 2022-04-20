@@ -28,6 +28,10 @@
 
   ;; indent sanely?
   (setq org-adapt-indentation 't)
+  (setq org-startup-indented 't)
+
+  ;; hide org markdown around ~code~ +strikethrough+ /italics/
+  (setq org-hide-emphasis-markers 't)
 
   ;; I don't want to see days in my time tracking
   (setq org-duration-format 'h:mm)
@@ -64,12 +68,12 @@
         ((org-agenda-files (file-expand-wildcards "~/Dropbox/orgs/*.org_archive"))))))
     "mhs-org mode loaded")
 
-  (setq org-fontify-done-headline nil)
+  (setq org-fontify-done-headline 't)
 
   ;; Keep a clock across working sessions.
-  (setq org-clock-persist (quote history))
-  (setq org-clock-persist-file "~/Dropbox/orgs/org-clock-save.el")
-  (org-clock-persistence-insinuate)
+  ;; (setq org-clock-persist (quote history))
+  ;; (setq org-clock-persist-file "~/Dropbox/orgs/org-clock-save.el")
+  ;; (org-clock-persistence-insinuate)
 
   ;;https://emacs.stackexchange.com/questions/38483/reminds-to-clock-out-or-just-clock-out-when-there-has-a-clock-running
   (defun my/org-clock-query-out ()
@@ -101,8 +105,6 @@
       (save-buffer)
       (org-show-all)
       ))
-
-
   )
 (use-package org-contrib :pin nongnu :ensure t)
 (provide 'mhs-org-mode)
