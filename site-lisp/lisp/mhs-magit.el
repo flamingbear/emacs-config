@@ -24,19 +24,23 @@
   (defun mhs/parse-current-branch ()
     (let ((ISSUEKEY "[[:upper:]]+-[[:digit:]]+"))
       (when (string-match-p ISSUEKEY (magit-get-current-branch))
-	(insert
+
 	 (replace-regexp-in-string
 	  (concat ".*?\\(" ISSUEKEY "\\).*")
-	  "- \\1: "
-	  (magit-get-current-branch))))))
+	  "\\1"
+	  (magit-get-current-branch)))))
+
   ;; return the ticket parsed from the branch or my current ticket number
   (defun mhs/current-ticket ()
-    (or (mhs/parse-current-branch)
-	mhs-jira--current-ticket-number))
+    (if (equal (mhs/parse-current-branch) 'nil)
+	mhs-jira--current-ticket-number
+      (mhs/parse-current-branch)))
+  (mhs/current-ticket)
 
   (defun my-git-commit-setup ()
     (save-excursion
       (insert (concat "\n\n" (mhs/current-ticket)))))
+
 
   (add-hook 'git-commit-setup-hook 'my-git-commit-setup)
 
