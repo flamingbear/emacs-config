@@ -35,13 +35,10 @@
     (if (equal (mhs/parse-current-branch) 'nil)
 	mhs-jira--current-ticket-number
       (mhs/parse-current-branch)))
-  (mhs/current-ticket)
 
   (defun my-git-commit-setup ()
     (save-excursion
       (insert (concat "\n\n" (mhs/current-ticket)))))
-
-
   (add-hook 'git-commit-setup-hook 'my-git-commit-setup)
 
 
