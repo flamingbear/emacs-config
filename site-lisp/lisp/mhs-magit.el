@@ -20,6 +20,7 @@
   (setq magit-push-always-verify nil)
   (setq magit-diff-refine-hunk 'all)
 
+  ;; https://emacs.stackexchange.com/questions/28537/a-way-to-insert-a-predefined-text-into-magits-commit-message-window
   ;; https://emacs.stackexchange.com/a/44685/613
   (defun mhs/parse-current-branch ()
     (let ((ISSUEKEY "[[:upper:]]+-[[:digit:]]+"))

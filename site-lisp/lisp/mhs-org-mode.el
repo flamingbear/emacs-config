@@ -27,6 +27,7 @@
   (setq org-agenda-files "~/Dropbox/orgs/org-agenda-files")
 
   ;; indent sanely?
+  (setq org-startup-folded 't)
   (setq org-adapt-indentation 't)
   (setq org-startup-indented 't)
 
