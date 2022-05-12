@@ -16,6 +16,7 @@
 (use-package magit
   :ensure t
   :config
+  (setq magit-git-executable "/usr/local/bin/git")
   (setq magit-last-seen-setup-instructions "1.4.0")
   (setq magit-push-always-verify nil)
   (setq magit-diff-refine-hunk 'all)
