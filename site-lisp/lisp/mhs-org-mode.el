@@ -71,22 +71,35 @@
 
   (setq org-fontify-done-headline 't)
 
+  (custom-theme-set-faces
+   'user
+   '(org-block ((t (:inherit fixed-pitch))))
+   '(org-code ((t (:inherit (shadow fixed-pitch)))))
+   '(org-document-info ((t (:foreground "dark orange"))))
+   '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
+   '(org-indent ((t (:inherit (org-hide fixed-pitch)))))
+   '(org-link ((t (:foreground "#8AB4F7" :underline t))))
+   '(org-meta-line ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+   '(org-property-value ((t (:inherit fixed-pitch))) t)
+   '(org-special-keyword ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+   '(org-table ((t (:inherit fixed-pitch :foreground "#83a598"))))
+   '(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
+   '(org-verbatim ((t (:inherit (shadow fixed-pitch))))))
+
+
   ;; Keep a clock across working sessions.
-  ;; (setq org-clock-persist (quote history))
+  ;; (setq org-clock-persist 'history)
   ;; (setq org-clock-persist-file "~/Dropbox/orgs/org-clock-save.el")
   ;; (org-clock-persistence-insinuate)
 
   ;;https://emacs.stackexchange.com/questions/38483/reminds-to-clock-out-or-just-clock-out-when-there-has-a-clock-running
-  (defun my/org-clock-query-out ()
-    "Ask the user before clocking out. This is a useful function for adding to `kill-emacs-query-functions'."
-    (if (and
-	 (featurep 'org-clock)
-	 (funcall 'org-clocking-p)
-	 (y-or-n-p "You are currently clocking time, clock out? ")
-	 )
-	(org-clock-out)
-      t)) ;; only fails on keyboard quit or error
-  (add-hook 'kill-emacs-query-functions 'my/org-clock-query-out)
+  ;; (defun my/org-clock-query-out ()
+  ;;   "Ask the user before clocking out. This is a useful function for adding to `kill-emacs-query-functions'."
+  ;;   (if (and (featurep 'org-clock)
+  ;; 	     (funcall 'org-clocking-p))
+  ;; 	(org-clock-out)
+  ;;    t)) ;; only fails on keyboard quit or error
+  ;; (add-hook 'kill-emacs-query-functions 'my/org-clock-query-out)
 
   ;; Updates sprint track files with today's hours.
   (defun mhs-update-today ()
@@ -108,5 +121,15 @@
       ))
   )
 (use-package org-contrib :pin nongnu :ensure t)
+
+(use-package org-jira
+  :ensure t
+  :after org
+  :config
+  (setq
+   jiralib-url "https://bugs.earthdata.nasa.gov"
+   org-jira-working-dir "/Users/savoie/Dropbox/orgs/.org-jira" ;; (expand-file-name ".org-jira" user-emacs-directory))
+   )
+  )
 (provide 'mhs-org-mode)
 ;;; mhs-org-mode.el ends here

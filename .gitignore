@@ -25,3 +25,4 @@
 /forge-database.sqlite
 /.dap-breakpoints
 /.lsp-session-v1
+/eln-cache/

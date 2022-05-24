@@ -23,7 +23,7 @@ the current buffer."
 ;; To determine when to split horizontally
 (setq split-width-threshold 1600)
 
-(setq gc-cons-threshold (* 128 1024 1024))
+(setq gc-cons-threshold (* 64 1024 1024))
 (setq garbage-collection-messages 't)
 
 
@@ -247,7 +247,7 @@ the current buffer."
   :config
   (add-hook 'yaml-mode-hook
             #'(lambda ()
-               (define-key yaml-mode-map "\C-m" 'newline-and-indent))))
+		(define-key yaml-mode-map "\C-m" 'newline-and-indent))))
 
 
 ;; Try company-mode instead of auto-complete
@@ -312,6 +312,8 @@ the current buffer."
 
 ;; For orgmode and others start emacsclient
 (server-start)
+
+(use-package emacs-everywhere :ensure t)
 
 ;; Do binary diff in hexl-mode if files are binary format
 (use-package binary-diff)
@@ -523,9 +525,14 @@ the current buffer."
   :bind ([remap fill-paragraph] . unfill-toggle))
 
 (use-package flymake-shellcheck
+  :ensure t
   :commands flymake-shellcheck-load
   :init
-  (add-hook 'sh-mode-hook 'flymake-shellcheck-load))
+  (add-hook 'sh-mode-hook 'flymake-shellcheck-load)
+  :config
+  ;; Added this without testing when I was getting errors in org mode and #begin_src bash blocks
+  (setq flycheck-emacs-lisp-load-path 'inherit)
+  )
 
 (provide 'emacs-extras)
 ;;; emacs-extras.el ends here
