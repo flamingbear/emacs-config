@@ -22,6 +22,7 @@
    lsp-pylsp-plugins-pydocstyle-enabled t
    lsp-pylsp-plugins-yapf-enabled t
    lsp-pylsp-plugins-flake8-enabled t
+   lsp-pylsp-plugins-autopep8-enabled nil
    lsp-pylsp-plugins-pycodestyle-enabled nil
    lsp-pylsp-plugins-pyflakes-enabled nil
    lsp-disabled-clients '((python-mode . pyls))

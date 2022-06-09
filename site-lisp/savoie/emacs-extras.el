@@ -24,6 +24,7 @@ the current buffer."
 (setq split-width-threshold 1600)
 
 (setq gc-cons-threshold (* 64 1024 1024))
+;; (setq gc-cons-threshold (* 80  1024))
 (setq garbage-collection-messages 't)
 
 
