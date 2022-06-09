@@ -15,6 +15,7 @@
 
 (use-package magit
   :ensure t
+  :after exec-path-from-shell
   :config
   (setq magit-git-executable (executable-find "git"))
   (setq magit-last-seen-setup-instructions "1.4.0")
