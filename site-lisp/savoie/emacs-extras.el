@@ -65,12 +65,22 @@ the current buffer."
     (set-selective-display arg)))
 (global-set-key (kbd "C-x $") 'set-selective-display-current)
 
-(when (file-exists-p (locate-file "highlight-indentation.el" load-path))
-  (load-file (locate-file "highlight-indentation.el" load-path))
+
+(use-package highlight-indentation
+  :ensure t
+  :hook((yaml-mode . highlight-indentation-mode)
+	(yaml-mode . highlight-indentation-current-column-mode))
+  :config
   (highlight-indentation-mode)
   (diminish 'highlight-indentation-mode)
-  (add-hook 'yaml-mode-hook 'highlight-indentation-mode)
-  (add-hook 'yaml-mode-hook 'highlight-indentation-current-column-mode))
+  )
+
+;; (when (file-exists-p (locate-file "highlight-indentation.el" load-path))
+;;   (load-file (locate-file "highlight-indentation.el" load-path))
+;;   (highlight-indentation-mode)
+;;   (diminish 'highlight-indentation-mode)
+;;   (add-hook 'yaml-mode-hook 'highlight-indentation-mode)
+;;   (add-hook 'yaml-mode-hook 'highlight-indentation-current-column-mode))
 
 (use-package smart-shift
   :ensure t
