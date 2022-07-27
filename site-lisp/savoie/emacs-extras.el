@@ -68,11 +68,16 @@ the current buffer."
 
 (use-package highlight-indentation
   :ensure t
-  :hook((yaml-mode . highlight-indentation-mode)
-	(yaml-mode . highlight-indentation-current-column-mode))
+  :hook ((yaml-mode . highlight-indentation-mode)
+	 (python-mode . highlight-indentation-mode)
+	 (yaml-mode . highlight-indentation-current-column-mode))
   :config
   (highlight-indentation-mode)
   (diminish 'highlight-indentation-mode)
+  (custom-theme-set-faces
+   'user
+   '(highlight-indentation-current-column-face ((t (:foreground nil :background "#505050"))))
+   '(highlight-indentation-face ((t (:foreground nil :background "#303030")))))
   )
 
 ;; (when (file-exists-p (locate-file "highlight-indentation.el" load-path))
