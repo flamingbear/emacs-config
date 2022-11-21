@@ -142,8 +142,13 @@
 (use-package ample-theme
   :ensure t
   :config
-  (load-theme 'ample-flat t)
+  ;; (load-theme 'ample-flat t)
+  )
 
+(use-package nord-theme
+  :ensure t
+  :config
+  (load-theme 'nord t)
   )
 
 ;; (use-package ample-theme :ensure t)

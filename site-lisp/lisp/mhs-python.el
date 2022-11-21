@@ -84,8 +84,9 @@
 
 (use-package dap-mode
   :ensure t
+  :pin melpa
   :hook
-  (dap-stopped-hook . (lambda (arg) (call-interactively #'dap-hydra)))
+  (dap-stopped . (lambda (arg) (call-interactively #'dap-hydra)))
   :commands dap-debug
   :config
   (dap-auto-configure-mode 1)

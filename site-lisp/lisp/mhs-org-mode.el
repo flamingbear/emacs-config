@@ -69,7 +69,7 @@
         ((org-agenda-files (file-expand-wildcards "~/Dropbox/orgs/*.org_archive"))))))
     "mhs-org mode loaded")
 
-  (setq org-fontify-done-headline 't)
+  (setq org-fontify-done-headline 'nil)
 
   (custom-theme-set-faces
    'user
@@ -88,9 +88,9 @@
 
 
   ;; Keep a clock across working sessions.
-  ;; (setq org-clock-persist 'history)
-  ;; (setq org-clock-persist-file "~/Dropbox/orgs/org-clock-save.el")
-  ;; (org-clock-persistence-insinuate)
+  (setq org-clock-persist 'history)
+  (setq org-clock-persist-file "~/Dropbox/orgs/org-clock-save.el")
+  (org-clock-persistence-insinuate)
 
   ;;https://emacs.stackexchange.com/questions/38483/reminds-to-clock-out-or-just-clock-out-when-there-has-a-clock-running
   ;; (defun my/org-clock-query-out ()
