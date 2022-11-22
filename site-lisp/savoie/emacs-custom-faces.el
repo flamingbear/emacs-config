@@ -151,6 +151,11 @@
   (load-theme 'nord t)
   )
 
+(use-package all-the-icons
+  :ensure t
+  :if (display-graphic-p))
+
+
 ;; (use-package ample-theme :ensure t)
 ;; ;; when you want to have fancy mode lines on App Emacs, but still deal with terminal windows...
 ;; (if (<= (display-color-cells) 256)
