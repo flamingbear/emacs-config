@@ -550,5 +550,19 @@ the current buffer."
   (setq flycheck-emacs-lisp-load-path 'inherit)
   )
 
+(use-package atomic-chrome
+  ;; https://github.com/alpha22jp/atomic-chrome
+  :ensure t
+  :init
+  (atomic-chrome-start-server)
+  ;; Possible to set default mode (python if you're using the jupyter thing a lot
+  ;; (setq atomic-chrome-default-major-mode 'markdown-mode)
+  (setq atomic-chrome-url-major-mode-alist
+	'(("github\\.com" . gfm-mode)
+          ))
+
+  )
+
+
 (provide 'emacs-extras)
 ;;; emacs-extras.el ends here
