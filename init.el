@@ -114,8 +114,8 @@
 (use-package emacs-keybinds)
 (use-package mhs-org-mode)
 (use-package emacs-custom-faces)
-;; (use-package emacs-modeline)
-;;(use-package mhs-cut-and-paste)
+(use-package emacs-modeline)
+;;(use-package mhs-cut-and-paste) ;; TODO [MHS, 01/08/2023]
 
 
 
