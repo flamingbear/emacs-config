@@ -23,7 +23,9 @@ the current buffer."
 ;; To determine when to split horizontally
 (setq split-width-threshold 1600)
 
-(setq gc-cons-threshold (* 64 1024 1024))
+(setq gc-cons-threshold (* 2 1024 1024))
+(run-with-idle-timer 2 t (lambda () (garbage-collect)))
+
 ;; (setq gc-cons-threshold (* 80  1024))
 (setq garbage-collection-messages 't)
 
