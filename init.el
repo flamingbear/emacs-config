@@ -115,7 +115,7 @@
 (use-package mhs-org-mode)
 (use-package emacs-custom-faces)
 (use-package emacs-modeline)
-;;(use-package mhs-cut-and-paste) ;; TODO [MHS, 01/08/2023]
+;;(use-package mhs-cut-and-paste) ;; TODO [MHS, 01/08/2023]  I think all of this is irrelevent at this point.
 
 
 

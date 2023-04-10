@@ -89,6 +89,8 @@ the current buffer."
 ;;   (add-hook 'yaml-mode-hook 'highlight-indentation-mode)
 ;;   (add-hook 'yaml-mode-hook 'highlight-indentation-current-column-mode))
 
+
+;; C-c <arrow> moves region
 (use-package smart-shift
   :ensure t
   :config
@@ -340,7 +342,6 @@ the current buffer."
 (setq delete-by-moving-to-trash 't)
 (setq trash-directory "~/.Trash/")
 
-
 ;;--------------------------------------------------------------------------
 ;; GIT has some quirks and normally, I don't want to do a regular diff when
 ;; looking at revisions.
@@ -565,6 +566,13 @@ the current buffer."
 
   )
 
+;; TODO [MHS, 03/22/2023] This doesn't do anything
+;; (use-package tree-sitter :ensure t)
+;; (use-package tree-sitter-langs :ensure t)
+
+(use-package expand-region
+  :ensure t
+  :bind ("C-=" . er/expand-region))
 
 (provide 'emacs-extras)
 ;;; emacs-extras.el ends here

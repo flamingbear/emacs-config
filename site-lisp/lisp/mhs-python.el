@@ -10,6 +10,7 @@
 ;; pip install "python-lsp-server[all]" provides pylsp- options
 (use-package lsp-mode
   :ensure t
+  :pin melpa
   :hook ((python-mode . lsp)
          (lsp-mode . lsp-enable-which-key-integration))
   :commands (lsp lsp-deferred)
@@ -20,29 +21,50 @@
    read-process-output-max (* 1024 1024)
    lsp-idle-delay 0.500
    lsp-pylsp-plugins-pydocstyle-enabled t
-   lsp-pylsp-plugins-yapf-enabled t
-   lsp-pylsp-plugins-flake8-enabled t
+   lsp-pylsp-plugins-yapf-enabled nil
+   lsp-pylsp-plugins-flake8-enabled nil
+   lsp-pylsp-plugins-black-enabled t
    lsp-pylsp-plugins-autopep8-enabled nil
    lsp-pylsp-plugins-pycodestyle-enabled nil
    lsp-pylsp-plugins-pyflakes-enabled nil
    lsp-disabled-clients '((python-mode . pyls))
    )
-  ;; This appears to allow me to set black but I can't see the changes that are
-  ;; going to be made.
-  ;; (lsp-register-custom-settings
-  ;;  '(
-  ;;    ("pylsp.plugins.black.enabled" t)
-  ;;    ("pylsp.plugins.black.preview" t)
-  ;;    )
-  ;;  )
   ;; Need this for lsp-breadcrumb faces looking too grey on the header line
   (custom-set-faces
    '(header-line ((t (:inherit mode-line :background "#71458f")))))
-
+  ;; Set lsp-log-io to t for debugging and use lsp-workspace-show-log
   )
+
+
+(use-package python-pytest
+  :ensure t
+  :after python
+  :init
+  ;; (define-key python-mode-map "\C-cT" 'python-pytest-dispatch)
+  (define-key python-mode-map "\C-cy" 'python-pytest-dispatch)
+  )
+;; ## someday TODO [MHS, 03/20/2023]
+;; (use-package! python-pytest
+;;   :commands python-pytest-dispatch
+;;   :init
+;;   (map! :after python
+;;         :localleader
+;;         :map python-mode-map
+;;         :prefix ("t" . "test")
+;;         "a" #'python-pytest
+;;         "f" #'python-pytest-file-dwim
+;;         "F" #'python-pytest-file
+;;         "t" #'python-pytest-function-dwim
+;;         "T" #'python-pytest-function
+;;         "r" #'python-pytest-repeat
+;;         "p" #'python-pytest-dispatch
+;;         "l" #'python-pytest-last-failed))
+
+
 
   (use-package lsp-ivy
     :ensure t
+    :pin melpa
     :after lsp)
 
 ;; (use-package lsp-pyright
@@ -57,6 +79,7 @@
   :after lsp)
 
 (use-package lsp-ui
+  :pin melpa
   :ensure t
   :commands lsp-ui-mode
   :config
@@ -81,6 +104,7 @@
   (custom-set-faces
    '(markdown-code-face ((t (:inherit default)))))
   )
+
 
 (use-package dap-mode
   :ensure t
