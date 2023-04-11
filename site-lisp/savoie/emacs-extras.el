@@ -24,7 +24,7 @@ the current buffer."
 (setq split-width-threshold 1600)
 
 (setq gc-cons-threshold (* 2 1024 1024))
-(run-with-idle-timer 2 t (lambda () (garbage-collect)))
+(run-with-idle-timer 3 t (lambda () (garbage-collect)))
 
 ;; (setq gc-cons-threshold (* 80  1024))
 (setq garbage-collection-messages 't)

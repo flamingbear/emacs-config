@@ -52,6 +52,9 @@
   :after magit
   :ensure t)
 
+(use-package sqlite3
+  :ensure t)
+
 (use-package github-review
   :ensure t)
 
