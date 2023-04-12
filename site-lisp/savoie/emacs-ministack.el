@@ -182,6 +182,19 @@
   ;;;; 5. No project support
   ;; (setq consult-project-function nil)
   )
+
+;; Configure directory extension.
+(use-package vertico-directory
+  :after vertico
+  :ensure nil
+  ;; More convenient directory navigation commands
+  :bind (:map vertico-map
+              ("RET" . vertico-directory-enter)
+              ("DEL" . vertico-directory-delete-char)
+              ("M-DEL" . vertico-directory-delete-word))
+  ;; Tidy shadowed file names
+  :hook (rfn-eshadow-update-overlay . vertico-directory-tidy))
+
 ;; From before
 ;; (setq counsel-rg-base-command  "rg -S -g !.git --hidden --no-heading --line-number --color never %s .")
 
