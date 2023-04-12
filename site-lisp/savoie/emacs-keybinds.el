@@ -5,66 +5,10 @@
 ;; try swiper/ivy/counsel
 ;;;;;;;
 
-(use-package swiper
-  :ensure t)
+;; [MHS, 04/12/2023] These are muscle memoried.
+(global-set-key (kbd "C-c f") 'project-find-file)
+(global-set-key (kbd "C-c j") 'consult-git-grep)
 
-(use-package counsel
-  :ensure t
-  :bind (("C-x C-f" . counsel-find-file)
-         ("M-x" . counsel-M-x)
-         ("C-c f" . counsel-git)
-	 )
-  :init
-  ;; Use ripgrep only if available.
-  (bind-key "C-c j" 'counsel-rg)
-  ;; (if (executable-find "rg")
-  ;;     (bind-key "C-c j" 'counsel-rg)
-  ;;   (bind-key "C-c j" 'counsel-git-grep))
-  (setq counsel-rg-base-command  "rg -S -g !.git --hidden --no-heading --line-number --color never %s .")
-  )
-
-
-(use-package ivy
-  :ensure t
-  :diminish ivy-mode
-  :config
-  (ivy-mode 1)
-  (setq ivy-use-virtual-buffers t)
-  (setq ivy-count-format "(%d/%d) ")
-  (setq ivy-use-selectable-prompt t)
-  :bind (("C-c C-r" . ivy-resume)
-         ("<f6>" . ivy-resume)
-	 :map ivy-minibuffer-map
-	 ("C-w" . ivy-yank-word)))
-
-
-;;; Get symbol at point
-;; https://github.com/Wilfred/ag.el
-(defun modi/get-symbol-at-point ()
-  "If there's an active selection, return that.
-Otherwise, get the symbol at point, as a string."
-  (cond ((use-region-p)
-         (buffer-substring-no-properties (region-beginning) (region-end)))
-        ((symbol-at-point)
-         (substring-no-properties
-          (symbol-name (symbol-at-point))))))
-
-
-;; https://github.com/kaushalmodi/.emacs.d/blob/master/setup-files/setup-search.el
-(defun modi/swiper-isearch (arg)
-  "Start swiper with input as the selected region.
-If a region is not selected and,
-  - If ARG is nil, start swiper with the symbol at point as input.
-  - Elseswiper without any arguments (stock behavior)."
-  (interactive "P")
-  (if (use-region-p)
-      (let ((b (region-beginning))
-            (e (region-end)))
-        (deactivate-mark)
-        (swiper-isearch (buffer-substring-no-properties b e)))
-    (if arg
-        (swiper-isearch (modi/get-symbol-at-point)) ; C-u
-        (swiper-isearch))))
 
 ;; This seems way more natural to me. (isearch)
 (global-set-key "\C-s" 'isearch-forward)
@@ -141,6 +85,12 @@ If a region is not selected and,
 (define-key global-map (kbd "C-+") 'text-scale-increase)
 (define-key global-map (kbd "C--") 'text-scale-decrease)
 
+;; https://www.reddit.com/r/emacs/comments/gf64oq/comment/fprm9nn/?utm_source=share&utm_medium=web2x&context=3
+(defun isearch-mark-and-exit+ ()
+  (interactive)
+  (isearch-done)
+  (push-mark isearch-other-end 'no-message 'activate))
+(define-key isearch-mode-map (kbd "M-RET") 'isearch-mark-and-exit+)
 
 (use-package hydra :ensure t)
 (use-package multiple-cursors
