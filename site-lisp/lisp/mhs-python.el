@@ -21,9 +21,9 @@
    read-process-output-max (* 1024 1024)
    lsp-idle-delay 0.500
    lsp-pylsp-plugins-pydocstyle-enabled t
-   lsp-pylsp-plugins-yapf-enabled nil
+   lsp-pylsp-plugins-yapf-enabled true
    lsp-pylsp-plugins-flake8-enabled nil
-   lsp-pylsp-plugins-black-enabled t
+   lsp-pylsp-plugins-black-enabled nil
    lsp-pylsp-plugins-autopep8-enabled nil
    lsp-pylsp-plugins-pycodestyle-enabled nil
    lsp-pylsp-plugins-pyflakes-enabled nil
