@@ -6,7 +6,8 @@
 ;;;;;;;
 
 ;; [MHS, 04/12/2023] These are muscle memoried.
-(global-set-key (kbd "C-c f") 'project-find-file)
+(global-set-key (kbd "C-c f") 'projectile-find-file)
+(global-set-key (kbd "C-c F") 'projectile-find-file-in-known-projects)
 (global-set-key (kbd "C-c j") 'consult-git-grep)
 
 

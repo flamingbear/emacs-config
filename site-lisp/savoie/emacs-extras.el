@@ -128,7 +128,7 @@ the current buffer."
   "Hook that gets run on activation of any programming mode.")
 (add-hook 'dev-hook 'display-line-numbers-mode)
 (add-hook 'dev-hook 'local-comment-auto-fill)
-(add-hook 'dev-hook 'company-mode)
+;; (add-hook 'dev-hook 'company-mode)
 
 (defun run-dev-hook ()
   "Enable things that are convenient across all dev buffers."
@@ -500,7 +500,7 @@ the current buffer."
 
 (use-package terraform-mode :ensure t)
 (use-package hcl-mode :ensure t)
-(use-package company-terraform :ensure t)
+;; (use-package company-terraform :ensure t)
 
 (use-package vterm :ensure t
   :init
