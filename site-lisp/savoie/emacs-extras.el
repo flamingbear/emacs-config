@@ -174,29 +174,7 @@ the current buffer."
   (setq projectile-keymap-prefix (kbd "C-c p"))  ;; You should try to learn the new way. but you wont
   :config
   (projectile-mode t)
-  (setq projectile-completion-system 'ivy)
-
-  ;; ;; HACK until this is fixed: https://github.com/bbatsov/projectile/issues/1165
-  ;; [MHS, 03/25/2022] Looks done
-  ;; (defun projectile-discover-projects-in-directory (directory)
-  ;;   "Discover any projects in DIRECTORY and add them to the projectile cache.
-  ;; This function is not recursive and only adds projects with roots
-  ;; at the top level of DIRECTORY."
-  ;;   (interactive
-  ;;    (list (read-directory-name "Starting directory: ")))
-  ;;   (let ((subdirs (directory-files directory t)))
-  ;;     (mapcar
-  ;;      (lambda (dir)
-  ;;        (when (and (file-directory-p dir)
-  ;;                   (not (member (file-name-nondirectory dir) '(".." "."))))
-  ;;          (let ((default-directory dir)
-  ;;                (projectile-cached-project-root dir))
-  ;;            (when (projectile-project-p)
-  ;;              (projectile-add-known-project (projectile-project-root))))))
-  ;;      subdirs)))
-
-    ;; "Fix" for stupidly slow emacs https://github.com/bbatsov/projectile/issues/1183
-  ;; (setq projectile-mode-line '(:eval (format " Projectile[%s]" (projectile-project-name))))
+  (setq projectile-completion-system 'default)
   )
 
 (use-package async :ensure t)
@@ -273,30 +251,30 @@ the current buffer."
 ;; Try company-mode instead of auto-complete
 ;;--------------------------
 ;; (use-package company-jedi :ensure t) ;; https://pypi.org/project/jedi/
+;; Try Corfu
+;; (use-package company
+;;   :ensure t
+;;   :config
+;;   (add-to-list 'company-backends 'company-tern)
+;;   ;; (add-to-list 'company-backends 'company-jedi)
+;;   (add-to-list 'company-backends 'company-terraform)
+;;   (setq company-idle-delay 0.005)
+;;   (require 'company-dabbrev-code)
+;;   (add-to-list 'company-dabbrev-code-modes 'js2-mode)
+;;   (add-to-list 'company-dabbrev-code-modes 'yaml-mode)
+;;   (add-to-list 'company-dabbrev-code-modes 'markdown-mode)
+;;   (add-to-list 'company-dabbrev-code-modes 'text-mode)
+;;   (setq company-dabbrev-downcase 'nil)
+;;   (global-set-key (kbd "<C-tab>") 'company-complete)
+;;   )
 
-(use-package company
-  :ensure t
-  :config
-  (add-to-list 'company-backends 'company-tern)
-  ;; (add-to-list 'company-backends 'company-jedi)
-  (add-to-list 'company-backends 'company-terraform)
-  (setq company-idle-delay 0.005)
-  (require 'company-dabbrev-code)
-  (add-to-list 'company-dabbrev-code-modes 'js2-mode)
-  (add-to-list 'company-dabbrev-code-modes 'yaml-mode)
-  (add-to-list 'company-dabbrev-code-modes 'markdown-mode)
-  (add-to-list 'company-dabbrev-code-modes 'text-mode)
-  (setq company-dabbrev-downcase 'nil)
-  (global-set-key (kbd "<C-tab>") 'company-complete)
-  )
-
-;; popups with company completion
-(use-package company-quickhelp
-  :ensure t
-  :config
-  (company-quickhelp-mode 1)
-  (add-hook 'after-init-hook 'global-company-mode)
-  )
+;; ;; popups with company completion
+;; (use-package company-quickhelp
+;;   :ensure t
+;;   :config
+;;   (company-quickhelp-mode 1)
+;;   (add-hook 'after-init-hook 'global-company-mode)
+;;   )
 
 (use-package paren
   :defer 3

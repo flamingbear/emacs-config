@@ -16,7 +16,7 @@
 ;; https://oremacs.com/2019/04/07/swiper-isearch/
 ;; (global-set-key "\C-s" 'modi/swiper-isearch)
 ;; (global-set-key "\C-r" 'modi/swiper-isearch)
-(define-key isearch-mode-map (kbd "M-i") 'swiper-from-isearch)
+;; (define-key isearch-mode-map (kbd "M-i") 'swiper-from-isearch)
 
 (global-set-key (kbd "M-/") 'dabbrev-expand)
 

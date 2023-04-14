@@ -61,11 +61,11 @@
 ;;         "l" #'python-pytest-last-failed))
 
 
-
-  (use-package lsp-ivy
-    :ensure t
-    :pin melpa
-    :after lsp)
+(use-package ivy :ensure t)
+(use-package lsp-ivy
+  :ensure t
+  :pin melpa
+  :after lsp)
 
 ;; (use-package lsp-pyright
 ;;   :ensure t

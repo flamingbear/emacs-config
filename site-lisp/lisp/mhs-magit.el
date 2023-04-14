@@ -45,7 +45,7 @@
   (add-hook 'git-commit-setup-hook 'my-git-commit-setup)
 
 
-  (setq magit-completing-read-function 'ivy-completing-read)
+  (setq magit-completing-read-function 'completing-read)
   )
 
 (use-package forge
