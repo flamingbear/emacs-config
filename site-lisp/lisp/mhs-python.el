@@ -19,8 +19,8 @@
   :config
   (setq
    read-process-output-max (* 1024 1024)
-   lsp-idle-delay 0.500
-   lsp-pylsp-plugins-pydocstyle-enabled t
+   lsp-idle-delay 0.600
+   lsp-pylsp-plugins-pydocstyle-enabled nil  ;; while working on HGA
    lsp-pylsp-plugins-yapf-enabled t
    lsp-pylsp-plugins-flake8-enabled nil
    lsp-pylsp-plugins-black-enabled nil
@@ -84,6 +84,7 @@
   :commands lsp-ui-mode
   :config
   (setq
+   ;; https://emacs-lsp.github.io/lsp-mode/tutorials/how-to-turn-off/
    lsp-ui-sideline-enable t
    lsp-ui-sideline-show-diagnostics t
    lsp-ui-sideline-show-hover t
@@ -98,7 +99,6 @@
    lsp-ui-doc-use-childframe t
    lsp-ui-doc-show-with-cursor t
    lsp-ui-doc-show-with-mouse nil
-   lsp-ui-doc-enable t
    )
   ;; Bad wrapping with sideline when you don't set this.
   (custom-set-faces

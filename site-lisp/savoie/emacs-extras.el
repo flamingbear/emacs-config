@@ -23,10 +23,14 @@ the current buffer."
 ;; To determine when to split horizontally
 (setq split-width-threshold 1600)
 
-(setq gc-cons-threshold (* 2 1024 1024))
-(run-with-idle-timer 3 t (lambda () (garbage-collect)))
+;; https://emacs-lsp.github.io/lsp-mode/page/performance/#increase-the-amount-of-data-which-emacs-reads-from-the-process
+(setq read-process-output-max (* 1024 1024)) ;; 1mb
+
+(setq gc-cons-threshold (* 100 1024 1024))
+(run-with-idle-timer 4 t (lambda () (garbage-collect)))
 
 ;; (setq gc-cons-threshold (* 80  1024))
+
 (setq garbage-collection-messages 't)
 
 
@@ -539,9 +543,11 @@ the current buffer."
   ;; Possible to set default mode (python if you're using the jupyter thing a lot
   ;; (setq atomic-chrome-default-major-mode 'markdown-mode)
   (setq atomic-chrome-url-major-mode-alist
-	'(("github\\.com" . gfm-mode)
-          ))
-
+	'(
+	  ("github\\.com" . gfm-mode)
+	  ("localhost:888." . python-mode)
+          )
+	)
   )
 
 ;; TODO [MHS, 03/22/2023] This doesn't do anything
