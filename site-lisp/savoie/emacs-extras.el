@@ -217,10 +217,17 @@ the current buffer."
 
 (use-package docker
   :ensure t
+  :pin melpa
   :diminish docker-mode)
 
 (use-package docker-compose-mode
   :ensure t)
+
+(use-package kubel
+  ;; kubernetes k9s clone (sort of)
+  :ensure t
+  :after (vterm)
+  :config (kubel-vterm-setup))
 
 (use-package which-key
   :ensure t
@@ -486,6 +493,10 @@ the current buffer."
 
 ;; Set registers to things that I type zillions of times.
 ;; ------------------------------------------------------
+
+;; ((python-mode
+;;   (pyvenv-activate . "/Users/savoie/.pyenv/versions/harmony-regression-tests")))
+
 
 (fset 'mhs-reformat-xml
    [?\C-u escape ?| ?x ?m ?l ?l ?i ?n ?t ?  ?- ?- ?f ?o ?r ?m ?a ?t ?  ?- ?  return])

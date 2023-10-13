@@ -20,20 +20,28 @@
   (setq
    read-process-output-max (* 1024 1024)
    lsp-idle-delay 0.600
-   lsp-pylsp-plugins-pydocstyle-enabled nil  ;; while working on HGA
-   lsp-pylsp-plugins-yapf-enabled t
+   lsp-pylsp-plugins-pydocstyle-enabled nil ;; while working on HGA (also now ruff handles this better?)
+   lsp-pylsp-plugins-yapf-enabled nil
    lsp-pylsp-plugins-flake8-enabled nil
-   lsp-pylsp-plugins-black-enabled nil
+   lsp-pylsp-plugins-black-enabled t
    lsp-pylsp-plugins-autopep8-enabled nil
    lsp-pylsp-plugins-pycodestyle-enabled nil
    lsp-pylsp-plugins-pyflakes-enabled nil
    lsp-disabled-clients '((python-mode . pyls))
    )
+  ;; This appears to allow me to set black and use preview, AKA new features
+  (lsp-register-custom-settings
+   '(
+     ("pylsp.plugins.black.enabled" t)
+     ("pylsp.plugins.black.preview" t)
+     ))
+
   ;; Need this for lsp-breadcrumb faces looking too grey on the header line
   (custom-set-faces
    '(header-line ((t (:inherit mode-line :background "#71458f")))))
   ;; Set lsp-log-io to t for debugging and use lsp-workspace-show-log
   )
+
 
 
 (use-package python-pytest
