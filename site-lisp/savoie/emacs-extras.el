@@ -242,14 +242,15 @@ the current buffer."
         (cons '("\\.md" . markdown-mode) auto-mode-alist))
   )
 
-(use-package paradox
-  :defer t
-  :ensure t
-  :config
-  (setq paradox-automatically-star t)
-  (setq paradox-execute-asynchronously t)
-  (load (expand-file-name "private/paradox-secrets.el.gpg" user-emacs-directory))
-  )
+;; No longer maintained.  let's try not using it.
+;; (use-package paradox
+;;   :defer t
+;;   :ensure t
+;;   :config
+;;   (setq paradox-automatically-star t)
+;;   (setq paradox-execute-asynchronously t)
+;;   (load (expand-file-name "private/paradox-secrets.el.gpg" user-emacs-directory))
+;;   )
 
 (use-package yaml-mode
   :ensure t

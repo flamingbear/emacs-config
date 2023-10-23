@@ -37,6 +37,13 @@
   ;; I don't want to see days in my time tracking
   (setq org-duration-format 'h:mm)
 
+  ;; Where can you refile things
+  (setq org-refile-targets '((org-agenda-files :maxlevel . 3)))
+  ;; These are questionable...
+  (setq org-refile-use-outline-path 'file)
+  (setq org-outline-path-complete-in-steps nil)
+  (setq org-refile-allow-creating-parent-nodes 'confirm)
+
   ;; Optionally add notes or timestamps when you complete a task.
   (setq org-log-done (quote time))
   (setq org-todo-keywords '((sequence "TODO" "WAITING" "BLOCKED" "|" "DONE" "DELEGATED" "CANCELED")))
