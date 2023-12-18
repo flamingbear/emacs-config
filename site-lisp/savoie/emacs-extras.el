@@ -294,7 +294,10 @@ the current buffer."
   (show-paren-mode t))
 
 (use-package restclient
-  :ensure t)
+  :ensure t
+  :config
+  (add-to-list 'auto-mode-alist '("\\.rest$" . restclient-mode))
+  )
 
 ;; insert pairs of parens when coding.
 (use-package smartparens
