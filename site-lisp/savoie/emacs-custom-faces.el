@@ -145,11 +145,42 @@
   ;; (load-theme 'ample-flat t)
   )
 
-(use-package nord-theme
+;; (use-package nord-theme
+;;   :ensure t
+;;   :config
+;;   (load-theme 'nord t)
+;;   ;; (custom-set-faces
+;;   ;;  '(org-block ((t (:inherit fixed-pitch))))
+;;   ;;  '(org-code ((t (:inherit (shadow fixed-pitch)))))
+;;   ;;  '(org-document-info ((t (:foreground "dark orange"))))
+;;   ;;  '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
+;;   ;;  '(org-indent ((t (:inherit (org-hide fixed-pitch)))))
+;;   ;;  '(org-link ((t (:foreground "#8AB4F7" :underline t))))
+;;   ;;  '(org-meta-line ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+;;   ;;  '(org-property-value ((t (:inherit fixed-pitch))) t)
+;;   ;;  '(org-special-keyword ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+;;   ;;  '(org-table ((t (:inherit fixed-pitch :foreground "#83a598"))))
+;;   ;;  '(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
+;;   ;;  '(org-verbatim ((t (:inherit (shadow fixed-pitch)))))
+;;   ;;  )
+;;   )
+
+(use-package doom-themes
   :ensure t
   :config
-  (load-theme 'nord t)
-  )
+  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+        doom-themes-enable-italic t) ; if nil, italics is universally disabled
+
+  (load-theme 'doom-one t)
+  ;; (load-theme 'doom-nord t)
+  (doom-themes-visual-bell-config)
+
+  (doom-themes-org-config)
+
+  ;; (custom-set-faces
+  ;;  '(org-headline-done ((t (:foreground "#2a6330"))))
+  ;;  )
+ )
 
 ;; (use-package modus-themes
 ;;   :ensure t

@@ -46,7 +46,6 @@
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
 (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
 (add-to-list 'package-archives '("nongnu" . "https://elpa.nongnu.org/nongnu/"))
-;(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/"))
 (package-initialize)
 
 (unless (package-installed-p 'use-package)
@@ -99,14 +98,27 @@
   (save-place-mode 't)
   (setq save-place-file (expand-file-name ".places" user-emacs-directory)))
 
-(setq default-frame-alist
-       '((height . 75)
-         (width . 200)
-         (left . 800)
-         (top . 200)
-         (vertical-scroll-bars . nil)
-         (horizontal-scroll-bars . nil)
-         (tool-bar-lines . 0)))
+
+;; Size for extended large monitor
+(if (> (display-pixel-width) 5000)
+    (setq default-frame-alist
+	  '((height . 75)
+            (width . 210)
+            (left . 600)
+            (top . 175)
+            (vertical-scroll-bars . nil)
+            (horizontal-scroll-bars . nil)
+            (tool-bar-lines . 0)))
+  ;; Size for small monitor
+  (setq default-frame-alist
+	'((height . 47)
+          (width . 130)
+          (left . 241)
+          (top . 27)
+          (vertical-scroll-bars . nil)
+          (horizontal-scroll-bars . nil)
+          (tool-bar-lines . 0)))
+  )
 
 
 (use-package mhs-environment)

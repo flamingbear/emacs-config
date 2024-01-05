@@ -86,14 +86,6 @@ the current buffer."
    '(highlight-indentation-face ((t (:foreground nil :background "#303030")))))
   )
 
-;; (when (file-exists-p (locate-file "highlight-indentation.el" load-path))
-;;   (load-file (locate-file "highlight-indentation.el" load-path))
-;;   (highlight-indentation-mode)
-;;   (diminish 'highlight-indentation-mode)
-;;   (add-hook 'yaml-mode-hook 'highlight-indentation-mode)
-;;   (add-hook 'yaml-mode-hook 'highlight-indentation-current-column-mode))
-
-
 ;; C-c <arrow> moves region
 (use-package smart-shift
   :ensure t

@@ -36,9 +36,15 @@
      ("pylsp.plugins.black.preview" t)
      ))
 
-  ;; Need this for lsp-breadcrumb faces looking too grey on the header line
+  ;;
+
   (custom-set-faces
-   '(header-line ((t (:inherit mode-line :background "#71458f")))))
+   ;; Need this for sideline info more grey.
+;;   '(lsp-ui-sideline-symbol-info ((t (:extend t :background "#21242b" :foreground "#535960"))))
+   ;; Need this for lsp-breadcrumb faces looking too grey on the header line
+   '(header-line ((t (:inherit mode-line :background "#71458f"))))
+   )
+
   ;; Set lsp-log-io to t for debugging and use lsp-workspace-show-log
   )
 
