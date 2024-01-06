@@ -111,10 +111,10 @@
             (tool-bar-lines . 0)))
   ;; Size for small monitor
   (setq default-frame-alist
-	'((height . 47)
+	'((height . 41)
           (width . 130)
-          (left . 241)
-          (top . 27)
+          (left . 113)
+          (top . 43)
           (vertical-scroll-bars . nil)
           (horizontal-scroll-bars . nil)
           (tool-bar-lines . 0)))
