@@ -100,6 +100,7 @@
 
 
 ;; Size for extended large monitor
+;; personal laptop = 1512
 (if (> (display-pixel-width) 5000)
     (setq default-frame-alist
 	  '((height . 75)
@@ -109,7 +110,7 @@
             (vertical-scroll-bars . nil)
             (horizontal-scroll-bars . nil)
             (tool-bar-lines . 0)))
-  ;; Size for small monitor
+  ;; Size for m1 13" laptop
   (setq default-frame-alist
 	'((height . 41)
           (width . 130)
