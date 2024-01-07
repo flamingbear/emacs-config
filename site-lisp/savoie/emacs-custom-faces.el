@@ -149,68 +149,25 @@
 ;;   :ensure t
 ;;   :config
 ;;   (load-theme 'nord t)
-;;   ;; (custom-set-faces
-;;   ;;  '(org-block ((t (:inherit fixed-pitch))))
-;;   ;;  '(org-code ((t (:inherit (shadow fixed-pitch)))))
-;;   ;;  '(org-document-info ((t (:foreground "dark orange"))))
-;;   ;;  '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
-;;   ;;  '(org-indent ((t (:inherit (org-hide fixed-pitch)))))
-;;   ;;  '(org-link ((t (:foreground "#8AB4F7" :underline t))))
-;;   ;;  '(org-meta-line ((t (:inherit (font-lock-comment-face fixed-pitch)))))
-;;   ;;  '(org-property-value ((t (:inherit fixed-pitch))) t)
-;;   ;;  '(org-special-keyword ((t (:inherit (font-lock-comment-face fixed-pitch)))))
-;;   ;;  '(org-table ((t (:inherit fixed-pitch :foreground "#83a598"))))
-;;   ;;  '(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
-;;   ;;  '(org-verbatim ((t (:inherit (shadow fixed-pitch)))))
-;;   ;;  )
 ;;   )
 
 (use-package doom-themes
   :ensure t
   :config
-  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-        doom-themes-enable-italic t) ; if nil, italics is universally disabled
+  (setq doom-themes-enable-bold t     ; if nil, bold is universally disabled
+        doom-themes-enable-italic t)  ; if nil, italics is universally disabled
 
-  (load-theme 'doom-one t)
-  ;; (load-theme 'doom-nord t)
+  ;; (load-theme 'doom-one t)
+  (load-theme 'doom-nord t)
   (doom-themes-visual-bell-config)
 
   (doom-themes-org-config)
-
-  ;; (custom-set-faces
-  ;;  '(org-headline-done ((t (:foreground "#2a6330"))))
-  ;;  )
- )
-
-;; (use-package modus-themes
-;;   :ensure t
-;;   :config
-;;   ;; Add all your customizations prior to loading the themes
-;;   (setq modus-themes-italic-constructs t
-;;         modus-themes-bold-constructs nil)
-
-;;   ;; Maybe define some palette overrides, such as by using our presets
-;;   (setq modus-themes-common-palette-overrides
-;;         modus-themes-preset-overrides-intense)
-
-;;   ;; Load the theme of your choice.
-;;   (load-theme 'modus-vivendi-tinted)
-
-;;   (define-key global-map (kbd "<f5>") #'modus-themes-toggle))
-
+  (set-face-attribute 'org-headline-done nil :foreground "#207030")
+  )
 
 (use-package all-the-icons
   :ensure t
   :if (display-graphic-p))
 
-
-;; (use-package ample-theme :ensure t)
-;; ;; when you want to have fancy mode lines on App Emacs, but still deal with terminal windows...
-;; (if (<= (display-color-cells) 256)
-;;     (load-theme 'ample-flat-256 t)
-;;   (load-theme 'ample-flat-plus t))
-
-;; (mhs-update-mode-line)
 (provide 'emacs-custom-faces)
-
-;;; .EMACS-CUSTOM-FACES ends here
+;;; emacs-custom-faces.el ends here

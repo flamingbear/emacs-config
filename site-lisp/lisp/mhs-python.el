@@ -38,12 +38,12 @@
 
   ;;
 
-  (custom-set-faces
-   ;; Need this for sideline info more grey.
-;;   '(lsp-ui-sideline-symbol-info ((t (:extend t :background "#21242b" :foreground "#535960"))))
-   ;; Need this for lsp-breadcrumb faces looking too grey on the header line
-   '(header-line ((t (:inherit mode-line :background "#71458f"))))
-   )
+  ;; Need this for sideline info more grey.
+  ;;   '(lsp-ui-sideline-symbol-info ((t (:extend t :background "#21242b" :foreground "#535960"))))
+  ;; (set-face-attribute 'lsp-ui-sideline-symbol-info nil  :background "#21242b" :foreground "#535960")
+
+  ;; Need this for lsp-breadcrumb faces looking too grey on the header line
+  (set-face-attribute 'header-line nil :inherit 'mode-line :background "#71458f")
 
   ;; Set lsp-log-io to t for debugging and use lsp-workspace-show-log
   )
@@ -115,8 +115,7 @@
    lsp-ui-doc-show-with-mouse nil
    )
   ;; Bad wrapping with sideline when you don't set this.
-  (custom-set-faces
-   '(markdown-code-face ((t (:inherit default)))))
+  (set-face-attribute 'markdown-code-face nil :inherit 'default)
   )
 
 
