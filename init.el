@@ -101,6 +101,8 @@
 
 ;; Size for extended large monitor
 ;; personal laptop = 1512
+;; work laptop = 1792
+;; work laptop + external monitor = 51xx?
 (if (> (display-pixel-width) 5000)
     (setq default-frame-alist
 	  '((height . 75)

@@ -171,6 +171,9 @@ the current buffer."
   :config
   (projectile-mode t)
   (setq projectile-completion-system 'default)
+  ;; switch from projectile find file to just dir the root.
+  ;; https://emacs.stackexchange.com/a/28757/613
+  (setq projectile-switch-project-action 'projectile-dired)
   )
 
 (use-package async :ensure t)
