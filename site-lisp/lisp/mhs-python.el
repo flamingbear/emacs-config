@@ -81,12 +81,6 @@
   :pin melpa
   :after lsp)
 
-;; (use-package lsp-pyright
-;;   :ensure t
-;;   :hook (python-mode . (lambda ()
-;;                           (require 'lsp-pyright)
-;;                           (lsp))))  ; or lsp-deferred
-
 
 (use-package lsp-treemacs
   :ensure t

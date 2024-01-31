@@ -15,6 +15,8 @@
 ;; (assq-delete-all 'org package--builtin-versions)
 
 
+
+
 (use-package org
   :pin gnu
   :ensure t
@@ -141,5 +143,16 @@
    org-jira-working-dir "/Users/savoie/Dropbox/orgs/.org-jira" ;; (expand-file-name ".org-jira" user-emacs-directory))
    )
   )
+
+;; use git flavored markdown for exporting
+(use-package ox-gfm
+  :ensure t
+  :after org
+  :config
+  (eval-after-load "org"
+    '(require 'ox-gfm nil t))
+  )
+
+
 (provide 'mhs-org-mode)
 ;;; mhs-org-mode.el ends here

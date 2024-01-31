@@ -78,7 +78,8 @@
   ;; todo
   )
 
-;; export subtrees to jira markdown.  Not terrible at all
+;; export org-mode subtrees to jira markdown.
+;; Not terrible at all
 (use-package ox-jira
   :ensure t
   )
