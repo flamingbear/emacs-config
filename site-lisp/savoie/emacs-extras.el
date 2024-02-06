@@ -167,7 +167,7 @@ the current buffer."
   :ensure t
   :diminish
   :init
-  (setq projectile-keymap-prefix (kbd "C-c p"))  ;; You should try to learn the new way. but you wont
+  (setq projectile-keymap-prefix (kbd "C-c p"))	;; You should try to learn the new way. but you wont
   :config
   (projectile-mode t)
   (setq projectile-completion-system 'default)
@@ -563,6 +563,19 @@ the current buffer."
 ;; TODO [MHS, 03/22/2023] This doesn't do anything
 ;; (use-package tree-sitter :ensure t)
 ;; (use-package tree-sitter-langs :ensure t)
+
+
+;; check out chatgpt integration.
+(use-package chatgpt-shell
+  :ensure t
+  :config
+  (setq chatgpt-shell-model-version "gpt-3.5-turbo")
+  (setq chatgpt-shell-openai-key
+      (lambda ()
+        (auth-source-pick-first-password :host "api.openai.com")))
+
+)
+
 
 (use-package expand-region
   :ensure t
