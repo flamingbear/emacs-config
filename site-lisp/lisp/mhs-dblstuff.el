@@ -60,12 +60,6 @@
 
 ;;; Code:
 
-(defconst mhs-dblstuff-version (substring "$Revision: 19387 $" 11 -2)
-  "$Id: mhs-dblstuff.el 19387 2011-09-18 16:23:58Z savoie $
-Report bugs to: Matthew H. Savoie <savoie@fsl.noaa.gov>")
-
-
-;;;;; FUNCTIONS
 ;; This was all "cleaned up" with chatgpt on 2024-02-06 for fun because I wrote
 ;; this in 1997 without really know much about lisp.
 
@@ -91,7 +85,7 @@ If there is no match, just duplicate the input TOK."
         (list tok-str tok-str))))
 
 (defun mhs-dblstuff (tok)
-  "Insert doubled character based on next character input (tok)  and the region highlighted."
+  "Insert next character TOK and its match around region highlighted."
   (interactive "c")
   (let ((start (if (region-active-p) (region-beginning) (point)))
         (finish (if (region-active-p) (region-end) (point)))

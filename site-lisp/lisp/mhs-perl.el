@@ -42,14 +42,7 @@
 ;; Revision 1.1  1997/04/22 23:06:13  savoie
 ;; Initial revision
 ;;
-
 ;;; Code:
-
-(defconst mhs-perl-version (substring "$Revision: 19561 $" 11 -2)
-  "$Id: mhs-perl.el 19561 2011-10-10 14:28:58Z savoie $
-
-Report bugs to: Matthew H. Savoie <savoie@fsl.noaa.gov>")
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; use cperl-mode by default

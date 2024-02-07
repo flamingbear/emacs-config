@@ -8,14 +8,7 @@
 ;; Version: 1.0
 ;; Keywords:
 
-
 ;;; Code:
-
-(defconst -version (substring "$Revision: 19387 $" 11 -2)
-  "$Id: mhs-cmode.el 19387 2011-09-18 16:23:58Z savoie $
-
-Report bugs to: Matthew H. Savoie <mattie@flamingbear.com>")
-
 
 (setq c-style-variables-are-local-p t)
 (setq c-basic-offset 4)

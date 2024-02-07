@@ -50,21 +50,16 @@
 
 ;;; Code:
 
-(defconst mhs-comment-version (substring "$Revision: 19387 $" 11 -2)
-  "$Id: mhs-comment.el 19387 2011-09-18 16:23:58Z savoie $
- 
-Report bugs to: Matthew H. Savoie <savoie@fsl.noaa.gov>")
-
 (defun mhs-fetch-last-word ()
   (let (begin end word)
   (save-excursion
     ;; check for white-space
     (setq end (point))
     (forward-char -1)
-    (while (looking-at " ") 
+    (while (looking-at " ")
       (forward-char -1))
     (setq end (1+ (point)))
-    (while (or (not (looking-at "[ :]" )) (bobp)) 
+    (while (or (not (looking-at "[ :]" )) (bobp))
       (forward-char -1))
     (setq begin (1+ (point))))
   (setq word (buffer-substring begin end))
@@ -146,7 +141,7 @@ Report bugs to: Matthew H. Savoie <savoie@fsl.noaa.gov>")
 
 (defun get-var-param ()
   (save-restriction
-    (let (var-list thisvar begin end 
+    (let (var-list thisvar begin end
 		    (vars-p 't)
 		    (begin-par "(")
 		    (end-par ")"))
@@ -157,10 +152,10 @@ Report bugs to: Matthew H. Savoie <savoie@fsl.noaa.gov>")
       (if (not (eobp)) (forward-char))
       (narrow-to-region begin (point))
       (end-of-buffer)
-      
+
       (if (not (search-backward-regexp "\\w[ ]+\\w" 'nil 't 'nil))
 	  (setq vars-p 'nil))
-      
+
       (cond ( vars-p
 	     (end-of-buffer)
 	     (while (not (looking-at end-par)) (backward-char))
@@ -170,7 +165,7 @@ Report bugs to: Matthew H. Savoie <savoie@fsl.noaa.gov>")
 	       (setq var-list (cons thisvar var-list))))
 	    (setq var-list 'nil))
       var-list)))
-      
+
 
 (defun mhs-c-sub-comment()
   "*Interactively adds a C comment in nsidc style.  To run the program
@@ -182,7 +177,7 @@ Report bugs to: Matthew H. Savoie <savoie@fsl.noaa.gov>")
 	       (begin-par "("))
 
     (save-excursion
-      (if (not (search-forward 
+      (if (not (search-forward
 		begin-par
 		(save-excursion (end-of-line)(point)) 't 'nil))
 	  (while (not (looking-at begin-par))(backward-char)))
@@ -202,7 +197,7 @@ Report bugs to: Matthew H. Savoie <savoie@fsl.noaa.gov>")
 	  (narrow-to-region begin (point-max))))
       (beginning-of-line)
       (insert "\n")
-      (forward-line -1)      
+      (forward-line -1)
       (mhs-insert-the-comment fun-name var-list))))
 
 (provide 'mhs-comment)
