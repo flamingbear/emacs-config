@@ -407,7 +407,6 @@ the current buffer."
 (use-package mhs-grep)
 
 (use-package mhs-cmode)
-(use-package mhs-comment)
 
 
 ;; Handle multiple locations for aspell.
