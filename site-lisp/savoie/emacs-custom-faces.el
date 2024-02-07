@@ -139,18 +139,6 @@
   (set-face-background 'vertical-border my-modeline-bg-color)
   )
 
-(use-package ample-theme
-  :ensure t
-  :config
-  ;; (load-theme 'ample-flat t)
-  )
-
-;; (use-package nord-theme
-;;   :ensure t
-;;   :config
-;;   (load-theme 'nord t)
-;;   )
-
 (use-package doom-themes
   :ensure t
   :config

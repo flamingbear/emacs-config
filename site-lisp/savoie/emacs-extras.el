@@ -312,9 +312,6 @@ the current buffer."
 ;; Javascript stuff
 (use-package mhs-javascript)
 
-;; ;; Load the BBDB if it's around. [MHS, 03/27/2022] spoiler alert, it's not.
-;; (use-package mhs-bbdb)
-
 ;; if you are debugging emacs completely: open this file and it records keystrokes.
 ;;(open-dribble-file "~/dribble")
 

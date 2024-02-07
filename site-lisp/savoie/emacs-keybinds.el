@@ -61,12 +61,12 @@
 (global-set-key "\C-cs"                 'mhs-shift-lines); C-c s
 (global-set-key "\C-cu"     'mhs-underline-comment-maybe); C-c u
 (global-set-key "\C-cw"  'mhs-close-whitespace-rectangle); C-c w
-(global-set-key "\C-cd"                    'mhs-dblstuff); C-c d
 (global-set-key "\C-ct"                 'mhs-trunc-lines); C-c t
 (global-set-key "\C-ck"                'mhs-kill-current); C-c k
 (global-set-key "\C-cg"                    'magit-status); C-c g
 
 
+(global-set-key "\C-cd"                    'mhs-dblstuff); C-c d
 (global-set-key "\C-c\`"               'mhs-backtick-around-region)
 (global-set-key "\C-c\'"               'mhs-squote-region)
 (global-set-key "\C-c\""               'mhs-double-quote-around-region)
