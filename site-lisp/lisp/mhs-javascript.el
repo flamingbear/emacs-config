@@ -41,8 +41,6 @@
 
 ;;; Code:
 
-(defconst mhs-javascript-version "0.2.0"
-  "Report bugs to: Matt Savoie <emacs@flamingbear.com>.")
 
 ;; 2018-11-03 - this might not be what we want, and could be causing the
 ;; problems with old lint in my cumulus repo dependencies. causing me to write

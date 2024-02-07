@@ -10,9 +10,6 @@
 
 ;;; Code:
 
-(defconst -version (substring "$Revision: 19610 $" 11 -2)
-  "$Id: emacs-idlwave-support.el 19610 2011-10-20 20:59:03Z savoie $ Report bugs to: Matt Savoie <emacs@flamingbear.com>")
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; IDLWAVE Customizations
 ;; Change the indentation preferences
