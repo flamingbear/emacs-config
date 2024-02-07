@@ -8,7 +8,7 @@
 ;; Version: 1.0
 ;; Keywords:
 
- 
+
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
 ;; the Free Software Foundation; either version 1, or (at your option)
@@ -31,8 +31,8 @@
 
 ;;; Commentary:
 
-;; to Install  put (require 'mhs-dblstuff) in your .emacs 
-;; bind to a useful key sequence 
+;; to Install  put (require 'mhs-dblstuff) in your .emacs
+;; bind to a useful key sequence
 ;; (global-set-key [(control c) (d)] 'mhs-dblstuff)
 
 ;; This package should "do the right thing" If the region is active,
@@ -40,7 +40,7 @@
 ;; at the point.
 
 
-;;     Many of the ideas for this came directly from t-match.el by 
+;;     Many of the ideas for this came directly from t-match.el by
 ;;;;; Author:          Tom Kraljevic
 ;;;;; Email:           tomk@crhc.uiuc.edu
 
@@ -65,58 +65,43 @@
 Report bugs to: Matthew H. Savoie <savoie@fsl.noaa.gov>")
 
 
-;;; global variables.
-
-(defvar lr-pairs '( ("(" ")") ("{" "}") ("[" "]") ("<" ">")))
-
-
 ;;;;; FUNCTIONS
+;; This was all "cleaned up" with chatgpt on 2024-02-06 for fun because I wrote
+;; this in 1997 without really know much about lisp.
+
+(defun mhs-get-right (lr-pair)
+  "Return the right element of LR-PAIR."
+  (cadr lr-pair))
 
 
-(defun mhs-dblstuff-get-right (lr-pair)
-  (car (cdr lr-pair)))
-
-;; remember (a b) = (a . (b . nil))
-
-(defun mhs-dblstuff-get-left (lr-pair)
+(defun mhs-get-left (lr-pair)
+  "Return the left element of LR-PAIR."
   (car lr-pair))
 
-
 (defun mhs-get-match-pair (tok)
-  ;; find out which pair matches the token and return the pair,
-  ;; or...return a made up pair of the character twice.
-  (let ( (rest-match nil)
-	 (done nil)
-	 (left nil)
-	 (right nil)
-	 (lr-pair nil))
-    (setq rest-match lr-pairs)
-    (while (and (not (null rest-match)) (not done))
-      (setq lr-pair (car rest-match))
-      (setq rest-match (cdr rest-match))
-      (setq left (mhs-dblstuff-get-left lr-pair))
-      (setq right (mhs-dblstuff-get-right lr-pair))
-      (if 
-	  (or (string-equal left (char-to-string tok))
-	      (string-equal right (char-to-string tok)))
-	  (setq done t)))
-    (if (not done) 
-	(setq lr-pair (list (char-to-string tok) (char-to-string tok))))
-    lr-pair))
-
+  "Given input charcter TOK, return a matching pair.
+If there is no match, just duplicate the input TOK."
+  (let* ((lr-pairs '(("[" "]") ("(" ")") ("{" "}") ("<" ">")))
+         (tok-str (char-to-string tok))
+         (matching-pair (cl-find-if (lambda (pair)
+                                      (or (string-equal tok-str (car pair))
+                                          (string-equal tok-str (cadr pair))))
+                                    lr-pairs)))
+    (or matching-pair
+        (list tok-str tok-str))))
 
 (defun mhs-dblstuff (tok)
-  "*insert doubled character based on next character input and the region hilighted" 
+  "Insert doubled character based on next character input (tok)  and the region highlighted."
   (interactive "c")
-  (save-excursion
-    (let ((start (if mark-active (min (point) (mark)) (point)))
-	  (finish (if mark-active (max (point) (mark)) (point)))
-	  (match-pair (mhs-get-match-pair tok)))
-    (progn 
+  (let ((start (if (region-active-p) (region-beginning) (point)))
+        (finish (if (region-active-p) (region-end) (point)))
+        (match-pair (mhs-get-match-pair tok)))
+    (save-excursion
       (goto-char start)
-      (insert (mhs-dblstuff-get-left match-pair))
-      (goto-char (+ finish 1))
-      (insert (mhs-dblstuff-get-right match-pair))))))
+      (insert (mhs-get-left match-pair))
+      (goto-char (1+ finish))
+      (insert (mhs-get-right match-pair)))))
+
 
 (provide 'mhs-dblstuff)
 

@@ -71,40 +71,41 @@
                     (insert-register ?f t)))
 
 
+
 (defun mhs-backtick-around-region ()
   "*Places Double quotes around the region"
   (interactive)
-  (mhs-dblstuff (string-to-char "`")))
+  (mhs-dblstuff ?`))
 
 (defun mhs-double-quote-around-region ()
   "*Places Double quotes around the region"
   (interactive)
-  (mhs-dblstuff (string-to-char "\"")))
+  (mhs-dblstuff ?\"))
 
 (defun mhs-paren-region ()
   "*places parentheses around the current region"
   (interactive)
-  (mhs-dblstuff (string-to-char ")")))
+  (mhs-dblstuff ?\)))
 
 (defun mhs-anglebracket-region ()
   "*places angle brackets around the current region"
   (interactive)
-  (mhs-dblstuff (string-to-char ">")))
+  (mhs-dblstuff ?>))
 
 (defun mhs-bracket-region ()
   "*places parentheses around the current region"
   (interactive)
-  (mhs-dblstuff (string-to-char "}")))
+  (mhs-dblstuff ?}))
 
 (defun mhs-sqbracket-region ()
   "*places square brackets around the current region"
   (interactive)
-  (mhs-dblstuff (string-to-char "]")))
+  (mhs-dblstuff ?\]))
 
 (defun mhs-squote-region ()
   "*places single quotes around the current region"
   (interactive)
-  (mhs-dblstuff (string-to-char "'")))
+  (mhs-dblstuff ?'))
 
 (defun mhs-kill-current () "\
   Kills the current buffer if it has not been modified."
