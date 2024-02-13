@@ -66,7 +66,7 @@
 (global-set-key "\C-cg"                    'magit-status); C-c g
 
 
-(global-set-key "\C-cd"                    'mhs-dblstuff); C-c d
+(global-set-key "\C-cd"                'mhs-dblstuff); C-c d
 (global-set-key "\C-c\`"               'mhs-backtick-around-region)
 (global-set-key "\C-c\'"               'mhs-squote-region)
 (global-set-key "\C-c\""               'mhs-double-quote-around-region)
@@ -137,8 +137,6 @@
   ;; aw-dispatch-always Must be true if you want to use fancy changing actions midway.
   (setq aw-dispatch-always 'nil)
   )
-
-
 
 
 ;; Options for Macintosh Laptop

@@ -403,27 +403,22 @@ the current buffer."
 (use-package mhs-map)
 (use-package mhs-magit)
 (use-package mhs-extends)
-(use-package mhs-perl)
-(use-package mhs-grep)
-
-(use-package mhs-cmode)
+;; (use-package mhs-perl)
+;; (use-package mhs-grep)
+;; (use-package mhs-cmode)
 
 
 ;; Handle multiple locations for aspell.
 (defvar ispell-program-name)
-(cond ((file-exists-p "/usr/bin/aspell")
-       (setq ispell-program-name "/usr/bin/aspell"))
-      ((file-exists-p "/usr/local/bin/aspell")
-      (setq ispell-program-name "/usr/local/bin/aspell"))
-      ((file-exists-p "/opt/local/bin/aspell")
-       (setq ispell-program-name "/opt/local/bin/aspell"))
-      ((file-exists-p "/opt/homebrew/bin/aspell")
-      (setq ispell-program-name "/opt/homebrew/bin/aspell"))
-      (t (setq ispell-program-name "~savoie/local/bin/aspell")))
+(let ((locations '("/usr/bin/aspell"
+                   "/usr/local/bin/aspell"
+                   "/opt/local/bin/aspell"
+                   "/opt/homebrew/bin/aspell")))
+  (setq ispell-program-name (cl-find-if #'file-exists-p locations)
+        ispell-program-name (or ispell-program-name "~/local/bin/aspell")))
 
 
 ;; Use these to override stupid defaults for the ! command in dired.
-
 ;; Dired extra commands
 (use-package dired
   :config

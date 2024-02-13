@@ -39,7 +39,7 @@
 	mhs-jira--current-ticket-number
       (mhs/parse-current-branch)))
 
-  ;; This is the commit-setup that puts a ticket number at the bottom of your commit
+  ;; This is the commit-setup that puts a JIRA ticket number at the bottom of your commit
   (defun my-git-bottom-commit-setup ()
     (save-excursion
       (insert (concat "\n\n" (mhs/current-ticket)))))
