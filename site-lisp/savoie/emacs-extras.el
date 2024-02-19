@@ -342,9 +342,8 @@ the current buffer."
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; read personal abbreviations each time
-(quietly-read-abbrev-file (locate-user-emacs-file ".abbrev_defs"))
-(setq abbrev-mode t)
-
+(setq abbrev-file-name (locate-user-emacs-file "abbrev_defs"))
+(setq-default abbrev-mode t)
 
 ;; Set the bookmark file in the right location.
 (setq bookmark-default-file (locate-user-emacs-file ".emacs.bmk"))
@@ -497,7 +496,7 @@ the current buffer."
   (search-forward "✖"))
 
 ;; Stuff out of my custom
-(setq save-abbrevs 't)
+
 (setq scroll-bar-mode 'right)
 (setq select-active-regions 't)
 
@@ -620,9 +619,16 @@ the current buffer."
 
 (use-package copilot
   :straight (:host github :repo "copilot-emacs/copilot.el" :files ("dist" "*.el"))
-  :ensure t)
-
-
+  :ensure t
+  ;; https://github.com/copilot-emacs/copilot.el#2-configure-completion
+  :init
+  ;; Don't enable by default yet.
+  ;; (add-hook 'prog-mode-hook #'copilot-mode)
+  (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
+  (define-key copilot-completion-map (kbd "C-n") 'copilot-next-completion)
+  (define-key copilot-completion-map (kbd "C-p") 'copilot-previous-completion)
+  (define-key copilot-completion-map (kbd "C-h") 'copilot-help)
+  )
 
 (use-package expand-region
   :ensure t
