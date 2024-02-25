@@ -560,7 +560,9 @@ the current buffer."
 (use-package chatgpt-shell
   :ensure t
   :config
-  (setq chatgpt-shell-model-version "gpt-3.5-turbo")
+  (setq chatgpt-shell-model-version "gpt-3.5-turbo-0125")
+  (setq chatgpt-shell-system-prompt 2)
+
   (setq chatgpt-shell-openai-key
 	(lambda ()
           (auth-source-pick-first-password :host "api.openai.com")))

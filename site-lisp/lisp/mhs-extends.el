@@ -382,6 +382,7 @@ following the prefix character"
       (insert c))))
 
 (use-package json-mode
+  :ensure t
   :config
   (setq json-reformat:indent-width 2)
   (setq js2-indent-level 2)
