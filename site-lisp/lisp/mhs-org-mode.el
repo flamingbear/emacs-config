@@ -50,6 +50,11 @@
   (setq org-log-done (quote time))
   (setq org-todo-keywords '((sequence "TODO" "WAITING" "BLOCKED" "|" "DONE" "DELEGATED" "CANCELED")))
 
+  (require 'org-id)
+  (setq org-id-link-to-org-use-id t)
+
+
+
   (require 'org-capture)
   (define-key global-map "\C-cr" 'org-capture)
   (setq org-directory "~/Dropbox/orgs")
@@ -126,8 +131,7 @@
 	(while (search-forward-regexp "[0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\}" (line-end-position) t)
 	  (replace-match (format-time-string "%Y-%m-%d")))
 	(org-mode)
-	(org-clock-report)
-	)
+	(org-clock-report))
       (save-buffer)
       (org-show-all)
       ))

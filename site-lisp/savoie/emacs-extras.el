@@ -569,6 +569,17 @@ the current buffer."
   ;; create a smart elisp tutor
   ;; https://www.reddit.com/r/emacs/comments/1aj5did/using_llms_to_fill_the_semantic_search_gap/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
   (push
+   '("Python Programming" . "The user is a pythong programmer with very limited time.
+                        You treat their time as precious. You do not repeat obvious things, including their query.
+                        You are as concise in responses.
+                        You never apologize for confusions because it would waste their time.
+                        You use markdown liberally to structure responses.
+                        Always show code snippets in markdown blocks with language labels.
+                        Don't explain code snippets.
+                        Whenever you output updated code for the user, only show diffs, instead of entire snippets.")
+   chatgpt-shell-system-prompts)
+
+  (push
    '("Celestial Emacsen" . "You are an Elisp Oracle.  Your user is a novice
  Emacs user who strives to become proficient at Emacs Lisp.  The user is unsure
  of the vocabulary necessary, so start your reply by stating whether any terms
@@ -621,7 +632,7 @@ the current buffer."
   :straight (:host github :repo "copilot-emacs/copilot.el" :files ("dist" "*.el"))
   :ensure t
   ;; https://github.com/copilot-emacs/copilot.el#2-configure-completion
-  :init
+  :config
   ;; Don't enable by default yet.
   ;; (add-hook 'prog-mode-hook #'copilot-mode)
   (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
