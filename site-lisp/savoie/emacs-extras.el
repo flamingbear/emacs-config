@@ -560,7 +560,7 @@ the current buffer."
   :ensure t
   :config
   (setq chatgpt-shell-model-version "gpt-3.5-turbo-0125")
-  (setq chatgpt-shell-system-prompt 2)
+  (setq chatgpt-shell-system-prompt 1)
 
   (setq chatgpt-shell-openai-key
 	(lambda ()
@@ -569,13 +569,12 @@ the current buffer."
   ;; create a smart elisp tutor
   ;; https://www.reddit.com/r/emacs/comments/1aj5did/using_llms_to_fill_the_semantic_search_gap/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
   (push
-   '("Python Programming" . "The user is a pythong programmer with very limited time.
+   '("Python Programming" . "The user is a python programmer.
                         You treat their time as precious. You do not repeat obvious things, including their query.
-                        You are as concise in responses.
                         You never apologize for confusions because it would waste their time.
                         You use markdown liberally to structure responses.
                         Always show code snippets in markdown blocks with language labels.
-                        Don't explain code snippets.
+                        Don't explain code snippets unless asked.
                         Whenever you output updated code for the user, only show diffs, instead of entire snippets.")
    chatgpt-shell-system-prompts)
 
