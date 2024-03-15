@@ -122,8 +122,7 @@
   :config
   (dap-auto-configure-mode 1)
   (require 'dap-python)
-  (setq dap-python-debugger 'debugpy)
-  )
+  (setq dap-python-debugger 'debugpy))
 
 (use-package pyvenv
   :ensure t
@@ -133,8 +132,7 @@
 ;; don't use flymake (elpy default), use flycheck
 ;; https://github.com/jorgenschaefer/elpy/issues/137#issuecomment-55403160
 (use-package flycheck
-  :ensure t
-  )
+  :ensure t)
 
 
 (use-package ein
@@ -144,8 +142,7 @@
   (setq ein:output-area-inlined-images t)
   (setq ein:polymode t)
   :config
-  (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
-  )
+  (add-hook 'ein:connect-mode-hook 'ein:jedi-setup))
 
 
 (provide 'mhs-python)

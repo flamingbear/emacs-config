@@ -554,6 +554,13 @@ the current buffer."
 ;; (use-package tree-sitter :ensure t)
 ;; (use-package tree-sitter-langs :ensure t)
 
+(use-package dall-e-shell
+  :ensure t
+  :config
+  (setq dall-e-shell-openai-key
+	(lambda ()
+          (auth-source-pick-first-password :host "api.openai.com"))))
+
 
 ;; check out chatgpt integration.
 (use-package chatgpt-shell
@@ -561,13 +568,8 @@ the current buffer."
   :config
   (setq chatgpt-shell-model-version "gpt-3.5-turbo-0125")
   (setq chatgpt-shell-system-prompt 1)
-  (require 'dall-e-shell)
 
   (setq chatgpt-shell-openai-key
-	(lambda ()
-          (auth-source-pick-first-password :host "api.openai.com")))
-
-  (setq dall-e-shell-openai-key
 	(lambda ()
           (auth-source-pick-first-password :host "api.openai.com")))
 
