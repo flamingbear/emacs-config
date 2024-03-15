@@ -48,14 +48,21 @@
   (save-excursion
     (insert "</mhs>")))
 
-
-(defun mhs-save-filename ()
-  "* takes current filename in dired mode and stores the file and directory name"
+(defun mhs/save-dired-filename-and-dir ()
+  "Save the current filename and directory in Dired mode."
   (interactive)
   (set-register ?f (dired-get-filename "no-dir"))
   (set-register ?d (dired-current-directory))
   (set-register ?a (dired-get-filename))
-  (dired-copy-filename-as-kill '0))
+  (dired-copy-filename-as-kill 0))
+
+(defun load-register-values ()
+  "Load register values."
+  (interactive)
+  (set-register ?x "import xarray as xr")
+  (set-register ?y "from xarray.core.datatree import *")
+  (set-register ?z "from xarray.core.treenode import *"))
+
 
 (defun mhs-browse-current-filename ()
   "* Fires up firefox on the filename currently stored in register a"

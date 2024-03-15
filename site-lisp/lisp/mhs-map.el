@@ -30,7 +30,7 @@
 
 (define-key mhs-map "d"                   'mhs-insert-date)
 (define-key mhs-map "e"                   'mhs-ediff)
-(define-key mhs-map "f"                   'mhs-save-filename)
+(define-key mhs-map "f"                   'mhs/save-dired-filename-and-dir)
 (define-key mhs-map "i"                   'idlwave-shell)
 
 
