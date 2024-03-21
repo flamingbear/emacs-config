@@ -61,6 +61,14 @@
   (setq org-default-notes-file (concat org-directory "/notes.org"))
 
 
+  (setq org-capture-templates
+	'(("b" "Note for Boss" entry (file+headline "~/Dropbox/orgs/daac.org" "Erik 1-1")
+	   "* TODO %? \n  %U\n  %i\n  %a")
+	  ("r" "Retrospective idea" entry (file+olp "~/Dropbox/orgs/data-services.org" "Info" "Retro Notes:")
+	   "* %<%Y-%m-%d> %? \n")
+	  ("t" "Task" entry (file+headline "" "Tasks")
+	   "* TODO %?\n  %u\n  %a")))
+
   (defvar mhs-org-mode-directory (expand-file-name "~savoie/Dropbox/orgs/")
     "Location of my .org mode files" )
 

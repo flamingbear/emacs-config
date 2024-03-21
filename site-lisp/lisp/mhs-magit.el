@@ -11,7 +11,12 @@
   :init
   (global-git-gutter-mode 't))
 
-(use-package git-link :ensure t)
+(use-package git-link
+  :ensure t
+  :config
+  (setq git-link-open-in-browser t)
+  (setq git-link-use-single-line-number t)
+  )
 
 (use-package magit
   :ensure t
