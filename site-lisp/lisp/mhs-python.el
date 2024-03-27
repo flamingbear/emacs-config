@@ -124,10 +124,10 @@
   (require 'dap-python)
   (setq dap-python-debugger 'debugpy))
 
-(use-package pyvenv
-  :ensure t
-  :config
-  (pyvenv-mode 1))
+;; (use-package pyvenv
+;;   :ensure t
+;;   :config
+;;   (pyvenv-mode 1))
 
 ;; don't use flymake (elpy default), use flycheck
 ;; https://github.com/jorgenschaefer/elpy/issues/137#issuecomment-55403160
