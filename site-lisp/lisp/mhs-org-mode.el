@@ -67,7 +67,12 @@
 	  ("r" "Retrospective idea" entry (file+olp "~/Dropbox/orgs/data-services.org" "Info" "Retro Notes:")
 	   "* %<%Y-%m-%d> %? \n")
 	  ("t" "Task" entry (file+headline "" "Tasks")
-	   "* TODO %?\n  %u\n  %a")))
+	   "* TODO %?\n  %u\n  %a")
+	  ("n" "Note" entry (file+headline "" "Tasks")
+	   "* %?\n  %u\n  %a")
+	  ("m" "Meeting" entry (file+olp "~/Dropbox/orgs/data-services.org" "PI 24.1" "Catchup / MISC / overhead")
+	   "* %^{Meeting Name|} Meeting\n %? " :clock-in t  :clock-keep t)
+	  ))
 
   (defvar mhs-org-mode-directory (expand-file-name "~savoie/Dropbox/orgs/")
     "Location of my .org mode files" )
