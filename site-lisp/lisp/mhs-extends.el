@@ -48,20 +48,40 @@
   (save-excursion
     (insert "</mhs>")))
 
+
+
 (defun mhs/save-dired-filename-and-dir ()
   "Save the current filename and directory in Dired mode."
   (interactive)
   (set-register ?f (dired-get-filename "no-dir"))
   (set-register ?d (dired-current-directory))
-  (set-register ?a (dired-get-filename))
-  (dired-copy-filename-as-kill 0))
+  (let ((file-name  (dired-get-filename)))
+  (set-register ?a file-name)
+  (kill-new file-name)
+  (message file-name)))
 
-(defun load-register-values ()
-  "Load register values."
+;; Something lead me to this:
+;; https://camdez.com/blog/2013/11/14/emacs-show-buffer-file-name/ But since
+;; I've got decades of my old hacky stuff in muscle memory. Let's fix this and
+;; make a unified version that does the right thing.
+(defun mhs/save-filename-and-dir ()
+  "Show the full path to the current file in the minibuffer."
   (interactive)
-  (set-register ?x "import xarray as xr")
-  (set-register ?y "from xarray.core.datatree import *")
-  (set-register ?z "from xarray.core.treenode import *"))
+  (let ((file-name (buffer-file-name)))
+    (if file-name
+        (progn
+	  (set-register ?f (file-name-nondirectory file-name))
+	  (set-register ?d (file-name-directory file-name))
+	  (set-register ?a file-name)
+          (message file-name)
+          (kill-new file-name))
+      (error "Buffer not visiting a file"))))
+
+(defun mhs/filename-and-dir ()
+  (interactive)
+  (if (eq major-mode 'dired-mode)
+      (mhs/save-dired-filename-and-dir)
+    (mhs/save-filename-and-dir)))
 
 
 (defun mhs-browse-current-filename ()
@@ -77,7 +97,14 @@
                     (insert-register ?d t)
                     (insert-register ?f t)))
 
+(defun load-register-values ()
+  "Load register values."
+  (interactive)
+  (set-register ?x "import xarray as xr")
+  (set-register ?y "from xarray.core.datatree import *")
+  (set-register ?z "from xarray.core.treenode import *"))
 
+(load-register-values)
 
 (defun mhs-backtick-around-region ()
   "*Places Double quotes around the region"

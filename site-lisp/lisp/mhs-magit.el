@@ -60,7 +60,13 @@
 
 (use-package forge
   :after magit
-  :ensure t)
+  :ensure t
+  ;;  :config
+  ;; If BB was supported this should work.
+  ;; (add-to-list
+  ;;  'forge-alist
+  ;;  '("git.earthdata.nasa.gov" "api.bitbucket.org/2.0" "git.earthdata.nasa.gov" forge-bitbucket-repository))
+  )
 
 (use-package sqlite3
   :ensure t)
