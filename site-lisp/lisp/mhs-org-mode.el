@@ -61,18 +61,22 @@
   (setq org-default-notes-file (concat org-directory "/notes.org"))
 
 
-  (setq org-capture-templates
-	'(("b" "Note for Boss" entry (file+headline "~/Dropbox/orgs/daac.org" "Erik 1-1")
+(defun mhs/org-capture-template-function ()
+  (let ((target-path `("~/Dropbox/orgs/data-services.org" ,(mhs/current-pi) "Catchup / MISC / overhead")))
+    `(("b" "Note for Boss" entry (file+headline "~/Dropbox/orgs/daac.org" "Erik 1-1")
 	   "* TODO %? \n  %U\n  %i\n  %a")
 	  ("r" "Retrospective idea" entry (file+olp "~/Dropbox/orgs/data-services.org" "Info" "Retro Notes:")
 	   "* %<%Y-%m-%d> %? \n")
 	  ("t" "Task" entry (file+headline "" "Tasks")
 	   "* TODO %?\n  %u\n  %a")
 	  ("n" "Note" entry (file+headline "" "Tasks")
-	   "* %?\n  %u\n  %a")
-	  ("m" "Meeting" entry (file+olp "~/Dropbox/orgs/data-services.org" "PI 24.1" "Catchup / MISC / overhead")
-	   "* %^{Meeting Name|} Meeting\n %? " :clock-in t  :clock-keep t)
-	  ))
+	   "* %?\n  %u")
+	  ("m" "Meeting" entry (file+olp ,@target-path)
+	   "* %^{Meeting Name|} Meeting\n %? " :clock-in t :clock-keep t)
+	  )))
+
+(setq org-capture-templates
+      (mhs/org-capture-template-function))
 
   (defvar mhs-org-mode-directory (expand-file-name "~savoie/Dropbox/orgs/")
     "Location of my .org mode files" )
