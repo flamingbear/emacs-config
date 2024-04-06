@@ -1,24 +1,21 @@
+(defun mhs/get-openai-key ()
+  (auth-source-pick-first-password :host "api.openai.com"))
+
 (use-package dall-e-shell
   :ensure t
   :config
-  (setq dall-e-shell-openai-key
-	(lambda ()
-          (auth-source-pick-first-password :host "api.openai.com"))))
+  (setq dall-e-shell-openai-key 'mhs/get-openai-key))
 
 
-(use-package pcsv
-  :ensure t)
+(use-package pcsv :ensure t)
 
 ;; check out chatgpt integration.
 (use-package chatgpt-shell
   :ensure t
   :config
-  (setq chatgpt-shell-model-version "gpt-3.5-turbo-0125")
-  (setq chatgpt-shell-system-prompt 1)
-
-  (setq chatgpt-shell-openai-key
-	(lambda ()
-          (auth-source-pick-first-password :host "api.openai.com")))
+  (setq chatgpt-shell-model-version "gpt-3.5-turbo-0125"
+        chatgpt-shell-system-prompt 1
+        chatgpt-shell-openai-key 'mhs/get-openai-key)
 
   ;; create a smart elisp tutor
   ;; https://www.reddit.com/r/emacs/comments/1aj5did/using_llms_to_fill_the_semantic_search_gap/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
