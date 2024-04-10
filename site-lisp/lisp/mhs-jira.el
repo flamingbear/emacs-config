@@ -41,7 +41,7 @@
 
 
 (defun mhs-jira--update-url-base (ticket-number)
-  "Handle multiple JIRA ticket locations."
+  "Handle multiple JIRA ticket locations based on ticket-number prefix."
   (cond ((string-prefix-p "NDCUM" ticket-number)
 	 (setq mhs-jira--url-base "https://bugs.earthdata.nasa.gov/browse/"))
 	((string-prefix-p "CUMULUS" ticket-number)
@@ -68,9 +68,45 @@
   (insert mhs-jira--current-ticket-number))
 
 (defun mhs-jira--browse-current-ticket ()
-  "Open a browse to the current ticket."
+  "Open a browser to the current ticket."
   (interactive)
-  (browse-url (mhs-jira--ticket-uri)))
+  (browse-url (mhs-jira--ticket-uri))
+  (message "Opening browser to ticket: %s" mhs-jira--current-ticket-number))
+
+
+(defun mhs-jira--replace-ticket-with-link ()
+     (interactive)
+     (if (use-region-p)
+	 (let* ((start (region-beginning))
+		(end (region-end))
+		(selected-text (buffer-substring-no-properties start end)))
+	   (setq mhs-jira--current-ticket-number selected-text)
+	   (mhs-jira--update-url-base mhs-jira--current-ticket-number)
+	   (delete-region start end)
+	   (mhs-jira--insert-org-ticket-link)
+	   )))
+
+(defun mhs-jira--replace-marked-das-link ()
+  (interactive)
+  ;; Ensure the region is active, meaning there's a selection to work with.
+  (if (use-region-p)
+      (let* ((start (region-beginning))
+             (end (region-end))
+             ;; Extract the string within the marked region.
+             (selected-text (buffer-substring-no-properties start end))
+             ;; Pattern to ensure selected text follows the expected format.
+             (pattern "^DAS-\\([0-9]+\\)$"))
+        ;; Check if the selected text matches our pattern.
+        (if (string-match pattern selected-text)
+            (let ((id (match-string 1 selected-text)))
+ ;; Delete the original text.
+              (delete-region start end)
+              ;; Insert the replacement text.
+              (insert (format "[[https://bugs.earthdata.nasa.gov/browse/DAS-%s][DAS-%s]]" id id))
+              (message "Replaced DAS link with structured format."))
+          (message "Selected text does not match the DAS-#### pattern.")))
+    ;; If no region is selected, inform the user.
+    (message "No region selected.")))
 
 (defun mhs-jira--org-find-current-ticket ()
   "Look through the org files searching for a task matching the current ticket number."
