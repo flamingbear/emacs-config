@@ -1,8 +1,33 @@
+;; Functions to get api keys
+(defun mhs/get-api-key (HOST)
+  "Fetches the API key for the specified HOST."
+  (auth-source-pick-first-password :host HOST))
+
+(defun mhs/get-claude-anthropic-key ()
+  "Fetches the API key for Claude Anthropic."
+  (mhs/get-api-key "api.anthropic.com"))
+
 (defun mhs/get-openai-key ()
-  (auth-source-pick-first-password :host "api.openai.com"))
+  "Fetches the API key for OpenAI."
+  (mhs/get-api-key "api.openai.com"))
+
+(use-package gptel
+  :ensure t
+  :config
+  ;; expensive deep thinking claude-3-opus-20240229
+  (setq
+   gptel-model "claude-3-sonnet-20240229"
+   gptel-backend (gptel-make-anthropic "Claude"          ;Any name you want
+		   :stream t                             ;Streaming responses
+		   :key 'mhs/get-claude-anthropic-key))
+  (add-to-list 'gptel-directives
+               '(geophysics . "You are a geophysical programming expert, deeply familiar with Python and specialized in libraries like xarray, netCDF, rasterio, and rio-xarray. Provide detailed, accurate, and highly efficient code solutions, including explanations and best practices."))
+)
+
 
 (use-package dall-e-shell
   :ensure t
+  :defer t
   :config
   (setq dall-e-shell-openai-key 'mhs/get-openai-key))
 
@@ -12,6 +37,7 @@
 ;; check out chatgpt integration.
 (use-package chatgpt-shell
   :ensure t
+  :defer t
   :config
   (setq chatgpt-shell-model-version "gpt-3.5-turbo-0125"
         chatgpt-shell-system-prompt 1
@@ -56,6 +82,7 @@ your reply from 0 to 100%.")))
 (use-package copilot
   :straight (:host github :repo "copilot-emacs/copilot.el" :files ("dist" "*.el"))
   :ensure t
+  :defer t
   ;; https://github.com/copilot-emacs/copilot.el#2-configure-completion
   :config
   ;; Don't enable by default yet.
