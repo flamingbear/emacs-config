@@ -178,16 +178,15 @@
   ;;;; 3. locate-dominating-file
   ;; (setq consult-project-function (lambda (_) (locate-dominating-file "." ".git")))
   ;;;; 4. projectile.el (projectile-project-root)
-  (autoload 'projectile-project-root "projectile")
-  (setq consult-project-function (lambda (_) (projectile-project-root)))
+  ;; (autoload 'projectile-project-root "projectile")
+  ;; (setq consult-project-function (lambda (_) (projectile-project-root)))
   ;;;; 5. No project support
   ;; (setq consult-project-function nil)
   )
 
-(use-package consult-projectile
-  :ensure t
-
-  )
+;; (use-package consult-projectile
+;;   :ensure t
+;;   )
 
 ;; Configure directory extension.
 (use-package vertico-directory

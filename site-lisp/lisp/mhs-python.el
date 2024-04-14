@@ -35,9 +35,6 @@
      ("pylsp.plugins.black.enabled" t)
      ("pylsp.plugins.black.preview" t)
      ))
-
-  ;;
-
   ;; Need this for sideline info more grey.
   ;;   '(lsp-ui-sideline-symbol-info ((t (:extend t :background "#21242b" :foreground "#535960"))))
   ;; (set-face-attribute 'lsp-ui-sideline-symbol-info nil  :background "#21242b" :foreground "#535960")
@@ -47,8 +44,6 @@
 
   ;; Set lsp-log-io to t for debugging and use lsp-workspace-show-log
   )
-
-
 
 (use-package python-pytest
   :ensure t

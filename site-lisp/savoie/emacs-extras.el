@@ -162,28 +162,17 @@ the current buffer."
 ;; Personal Lisp directory
 ;;----------------------------------------------------------------
 
-;; ;; Projectile is the BOMB!
-;; (use-package projectile
-;;   :ensure t
-;;   :diminish
-;;   :init
-;;   (setq projectile-keymap-prefix (kbd "C-c p"))	;; You should try to learn the new way. but you wont
-;;   :config
-;;   (projectile-mode t)
-;;   (setq projectile-completion-system 'default)
-;;   ;; switch from projectile find file to just dir the root.
-;;   ;; https://emacs.stackexchange.com/a/28757/613
-;;   (setq projectile-switch-project-action 'projectile-dired)
-;;   )
-
 ;; Is builtin package "project" good enough?
 (with-eval-after-load 'project
-  (add-to-list 'project-switch-commands '(magit-project-status "Magit") t)
-  (keymap-set project-prefix-map "m" #'magit-project-status))
-(global-set-key (kbd "C-c p p") 'project-switch-project)
-(global-set-key (kbd "C-c f") 'project-find-file)
-
-
+  (setq project-switch-commands
+	'((project-find-file "Find file")
+	  (project-find-dir "Find directory")
+	  (magit-project-status "Magit")))
+  (keymap-set project-prefix-map "m" #'magit-project-status)
+  ;; Try not to use these.
+  (global-set-key (kbd "C-c p p") 'project-switch-project)
+  (global-set-key (kbd "C-c p k") 'project-kill-buffers)
+  (global-set-key (kbd "C-c f") 'project-find-file))
 
 (use-package async :ensure t)
 
