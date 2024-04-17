@@ -22,6 +22,8 @@
 		   :key 'mhs/get-claude-anthropic-key))
   (add-to-list 'gptel-directives
                '(geophysics . "You are a geophysical programming expert, deeply familiar with Python and specialized in libraries like xarray, netCDF, rasterio, and rio-xarray. Provide detailed, accurate, and highly efficient code solutions, including explanations and best practices."))
+  (add-hook 'gptel-post-response-functions 'gptel-end-of-response)
+  (add-hook 'gptel-post-stream-hook 'gptel-auto-scroll)
 )
 
 

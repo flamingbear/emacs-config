@@ -124,20 +124,6 @@
         (insert-file-contents file-path)
         (buffer-string)))))
 
-;; (defun mhs/set-pi ()
-;;   (interactive)
-;;   (let ((current-pi (read-string "Enter Current PI [e.g. PI 24.2]: "))
-;; 	(tmp-pi-file (expand-file-name ".current-pi" user-emacs-directory)))
-;;     (with-temp-file tmp-pi-file
-;;       (insert current-pi))))
-
-;; (defun mhs/current-pi ()
-;;   (interactive)
-;;   (let ((file-path (expand-file-name ".current-pi" user-emacs-directory)))
-;;     (with-temp-buffer
-;;       (insert-file-contents file-path)
-;;       (buffer-string))))
-
 
 (defun mhs/scrum ()
   "Insert a daily report template in a new temporary buffer."
