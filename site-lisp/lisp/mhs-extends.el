@@ -104,37 +104,6 @@
   (set-register ?y "from xarray.core.datatree import *")
   (set-register ?z "from xarray.core.treenode import *"))
 
-
-;; SaFE planning info
-(defun mhs/set-pi ()
-  "Set the current PI value in a persistent file."
-  (interactive)
-  (let* ((current-pi (read-string "Enter Current PI [e.g. PI 24.2]: "))
-         (tmp-pi-file (expand-file-name ".current-pi" user-emacs-directory)))
-    (with-temp-file tmp-pi-file
-      (insert current-pi))
-    (message "Current PI value set to: %s" current-pi)))
-
-(defun mhs/current-pi ()
-  "Retrieve the previously set current PI value from the stored file."
-  (interactive)
-  (let ((file-path (expand-file-name ".current-pi" user-emacs-directory)))
-    (when (file-exists-p file-path)
-      (with-temp-buffer
-        (insert-file-contents file-path)
-        (buffer-string)))))
-
-
-(defun mhs/scrum ()
-  "Insert a daily report template in a new temporary buffer."
-  (interactive)
-  (interactive)
-  (with-current-buffer (generate-new-buffer "Daily Report")
-    (insert "Yesterday:\nToday:\nBlockers:")
-    (forward-line -2)
-    (end-of-line)
-    (pop-to-buffer (current-buffer))))
-
 (load-register-values)
 
 (defun mhs-backtick-around-region ()

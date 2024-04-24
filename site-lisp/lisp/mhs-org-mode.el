@@ -53,23 +53,23 @@
   (require 'org-id)
   (setq org-id-link-to-org-use-id t)
 
-
-
   (require 'org-capture)
   (define-key global-map "\C-cr" 'org-capture)
   (setq org-directory "~/Dropbox/orgs")
   (setq org-default-notes-file (concat org-directory "/notes.org"))
 
 
+
 (defun mhs/org-capture-template-function ()
   (let (
-	(target-path `("~/Dropbox/orgs/data-services.org" ,(mhs/current-pi) "Catchup / MISC / overhead"))
+	(target-path `("~/Dropbox/orgs/data-services.org" ,(concat "PI " (mhs/current-pi)) "Catchup / MISC / overhead"))
+	(retro-target-path `("~/Dropbox/orgs/data-services.org" ,(concat "PI " (mhs/current-pi)) "Retro Notes"))
 	(tracking-timeoff `("~/Dropbox/orgs/time_off.org" ,(concat "Time Off Tracking " (format-time-string "%Y")) "Vacation"))
 	)
     `(("b" "Note for Boss" entry (file+headline "~/Dropbox/orgs/daac.org" "Erik 1-1")
        "* TODO %? \n  %U\n  %i\n  %a")
-      ("r" "Retrospective idea" entry (file+olp "~/Dropbox/orgs/data-services.org" "Info" "Retro Notes:")
-       "* %<%Y-%m-%d> %? \n")
+      ("r" "Retrospective idea" entry (file+olp ,@retro-target-path)
+       "*  %? \n")
       ("t" "Task" entry (file+headline "" "Tasks")
        "* TODO %?\n  %u\n  %a")
       ("n" "Note" entry (file+headline "" "Tasks")

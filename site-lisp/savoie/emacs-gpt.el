@@ -16,12 +16,14 @@
   :config
   ;; expensive deep thinking claude-3-opus-20240229
   (setq
+   gptel-default-mode 'org-mode
    gptel-model "claude-3-sonnet-20240229"
    gptel-backend (gptel-make-anthropic "Claude"          ;Any name you want
 		   :stream t                             ;Streaming responses
 		   :key 'mhs/get-claude-anthropic-key))
   (add-to-list 'gptel-directives
                '(geophysics . "You are a geophysical programmer, deeply familiar with Python and the libraries xarray, netCDF, rasterio, and rio-xarray. Provide detailed, accurate, and highly efficient code solutions,  Provide code and only code as output without any additional text, prompt or note."))
+
   (add-hook 'gptel-post-response-functions 'gptel-end-of-response)
   (add-hook 'gptel-post-stream-hook 'gptel-auto-scroll)
 )

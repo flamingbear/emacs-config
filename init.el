@@ -129,6 +129,7 @@
 (use-package emacs-extras)
 (use-package emacs-keybinds)
 (use-package emacs-ministack)
+(use-package mhs-scrum)
 (use-package mhs-org-mode)
 (use-package emacs-custom-faces)
 (use-package emacs-modeline)
