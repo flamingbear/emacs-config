@@ -56,7 +56,7 @@
   (set-register ?f (dired-get-filename "no-dir"))
   (set-register ?d (dired-current-directory))
   (let ((file-name  (dired-get-filename)))
-  (set-register ?a file-name)
+  (set-register ?n file-name)
   (kill-new file-name)
   (message file-name)))
 

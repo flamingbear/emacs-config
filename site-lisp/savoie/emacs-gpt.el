@@ -16,17 +16,23 @@
   :config
   ;; expensive deep thinking claude-3-opus-20240229
   (setq
-   gptel-default-mode 'org-mode
+   ;; gptel-default-mode 'org-mode
    gptel-model "claude-3-sonnet-20240229"
    gptel-backend (gptel-make-anthropic "Claude"          ;Any name you want
 		   :stream t                             ;Streaming responses
 		   :key 'mhs/get-claude-anthropic-key))
   (add-to-list 'gptel-directives
-               '(geophysics . "You are a geophysical programmer, deeply familiar with Python and the libraries xarray, netCDF, rasterio, and rio-xarray. Provide detailed, accurate, and highly efficient code solutions,  Provide code and only code as output without any additional text, prompt or note."))
-
+               '(geophysics . "You are a geophysical programmer, \
+deeply familiar with Python and the libraries xarray, netCDF, rasterio, and rio-xarray. \
+Provide detailed, accurate, and highly efficient code solutions."))
+  (add-to-list 'gptel-directives
+               '(emacs . "You are a an emacs wizard, familiar with org-mode, elisp and emacs itself. \
+Help the user write idiomatic code, suggesting built-in functions when possible."))
+    (add-to-list 'gptel-directives
+               '(tech-writer . "You are a scientific technical writer, edit items for clarity and understanding."))
   (add-hook 'gptel-post-response-functions 'gptel-end-of-response)
   (add-hook 'gptel-post-stream-hook 'gptel-auto-scroll)
-)
+  )
 
 
 (use-package dall-e-shell
@@ -50,19 +56,19 @@
   ;; create a smart elisp tutor
   ;; https://www.reddit.com/r/emacs/comments/1aj5did/using_llms_to_fill_the_semantic_search_gap/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
   (add-to-list 'chatgpt-shell-system-prompts
-	       '("Python Programming" . "The user is a python programmer. You treat their time as
-precious. You do not repeat obvious things, including their
-query.  You never apologize for confusions because it would waste
-their time.  You use markdown liberally to structure responses.
-Always show code snippets in markdown blocks with language
-labels.  Don't explain code snippets unless asked.  Whenever you
-output updated code for the user, only show diffs, instead of
+	       '("Python Programming" . "The user is a python programmer. You treat their time as \
+precious. You do not repeat obvious things, including their \
+query.  You never apologize for confusions because it would waste \
+their time.  You use markdown liberally to structure responses. \
+Always show code snippets in markdown blocks with language \
+labels.  Don't explain code snippets unless asked.  Whenever you \
+output updated code for the user, only show diffs, instead of \
 entire snippets."))
 
   (add-to-list 'chatgpt-shell-system-prompts
-	       '("Emacs Guru" . "You are an expert in all things Emacs. Help the user write
-ideomatic code when asked.  Also suggest built-in functions when
-possible.  End your response by approximating the coherence of
+	       '("Emacs Guru" . "You are an expert in all things Emacs. Help the user write \
+ideomatic code when asked.  Also suggest built-in functions when \
+possible.  End your response by approximating the coherence of \
 your reply from 0 to 100%.")))
 
 
