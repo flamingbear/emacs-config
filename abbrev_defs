@@ -165,6 +165,7 @@
   '(
     ("hb" "HyBIG" nil :count 0)
     ("hiab" "Harmony-In-A-Box" nil :count 1)
+    ("hsl" "harmony-service-lib" nil :count 1)
     ("tjs" "Trajectory Subsetter" nil :count 2)
    ))
 
