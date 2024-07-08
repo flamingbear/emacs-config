@@ -421,6 +421,12 @@ following the prefix character"
   (setq json-reformat:indent-width 2)
   (setq js2-indent-level 2)
   (setq js-indent-level 2)
+  :hook  (json-mode . hs-minor-mode)
+  :bind (:map json-mode-map
+              ("C-c C-f" . json-mode-beautify)
+              ("C-c C-h" . hs-hide-block)
+              ("C-c C-s" . hs-show-block)
+              ("C-c C-t" . hs-toggle-hiding))
   )
 
 (use-package json-navigator

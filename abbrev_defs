@@ -163,8 +163,9 @@
 
 (define-abbrev-table 'global-abbrev-table
   '(
-    ("hb" "HyBIG" nil :count 0)
-    ("hiab" "Harmony-In-A-Box" nil :count 1)
+    ("gt" "GeoTIFF" nil :count 0)
+    ("hb" "HyBIG" nil :count 22)
+    ("hiab" "Harmony-In-A-Box" nil :count 4)
     ("hsl" "harmony-service-lib" nil :count 1)
     ("tjs" "Trajectory Subsetter" nil :count 2)
    ))
