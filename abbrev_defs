@@ -165,8 +165,11 @@
   '(
     ("gt" "GeoTIFF" nil :count 0)
     ("hb" "HyBIG" nil :count 22)
-    ("hiab" "Harmony-In-A-Box" nil :count 4)
+    ("hiab" "Harmony-In-A-Box" nil :count 5)
     ("hsl" "harmony-service-lib" nil :count 1)
+    ("l2g" "L2G-Gridding-Service" nil :count 2)
+    ("sl2gr" "SMAP-L2-Gridder" nil :count 2)
+    ("sl2gs" "SMAP-L2-Gridding-Service" nil :count 2)
     ("tjs" "Trajectory Subsetter" nil :count 2)
    ))
 

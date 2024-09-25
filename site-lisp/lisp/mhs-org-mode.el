@@ -21,9 +21,9 @@
   :pin gnu
   :ensure t
   :config
-  (add-hook 'after-init-hook (lambda ()
-			       (org-agenda-list)
-			       (org-clock-goto)))
+  ;; (add-hook 'after-init-hook (lambda ()
+  ;; 			       (org-agenda-list)
+  ;; 			       (org-clock-goto)))
 
   ;; always open .org files in org-mode
   (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))

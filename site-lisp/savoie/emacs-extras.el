@@ -26,8 +26,8 @@ the current buffer."
 ;; https://emacs-lsp.github.io/lsp-mode/page/performance/#increase-the-amount-of-data-which-emacs-reads-from-the-process
 (setq read-process-output-max (* 1024 1024)) ;; 1mb
 
-(setq gc-cons-threshold (* 100 1024 1024))
-(run-with-idle-timer 4 t (lambda () (garbage-collect)))
+;; (setq gc-cons-threshold (* 100 1024 1024))
+;; (run-with-idle-timer 4 t (lambda () (garbage-collect)))
 
 ;; (setq gc-cons-threshold (* 80  1024))
 
@@ -196,7 +196,8 @@ the current buffer."
 ;; IDLWAVE Customizations
 ;; Load this before ruby because we want the jds history search.
 ;; TODO [MHS, 03/25/2022] Someday I'm going to need this again...
-(use-package emacs-idlwave-support)
+;; TODO [MHS, 09/22/2024] No I'm not.
+;; (use-package emacs-idlwave-support)
 
 ;; Use jira information
 (use-package mhs-jira)
@@ -562,6 +563,23 @@ the current buffer."
 ;; TODO [MHS, 03/22/2023] This doesn't do anything yet
 ;; (use-package tree-sitter :ensure t)
 ;; (use-package tree-sitter-langs :ensure t)
+
+
+;;
+(defun mhs/dired-ncdump-header ()
+  "Run ncdump -h on the file at point in dired and save output to a .dump file."
+  (interactive)
+  (let* ((file (dired-get-filename))
+         (output-file (concat file ".dump")))
+    (when (y-or-n-p (format "Run ncdump -h on %s? " file))
+      (with-temp-buffer
+        (call-process "ncdump" nil t nil "-h" file)
+        (write-region (point-min) (point-max) output-file))
+      (message "ncdump header saved to %s" output-file))))
+
+(add-hook 'dired-mode-hook
+          (lambda ()
+            (local-set-key (kbd "C-c n") #'mhs/dired-ncdump-header)))
 
 
 (use-package expand-region
