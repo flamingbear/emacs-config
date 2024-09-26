@@ -130,14 +130,14 @@
   :ensure t)
 
 
-(use-package ein
-  :ensure t
-  :init
-  (setq ein:worksheet-enable-undo t)
-  (setq ein:output-area-inlined-images t)
-  (setq ein:polymode t)
-  :config
-  (add-hook 'ein:connect-mode-hook 'ein:jedi-setup))
+;; (use-package ein
+;;   :ensure t
+;;   :init
+;;   (setq ein:worksheet-enable-undo t)
+;;   (setq ein:output-area-inlined-images t)
+;;   (setq ein:polymode t)
+;;   :config
+;;   (add-hook 'ein:connect-mode-hook 'ein:jedi-setup))
 
 
 (provide 'mhs-python)
