@@ -176,12 +176,11 @@ the current buffer."
 
 (use-package async :ensure t)
 
-(use-package grep
-  :defer 3
-  :config
+(use-package grep  :ensure t)
+  ;; :config
   ;; (setq grep-find-command
   ;;       "find . -name \".svn\" -prune -o -type f  -exec grep -nH \"\" {} \\;"))
-  )
+
 
 (use-package wgrep :ensure t)
 
@@ -283,7 +282,7 @@ the current buffer."
 ;;   )
 
 (use-package paren
-  :defer 3
+  :ensure t
   :config
   (show-paren-mode t))
 

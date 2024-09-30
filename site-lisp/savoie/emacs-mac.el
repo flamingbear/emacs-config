@@ -21,11 +21,10 @@ The return value is the new value of LIST-VAR."
 
 (use-package exec-path-from-shell
   :ensure t
-  :defer 1
   :config
   (append-to-list 'exec-path-from-shell-variables
-		  '("NODE_PATH" "GIT_EDITOR" "EDITOR" "LC_ALL" "NVM_DIR" "NVM_BIN" "AWS_PROFILE" "AWS_SDK_LOAD_CONFIG" "WORKON_HOME"))
-  (setq exec-path-from-shell-arguments '("-l"))
+		  '("GIT_EDITOR" "EDITOR" "LC_ALL" "NVM_DIR" "AWS_PROFILE" "AWS_SDK_LOAD_CONFIG" "WORKON_HOME"))
+  (setq exec-path-from-shell-arguments 'nil)
   (exec-path-from-shell-initialize)
 )
 
