@@ -153,6 +153,7 @@
   (set-face-attribute 'org-headline-done nil :foreground "#207030")
   )
 
+;; all-the-icons-install-fonts
 (use-package all-the-icons
   :ensure t
   :if (display-graphic-p))

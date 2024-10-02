@@ -1,6 +1,6 @@
 ;; This sets up fancy modelines on non-terminal displays.
 
-
+;; need to nerd-icons-install-fonts
 (use-package doom-modeline
   :ensure t
   :hook (after-init . doom-modeline-mode)
