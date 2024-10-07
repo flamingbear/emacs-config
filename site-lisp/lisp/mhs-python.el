@@ -119,10 +119,18 @@
   (require 'dap-python)
   (setq dap-python-debugger 'debugpy))
 
-;; (use-package pyvenv
+(use-package pyvenv
+  :ensure t
+  :config
+  (pyvenv-mode 1))
+
+;; try PET?
+;; Way to f'ing slow
+;; (use-package pet
 ;;   :ensure t
 ;;   :config
-;;   (pyvenv-mode 1))
+;;   (add-hook 'python-base-mode-hook 'pet-mode -10))
+
 
 ;; don't use flymake (elpy default), use flycheck
 ;; https://github.com/jorgenschaefer/elpy/issues/137#issuecomment-55403160
