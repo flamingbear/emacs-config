@@ -17,7 +17,7 @@
   ;; expensive deep thinking claude-3-opus-20240229
   (setq
    ;; gptel-default-mode 'org-mode
-   gptel-model "claude-3-5-sonnet-20241022"
+   gptel-model 'claude-3-5-sonnet-20241022
    gptel-backend (gptel-make-anthropic "Claude"          ;Any name you want
 		   :stream t                             ;Streaming responses
 		   :key 'mhs/get-claude-anthropic-key))
