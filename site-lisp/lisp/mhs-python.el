@@ -5,11 +5,13 @@
   :config
   ;; Python is a dev mode
   (add-hook 'python-mode-hook 'run-dev-hook)
-  (add-hook 'python-mode-hook
-            (lambda ()
-              (when-let ((r (locate-dominating-file default-directory ".pyroot")))
-		(setq python-pytest-executable
-                      (concat "PYTHONPATH=" r " " "pytest")))))
+  ;; Actually I don't need this if I have my __init__.py files sprinkled liberally throughout
+  ;; (add-hook 'python-mode-hook
+  ;;           (lambda ()
+  ;;             (when-let ((r (locate-dominating-file default-directory ".pyroot")))
+  ;; 		(setq python-pytest-executable
+  ;;                     (concat "PYTHONPATH=" r " " "pytest")))))
+
   ;; You need this for running single pytest, but you only need to do it when
   ;; it's not installed.
   ;; (treesit-install-language-grammar 'python)
