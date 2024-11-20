@@ -4,7 +4,16 @@
 (use-package python
   :config
   ;; Python is a dev mode
-  (add-hook 'python-mode-hook 'run-dev-hook))
+  (add-hook 'python-mode-hook 'run-dev-hook)
+  (add-hook 'python-mode-hook
+            (lambda ()
+              (when-let ((r (locate-dominating-file default-directory ".pyroot")))
+		(setq python-pytest-executable
+                      (concat "PYTHONPATH=" r " " "pytest")))))
+  ;; You need this for running single pytest, but you only need to do it when
+  ;; it's not installed.
+  ;; (treesit-install-language-grammar 'python)
+  )
 
 ;; Need to install lsp in project you want to use this with.
 ;; pip install "python-lsp-server[all]" provides pylsp- options
