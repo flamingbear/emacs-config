@@ -163,19 +163,19 @@
 
 (define-abbrev-table 'global-abbrev-table
   '(
+    ("Hsl2g" "Harmony-SMAP-L2-gridder" nil :count 0)
     ("geotiff" "GeoTIFF" nil :count 2)
     ("gh" "GitHub" nil :count 2)
-    ("github" "GitHub" nil :count 1)
+    ("github" "GitHub" nil :count 5)
     ("gt" "GeoTIFF" nil :count 4)
     ("hb" "HyBIG" nil :count 26)
     ("hiab" "Harmony-In-A-Box" nil :count 7)
-    ("hrt" "Harmony-Regression-Test" nil :count 1)
+    ("hrt" "Harmony-Regression-Test" nil :count 2)
     ("hsl" "harmony-service-lib" nil :count 1)
-    ("l2g" "L2G-Gridding-Service" nil :count 4)
+    ("hsl2g" "harmony-smap-l2-gridder" nil :count 2)
+    ("hsl2gs" "Harmony SMAP L2 gridding service" nil :count 8)
     ("netcdf" "NetCDF" nil :count 7)
-    ("sl2gr" "SMAP-L2-Gridder" nil :count 2)
-    ("sl2gs" "SMAP-L2-Gridding-Service" nil :count 2)
-    ("tjs" "Trajectory Subsetter" nil :count 2)
+    ("sl2g" "harmony-smap-l2-gridder" nil :count 11)
     ("varaible" "variable" nil :count 1)
    ))
 

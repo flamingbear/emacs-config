@@ -54,6 +54,16 @@
   (set-face-attribute 'header-line nil :inherit 'mode-line :background "#71458f")
 
   ;; Set lsp-log-io to t for debugging and use lsp-workspace-show-log
+
+  ;; Flinging reddit snippets at the wall
+  ;; https://www.reddit.com/r/emacs/comments/ql8cyp/corfu_orderless_and_lsp/
+  ;; error was: "LSP :: Unable to autoconfigure company-mode."
+  (setq lsp-completion-provider :none)
+  (defun corfu-lsp-setup ()
+    (setq-local completion-styles '(orderless)
+		completion-category-defaults nil))
+  (add-hook 'lsp-mode-hook #'corfu-lsp-setup)
+
   )
 
 (use-package python-pytest

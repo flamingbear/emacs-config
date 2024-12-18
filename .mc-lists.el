@@ -19,6 +19,7 @@
 	ivy-wgrep-change-to-wgrep-mode
 	kill-region
 	mark-whole-buffer
+	markdown-end-of-line
 	markdown-exdent-or-delete
 	message-beginning-of-line
 	nxml-electric-slash

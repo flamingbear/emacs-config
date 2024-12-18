@@ -15,6 +15,10 @@
   :ensure t
   :config
   ;; expensive deep thinking claude-3-opus-20240229
+
+  ;;Reddit comment on how make claude less verbose:
+  ;; https://www.reddit.com/r/ClaudeAI/comments/1gn8bpf/comment/lw8l3q8/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+  ;; if you want to have prompts and that, you can just highlight the prompt and add it to the context
   (setq
    gptel-default-mode 'org-mode ;markdown-mode
    gptel-model 'claude-3-5-sonnet-20241022
