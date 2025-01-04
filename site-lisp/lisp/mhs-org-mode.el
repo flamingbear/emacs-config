@@ -21,9 +21,10 @@
   :pin gnu
   :ensure t
   :config
-  (add-hook 'after-init-hook (lambda ()
-			       (org-agenda-list)
-			       (org-clock-goto)))
+  (unless (string= (system-name) "gridz.local")
+    (add-hook 'after-init-hook (lambda ()
+				 (org-agenda-list)
+				 (org-clock-goto))))
 
   ;; always open .org files in org-mode
   (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
@@ -64,32 +65,32 @@
 
 
 
-(defun mhs/org-capture-template-function ()
-  (let (
-	(target-path `("~/Dropbox/orgs/data-services.org" ,(concat "PI " (mhs/current-pi)) "Catchup / MISC / overhead"))
-	(meeting-path `("~/Dropbox/orgs/data-services.org" ,(concat "PI " (mhs/current-pi)) "Meetings"))
-	(task-path `("~/Dropbox/orgs/data-services.org" ,(concat "PI " (mhs/current-pi)) "Tasks"))
-	(retro-target-path `("~/Dropbox/orgs/data-services.org" ,(concat "PI " (mhs/current-pi)) "Retro Notes"))
-	(tracking-timeoff `("~/Dropbox/orgs/time_off.org" ,(concat "Time Off Tracking " (format-time-string "%Y")) "Vacation"))
-	)
-    `(("b" "Note for Boss" entry (file+headline "~/Dropbox/orgs/daac.org" "Erik 1-1")
-       "* TODO %? \n  %U\n  %i\n  %a")
-      ("r" "Retrospective idea" entry (file+olp ,@retro-target-path)
-       "*  %? \n")
-      ("o" "TODO Note" entry (file+headline "" "Tasks")
-       "* TODO %?\n  %u\n  %a")
-      ("n" "Do Not Forget Note" entry (file+headline "" "Tasks")
-       "* %?\n  %u")
-      ("m" "Meeting" entry (file+olp ,@meeting-path)
-       "* %^{Meeting Name|}\n %? " :clock-in t :clock-keep t)
-      ("t" "Task" entry (file+olp ,@task-path)
-       "* %^{Task|}\n %? " :clock-in t :clock-keep t)
-      ("v" "Vacation" entry (file+olp ,@tracking-timeoff)
-       "* %^{Vacation?}\n:LOGBOOK:\nCLOCK: [%<%Y-%m-%d %a> 08:00]--[%<%Y-%m-%d %a> 17:00] => 09:00\n:END:\n")
-      )))
+  (defun mhs/org-capture-template-function ()
+    (let (
+	  (target-path `("~/Dropbox/orgs/data-services.org" ,(concat "PI " (mhs/current-pi)) "Catchup / MISC / overhead"))
+	  (meeting-path `("~/Dropbox/orgs/data-services.org" ,(concat "PI " (mhs/current-pi)) "Meetings"))
+	  (task-path `("~/Dropbox/orgs/data-services.org" ,(concat "PI " (mhs/current-pi)) "Tasks"))
+	  (retro-target-path `("~/Dropbox/orgs/data-services.org" ,(concat "PI " (mhs/current-pi)) "Retro Notes"))
+	  (tracking-timeoff `("~/Dropbox/orgs/time_off.org" ,(concat "Time Off Tracking " (format-time-string "%Y")) "Vacation"))
+	  )
+      `(("b" "Note for Boss" entry (file+headline "~/Dropbox/orgs/daac.org" "Erik 1-1")
+	 "* TODO %? \n  %U\n  %i\n  %a")
+	("r" "Retrospective idea" entry (file+olp ,@retro-target-path)
+	 "*  %? \n")
+	("o" "TODO Note" entry (file+headline "" "Tasks")
+	 "* TODO %?\n  %u\n  %a")
+	("n" "Do Not Forget Note" entry (file+headline "" "Tasks")
+	 "* %?\n  %u")
+	("m" "Meeting" entry (file+olp ,@meeting-path)
+	 "* %^{Meeting Name|}\n %? " :clock-in t :clock-keep t)
+	("t" "Task" entry (file+olp ,@task-path)
+	 "* %^{Task|}\n %? " :clock-in t :clock-keep t)
+	("v" "Vacation" entry (file+olp ,@tracking-timeoff)
+	 "* %^{Vacation?}\n:LOGBOOK:\nCLOCK: [%<%Y-%m-%d %a> 08:00]--[%<%Y-%m-%d %a> 17:00] => 09:00\n:END:\n")
+	)))
 
-(setq org-capture-templates
-      (mhs/org-capture-template-function))
+  (setq org-capture-templates
+	(mhs/org-capture-template-function))
 
   (defvar mhs-org-mode-directory (expand-file-name "~savoie/Dropbox/orgs/")
     "Location of my .org mode files" )
