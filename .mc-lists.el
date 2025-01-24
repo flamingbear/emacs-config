@@ -6,6 +6,7 @@
 	beginning-of-buffer
 	beginning-of-visual-line
 	clipboard-kill-ring-save
+	consult-register-load
 	consult-yank-pop
 	dabbrev-expand
 	ein:worksheet-split-cell-at-point

@@ -34,11 +34,13 @@
    lsp-pylsp-plugins-pydocstyle-enabled nil ;; while working on HGA (also now ruff handles this better?)
    lsp-pylsp-plugins-yapf-enabled nil
    lsp-pylsp-plugins-flake8-enabled nil
-   lsp-pylsp-plugins-black-enabled t
+   lsp-pylsp-plugins-black-enabled nil
+   lsp-pylsp-plugins-ruff-enabled t
    lsp-pylsp-plugins-autopep8-enabled nil
    lsp-pylsp-plugins-pycodestyle-enabled nil
    lsp-pylsp-plugins-pyflakes-enabled nil
    lsp-disabled-clients '((python-mode . pyls))
+   ;;   lsp-log-io t   ;; debugging
    )
   ;; This appears to allow me to set black and use preview, AKA new features
   (lsp-register-custom-settings
@@ -63,6 +65,16 @@
     (setq-local completion-styles '(orderless)
 		completion-category-defaults nil))
   (add-hook 'lsp-mode-hook #'corfu-lsp-setup)
+
+  ;; Add this to make ruff the higher priority client (thanks claude)
+  (with-eval-after-load 'lsp-ruff
+    (lsp-register-client
+     (make-lsp-client :new-connection (lsp-stdio-connection "ruff-lsp")
+                      :priority 1   ; Higher than pylsp
+                      :server-id 'ruff
+                      :multi-root t
+                      :add-on? t
+                      :activation-fn (lsp-activate-on "python"))))
 
   )
 

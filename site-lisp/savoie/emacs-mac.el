@@ -26,7 +26,6 @@ The return value is the new value of LIST-VAR."
 		  '("GIT_EDITOR" "EDITOR" "LC_ALL" "NVM_DIR" "AWS_PROFILE" "AWS_SDK_LOAD_CONFIG" "WORKON_HOME"))
   ;; (setq exec-path-from-shell-arguments 'nil) for fast...
   (setq exec-path-from-shell-arguments '("-l"))
-
   (exec-path-from-shell-initialize)
 )
 

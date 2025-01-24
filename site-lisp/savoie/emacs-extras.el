@@ -515,6 +515,7 @@ the current buffer."
 (use-package hcl-mode :ensure t)
 ;; (use-package company-terraform :ensure t)
 
+
 (use-package vterm :ensure t
   :init
   (defun visit-vterm-buffer ()
@@ -570,9 +571,9 @@ the current buffer."
   (interactive)
   (let* ((file (dired-get-filename))
          (output-file (concat file ".dump")))
-    (when (y-or-n-p (format "Run ncdump -h on %s? " file))
+    (when (y-or-n-p (format "Run ncdump -hs on %s? " file))
       (with-temp-buffer
-        (call-process "ncdump" nil t nil "-h" file)
+        (call-process "ncdump" nil t nil "-hs" file)
         (write-region (point-min) (point-max) output-file))
       (message "ncdump header saved to %s" output-file))))
 
