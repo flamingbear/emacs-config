@@ -27,7 +27,8 @@
   (setq magit-push-always-verify nil)
   (setq magit-diff-refine-hunk 'all)
 
-  (setopt magit-format-file-function #'magit-format-file-all-the-icons)
+  ;; Actually this is irritating
+  ;; (setopt magit-format-file-function #'magit-format-file-all-the-icons)
   ;; or
   ;; (setopt magit-format-file-function #'magit-format-file-nerd-icons)
 
