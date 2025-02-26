@@ -113,7 +113,7 @@
   (c-add-style "PERSONAL" my-c-style t)
   ;; other customizations
   ;;---------------------
-  (setq tab-width 4 indent-tabs-mode nil)
+  (setq tab-width 8 indent-tabs-mode nil)
   ;; we like auto-newline and hungry-delete
   (c-toggle-auto-hungry-state 1)
   (local-set-key (read-kbd-macro "M-RET") 'mhs-insert-newline)

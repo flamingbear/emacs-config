@@ -33,6 +33,9 @@
   (define-key global-map "\C-ca" 'org-agenda)
   (setq org-agenda-files "~/Dropbox/orgs/org-agenda-files")
 
+  ;; New bug?
+  (setq tab-width 8)
+
   ;; indent sanely?
   (setq org-startup-folded 't)
   (setq org-adapt-indentation 't)

@@ -147,7 +147,7 @@ the current buffer."
 
 (add-hook 'text-mode-hook #'(lambda ()
 			     (setq indent-tabs-mode nil)
-			     (setq tab-width 4)))
+			     (setq tab-width 8)))
 ;; To edit binary files
 ;; (remove-hook 'before-save-hook 'delete-trailing-whitespace)
 
