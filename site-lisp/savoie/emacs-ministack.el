@@ -205,6 +205,7 @@
 
 (use-package marginalia
   ;; Either bind `marginalia-cycle' globally or only in the minibuffer
+  :ensure t
   :bind (("M-A" . marginalia-cycle)
          :map minibuffer-local-map
          ("M-A" . marginalia-cycle))
