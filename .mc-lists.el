@@ -56,6 +56,7 @@
 	ivy-switch-buffer
 	magit-status
 	markdown-outdent-or-delete
+	mhs-trunc-lines
 	multiple-cursors-hydra/body
 	multiple-cursors-hydra/mc/edit-lines-and-exit
 	multiple-cursors-hydra/mc/mark-all-like-this-and-exit
