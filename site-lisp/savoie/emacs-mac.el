@@ -25,7 +25,7 @@ The return value is the new value of LIST-VAR."
   (append-to-list 'exec-path-from-shell-variables
 		  '("GIT_EDITOR" "EDITOR" "LC_ALL" "NVM_DIR" "AWS_PROFILE" "AWS_SDK_LOAD_CONFIG" "WORKON_HOME"))
   (setq exec-path-from-shell-shell-name "zsh")
-  (setq exec-path-from-shell-arguments '("-l")) ;; Use login shell but not interactive
+  (setq exec-path-from-shell-arguments '("-l" "-i")) ;; Use login shell but not interactive
   (exec-path-from-shell-initialize)
 )
 
