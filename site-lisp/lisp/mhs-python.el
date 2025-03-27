@@ -112,7 +112,10 @@
 
 (use-package lsp-treemacs
   :ensure t
+  :pin melpa
   :after lsp)
+
+(use-package treemacs :ensure t :pin melpa)
 
 (use-package lsp-ui
   :pin melpa
@@ -148,9 +151,30 @@
   (dap-stopped . (lambda (arg) (call-interactively #'dap-hydra)))
   :commands dap-debug
   :config
-  (dap-auto-configure-mode 1)
+  ;; Disable UI features that cause the hang
+  (setq dap-auto-configure-features '(sessions repl tooltip breakpoints))
+
+  ;; Completely disable UI elements that might be problematic
+  ;; (setq dap-ui-controls-enable nil)
+
+  ;; (dap-auto-configure-mode 1)
+
   (require 'dap-python)
-  (setq dap-python-debugger 'debugpy))
+  (setq dap-python-debugger 'debugpy)
+  ;; Debug this stuff
+  ;; (setq dap-print-io t)
+
+  ;; Configure a simplified template
+  (dap-register-debug-template
+   "Python :: Debug Run file (buffer)"
+   (list :type "python"
+         :args ""
+         :cwd "${workspaceFolder}"
+         :module nil
+         :program nil
+         :request "launch"
+         :name "Python :: Debug Run file (buffer)"))
+  )
 
 (use-package pyvenv
   :ensure t

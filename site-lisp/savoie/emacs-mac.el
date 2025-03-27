@@ -27,7 +27,12 @@ The return value is the new value of LIST-VAR."
   (setq exec-path-from-shell-shell-name "zsh")
   (setq exec-path-from-shell-arguments '("-l" "-i")) ;; Use login shell but not interactive
   (exec-path-from-shell-initialize)
-)
+  )
+
+;; If you run into jit issues You might add these to the above?
+;; export CC=gcc-14
+;; export LIBRARY_PATH="$LIBRARY_PATH:/opt/homebrew/opt/gcc/lib/gcc/current:/opt/homebrew/lib/gcc/current"
+
 
 (provide 'emacs-mac)
 ;;; emacs-mac.el ends here
