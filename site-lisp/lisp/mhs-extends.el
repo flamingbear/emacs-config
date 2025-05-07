@@ -30,10 +30,12 @@
   (interactive)
   (browse-url (buffer-file-name) 't))
 
-
-(defun mhs-insert-todo ()
-  (interactive)
-  (insert (concat "TODO [MHS, " (format-time-string "%m/%d/%Y") "] ")))
+;;; prevent-a-commit is a string that I have set in git secrets so that I don't
+;;; commit TODOs that I really want to finish.
+(defun mhs-insert-todo (&optional arg)
+  (interactive "P")
+  (let ((prefix (if arg "TODO (prevent-a-commit) " "TODO ")))
+    (insert (concat prefix "[MHS, " (format-time-string "%m/%d/%Y") "] "))))
 
 (defun mhs-insert-date (arg)
   (interactive "p")
