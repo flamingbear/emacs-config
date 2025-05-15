@@ -192,12 +192,6 @@ the current buffer."
   (global-so-long-mode 1))
 
 
-;; IDLWAVE Customizations
-;; Load this before ruby because we want the jds history search.
-;; TODO [MHS, 03/25/2022] Someday I'm going to need this again...
-;; TODO [MHS, 09/22/2024] No I'm not.
-;; (use-package emacs-idlwave-support)
-
 ;; Use jira information
 (use-package mhs-jira)
 
@@ -374,17 +368,6 @@ the current buffer."
   :config
   (setq uniquify-buffer-name-style 'forward))
 
-;; ------------------------------------------------------------
-;; auto-insert madness
-;; ------------------------------------------------------------
-(use-package autoinsert
-  :config
-  (setq auto-insert-path '("~savoie/.emacs.d/autoinsert/insert/"))
-  (auto-insert-mode 1)
-  (add-hook 'find-file-hook 'auto-insert)
-  (setq auto-insert-directory (concat (file-name-as-directory user-emacs-directory) "autoinsert/"))
-  (add-to-list 'auto-insert-alist '("\\.pro$" . "idlwave-insert.pro")))
-
 (use-package bookmark
   :config
   (setq bookmark-save-flag 1))
@@ -447,6 +430,7 @@ the current buffer."
 
 (use-package yasnippet-snippets
   :ensure t
+  :pin melpa ;-stable
   :after yasnippet
   :config (yasnippet-snippets-initialize))
 

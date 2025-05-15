@@ -51,6 +51,12 @@
     (insert "</mhs>")))
 
 
+(defun mhs/kill-current-dir ()
+  "Copy the current Dired directory path to the kill ring."
+  (interactive)
+  (let ((dir (dired-current-directory)))
+    (kill-new dir)
+    (message "Copied to kill ring: %s" dir)))
 
 (defun mhs/save-dired-filename-and-dir ()
   "Save the current filename and directory in Dired mode."
