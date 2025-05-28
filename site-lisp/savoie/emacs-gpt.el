@@ -21,7 +21,7 @@
   ;; if you want to have prompts and that, you can just highlight the prompt and add it to the context
   (setq
    gptel-default-mode 'markdown-mode ;; 'org-mode
-   gptel-model 'claude-3-7-sonnet-20250219
+   gptel-model 'claude-sonnet-4-20250514
    gptel-backend (gptel-make-anthropic "Claude"          ;Any name you want
 		   :stream t                             ;Streaming responses
 		   :key 'mhs/get-claude-anthropic-key))

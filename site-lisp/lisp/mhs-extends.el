@@ -56,6 +56,7 @@
   (interactive)
   (let ((dir (dired-current-directory)))
     (kill-new dir)
+    (set-register ?d dir)
     (message "Copied to kill ring: %s" dir)))
 
 (defun mhs/save-dired-filename-and-dir ()
