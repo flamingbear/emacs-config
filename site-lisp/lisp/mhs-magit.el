@@ -65,6 +65,7 @@
 
 (use-package forge
   :after magit
+  ;; :pin melpa-stable
   :ensure t
   ;;  :config
   ;; If BB was supported this should work.

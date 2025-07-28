@@ -13,6 +13,7 @@
 
 (use-package gptel
   :ensure t
+  ;;  :pin melpa-stable
   :config
   ;; expensive deep thinking claude-3-opus-20240229
 

@@ -94,17 +94,19 @@
              (end (region-end))
              ;; Extract the string within the marked region.
              (selected-text (buffer-substring-no-properties start end))
-             ;; Pattern to ensure selected text follows the expected format.
-             (pattern "^DAS-\\([0-9]+\\)$"))
+             ;; Pattern to match DAS-#### or TRT-#### format.
+             (pattern "^\\(DAS\\|TRT\\)-\\([0-9]+\\)$"))
         ;; Check if the selected text matches our pattern.
         (if (string-match pattern selected-text)
-            (let ((id (match-string 1 selected-text)))
- ;; Delete the original text.
+            (let ((prefix (match-string 1 selected-text))
+                  (id (match-string 2 selected-text)))
+              ;; Delete the original text.
               (delete-region start end)
               ;; Insert the replacement text.
-              (insert (format "[[https://bugs.earthdata.nasa.gov/browse/DAS-%s][DAS-%s]]" id id))
-              (message "Replaced DAS link with structured format."))
-          (message "Selected text does not match the DAS-#### pattern.")))
+              (insert (format "[[https://bugs.earthdata.nasa.gov/browse/%s-%s][%s-%s]]"
+                              prefix id prefix id))
+              (message "Replaced %s link with structured format." prefix))
+          (message "Selected text does not match the DAS-#### or TRT-#### pattern.")))
     ;; If no region is selected, inform the user.
     (message "No region selected.")))
 
