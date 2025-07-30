@@ -5,16 +5,6 @@
   :config
   ;; Python is a dev mode
   (add-hook 'python-mode-hook 'run-dev-hook)
-  ;; Actually I don't need this if I have my __init__.py files sprinkled liberally throughout
-  ;; (add-hook 'python-mode-hook
-  ;;           (lambda ()
-  ;;             (when-let ((r (locate-dominating-file default-directory ".pyroot")))
-  ;; 		(setq python-pytest-executable
-  ;;                     (concat "PYTHONPATH=" r " " "pytest")))))
-
-  ;; You need this for running single pytest, but you only need to do it when
-  ;; it's not installed.
-  ;; (treesit-install-language-grammar 'python)
   )
 
 ;; Need to install lsp in project you want to use this with.
@@ -35,12 +25,13 @@
    lsp-pylsp-plugins-yapf-enabled nil
    lsp-pylsp-plugins-flake8-enabled nil
    lsp-pylsp-plugins-black-enabled nil
-   lsp-pylsp-plugins-ruff-enabled t
+   lsp-pylsp-plugins-ruff-enabled nil
    lsp-pylsp-plugins-autopep8-enabled nil
    lsp-pylsp-plugins-pycodestyle-enabled nil
    lsp-pylsp-plugins-pyflakes-enabled nil
-   lsp-disabled-clients '((python-mode . pyls))
-   ;;   lsp-log-io t   ;; set for debugging
+   lsp-disabled-clients '(pyls ruff-lsp ruff)
+   lsp-enabled-clients '(pylsp)  ; Only allow pylsp
+   lsp-log-io t   ;; set for debugging
    )
   ;; Need this for sideline info more grey.
   ;;   '(lsp-ui-sideline-symbol-info ((t (:extend t :background "#21242b" :foreground "#535960"))))
@@ -49,7 +40,6 @@
   ;; Need this for lsp-breadcrumb faces looking too grey on the header line
   (set-face-attribute 'header-line nil :inherit 'mode-line :background "#71458f")
 
-  ;; Set lsp-log-io to t for debugging and use lsp-workspace-show-log
 
   ;; Flinging reddit snippets at the wall
   ;; https://www.reddit.com/r/emacs/comments/ql8cyp/corfu_orderless_and_lsp/
@@ -60,17 +50,27 @@
 		completion-category-defaults nil))
   (add-hook 'lsp-mode-hook #'corfu-lsp-setup)
 
+
+  ;; ruff-lsp is depricated
   ;; Add this to make ruff the higher priority client (thanks claude)
-  (with-eval-after-load 'lsp-ruff
-    (lsp-register-client
-     (make-lsp-client :new-connection (lsp-stdio-connection "ruff-lsp")
-                      :priority 1   ; Higher than pylsp
-                      :server-id 'ruff
-                      :multi-root t
-                      :add-on? t
-                      :activation-fn (lsp-activate-on "python"))))
+  ;; (with-eval-after-load 'lsp-ruff
+  ;;   (lsp-register-client
+  ;;    (make-lsp-client :new-connection (lsp-stdio-connection "ruff-lsp")
+  ;;                     :priority 1   ; Higher than pylsp
+  ;;                     :server-id 'ruff
+  ;;                     :multi-root t
+  ;;                     :add-on? t
+  ;;                     :activation-fn (lsp-activate-on "python"))))
 
   )
+
+(use-package ruff-format
+  :ensure t
+  :after python
+  :config
+  (add-hook 'python-mode-hook 'ruff-format-on-save-mode)
+  )
+
 
 (use-package python-pytest
   :ensure t
