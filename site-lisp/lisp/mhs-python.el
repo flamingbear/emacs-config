@@ -40,14 +40,8 @@
    lsp-pylsp-plugins-pycodestyle-enabled nil
    lsp-pylsp-plugins-pyflakes-enabled nil
    lsp-disabled-clients '((python-mode . pyls))
-   ;;   lsp-log-io t   ;; debugging
+   ;;   lsp-log-io t   ;; set for debugging
    )
-  ;; This appears to allow me to set black and use preview, AKA new features
-  (lsp-register-custom-settings
-   '(
-     ("pylsp.plugins.black.enabled" t)
-     ("pylsp.plugins.black.preview" t)
-     ))
   ;; Need this for sideline info more grey.
   ;;   '(lsp-ui-sideline-symbol-info ((t (:extend t :background "#21242b" :foreground "#535960"))))
   ;; (set-face-attribute 'lsp-ui-sideline-symbol-info nil  :background "#21242b" :foreground "#535960")
