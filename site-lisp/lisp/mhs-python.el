@@ -21,24 +21,18 @@
   (setq
    read-process-output-max (* 1024 1024)
    lsp-idle-delay 0.600
-   lsp-pylsp-plugins-pydocstyle-enabled nil ;; while working on HGA (also now ruff handles this better?)
-   lsp-pylsp-plugins-yapf-enabled nil
-   lsp-pylsp-plugins-flake8-enabled nil
-   lsp-pylsp-plugins-black-enabled nil
-   lsp-pylsp-plugins-ruff-enabled nil
-   lsp-pylsp-plugins-autopep8-enabled nil
-   lsp-pylsp-plugins-pycodestyle-enabled nil
-   lsp-pylsp-plugins-pyflakes-enabled nil
-   lsp-disabled-clients '(pyls ruff-lsp ruff)
-   lsp-enabled-clients '(pylsp)  ; Only allow pylsp
+   lsp-disabled-clients '(pyls pylsp ruff-lsp)
    lsp-log-io t   ;; set for debugging
    )
-  ;; Need this for sideline info more grey.
-  ;;   '(lsp-ui-sideline-symbol-info ((t (:extend t :background "#21242b" :foreground "#535960"))))
-  ;; (set-face-attribute 'lsp-ui-sideline-symbol-info nil  :background "#21242b" :foreground "#535960")
 
-  ;; Need this for lsp-breadcrumb faces looking too grey on the header line
-  (set-face-attribute 'header-line nil :inherit 'mode-line :background "#71458f")
+  ;; Pyright specific settings
+  (setq lsp-pyright-multi-root nil
+        lsp-pyright-auto-import-completions t
+        lsp-pyright-auto-search-paths t
+        lsp-pyright-use-library-code-for-types t)
+
+  ;; ;; Need this for lsp-breadcrumb faces looking too grey on the header line
+  ;; (set-face-attribute 'header-line nil :inherit 'mode-line :background "#71458f")
 
 
   ;; Flinging reddit snippets at the wall
@@ -49,20 +43,15 @@
     (setq-local completion-styles '(orderless)
 		completion-category-defaults nil))
   (add-hook 'lsp-mode-hook #'corfu-lsp-setup)
+)
 
 
-  ;; ruff-lsp is depricated
-  ;; Add this to make ruff the higher priority client (thanks claude)
-  ;; (with-eval-after-load 'lsp-ruff
-  ;;   (lsp-register-client
-  ;;    (make-lsp-client :new-connection (lsp-stdio-connection "ruff-lsp")
-  ;;                     :priority 1   ; Higher than pylsp
-  ;;                     :server-id 'ruff
-  ;;                     :multi-root t
-  ;;                     :add-on? t
-  ;;                     :activation-fn (lsp-activate-on "python"))))
-
-  )
+(use-package lsp-pyright
+  :ensure t
+  :custom (lsp-pyright-langserver-command "pyright") ;; or basedpyright
+  :hook (python-mode . (lambda ()
+                         (require 'lsp-pyright)
+                         (lsp))))  ; or lsp-deferred
 
 (use-package ruff-format
   :ensure t
