@@ -40,7 +40,8 @@
         doom-themes-enable-italic t)  ; if nil, italics is universally disabled
 
   ;; (load-theme 'doom-one t)
-  (load-theme 'doom-nord t)
+  ;; (load-theme 'doom-nord t)
+  (load-theme 'modus-vivendi-tinted t)
   (doom-themes-visual-bell-config)
 
   (doom-themes-org-config)
