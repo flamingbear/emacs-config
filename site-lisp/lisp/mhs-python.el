@@ -21,9 +21,8 @@
   (setq
    read-process-output-max (* 1024 1024)
    lsp-idle-delay 0.600
-   lsp-enaabled-clients '(lsp-pyright pyright)
-   lsp-disabled-clients '(pyls pylsp ruff-lsp ruff)
-   lsp-log-io t   ;; set for debugging
+   lsp-disabled-clients '(pyls pylsp)
+   ;; lsp-log-io t   ;; set for debugging
    )
 
   ;; Pyright specific settings
@@ -32,8 +31,16 @@
         lsp-pyright-auto-search-paths t
         lsp-pyright-use-library-code-for-types t)
 
-  ;; ;; Need this for lsp-breadcrumb faces looking too grey on the header line
-  ;; (set-face-attribute 'header-line nil :inherit 'mode-line :background "#71458f")
+  (with-eval-after-load 'lsp-mode
+    (setq lsp-ruff-lsp-server-command '("ruff" "server")))
+
+  ;; (with-eval-after-load 'lsp-mode
+  ;; (lsp-register-client
+  ;;  (make-lsp-client :new-connection (lsp-stdio-connection "ruff" "server")
+  ;;                   :activation-fn (lsp-activate-on "python")
+  ;;                   :server-id 'ruff
+  ;;                   :multi-root nil)))
+
 
 
   ;; Flinging reddit snippets at the wall
@@ -44,6 +51,8 @@
     (setq-local completion-styles '(orderless)
 		completion-category-defaults nil))
   (add-hook 'lsp-mode-hook #'corfu-lsp-setup)
+
+
 )
 
 
@@ -54,12 +63,12 @@
                          (require 'lsp-pyright)
                          (lsp))))  ; or lsp-deferred
 
-(use-package ruff-format
-  :ensure t
-  :after python
-  :config
-  (add-hook 'python-mode-hook 'ruff-format-on-save-mode)
-  )
+;; (use-package ruff-format
+;;   :ensure t
+;;   :after python
+;;   :config
+;;   (add-hook 'python-mode-hook 'ruff-format-on-save-mode)
+;;   )
 
 
 (use-package python-pytest
