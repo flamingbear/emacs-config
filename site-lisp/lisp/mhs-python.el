@@ -21,7 +21,8 @@
   (setq
    read-process-output-max (* 1024 1024)
    lsp-idle-delay 0.600
-   lsp-disabled-clients '(pyls pylsp ruff-lsp)
+   lsp-enaabled-clients '(lsp-pyright pyright)
+   lsp-disabled-clients '(pyls pylsp ruff-lsp ruff)
    lsp-log-io t   ;; set for debugging
    )
 
@@ -48,7 +49,7 @@
 
 (use-package lsp-pyright
   :ensure t
-  :custom (lsp-pyright-langserver-command "pyright") ;; or basedpyright
+  :custom (lsp-pyright-langserver-command "basedpyright") ;; or basedpyright
   :hook (python-mode . (lambda ()
                          (require 'lsp-pyright)
                          (lsp))))  ; or lsp-deferred
