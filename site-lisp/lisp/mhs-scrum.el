@@ -44,6 +44,76 @@
         (message "%s.%s" (string-trim pi) (string-trim sprint))
       (message "PI or Sprint is not set properly."))))
 
+(defun mhs/clock-into-scrum ()
+  "Clock into the Meetings/Scrum task for the current PI in data-services.org."
+  (interactive)
+  (let ((current-pi (mhs/current-pi))
+        (target-file (cl-find-if
+                      (lambda (file)
+                        (string-match "data-services\\.org$" file))
+                      (org-agenda-files))))
+    (unless current-pi
+      (error "No current PI set. Use mhs/set-current-pi to set one"))
+    (unless target-file
+      (error "Could not find data-services.org in org-agenda-files"))
+    (with-current-buffer (find-file-noselect target-file)
+      (save-excursion
+        (goto-char (point-min))
+        (unless (re-search-forward (format "^\\* PI %s$" (regexp-quote current-pi)) nil t)
+          (error "Could not find %s heading" current-pi))
+        (unless (re-search-forward "^\\*\\* Meetings$" nil t)
+          (error "Could not find Meetings heading under %s" current-pi))
+        (unless (re-search-forward "^\\*\\*\\* Scrum$" nil t)
+          (error "Could not find Scrum heading under %s/Meetings" current-pi))
+        (org-clock-in)
+        (message "Clocked into %s/Meetings/Scrum" current-pi)))))
+
+(defun mhs/clock-into-meeting ()
+  "Show all meeting options under current PI and clock into selected one."
+  (interactive)
+  (let ((current-pi (concat "PI " (mhs/current-pi)))
+        (target-file (cl-find-if
+                      (lambda (file)
+                        (string-match "data-services\\.org$" file))
+                      (org-agenda-files)))
+        meetings)
+    (unless (mhs/current-pi)
+      (error "No current PI set. Use mhs/set-current-pi to set one"))
+    (unless target-file
+      (error "Could not find data-services.org in org-agenda-files"))
+
+    (with-current-buffer (find-file-noselect target-file)
+      (save-excursion
+        (goto-char (point-min))
+        (unless (re-search-forward (format "^\\* %s$" (regexp-quote current-pi)) nil t)
+          (error "Could not find %s heading" current-pi))
+        (unless (re-search-forward "^\\*\\* Meetings$" nil t)
+          (error "Could not find Meetings heading under %s" current-pi))
+
+        ;; Collect all meeting subheadings
+        (let ((meetings-start (point))
+              (meetings-end (save-excursion
+                              (or (re-search-forward "^\\*\\* " nil t)
+                                  (point-max)))))
+          (goto-char meetings-start)
+          (while (re-search-forward "^\\*\\*\\* \\(.+\\)$" meetings-end t)
+            (push (match-string 1) meetings))))
+
+      (if meetings
+          (let* ((meeting-choice (completing-read "Select meeting to clock into: "
+                                                  (reverse meetings) nil t))
+                 (meeting-heading (format "^\\*\\*\\* %s$" (regexp-quote meeting-choice))))
+            (save-excursion
+              (goto-char (point-min))
+              (re-search-forward (format "^\\* %s$" (regexp-quote current-pi)))
+              (re-search-forward "^\\*\\* Meetings$")
+              (if (re-search-forward meeting-heading nil t)
+                  (progn
+                    (org-clock-in)
+                    (message "Clocked into %s/Meetings/%s" current-pi meeting-choice))
+                (error "Could not find meeting: %s" meeting-choice))))
+        (error "No meetings found under %s/Meetings" current-pi)))))
+
 
 (defun mhs/scrum ()
   "Insert a daily report template in a new temporary buffer."
