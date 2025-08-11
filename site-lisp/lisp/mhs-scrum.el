@@ -54,71 +54,125 @@
     (end-of-line)
     (pop-to-buffer (current-buffer))))
 
+
 (defun mhs/clock-into-meeting ()
   "Show all meeting options under current PI and clock into selected one.
 Also offers option to create a new meeting."
   (interactive)
-  (let ((current-pi (concat "PI " (mhs/current-pi)))
-        (target-file (cl-find-if
-                      (lambda (file)
-                        (string-match "data-services\\.org$" file))
-                      (org-agenda-files))))
-    (unless (mhs/current-pi)
-      (error "No current PI set. Use mhs/set-current-pi to set one"))
+  (let* ((current-pi (mhs/current-pi))
+         (pi-heading (concat "PI " current-pi))
+         (target-file (seq-find (lambda (file)
+                                  (string-match-p "data-services\\.org\\'" file))
+                                (org-agenda-files))))
+
+    (unless current-pi
+      (user-error "No current PI set. Use `mhs/set-pi' to set one"))
     (unless target-file
-      (error "Could not find data-services.org in org-agenda-files"))
+      (user-error "Could not find data-services.org in `org-agenda-files'"))
 
     (with-current-buffer (find-file-noselect target-file)
-      (let* ((meetings (mhs/get-meetings-for-pi current-pi))
-             (meeting-options (append meetings '("Create new meeting...")))
-             (meeting-choice (completing-read "Select meeting to clock into: "
-                                              meeting-options nil t)))
+      (org-with-wide-buffer
+       (let* ((meetings (mhs/get-meetings-for-pi pi-heading))
+              (choices (if meetings
+                          (append meetings '("── Create new meeting... ──"))
+                        '("── Create new meeting... ──")))
+              (choice (completing-read
+                       (format "Clock into meeting (%s): " pi-heading)
+                       choices nil t)))
 
-        (if (string= meeting-choice "Create new meeting...")
-            (mhs/create-and-clock-new-meeting current-pi)
-          (mhs/clock-into-existing-meeting current-pi meeting-choice))))))
+         (if (string-prefix-p "──" choice)
+             (mhs/create-and-clock-new-meeting pi-heading)
+           (mhs/clock-into-existing-meeting pi-heading choice)))))))
 
 (defun mhs/get-meetings-for-pi (pi-name)
-  "Get all meeting names under the specified PI."
-  (save-excursion
-    (goto-char (point-min))
-    (when (re-search-forward (format "^\\* %s$" (regexp-quote pi-name)) nil t)
-      (when (re-search-forward "^\\*\\* Meetings$" nil t)
-        (let (meetings)
-          (org-map-entries
-           (lambda ()
-             (when (= (org-current-level) 3)
-               (push (org-get-heading t t t t) meetings)))
-           nil 'tree)
-          (reverse meetings))))))
+  "Get all meeting names under the specified PI using org-element API."
+  (org-with-wide-buffer
+   (when-let ((pi-pos (org-find-exact-headline-in-buffer pi-name)))
+     (goto-char pi-pos)
+     (when-let ((meetings-pos (save-excursion
+                                (and (org-goto-first-child)
+                                     (catch 'found
+                                       (while t
+                                         (when (string= (org-get-heading t t t t) "Meetings")
+                                           (throw 'found (point)))
+                                         (unless (org-goto-sibling)
+                                           (throw 'found nil))))))))
+       (goto-char meetings-pos)
+       (let (meetings)
+         (when (org-goto-first-child)
+           (push (org-get-heading t t t t) meetings)
+           (while (org-goto-sibling)
+             (push (org-get-heading t t t t) meetings)))
+         (nreverse meetings))))))
 
 (defun mhs/create-and-clock-new-meeting (pi-name)
   "Create a new meeting under PI and clock into it."
-  (let ((new-meeting-name (read-string "Enter new meeting name: ")))
-    (save-excursion
-      (goto-char (point-min))
-      (re-search-forward (format "^\\* %s$" (regexp-quote pi-name)))
-      (re-search-forward "^\\*\\* Meetings$")
+  (let ((meeting-name (read-string "New meeting name: ")))
+    (when (string-empty-p meeting-name)
+      (user-error "Meeting name cannot be empty"))
 
-      ;; Find end of Meetings section
-      (org-end-of-subtree t)
-      (insert (format "\n*** %s\n" new-meeting-name))
-      (forward-line -1)
-      (org-clock-in)
-      (message "Created and clocked into %s/Meetings/%s" pi-name new-meeting-name))))
+    (org-with-wide-buffer
+     (if-let ((meetings-pos (mhs/find-or-create-meetings-section pi-name)))
+         (progn
+           (goto-char meetings-pos)
+           (org-end-of-subtree t t)
+           (unless (bolp) (insert "\n"))
+           (insert (format "*** %s\n" meeting-name))
+           (forward-line -1)
+           (org-clock-in)
+           (message "Created and clocked into: %s → Meetings → %s"
+                    pi-name meeting-name))
+       (user-error "Could not find or create Meetings section under %s" pi-name)))))
 
 (defun mhs/clock-into-existing-meeting (pi-name meeting-name)
   "Clock into an existing meeting under the specified PI."
-  (save-excursion
-    (goto-char (point-min))
-    (unless (re-search-forward (format "^\\* %s$" (regexp-quote pi-name)) nil t)
-      (error "Could not find %s heading" pi-name))
-    (unless (re-search-forward "^\\*\\* Meetings$" nil t)
-      (error "Could not find Meetings heading under %s" pi-name))
-    (unless (re-search-forward (format "^\\*\\*\\* %s$" (regexp-quote meeting-name)) nil t)
-      (error "Could not find meeting: %s" meeting-name))
+  (org-with-wide-buffer
+   (if-let ((meeting-pos (mhs/find-meeting-heading pi-name meeting-name)))
+       (progn
+         (goto-char meeting-pos)
+         (org-clock-in)
+         (message "Clocked into: %s → Meetings → %s" pi-name meeting-name))
+     (user-error "Could not find meeting: %s under %s" meeting-name pi-name))))
 
-    (org-clock-in)
-    (message "Clocked into %s/Meetings/%s" pi-name meeting-name)))
+(defun mhs/find-or-create-meetings-section (pi-name)
+  "Find or create the Meetings section under PI-NAME, return its position."
+  (when-let ((pi-pos (org-find-exact-headline-in-buffer pi-name)))
+    (goto-char pi-pos)
+    (or (save-excursion
+          (and (org-goto-first-child)
+               (catch 'found
+                 (while t
+                   (when (string= (org-get-heading t t t t) "Meetings")
+                     (throw 'found (point)))
+                   (unless (org-goto-sibling)
+                     (throw 'found nil))))))
+        ;; Create Meetings section if it doesn't exist
+        (progn
+          (org-end-of-subtree t t)
+          (unless (bolp) (insert "\n"))
+          (insert "** Meetings\n")
+          (forward-line -1)
+          (point)))))
+
+(defun mhs/find-meeting-heading (pi-name meeting-name)
+  "Find the position of MEETING-NAME under PI-NAME's Meetings section."
+  (when-let ((pi-pos (org-find-exact-headline-in-buffer pi-name)))
+    (goto-char pi-pos)
+    (when-let ((meetings-pos (save-excursion
+                               (and (org-goto-first-child)
+                                    (catch 'found
+                                      (while t
+                                        (when (string= (org-get-heading t t t t) "Meetings")
+                                          (throw 'found (point)))
+                                        (unless (org-goto-sibling)
+                                          (throw 'found nil))))))))
+      (goto-char meetings-pos)
+      (and (org-goto-first-child)
+           (catch 'found
+             (while t
+               (when (string= (org-get-heading t t t t) meeting-name)
+                 (throw 'found (point)))
+               (unless (org-goto-sibling)
+                 (throw 'found nil))))))))
 
 (provide 'mhs-scrum)
