@@ -110,6 +110,18 @@
     ;; If no region is selected, inform the user.
     (message "No region selected.")))
 
+(defun mhs/das-ticket-to-markdown-link ()
+  "Replace DAS ticket in region with markdown link format."
+  (interactive)
+  (when (use-region-p)
+    (let* ((start (region-beginning))
+           (end (region-end))
+           (ticket (buffer-substring-no-properties start end)))
+      (when (string-match "^DAS-[0-9]+$" ticket)
+        (delete-region start end)
+        (insert (format "[%s](https://bugs.earthdata.nasa.gov/browse/%s)"
+                        ticket ticket))))))
+
 (defun mhs-jira--org-find-current-ticket ()
   "Look through the org files searching for a task matching the current ticket number."
   (interactive)
