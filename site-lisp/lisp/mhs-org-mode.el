@@ -182,6 +182,5 @@
     '(require 'ox-gfm nil t))
   )
 
-
 (provide 'mhs-org-mode)
 ;;; mhs-org-mode.el ends here

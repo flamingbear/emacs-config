@@ -129,6 +129,7 @@
 (use-package emacs-ministack)
 (use-package mhs-scrum)
 (use-package mhs-org-mode)
+(use-package mhs-org-clock-into)
 (use-package emacs-custom-faces)
 (use-package emacs-modeline)
 (use-package emacs-gpt)
