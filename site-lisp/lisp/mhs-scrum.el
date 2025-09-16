@@ -47,7 +47,6 @@
 (defun mhs/scrum ()
   "Insert a daily report template in a new temporary buffer."
   (interactive)
-  (interactive)
   (with-current-buffer (generate-new-buffer "Daily Report")
     (insert "Yesterday:\nToday:\nBlockers:")
     (forward-line -2)

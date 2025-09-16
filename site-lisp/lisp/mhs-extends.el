@@ -109,9 +109,10 @@
 (defun load-register-values ()
   "Load register values."
   (interactive)
-  (set-register ?x "import xarray as xr")
-  (set-register ?y "from xarray.core.datatree import *")
-  (set-register ?z "from xarray.core.treenode import *"))
+  (set-register ?l "http://localhost:3000")
+  (set-register ?u "https://harmony.uat.earthdata.nasa.gov")
+  (set-register ?s "https://harmony.sit.earthdata.nasa.gov")
+  )
 
 (load-register-values)
 
@@ -335,11 +336,15 @@ following the prefix character"
 
 (defun mhs-use-inconsolata ()
   (interactive)
-  (progn (set-face-attribute 'default nil :height 200 :family "Inconsolata")))
+  (progn (set-face-attribute 'default nil :height 220 :family "Inconsolata")))
 
 (defun mhs-use-meslo ()
   (interactive)
-  (progn (set-face-attribute 'default nil  :height 170 :font "MesloLGS NF")))
+  (progn (set-face-attribute 'default nil  :height 190 :font "MesloLGS NF")))
+
+(defun mhs-use-firacode ()
+  (interactive)
+  (set-face-attribute 'default nil :height 200 :font "Fira Code"))
 
 (defun mhs-increase-font-size ()
   "Increase the font height by 10"

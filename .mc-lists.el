@@ -20,6 +20,7 @@
 	ivy-wgrep-change-to-wgrep-mode
 	kill-region
 	mark-whole-buffer
+	markdown-beginning-of-line
 	markdown-end-of-line
 	markdown-exdent-or-delete
 	message-beginning-of-line
