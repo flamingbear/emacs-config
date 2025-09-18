@@ -334,6 +334,10 @@ following the prefix character"
   (interactive)
   (set-variable 'ediff-diff-options ""))
 
+(defun mhs-use-small-inconsolata ()
+  (interactive)
+  (progn (set-face-attribute 'default nil :height 200 :family "Inconsolata")))
+
 (defun mhs-use-inconsolata ()
   (interactive)
   (progn (set-face-attribute 'default nil :height 220 :family "Inconsolata")))
