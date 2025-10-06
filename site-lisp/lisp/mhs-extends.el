@@ -112,6 +112,7 @@
   (set-register ?l "http://localhost:3000")
   (set-register ?u "https://harmony.uat.earthdata.nasa.gov")
   (set-register ?s "https://harmony.sit.earthdata.nasa.gov")
+  (set-register ?p "❯ ./bin/build-image && ./bin/build-test && ./bin/run-test")
   )
 
 (load-register-values)
