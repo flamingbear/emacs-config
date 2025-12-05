@@ -11,7 +11,7 @@
 ;; pip install "python-lsp-server[all]" provides pylsp- options
 (use-package lsp-mode
   :ensure t
-  :pin melpa
+  ;;  :pin melpa
   :hook ((python-mode . lsp)
          (lsp-mode . lsp-enable-which-key-integration))
   :commands (lsp lsp-deferred)
@@ -96,22 +96,27 @@
 ;;         "l" #'python-pytest-last-failed))
 
 
-(use-package ivy :ensure t)
+(use-package ivy
+  :ensure t
+  )
 (use-package lsp-ivy
   :ensure t
-  :pin melpa
+  ;; :pin melpa
   :after lsp)
 
 
 (use-package lsp-treemacs
   :ensure t
-  :pin melpa
+  ;; :pin melpa
   :after lsp)
 
-(use-package treemacs :ensure t :pin melpa)
+(use-package treemacs
+  :ensure t
+  ;;:pin melpa
+  )
 
 (use-package lsp-ui
-  :pin melpa
+  ;; :pin melpa
   :ensure t
   :commands lsp-ui-mode
   :config
@@ -139,7 +144,7 @@
 
 (use-package dap-mode
   :ensure t
-  :pin melpa
+  ;; :pin melpa
   :hook
   (dap-stopped . (lambda (arg) (call-interactively #'dap-hydra)))
   :commands dap-debug
