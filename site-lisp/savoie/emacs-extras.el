@@ -480,6 +480,7 @@ the current buffer."
 ;; ------------------------------------------------------
 
 
+;; run xmllint on a region.
 (fset 'mhs-reformat-xml
    [?\C-u escape ?| ?x ?m ?l ?l ?i ?n ?t ?  ?- ?- ?f ?o ?r ?m ?a ?t ?  ?- ?  return])
 
