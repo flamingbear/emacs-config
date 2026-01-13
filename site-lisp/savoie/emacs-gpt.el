@@ -37,6 +37,7 @@ Help the user write idiomatic code, suggesting built-in functions when possible.
                '(tech-writer . "You are a scientific technical writer, edit items for clarity and understanding. Show you changes as diff output"))
   (add-hook 'gptel-post-response-functions 'gptel-end-of-response)
   (add-hook 'gptel-post-stream-hook 'gptel-auto-scroll)
+  (gptel-make-gh-copilot "Copilot")
   )
 
 
