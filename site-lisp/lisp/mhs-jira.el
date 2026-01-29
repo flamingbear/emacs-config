@@ -24,7 +24,7 @@
 
 ;;; Code:
 
-(defvar mhs-jira--current-ticket-number "DAS-xx"
+(defvar mhs-jira--current-ticket-number ""
   "The current ticket number that is clocked in.")
 
 (defvar mhs-jira--url-base "https://nsidc.org/jira/browse/")
@@ -39,17 +39,14 @@
            (read-from-minibuffer "Enter ticket number: " mhs-jira--current-ticket-number))))
   (mhs-jira--update-url-base  mhs-jira--current-ticket-number))
 
-
 (defun mhs-jira--update-url-base (ticket-number)
   "Handle multiple JIRA ticket locations based on ticket-number prefix."
-  (cond ((string-prefix-p "NDCUM" ticket-number)
-	 (setq mhs-jira--url-base "https://bugs.earthdata.nasa.gov/browse/"))
-	((string-prefix-p "CUMULUS" ticket-number)
-	 (setq mhs-jira--url-base "https://bugs.earthdata.nasa.gov/browse/"))
-	((string-prefix-p "DAS" ticket-number)
-	 (setq mhs-jira--url-base "https://bugs.earthdata.nasa.gov/browse/"))
-	(t (setq mhs-jira--url-base "https://nsidc.org/jira/browse/"))))
-
+  (let ((earthdata-prefixes '("NDCUM" "CUMULUS" "DAS" "HARMONY" "TRT")))
+    (setq mhs-jira--url-base
+          (if (seq-some (lambda (prefix) (string-prefix-p prefix ticket-number))
+                        earthdata-prefixes)
+              "https://bugs.earthdata.nasa.gov/browse/"
+            "https://nsidc.org/jira/browse/"))))
 
 (defun mhs-jira--ticket-uri ()
   "Return the URI to the current ticket."
@@ -95,7 +92,7 @@
              ;; Extract the string within the marked region.
              (selected-text (buffer-substring-no-properties start end))
              ;; Pattern to match DAS-#### or TRT-#### format.
-             (pattern "^\\(DAS\\|TRT\\)-\\([0-9]+\\)$"))
+             (pattern "^\\(DAS\\|TRT\\|HARMONY\\)-\\([0-9]+\\)$"))
         ;; Check if the selected text matches our pattern.
         (if (string-match pattern selected-text)
             (let ((prefix (match-string 1 selected-text))
@@ -117,7 +114,7 @@
     (let* ((start (region-beginning))
            (end (region-end))
            (ticket (buffer-substring-no-properties start end)))
-      (when (string-match "^DAS-[0-9]+$" ticket)
+      (when (string-match "^\\(DAS\\|HARMONY\\|TRT\\)-[0-9]+$" ticket)
         (delete-region start end)
         (insert (format "[%s](https://bugs.earthdata.nasa.gov/browse/%s)"
                         ticket ticket))))))
