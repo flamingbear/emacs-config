@@ -1,6 +1,5 @@
 ;;; mhs-javascript.el --- Modern TypeScript/JavaScript configuration
 ;;; Commentary:
-
 ;;; 100% claude make javascript/typescript work
 
 ;;; Code:
@@ -49,7 +48,6 @@
   (add-hook 'typescript-mode-hook #'smartparens-mode)
   (add-hook 'typescript-ts-mode-hook #'smartparens-mode))
 
-;; REMOVED: company-mode configuration (conflicts with Corfu)
 
 ;; REPL for Node.js
 (use-package nodejs-repl

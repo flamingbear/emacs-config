@@ -8,8 +8,7 @@
   :init
   (setq lsp-keymap-prefix "C-c l")
 
-  :hook ((python-mode . lsp)
-         (typescript-mode . lsp-deferred)
+  :hook ((typescript-mode . lsp-deferred)
          (typescript-ts-mode . lsp-deferred)
          (tsx-ts-mode . lsp-deferred)
          (js2-mode . lsp-deferred)
@@ -17,6 +16,8 @@
 
   :config
   ;; General LSP settings
+
+  ;; https://emacs-lsp.github.io/lsp-mode/page/performance/#increase-the-amount-of-data-which-emacs-reads-from-the-process
   (setq read-process-output-max (* 1024 1024)
         lsp-idle-delay 0.600
         lsp-completion-provider :none)
@@ -53,6 +54,53 @@
                                   #'cape-dabbrev
                                   #'cape-file))))))
   )
+
+
+(use-package ivy
+  :ensure t
+  )
+(use-package lsp-ivy
+  :ensure t
+  ;; :pin melpa
+  :after lsp)
+
+
+(use-package lsp-treemacs
+  :ensure t
+  ;; :pin melpa
+  :after lsp)
+
+(use-package treemacs
+  :ensure t
+  ;;:pin melpa
+  )
+
+(use-package lsp-ui
+  ;; :pin melpa
+  :ensure t
+  :commands lsp-ui-mode
+  :config
+  (setq
+   ;; https://emacs-lsp.github.io/lsp-mode/tutorials/how-to-turn-off/
+   lsp-ui-sideline-enable t
+   lsp-ui-sideline-show-diagnostics t
+   lsp-ui-sideline-show-hover t
+   lsp-ui-sideline-show-code-actions t
+   lsp-ui-sideline-update-mode 'point
+   ;; ----------------------------------------
+   lsp-ui-peek-enable t
+   lsp-ui-peek-list-width 60
+   lsp-ui-peek-peek-height 25
+   ;; ----------------------------------------
+   lsp-ui-doc-enable t
+   lsp-ui-doc-use-childframe t
+   lsp-ui-doc-show-with-cursor t
+   lsp-ui-doc-show-with-mouse nil
+   )
+  ;; Bad wrapping with sideline when you don't set this.
+  (set-face-attribute 'markdown-code-face nil :inherit 'default)
+  )
+
 
 (provide 'mhs-lsp)
 ;;; mhs-lsp.el ends here

@@ -23,13 +23,6 @@ the current buffer."
 ;; To determine when to split horizontally
 (setq split-width-threshold 1600)
 
-;; https://emacs-lsp.github.io/lsp-mode/page/performance/#increase-the-amount-of-data-which-emacs-reads-from-the-process
-(setq read-process-output-max (* 1024 1024)) ;; 1mb
-
-;; (setq gc-cons-threshold (* 100 1024 1024))
-;; (run-with-idle-timer 4 t (lambda () (garbage-collect)))
-
-;; (setq gc-cons-threshold (* 80  1024))
 
 (setq garbage-collection-messages 't)
 
@@ -124,7 +117,6 @@ the current buffer."
   "Hook that gets run on activation of any programming mode.")
 (add-hook 'dev-hook 'display-line-numbers-mode)
 (add-hook 'dev-hook 'local-comment-auto-fill)
-;; (add-hook 'dev-hook 'company-mode)
 
 (defun run-dev-hook ()
   "Enable things that are convenient across all dev buffers."
@@ -155,7 +147,6 @@ the current buffer."
   :ensure t
   :config
   (global-flycheck-mode 't))
-
 
 
 ;;----------------------------------------------------------------
@@ -231,15 +222,6 @@ the current buffer."
         (cons '("\\.md" . markdown-mode) auto-mode-alist))
   )
 
-;; No longer maintained.  let's try not using it.
-;; (use-package paradox
-;;   :defer t
-;;   :ensure t
-;;   :config
-;;   (setq paradox-automatically-star t)
-;;   (setq paradox-execute-asynchronously t)
-;;   (load (expand-file-name "private/paradox-secrets.el.gpg" user-emacs-directory))
-;;   )
 
 (use-package yaml-mode
   :ensure t
@@ -248,34 +230,6 @@ the current buffer."
             #'(lambda ()
 		(define-key yaml-mode-map "\C-m" 'newline-and-indent))))
 
-
-;; Try company-mode instead of auto-complete
-;;--------------------------
-;; (use-package company-jedi :ensure t) ;; https://pypi.org/project/jedi/
-;; Try Corfu
-;; (use-package company
-;;   :ensure t
-;;   :config
-;;   (add-to-list 'company-backends 'company-tern)
-;;   ;; (add-to-list 'company-backends 'company-jedi)
-;;   (add-to-list 'company-backends 'company-terraform)
-;;   (setq company-idle-delay 0.005)
-;;   (require 'company-dabbrev-code)
-;;   (add-to-list 'company-dabbrev-code-modes 'js2-mode)
-;;   (add-to-list 'company-dabbrev-code-modes 'yaml-mode)
-;;   (add-to-list 'company-dabbrev-code-modes 'markdown-mode)
-;;   (add-to-list 'company-dabbrev-code-modes 'text-mode)
-;;   (setq company-dabbrev-downcase 'nil)
-;;   (global-set-key (kbd "<C-tab>") 'company-complete)
-;;   )
-
-;; ;; popups with company completion
-;; (use-package company-quickhelp
-;;   :ensure t
-;;   :config
-;;   (company-quickhelp-mode 1)
-;;   (add-hook 'after-init-hook 'global-company-mode)
-;;   )
 
 (use-package paren
   :ensure t
