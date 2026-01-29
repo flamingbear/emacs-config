@@ -29,7 +29,7 @@ the current buffer."
 
 (setq line-number-display-limit-width 1000)
 
-(setq indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil)
 (setq inhibit-eol-conversion t)
 (setq inhibit-startup-screen t)
 

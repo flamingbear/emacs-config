@@ -13,14 +13,12 @@
          (tsx-ts-mode . lsp-deferred)
          (js-ts-mode . lsp-deferred)
          (lsp-mode . lsp-enable-which-key-integration))
-
   :config
-
-
   ;; https://emacs-lsp.github.io/lsp-mode/page/performance/#increase-the-amount-of-data-which-emacs-reads-from-the-process
   (setq read-process-output-max (* 1024 1024)
         lsp-idle-delay 0.600
-        lsp-completion-provider :none)
+        lsp-completion-provider :none
+	lsp-log-io t)
 
   ;; Python-specific settings
   (setq lsp-disabled-clients '(pyls pylsp)
@@ -29,14 +27,11 @@
         lsp-pyright-auto-search-paths t
         lsp-pyright-use-library-code-for-types t)
 
-  ;; TypeScript-specific settings
-  (setq lsp-typescript-preferences-import-module-specifier "relative"
-        lsp-typescript-suggest-auto-imports t
-        lsp-typescript-format-enable t)
+  (setq lsp-ruff-lsp-server-command '("ruff" "server"))
 
-  ;; Ruff setup
-  (with-eval-after-load 'lsp-mode
-    (setq lsp-ruff-lsp-server-command '("ruff" "server")))
+  ;; TypeScript-specific settings
+  (setq lsp-typescript-format-enable nil)
+
 
   ;; Corfu integration
   (defun corfu-lsp-setup ()
@@ -53,6 +48,14 @@
                                   #'lsp-completion-at-point
                                   #'cape-dabbrev
                                   #'cape-file))))))
+  )
+
+(use-package lsp-eslint
+  :after lsp-mode
+  :config
+  ;; this is not working for anything
+  ;; (setq lsp-eslint-auto-fix-on-save t)
+  ;; (setq lsp-eslint-server-command '("vscode-eslint-language-server" "--stdio"))
   )
 
 
