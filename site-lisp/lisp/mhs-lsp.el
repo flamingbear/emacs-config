@@ -11,11 +11,11 @@
   :hook ((typescript-mode . lsp-deferred)
          (typescript-ts-mode . lsp-deferred)
          (tsx-ts-mode . lsp-deferred)
-         (js2-mode . lsp-deferred)
+         (js-ts-mode . lsp-deferred)
          (lsp-mode . lsp-enable-which-key-integration))
 
   :config
-  ;; General LSP settings
+
 
   ;; https://emacs-lsp.github.io/lsp-mode/page/performance/#increase-the-amount-of-data-which-emacs-reads-from-the-process
   (setq read-process-output-max (* 1024 1024)
@@ -56,23 +56,15 @@
   )
 
 
-(use-package ivy
-  :ensure t
-  )
-(use-package lsp-ivy
-  :ensure t
-  ;; :pin melpa
+(use-package ivy :ensure t)
+(use-package lsp-ivy :ensure t ;; :pin melpa
   :after lsp)
 
 
-(use-package lsp-treemacs
-  :ensure t
-  ;; :pin melpa
+(use-package lsp-treemacs :ensure t ;; :pin melpa
   :after lsp)
 
-(use-package treemacs
-  :ensure t
-  ;;:pin melpa
+(use-package treemacs  :ensure t  ;;:pin melpa
   )
 
 (use-package lsp-ui
