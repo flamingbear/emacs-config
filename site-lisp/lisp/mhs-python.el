@@ -1,5 +1,10 @@
 ;; Below: Stolen from KWB totally^H^H^H^H^H mostly (well, originally anyway).
 
+
+;; Switch to tree-sitter mode [claude says so] 2026-01-29
+(when (treesit-language-available-p 'python)
+  (add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode)))
+
 ;; We're gonna need us a Python mode
 (use-package python
   :config
@@ -12,9 +17,9 @@
 (use-package lsp-pyright
   :ensure t
   :custom (lsp-pyright-langserver-command "basedpyright") ;; or basedpyright
-  :hook (python-mode . (lambda ()
-                         (require 'lsp-pyright)
-                         (lsp))))  ; or lsp-deferred
+  :hook (python-base-mode . (lambda ()
+                              (require 'lsp-pyright)
+                              (lsp))))  ; or lsp-deferred
 
 
 (use-package python-pytest
