@@ -7,53 +7,7 @@
   (add-hook 'python-mode-hook 'run-dev-hook)
   )
 
-;; Need to install lsp in project you want to use this with.
-;; pip install "python-lsp-server[all]" provides pylsp- options
-(use-package lsp-mode
-  :ensure t
-  ;;  :pin melpa
-  :hook ((python-mode . lsp)
-         (lsp-mode . lsp-enable-which-key-integration))
-  :commands (lsp lsp-deferred)
-  :init
-  (setq lsp-keymap-prefix "C-c l")
-  :config
-  (setq
-   read-process-output-max (* 1024 1024)
-   lsp-idle-delay 0.600
-   lsp-disabled-clients '(pyls pylsp)
-   ;; lsp-log-io t   ;; set for debugging
-   )
 
-  ;; Pyright specific settings
-  (setq lsp-pyright-multi-root nil
-        lsp-pyright-auto-import-completions t
-        lsp-pyright-auto-search-paths t
-        lsp-pyright-use-library-code-for-types t)
-
-  (with-eval-after-load 'lsp-mode
-    (setq lsp-ruff-lsp-server-command '("ruff" "server")))
-
-  ;; (with-eval-after-load 'lsp-mode
-  ;; (lsp-register-client
-  ;;  (make-lsp-client :new-connection (lsp-stdio-connection "ruff" "server")
-  ;;                   :activation-fn (lsp-activate-on "python")
-  ;;                   :server-id 'ruff
-  ;;                   :multi-root nil)))
-
-
-
-  ;; Flinging reddit snippets at the wall
-  ;; https://www.reddit.com/r/emacs/comments/ql8cyp/corfu_orderless_and_lsp/
-  ;; error was: "LSP :: Unable to autoconfigure company-mode."
-  (setq lsp-completion-provider :none)
-  (defun corfu-lsp-setup ()
-    (setq-local completion-styles '(orderless)
-		completion-category-defaults nil))
-  (add-hook 'lsp-mode-hook #'corfu-lsp-setup)
-
-
-)
 
 
 (use-package lsp-pyright

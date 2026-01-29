@@ -191,6 +191,8 @@ the current buffer."
   :config
   (global-so-long-mode 1))
 
+;; one place for lsp config
+(use-package mhs-lsp)
 
 ;; Use jira information
 (use-package mhs-jira)

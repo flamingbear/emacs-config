@@ -19,27 +19,6 @@
   :config
   (setq typescript-ts-mode-indent-offset 2))
 
-;; LSP for TypeScript
-(use-package lsp-mode
-  :ensure t
-  :hook ((typescript-mode . lsp-deferred)
-         (typescript-ts-mode . lsp-deferred)
-         (tsx-ts-mode . lsp-deferred)
-         (js2-mode . lsp-deferred))
-  :commands (lsp lsp-deferred)
-  :config
-  (setq lsp-typescript-preferences-import-module-specifier "relative"
-        lsp-typescript-suggest-auto-imports t
-        lsp-typescript-format-enable t)
-  ;; Add LSP completion to Cape for Corfu
-  (when (featurep 'cape)
-    (add-hook 'lsp-mode-hook
-              (lambda ()
-                (setq-local completion-at-point-functions
-                           (list (cape-capf-super
-                                  #'lsp-completion-at-point
-                                  #'cape-dabbrev
-                                  #'cape-file)))))))
 
 ;; Keep js2-mode for fallback/legacy JS
 (use-package js2-mode
