@@ -8,19 +8,23 @@
   :ensure t
   :hook ((typescript-mode . add-node-modules-path)
          (typescript-tsx-mode . add-node-modules-path)
-         (js2-mode . add-node-modules-path)))
+         (js-ts-mode . add-node-modules-path)))
 
 (use-package typescript-ts-mode
-  :mode (("\\.ts\\'" . typescript-ts-mode)
-         ("\\.tsx\\'" . tsx-ts-mode))
+  :hook ((typescript-ts-mode . run-dev-hook)
+         (tsx-ts-mode . run-dev-hook)
+         (js-ts-mode . run-dev-hook))
   :config
-  (setq typescript-ts-mode-indent-offset 2))
+  (setq typescript-ts-mode-indent-offset 2
+        tsx-ts-mode-indent-offset 2
+        js-indent-level 2))
 
 
 ;; Smart parens
 (when (featurep 'smartparens)
-  (add-hook 'typescript-mode-hook #'smartparens-mode)
-  (add-hook 'typescript-ts-mode-hook #'smartparens-mode))
+  (add-hook 'typescript-ts-mode-hook #'smartparens-mode)
+  (add-hook 'tsx-ts-mode-hook #'smartparens-mode)
+  (add-hook 'js-ts-mode-hook #'smartparens-mode))
 
 
 (use-package nodejs-repl

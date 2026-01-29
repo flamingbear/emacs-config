@@ -5,13 +5,13 @@
 (when (treesit-language-available-p 'python)
   (add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode)))
 
+(when (featurep 'smartparens)
+  (add-hook 'python-base-mode #'smartparens-mode))
+
 ;; We're gonna need us a Python mode
 (use-package python
   :config
-  ;; Python is a dev mode
-  (add-hook 'python-mode-hook 'run-dev-hook)
-  )
-
+  :hook (python-base-mode . run-dev-hook))
 
 
 (use-package lsp-pyright
@@ -19,16 +19,14 @@
   :custom (lsp-pyright-langserver-command "basedpyright") ;; or basedpyright
   :hook (python-base-mode . (lambda ()
                               (require 'lsp-pyright)
-                              (lsp))))  ; or lsp-deferred
+                              (lsp-deferred))))  ; or lsp-deferred (was lsp)
 
 
 (use-package python-pytest
   :ensure t
   :after python
   :init
-  ;; (define-key python-mode-map "\C-cT" 'python-pytest-dispatch)
-  (define-key python-mode-map "\C-cy" 'python-pytest-dispatch)
-  )
+  (define-key python-mode-map "\C-cy" 'python-pytest-dispatch))
 
 
 (use-package dap-mode
@@ -48,6 +46,7 @@
 
   (require 'dap-python)
   (setq dap-python-debugger 'debugpy)
+
   ;; Debug this stuff
   ;; (setq dap-print-io t)
 
