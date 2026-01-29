@@ -32,6 +32,7 @@
 (use-package dap-mode
   :ensure t
   ;; :pin melpa
+  :defer t
   :hook
   (dap-stopped . (lambda (arg) (call-interactively #'dap-hydra)))
   :commands dap-debug

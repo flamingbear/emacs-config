@@ -486,15 +486,16 @@ the current buffer."
   (setq flycheck-emacs-lisp-load-path 'inherit)
   )
 
-
-;;
 (use-package treesit-auto
   :ensure t
   :custom
-  (treesit-auto-install 'prompt)
+  (treesit-auto-install nil) ;; Don't auto-install, it's slow
   :config
-  (treesit-auto-add-to-auto-mode-alist 'all)
-  (global-treesit-auto-mode))
+
+  (setq treesit-auto-langs '(python javascript typescript tsx json yaml toml))
+
+  ;; Build the alist once at init, not on every file open
+  (treesit-auto-add-to-auto-mode-alist treesit-auto-langs))
 
 ;;
 (defun mhs/dired-ncdump-header ()
