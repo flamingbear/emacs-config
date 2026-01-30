@@ -6,7 +6,7 @@
   (add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode)))
 
 (when (featurep 'smartparens)
-  (add-hook 'python-base-mode #'smartparens-mode))
+  (add-hook 'python-base-mode-hook #'smartparens-mode))
 
 ;; We're gonna need us a Python mode
 (use-package python
