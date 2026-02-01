@@ -206,6 +206,8 @@ the current buffer."
 (use-package kubel
   ;; kubernetes k9s clone (sort of)
   :ensure t
+  :defer t
+  :commands kubel
   :after (vterm)
   :config (kubel-vterm-setup))
 
