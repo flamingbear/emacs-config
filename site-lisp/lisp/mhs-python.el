@@ -5,7 +5,7 @@
 (when (treesit-language-available-p 'python)
   (add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode)))
 
-(when (featurep 'smartparens)
+(with-eval-after-load 'smartparens
   (add-hook 'python-base-mode-hook #'smartparens-mode))
 
 ;; We're gonna need us a Python mode

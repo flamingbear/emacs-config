@@ -21,10 +21,11 @@
 
 
 ;; Smart parens
-(when (featurep 'smartparens)
+(with-eval-after-load 'smartparens
   (add-hook 'typescript-ts-mode-hook #'smartparens-mode)
   (add-hook 'tsx-ts-mode-hook #'smartparens-mode)
   (add-hook 'js-ts-mode-hook #'smartparens-mode))
+
 
 
 (use-package nodejs-repl
