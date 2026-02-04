@@ -169,7 +169,7 @@
     ("github" "GitHub" nil :count 5)
     ("gt" "GeoTIFF" nil :count 4)
     ("hb" "HyBIG" nil :count 26)
-    ("hiab" "Harmony-In-A-Box" nil :count 7)
+    ("hiab" "Harmony-In-A-Box" nil :count 8)
     ("hrt" "Harmony-Regression-Test" nil :count 2)
     ("hsl" "harmony-service-lib" nil :count 1)
     ("hsl2g" "harmony-smap-l2-gridder" nil :count 2)
@@ -398,3 +398,4 @@
     ("xnor" "" vhdl-template-default-hook :count 0)
     ("xor" "" vhdl-template-default-hook :count 0)
    ))
+

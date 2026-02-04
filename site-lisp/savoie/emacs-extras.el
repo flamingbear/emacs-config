@@ -488,6 +488,15 @@ the current buffer."
   (setq flycheck-emacs-lisp-load-path 'inherit)
   )
 
+
+
+ ;; For editing browser pages inside emacs.
+ ;; Better Fork of atomic-chrome?
+;; https://github.com/KarimAziev/atomic-chrome.git
+;; 1. Tell straight to fetch it (outside use-package to be safe)
+;; (straight-use-package '(atomic-chrome :host github :repo "KarimAziev/atomic-chrome"))
+;; (atomic-chrome-start-server)
+
 (use-package atomic-chrome
   ;; Use this as the server with ghosttext to edit browser windows in emacs.
   ;; https://github.com/alpha22jp/atomic-chrome
