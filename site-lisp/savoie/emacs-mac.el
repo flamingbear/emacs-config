@@ -23,15 +23,20 @@ The return value is the new value of LIST-VAR."
   :ensure t
   :config
   (append-to-list 'exec-path-from-shell-variables
-		  '("GIT_EDITOR" "EDITOR" "LC_ALL" "NVM_DIR" "AWS_PROFILE" "AWS_SDK_LOAD_CONFIG" "WORKON_HOME"))
+		  '("GIT_EDITOR" "EDITOR" "LC_ALL" "NVM_DIR" "AWS_PROFILE" "AWS_SDK_LOAD_CONFIG" "WORKON_HOME" "CC" "LIBRARY_PATH"))
   (setq exec-path-from-shell-shell-name "zsh")
   (setq exec-path-from-shell-arguments '("-l" "-i")) ;; Use login shell but not interactive
   (exec-path-from-shell-initialize)
-  )
 
-;; If you run into jit issues You might add these to the above?
-;; export CC=gcc-14
-;; export LIBRARY_PATH="$LIBRARY_PATH:/opt/homebrew/opt/gcc/lib/gcc/current:/opt/homebrew/lib/gcc/current"
+  ;; Trying this here from running into jit issues You might add these to the above? If this doesn't work,
+  ;; you  an set CC and LIBRARY_PATH and run emacs from a terminal to pick everything up.
+  ;; export CC=gcc-14
+  ;; export LIBRARY_PATH="$LIBRARY_PATH:/opt/homebrew/opt/gcc/lib/gcc/current:/opt/homebrew/lib/gcc/current"
+  (setenv "CC" "gcc-15")
+  (setenv "LIBRARY_PATH"
+          (concat (getenv "LIBRARY_PATH")
+                  ":/opt/homebrew/opt/gcc/lib/gcc/current:/opt/homebrew/lib/gcc/current"))
+  )
 
 
 (provide 'emacs-mac)
