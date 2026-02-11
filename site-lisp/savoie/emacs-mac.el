@@ -32,10 +32,10 @@ The return value is the new value of LIST-VAR."
   ;; you  an set CC and LIBRARY_PATH and run emacs from a terminal to pick everything up.
   ;; export CC=gcc-14
   ;; export LIBRARY_PATH="$LIBRARY_PATH:/opt/homebrew/opt/gcc/lib/gcc/current:/opt/homebrew/lib/gcc/current"
-  (setenv "CC" "gcc-15")
-  (setenv "LIBRARY_PATH"
-          (concat (getenv "LIBRARY_PATH")
-                  ":/opt/homebrew/opt/gcc/lib/gcc/current:/opt/homebrew/lib/gcc/current"))
+  ;; (setenv "CC" "gcc-15")
+  ;; (setenv "LIBRARY_PATH"
+  ;;         (concat (getenv "LIBRARY_PATH")
+  ;;                 ":/opt/homebrew/opt/gcc/lib/gcc/current:/opt/homebrew/lib/gcc/current"))
   )
 
 
