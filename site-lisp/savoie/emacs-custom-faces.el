@@ -50,8 +50,8 @@
   (set-face-attribute 'org-headline-done nil :foreground "#207030")
   )
 
-;; all-the-icons-install-fonts
-(use-package all-the-icons
+;; nerd-icons-install-fonts
+(use-package nerd-icons
   :ensure t
   :if (display-graphic-p))
 

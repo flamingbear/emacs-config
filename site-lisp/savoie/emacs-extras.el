@@ -145,8 +145,7 @@ the current buffer."
 
 (use-package flycheck
   :ensure t
-  :config
-  (global-flycheck-mode 't))
+  :hook (prog-mode . flycheck-mode))
 
 
 ;;----------------------------------------------------------------
@@ -379,12 +378,7 @@ the current buffer."
 
 (use-package yasnippet
   :ensure t
-  :config
-  (yas-global-mode 1))
-
-(use-package react-snippets
-  :ensure t
-  :after yasnippet)
+  :hook (prog-mode . yas-minor-mode))
 
 (use-package yasnippet-snippets
   :ensure t
