@@ -5,11 +5,18 @@
   :config
   (global-set-key (kbd "C-x v p") 'git-messenger:popup-message))
 
-(use-package git-gutter
-  :ensure
-  :diminish git-gutter-mode
-  :init
-  (global-git-gutter-mode 't))
+;; (use-package git-gutter
+;;   :ensure
+;;   :diminish git-gutter-mode
+;;   :init
+;;   (global-git-gutter-mode 't))
+;; git gutter alternative?
+(use-package diff-hl
+  :ensure t
+  :hook ((prog-mode . diff-hl-mode)
+         (text-mode . diff-hl-mode)
+         (dired-mode . diff-hl-dired-mode)
+         (magit-post-refresh . diff-hl-magit-post-refresh)))
 
 (use-package git-link
   :ensure t

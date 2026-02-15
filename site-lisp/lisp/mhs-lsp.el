@@ -18,7 +18,7 @@
   (setq read-process-output-max (* 1024 1024)
         lsp-idle-delay 0.600
         lsp-completion-provider :none
-	lsp-log-io t)
+	lsp-log-io nil)
 
   ;; Python-specific settings
   (setq lsp-disabled-clients '(pyls pylsp)
@@ -62,10 +62,8 @@
 ;;   )
 
 
-(use-package ivy :ensure t)
-(use-package lsp-ivy :ensure t ;; :pin melpa
-  :after lsp)
-
+(use-package consult-lsp :ensure t
+  :after lsp-mode)
 
 (use-package lsp-treemacs :ensure t ;; :pin melpa
   :after lsp)
