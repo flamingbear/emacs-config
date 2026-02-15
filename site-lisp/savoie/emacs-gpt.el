@@ -95,18 +95,5 @@ your reply from 0 to 100%.")))
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-(use-package copilot
-  :straight (:host github :repo "copilot-emacs/copilot.el" :files ("dist" "*.el"))
-  :ensure t
-  :defer t
-  ;; https://github.com/copilot-emacs/copilot.el#2-configure-completion
-  :config
-  ;; Don't enable by default yet.
-  ;; (add-hook 'prog-mode-hook #'copilot-mode)
-  (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
-  (define-key copilot-completion-map (kbd "C-n") 'copilot-next-completion)
-  (define-key copilot-completion-map (kbd "C-p") 'copilot-previous-completion)
-  (define-key copilot-completion-map (kbd "C-h") 'copilot-help)
-  )
 
 (provide 'emacs-gpt)
