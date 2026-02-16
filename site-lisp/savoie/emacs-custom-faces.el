@@ -37,9 +37,12 @@
   :ensure t
   :config
   (setq doom-themes-enable-bold t     ; if nil, bold is universally disabled
-        doom-themes-enable-italic t)  ; if nil, italics is universally disabled
+        doom-themes-enable-italic t   ; if nil, italics is universally disabled
+        doom-one-brighter-comments t
+        doom-one-comment-bg nil )
 
   (load-theme 'doom-one t)
+  (set-face-attribute 'font-lock-comment-face nil :slant 'italic)
   ;; (load-theme 'doom-nord t)
   ;; (load-theme 'doom-opera t)
   ;; (load-theme 'doom-dracula t)

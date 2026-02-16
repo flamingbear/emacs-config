@@ -12,6 +12,7 @@
          (typescript-ts-mode . lsp-deferred)
          (tsx-ts-mode . lsp-deferred)
          (js-ts-mode . lsp-deferred)
+         (sh-mode . lsp-deferred)
          (lsp-mode . lsp-enable-which-key-integration))
   :config
   ;; https://emacs-lsp.github.io/lsp-mode/page/performance/#increase-the-amount-of-data-which-emacs-reads-from-the-process
