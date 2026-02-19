@@ -3,27 +3,8 @@
 ;;; functions.
 ;;;
 
-;;;  http://ergoemacs.org/emacs/elisp_read_file_content.html
-(defun get-string-from-file (filePath)
-  "Return filePath's file content."
-  (with-temp-buffer
-    (insert-file-contents filePath)
-    (buffer-string)))
-
 ;; This function is old and people shouldn't use it, mhs-dblstuff replaces it.
 (use-package mhs-dblstuff)
-
-(defun mhs-base-name ()
-  "* inserts the current buffer's name where the mark is."
-  (interactive)
-  (setq my-str (file-name-sans-suffix (file-name-nondirectory (buffer-file-name))))
-  (insert my-str))
-
-
-;; (defun mhs-browse-buffer-in-firefox ()
-;;   "* load the current file into firefox pre 28?"
-;;   (interactive)
-;;   (browse-url (concat "file://" (buffer-file-name))))
 
 (defun mhs-browse-buffer-in-firefox ()
   "* load the current file into firefox"

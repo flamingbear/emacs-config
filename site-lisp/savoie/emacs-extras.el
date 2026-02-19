@@ -1,16 +1,18 @@
 ;;; package --- Summary
 ;;;   Just standard extra things to load when I start emacs.
 
-(defun start-or-switch-to (function buffer-name)
-  "Invoke FUNCTION if there is no buffer with BUFFER-NAME.
-Otherwise switch to the buffer named BUFFER-NAME.  Don't clobber
-the current buffer."
-  (if (not (get-buffer buffer-name))
-      (progn
-        (split-window-sensibly (selected-window))
-        (other-window 1)
-        (funcall function))
-    (switch-to-buffer-other-window buffer-name)))
+
+;; 2026-02-17 needed?
+;; (defun start-or-switch-to (function buffer-name)
+;;   "Invoke FUNCTION if there is no buffer with BUFFER-NAME.
+;; Otherwise switch to the buffer named BUFFER-NAME.  Don't clobber
+;; the current buffer."
+;;   (if (not (get-buffer buffer-name))
+;;       (progn
+;;         (split-window-sensibly (selected-window))
+;;         (other-window 1)
+;;         (funcall function))
+;;     (switch-to-buffer-other-window buffer-name)))
 
 
 ;; Override having to type Yes or No with just Y or N
@@ -39,7 +41,7 @@ the current buffer."
 (setq echo-keystrokes 0.3)
 
 ;; Remove text in active region if inserting text in non-nil
-(setq delete-selection-mode 'nil)
+(setq delete-selection-mode 't)
 
 ;; Easily NavigateSillyCased words when set to 0
 (global-subword-mode 0)
@@ -89,6 +91,8 @@ the current buffer."
 (setq tab-always-indent 'complete)
 (tool-bar-mode -1)
 (setq transient-mark-mode 't)
+
+(setq sh-basic-offset 2)
 
 
 ;; Bug in El Capitain with visible bell and emacs 24.x

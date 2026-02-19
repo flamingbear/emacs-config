@@ -51,17 +51,6 @@
                                   #'cape-file))))))
   )
 
-;; [MHS, 02/02/2026] We're just about to abandon eslint on this project, Let's simplify and use
-;; it from commandline only for now...
-
-;; (use-package lsp-eslint
-;;   :after lsp-mode
-;;   :config
-;;   ;; this is not working for anything
-;;   ;; (setq lsp-eslint-auto-fix-on-save t)
-;;   ;; (setq lsp-eslint-server-command '("vscode-eslint-language-server" "--stdio"))
-;;   )
-
 
 (use-package consult-lsp :ensure t
   :after lsp-mode)
