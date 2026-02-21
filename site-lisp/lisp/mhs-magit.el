@@ -30,25 +30,17 @@
   :after exec-path-from-shell
   :config
   (setq magit-git-executable (executable-find "git"))
-  (setq magit-last-seen-setup-instructions "1.4.0")
-  (setq magit-push-always-verify nil)
-  (setq magit-diff-refine-hunk 'all)
-
-  ;; Actually this is irritating
-  ;; (setopt magit-format-file-function #'magit-format-file-all-the-icons)
-  ;; or
-  ;; (setopt magit-format-file-function #'magit-format-file-nerd-icons)
+  ;; (setq magit-diff-refine-hunk 'all)
 
   ;; https://emacs.stackexchange.com/questions/28537/a-way-to-insert-a-predefined-text-into-magits-commit-message-window
   ;; https://emacs.stackexchange.com/a/44685/613
   (defun mhs/parse-current-branch ()
     (let ((ISSUEKEY "[[:upper:]]+-[[:digit:]]+"))
       (when (string-match-p ISSUEKEY (magit-get-current-branch))
-
-	 (replace-regexp-in-string
-	  (concat ".*?\\(" ISSUEKEY "\\).*")
-	  "\\1"
-	  (magit-get-current-branch)))))
+	(replace-regexp-in-string
+	 (concat ".*?\\(" ISSUEKEY "\\).*")
+	 "\\1"
+	 (magit-get-current-branch)))))
 
   ;; return the ticket parsed from the branch or my current ticket number
   (defun mhs/current-ticket ()
@@ -60,14 +52,14 @@
   (defun my-git-bottom-commit-setup ()
     (save-excursion
       (insert (concat "\n\n" (mhs/current-ticket)))))
+
   (add-hook 'git-commit-setup-hook 'my-git-commit-setup)
 
   (defun my-git-commit-setup ()
-      (insert (concat (mhs/current-ticket) ": " )))
+    (insert (concat (mhs/current-ticket) ": " )))
   (add-hook 'git-commit-setup-hook 'my-git-commit-setup)
 
-
-  (setq magit-completing-read-function 'completing-read)
+  ;; (setq magit-completing-read-function 'completing-read)
   )
 
 (use-package forge

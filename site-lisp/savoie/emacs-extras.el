@@ -273,8 +273,6 @@
 
 (use-package emacs-everywhere :ensure t)
 
-;; Do binary diff in hexl-mode if files are binary format
-(use-package binary-diff)
 
 ;; Use system trash
 (setq delete-by-moving-to-trash 't)
@@ -344,9 +342,6 @@
 (use-package mhs-map)
 (use-package mhs-magit)
 (use-package mhs-extends)
-;; (use-package mhs-perl)
-;; (use-package mhs-grep)
-;; (use-package mhs-cmode)
 
 
 ;; Handle multiple locations for aspell.
