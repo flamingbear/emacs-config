@@ -22,6 +22,7 @@
 	lsp-log-io nil)
 
   ;; Python-specific settings
+  ;; use basedpyright and ruff-lsp
   (setq lsp-disabled-clients '(pyls pylsp)
         lsp-pyright-multi-root nil
         lsp-pyright-auto-import-completions t
