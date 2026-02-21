@@ -42,20 +42,21 @@
 
   ;; return the ticket parsed from the branch or my current ticket number
   (defun mhs/current-ticket ()
-    (if (equal (mhs/parse-current-branch) 'nil)
-	mhs-jira--current-ticket-number
-      (mhs/parse-current-branch)))
+    (or (mhs/parse-current-branch)
+        mhs-jira--current-ticket-number))
 
   ;; This is the commit-setup that puts a JIRA ticket number at the bottom of your commit
   (defun my-git-bottom-commit-setup ()
-    (save-excursion
-      (insert (concat "\n\n" (mhs/current-ticket)))))
 
-  (add-hook 'git-commit-setup-hook 'my-git-commit-setup)
+    (when-let ((ticket (mhs/current-ticket)))
+      (save-excursion
+        (insert (concat "\n\n" ticket)))))
 
   (defun my-git-commit-setup ()
-    (when-let ((ticket (mhs/current-ticket)))
-      (insert (concat ticket ": " ))))
+    (let ((ticket (mhs/current-ticket)))
+      (when (and ticket (not (string-empty-p ticket)))
+        (insert (concat ticket ": " )))))
+
   (add-hook 'git-commit-setup-hook 'my-git-commit-setup)
 
   ;; (setq magit-completing-read-function 'completing-read)
