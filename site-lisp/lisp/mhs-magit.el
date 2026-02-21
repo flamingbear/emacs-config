@@ -35,12 +35,10 @@
   ;; https://emacs.stackexchange.com/questions/28537/a-way-to-insert-a-predefined-text-into-magits-commit-message-window
   ;; https://emacs.stackexchange.com/a/44685/613
   (defun mhs/parse-current-branch ()
-    (let ((ISSUEKEY "[[:upper:]]+-[[:digit:]]+"))
-      (when (string-match-p ISSUEKEY (magit-get-current-branch))
-	(replace-regexp-in-string
-	 (concat ".*?\\(" ISSUEKEY "\\).*")
-	 "\\1"
-	 (magit-get-current-branch)))))
+    (let ((ISSUEKEY "[[:alpha:]]+-[[:digit:]]+")
+          (branch (magit-get-current-branch)))
+      (when (string-match (concat "\\(?:^\\|mhs/\\)\\(" ISSUEKEY "\\)") branch)
+	(match-string 1 branch))))
 
   ;; return the ticket parsed from the branch or my current ticket number
   (defun mhs/current-ticket ()
@@ -56,7 +54,8 @@
   (add-hook 'git-commit-setup-hook 'my-git-commit-setup)
 
   (defun my-git-commit-setup ()
-    (insert (concat (mhs/current-ticket) ": " )))
+    (when-let ((ticket (mhs/current-ticket)))
+      (insert (concat ticket ": " ))))
   (add-hook 'git-commit-setup-hook 'my-git-commit-setup)
 
   ;; (setq magit-completing-read-function 'completing-read)
