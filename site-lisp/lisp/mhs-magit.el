@@ -31,7 +31,7 @@
   :after exec-path-from-shell
   :config
   (setq magit-git-executable (executable-find "git")
-        magit-diff-visit-prefer-worktree 't)
+        magit-diff-visit-prefer-worktree t)
 
   ;; (setq magit-diff-refine-hunk 'all)
 
