@@ -32,6 +32,7 @@
 ;; emacs with:
 ;; emacs -q -l /path/to/init.el
 
+;; Don't garbage collect on startup and use a larger than default GC threshold
 (setq gc-cons-threshold most-positive-fixnum)
 (add-hook 'emacs-startup-hook
           (lambda () (setq gc-cons-threshold (* 16 1024 1024))))
@@ -132,8 +133,6 @@
 (use-package emacs-custom-faces)
 (use-package emacs-modeline)
 (use-package emacs-gpt)
-;;(use-package mhs-cut-and-paste) ;; TODO [MHS, 01/08/2023]  I think all of this is irrelevent at this point.
-
 
 
 ;; Work around for bug in macosx

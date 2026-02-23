@@ -4,6 +4,7 @@
 ;; pip install "python-lsp-server[all]" provides pylsp- options
 (use-package lsp-mode
   :ensure t
+  :defer t
   :commands (lsp lsp-deferred)
   :init
   (setq lsp-keymap-prefix "C-c l")
