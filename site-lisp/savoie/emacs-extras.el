@@ -31,6 +31,7 @@
 
 (setq line-number-display-limit-width 1000)
 
+
 (setq-default indent-tabs-mode nil)
 (setq inhibit-eol-conversion t)
 (setq inhibit-startup-screen t)
@@ -117,14 +118,8 @@
   (auto-fill-mode t))
 
 
-(defvar dev-hook nil
-  "Hook that gets run on activation of any programming mode.")
-(add-hook 'dev-hook 'display-line-numbers-mode)
-(add-hook 'dev-hook 'local-comment-auto-fill)
-
-(defun run-dev-hook ()
-  "Enable things that are convenient across all dev buffers."
-  (run-hooks 'dev-hook))
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+(add-hook 'prog-mode-hook 'local-comment-auto-fill)
 
 
 ;; show empty lines at the end of the file
