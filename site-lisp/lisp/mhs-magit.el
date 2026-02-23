@@ -27,6 +27,7 @@
 
 (use-package magit
   :ensure t
+  :defer t
   :after exec-path-from-shell
   :config
   (setq magit-git-executable (executable-find "git")
