@@ -25,7 +25,8 @@ The return value is the new value of LIST-VAR."
                  "AWS_SDK_LOAD_CONFIG" "WORKON_HOME" "CC" "LIBRARY_PATH"))
     (add-to-list 'exec-path-from-shell-variables var))
   (setq exec-path-from-shell-shell-name "zsh")
-  (setq exec-path-from-shell-arguments nil) ;; nil = non-interactive, reads .zshenv only = fast
+
+  (setq exec-path-from-shell-arguments '("-l" "-i")) ;; nil = non-interactive, reads .zshenv only = fast
   (exec-path-from-shell-initialize)
 
   ;; Trying this here from running into jit issues You might add these to the above? If this doesn't work,
