@@ -27,9 +27,12 @@
 
 (use-package magit
   :ensure t
+  :defer t
   :after exec-path-from-shell
   :config
-  (setq magit-git-executable (executable-find "git"))
+  (setq magit-git-executable (executable-find "git")
+        magit-diff-visit-prefer-worktree t)
+
   ;; (setq magit-diff-refine-hunk 'all)
 
   ;; https://emacs.stackexchange.com/questions/28537/a-way-to-insert-a-predefined-text-into-magits-commit-message-window
@@ -45,20 +48,12 @@
     (or (mhs/parse-current-branch)
         mhs-jira--current-ticket-number))
 
-  ;; This is the commit-setup that puts a JIRA ticket number at the bottom of your commit
-  (defun my-git-bottom-commit-setup ()
-
-    (when-let ((ticket (mhs/current-ticket)))
-      (save-excursion
-        (insert (concat "\n\n" ticket)))))
-
   (defun my-git-commit-setup ()
     (let ((ticket (mhs/current-ticket)))
       (when (and ticket (not (string-empty-p ticket)))
         (insert (concat ticket ": " )))))
 
   (add-hook 'git-commit-setup-hook 'my-git-commit-setup)
-
   ;; (setq magit-completing-read-function 'completing-read)
   )
 

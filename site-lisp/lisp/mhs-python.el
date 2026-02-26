@@ -9,13 +9,12 @@
   (add-hook 'python-base-mode-hook #'smartparens-mode))
 
 ;; We're gonna need us a Python mode
-(use-package python
-  :config
-  :hook (python-base-mode . run-dev-hook))
+(use-package python)
 
 
 (use-package lsp-pyright
   :ensure t
+  :defer t
   :custom (lsp-pyright-langserver-command "basedpyright") ;; or basedpyright
   :hook (python-base-mode . (lambda ()
                               (require 'lsp-pyright)

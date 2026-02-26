@@ -417,6 +417,7 @@ following the prefix character"
 
 (use-package json-mode
   :ensure t
+  :defer t
   :config
   (setq json-reformat:indent-width 2)
   (setq js2-indent-level 2)
@@ -430,13 +431,14 @@ following the prefix character"
   )
 
 (use-package json-navigator
+  :defer t
   :ensure t)
 
 (setq column-number-mode t)
 (setq comment-column 32)
 
 (use-package ansi-color
-  :defer 2
+  :defer t
   :config
   ;; Use these colors for solarized iterm2 windows
   (setq ansi-color-names-vector  ["#454545" "#cd5542" "#6aaf50" "#baba36" "#5180b3" "#ab75c3" "#bdbc61" "#bdbdb3"])

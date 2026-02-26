@@ -11,9 +11,6 @@
          (js-ts-mode . add-node-modules-path)))
 
 (use-package typescript-ts-mode
-  :hook ((typescript-ts-mode . run-dev-hook)
-         (tsx-ts-mode . run-dev-hook)
-         (js-ts-mode . run-dev-hook))
   :config
   (setq typescript-ts-mode-indent-offset 2
         tsx-ts-mode-indent-offset 2

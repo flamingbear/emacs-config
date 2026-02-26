@@ -4,6 +4,7 @@
 ;; pip install "python-lsp-server[all]" provides pylsp- options
 (use-package lsp-mode
   :ensure t
+  :defer t
   :commands (lsp lsp-deferred)
   :init
   (setq lsp-keymap-prefix "C-c l")
@@ -22,6 +23,7 @@
 	lsp-log-io nil)
 
   ;; Python-specific settings
+  ;; use basedpyright and ruff-lsp
   (setq lsp-disabled-clients '(pyls pylsp)
         lsp-pyright-multi-root nil
         lsp-pyright-auto-import-completions t

@@ -21,7 +21,7 @@
   ;; if you want to have prompts and that, you can just highlight the prompt and add it to the context
   (setq
    gptel-default-mode 'markdown-mode ;; 'org-mode
-   gptel-model 'claude-sonnet-4-5-20250929
+   gptel-model 'claude-sonnet-4-6
    gptel-backend (gptel-make-anthropic "Claude"          ;Any name you want
 		   :stream t                             ;Streaming responses
 		   :key 'mhs/get-claude-anthropic-key))
@@ -39,5 +39,10 @@ Help the user write idiomatic code, suggesting built-in functions when possible.
   (gptel-make-gh-copilot "Copilot")
   )
 
+(use-package claude-code-ide
+  :vc (:url "https://github.com/manzaltu/claude-code-ide.el" :rev :newest)
+  :bind ("C-c C-'" . claude-code-ide-menu) ; Set your favorite keybinding
+  :config
+  (claude-code-ide-emacs-tools-setup)) ; Optionally enable Emacs MCP tools
 
 (provide 'emacs-gpt)

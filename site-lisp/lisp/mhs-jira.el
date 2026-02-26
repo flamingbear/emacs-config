@@ -129,6 +129,7 @@
 ;; Not terrible at all
 (use-package ox-jira
   :ensure t
+  :defer t
   )
 
 ;; Default keybindings
