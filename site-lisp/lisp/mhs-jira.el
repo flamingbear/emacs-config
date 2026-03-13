@@ -41,9 +41,10 @@
 
 (defun mhs-jira--update-url-base (ticket-number)
   "Handle multiple JIRA ticket locations based on ticket-number prefix."
-  (let ((earthdata-prefixes '("NDCUM" "CUMULUS" "DAS" "HARMONY" "TRT")))
+  (let ((earthdata-prefixes '("NDCUM" "CUMULUS" "DAS" "HARMONY" "TRT"))
+        (ticket-upper (upcase ticket-number)))
     (setq mhs-jira--url-base
-          (if (seq-some (lambda (prefix) (string-prefix-p prefix ticket-number))
+          (if (seq-some (lambda (prefix) (string-prefix-p prefix ticket-upper))
                         earthdata-prefixes)
               "https://bugs.earthdata.nasa.gov/browse/"
             "https://nsidc.org/jira/browse/"))))

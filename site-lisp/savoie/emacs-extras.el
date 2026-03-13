@@ -510,6 +510,16 @@
   ;; Build the alist once at init, not on every file open
   (treesit-auto-add-to-auto-mode-alist treesit-auto-langs))
 
+(use-package combobulate
+   :custom
+   ;; You can customize Combobulate's key prefix here.
+   ;; Note that you may have to restart Emacs for this to take effect!
+   (combobulate-key-prefix "C-c o")
+   :hook ((prog-mode . combobulate-mode))
+   ;; Amend this to the directory where you keep Combobulate's source
+   ;; code.
+   :load-path ("/Users/savoie/projects/combobulate"))
+
 ;;
 (defun mhs/dired-ncdump-header ()
   "Run ncdump -h on the file at point in dired and save output to a .dump file."

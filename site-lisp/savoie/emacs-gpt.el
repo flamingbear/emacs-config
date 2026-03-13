@@ -45,4 +45,6 @@ Help the user write idiomatic code, suggesting built-in functions when possible.
   :config
   (claude-code-ide-emacs-tools-setup)) ; Optionally enable Emacs MCP tools
 
+(use-package agent-shell :ensure t)
+
 (provide 'emacs-gpt)
