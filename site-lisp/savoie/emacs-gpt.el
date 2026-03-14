@@ -11,6 +11,7 @@
   "Fetches the API key for OpenAI. gpt"
   (mhs/get-api-key "api.openai.com"))
 
+
 (use-package gptel
   :ensure t
   ;;  :pin melpa-stable
@@ -39,12 +40,45 @@ Help the user write idiomatic code, suggesting built-in functions when possible.
   (gptel-make-gh-copilot "Copilot")
   )
 
-(use-package claude-code-ide
-  :vc (:url "https://github.com/manzaltu/claude-code-ide.el" :rev :newest)
-  :bind ("C-c C-'" . claude-code-ide-menu) ; Set your favorite keybinding
-  :config
-  (claude-code-ide-emacs-tools-setup)) ; Optionally enable Emacs MCP tools
 
-(use-package agent-shell :ensure t)
+;; use with a .claude/docker/Dockerfile to build an image claude-agent-acp
+;;-----------------------
+;; FROM node:22-slim
+;; RUN npm install -g @zed-industries/claude-agent-acp@0.21.0
+;; ENTRYPOINT ["claude-agent-acp"]
+
+;; Also include an encrypted copy of your oauth token genrated with `claude
+;; setup-token` in .claude/docker/claude_container_oauth_token.gpg
+
+(use-package agent-shell
+  :ensure t
+  :config
+  (setq agent-shell-session-strategy 'prompt)
+  (setq agent-shell-command-prefix
+        (lambda (buffer)
+          "Run claude-agent-acp in an isolated Docker container for the current project."
+          (let* ((project-dir (with-current-buffer buffer
+                                (or (vc-root-dir)
+                                    default-directory)))
+                 (claude-dir (expand-file-name "~/.claude")))
+            (list (expand-file-name "~/.claude/docker/run.sh")
+                  "-v" (concat project-dir ":/workspace")
+                  "-v" (concat claude-dir ":/root/.claude")
+                  "-w" "/workspace"
+                  "claude-agent-acp"))))
+
+  (setq agent-shell-path-resolver-function
+        (lambda (path)
+          "Map paths between /workspace/ in container and local project dir."
+          (let ((cwd (or (vc-root-dir)
+                         default-directory)))
+            (cond
+             ;; Local path -> container path
+             ((string-prefix-p cwd path)
+              (concat "/workspace/" (string-remove-prefix cwd path)))
+             ;; Container path -> local path
+             ((string-prefix-p "/workspace/" path)
+              (concat cwd (string-remove-prefix "/workspace/" path)))
+             (t path))))))
 
 (provide 'emacs-gpt)
