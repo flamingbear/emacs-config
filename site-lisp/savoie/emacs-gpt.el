@@ -41,15 +41,10 @@ Help the user write idiomatic code, suggesting built-in functions when possible.
   )
 
 
-;; use with a .claude/docker/Dockerfile to build an image claude-agent-acp
-;;-----------------------
-;; FROM node:22-slim
-;; RUN npm install -g @zed-industries/claude-agent-acp@0.21.0
-;; ENTRYPOINT ["claude-agent-acp"]
 
-;; Also include an encrypted copy of your oauth token genrated with `claude
-;; setup-token` in .claude/docker/claude_container_oauth_token.gpg
 
+;; Run claude with agent-shell in a docker container in emacs.
+;; See dot-files/dot-claude-docker for more info.
 (use-package agent-shell
   :ensure t
   :config
