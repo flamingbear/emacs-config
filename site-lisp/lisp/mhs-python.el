@@ -24,8 +24,8 @@
 (use-package python-pytest
   :ensure t
   :after python
-  :init
-  (define-key python-mode-map "\C-cy" 'python-pytest-dispatch))
+  :bind (:map python-base-mode-map
+              ("C-c y" . python-pytest-dispatch)))
 
 
 (use-package dap-mode

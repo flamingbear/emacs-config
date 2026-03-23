@@ -40,9 +40,6 @@ Help the user write idiomatic code, suggesting built-in functions when possible.
   (gptel-make-gh-copilot "Copilot")
   )
 
-
-
-
 ;; Run claude with agent-shell in a docker container in emacs.
 ;; See dot-files/dot-claude-docker for more info.
 (use-package agent-shell
@@ -75,5 +72,13 @@ Help the user write idiomatic code, suggesting built-in functions when possible.
              ((string-prefix-p "/workspace/" path)
               (concat cwd (string-remove-prefix "/workspace/" path)))
              (t path))))))
+
+
+;; I'm still not sure if I want to try this or not.
+(use-package claude-code-ide
+  :vc (:url "https://github.com/manzaltu/claude-code-ide.el" :rev :newest)
+  :bind ("C-c C-'" . claude-code-ide-menu) ; Set your favorite keybinding
+  :config
+  (claude-code-ide-emacs-tools-setup)) ; Optionally enable Emacs MCP tools
 
 (provide 'emacs-gpt)
