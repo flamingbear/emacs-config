@@ -54,14 +54,16 @@
   )
 
 
-(use-package consult-lsp :ensure t
+(use-package consult-lsp
+  :ensure t
   :after lsp-mode)
 
-(use-package lsp-treemacs :ensure t ;; :pin melpa
+(use-package lsp-treemacs
+  :ensure t
   :after lsp)
 
-(use-package treemacs  :ensure t  ;;:pin melpa
-  )
+(use-package treemacs
+  :ensure t)
 
 (use-package lsp-ui
   ;; :pin melpa
