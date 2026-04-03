@@ -207,7 +207,19 @@
   :defer t
   :commands kubel
   :after (vterm)
-  :config (kubel-vterm-setup))
+  :config
+  (kubel-vterm-setup)
+  ;; Added this not sure if it will be needed if I move back from kind clusters.
+  (setq kubel-context "docker-desktop"
+        kubel-namespace "harmony"))
+
+;; Come back to this. was compromised, but caught.
+(use-package kubernetes
+  :ensure t
+  :commands (kubernetes-overview)
+  :config
+  (setq kubernetes-poll-frequency 3600
+        kubernetes-redraw-frequency 3600))
 
 (use-package which-key
   :ensure t
@@ -441,6 +453,11 @@
 (setq select-active-regions 't)
 
 (setq large-file-warning-threshold 20000000)
+
+
+(use-package dotenv-mode
+  :ensure t
+  :mode ("\\.env\\..*\\'" . dotenv-mode))
 
 (use-package terraform-mode :ensure t)
 (use-package hcl-mode :ensure t)
