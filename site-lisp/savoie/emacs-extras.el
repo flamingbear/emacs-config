@@ -457,7 +457,7 @@
 
 (use-package dotenv-mode
   :ensure t
-  :mode ("\\.env\\..*\\'" . dotenv-mode))
+  :mode ("\\.env-.*\\'" . dotenv-mode))
 
 (use-package terraform-mode :ensure t)
 (use-package hcl-mode :ensure t)
