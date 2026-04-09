@@ -272,6 +272,9 @@
 ;; Javascript stuff
 (use-package mhs-javascript)
 
+;; DAP (debugger) for Python and Node.js
+(use-package mhs-dap)
+
 ;; if you are debugging emacs completely: open this file and it records keystrokes.
 ;;(open-dribble-file "~/dribble")
 
