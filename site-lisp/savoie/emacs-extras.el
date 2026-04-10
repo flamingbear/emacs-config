@@ -479,7 +479,29 @@
       (switch-to-buffer-other-window "vterm")))
   :config
   (setq vterm-max-scrollback (* 32 1024))
-  )
+
+  ;; Visual indicator for vterm-copy-mode: highlight the mode-line in amber
+  (defvar-local mhs-vterm-copy-mode-cookie nil
+    "Face remapping cookie for vterm-copy-mode mode-line highlight.")
+
+  (add-hook 'vterm-copy-mode-hook
+            (lambda ()
+              (if vterm-copy-mode
+                  (setq mhs-vterm-copy-mode-cookie
+                        (face-remap-add-relative 'mode-line
+                                                 :background "#5d478b"
+                                                 :foreground "#912cee"
+                                                 :box '(:line-width 2 :color "#912cee")))
+                (when mhs-vterm-copy-mode-cookie
+                  (face-remap-remove-relative mhs-vterm-copy-mode-cookie)
+                  (setq mhs-vterm-copy-mode-cookie nil)))))
+
+  ;; C-<escape> to toggle copy mode — natural "escape from a mode" key
+  (define-key vterm-mode-map      (kbd "C-<escape>") #'vterm-copy-mode)
+  (define-key vterm-copy-mode-map (kbd "C-<escape>") #'vterm-copy-mode)
+  ;; <f1> also?
+  (define-key vterm-mode-map      (kbd "<f1>") #'vterm-copy-mode)
+  (define-key vterm-copy-mode-map (kbd "<f1>") #'vterm-copy-mode))
 
 ;; Found in docs for use-package
 (use-package unfill
