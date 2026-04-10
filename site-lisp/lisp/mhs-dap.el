@@ -5,11 +5,9 @@
 (use-package dap-mode
   :ensure t
   :defer t
-  :hook
-  (dap-stopped . (lambda (arg) (call-interactively #'dap-hydra)))
   :commands dap-debug
   :config
-  (setq dap-auto-configure-features '(sessions repl tooltip breakpoints))
+  (setq dap-auto-configure-features '(sessions locals repl tooltip breakpoints))
 
   ;; Python debugger
   (require 'dap-python)
@@ -33,14 +31,27 @@
   ;; Start with: npm run start-dev-fast
   ;; Then M-x dap-debug and pick "Attach to Harmony"
   (dap-register-debug-template
-   "Attach to Harmony"
+   "Attach to Harmony Service"
    (list :type "node"
          :request "attach"
          :port 9200
          :address "127.0.0.1"
          :restart t
          :sourceMaps t
-         :name "Attach to Harmony")))
+         :smartStep t
+         :skipFiles ["<node_internals>/**" "${workspaceFolder}/node_modules/**/*.js"]
+         :name "Attach to Harmony"))
+
+  ;; Attach to any running Node process by PID
+  (dap-register-debug-template
+   "Node :: Attach by PID"
+   (list :type "node"
+         :request "attach"
+         :processId "${command:PickProcess}"
+         :sourceMaps t
+         :smartStep t
+         :skipFiles ["<node_internals>/**" "${workspaceFolder}/node_modules/**/*.js"]
+         :name "Node :: Attach by PID")))
 
 (provide 'mhs-dap)
 ;;; mhs-dap.el ends here

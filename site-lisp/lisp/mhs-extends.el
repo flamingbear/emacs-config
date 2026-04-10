@@ -24,14 +24,6 @@
     (if (not (= arg 1)) (setq fmt '"%FT%R" ))
     (insert (format-time-string fmt))))
 
-(defun mhs-bracket-comment()
-  (interactive)
-  (mhs-insert-date)
-  (insert ": <mhs> ")
-  (save-excursion
-    (insert "</mhs>")))
-
-
 (defun mhs/kill-current-dir ()
   "Copy the current Dired directory path to the kill ring."
   (interactive)
@@ -305,16 +297,6 @@ following the prefix character"
 (defun mhs-trunc-lines ()
   (interactive)
   (set-variable 'truncate-lines (null truncate-lines)))
-
-(defun mhs-ediff-ignore-dollars ()
-  "Set the correct variable to ignore stuff between dollar signs during ediff"
-  (interactive)
-  (set-variable 'ediff-diff-options "--ignore-matching-lines=^.*\\$.*\\$.*$"))
-
-(defun mhs-ediff-normal ()
-  "Set ediff variable back to normal operations."
-  (interactive)
-  (set-variable 'ediff-diff-options ""))
 
 (defun mhs-use-small-inconsolata ()
   (interactive)
