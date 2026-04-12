@@ -28,6 +28,53 @@
 
 (setq garbage-collection-messages 't)
 
+;; https://emacsredux.com/blog/2026/04/07/stealing-from-the-best-emacs-configs/
+
+;; This can cause micro-stutters, especially in
+;; tree-sitter modes or large buffers. One setting fixes it:
+(setq redisplay-skip-fontification-on-input t)
+
+;; Increase Process Output Buffer for LSP (Doom, Purcell, Centaur)
+;; I already set to 1MB in my lsp file
+;; (setq read-process-output-max (* 4 1024 1024)) ; 4MB
+
+;; Save the Clipboard Before Killing (Purcell, Prot, Centaur)
+(setq save-interprogram-paste-before-kill t)
+
+;; Persist the Kill Ring Across Sessions (Doom, Prot)
+;; This already has values so should be careful before enabling.
+;; (setq savehist-additional-variables
+;;       '(search-ring regexp-search-ring kill-ring))
+
+(setq help-window-select t)
+
+;; When you split a window with C-x 2 or C-x 3, Emacs halves the current window. If you already have a multi-window layout,
+;; this can produce one awkwardly tiny window while others stay large. With this setting, all windows in the frame resize
+;; proportionally:
+(setq window-combination-resize t)
+
+;; The annoyance: you need C-u C-SPC every single time. With this setting, after the first C-u C-SPC you can keep pressing just
+;; C-SPC to continue popping:
+(setq set-mark-command-repeat-pop t)
+
+;; open a file and recenter when you are restoring the location.
+(advice-add 'save-place-find-file-hook :after
+            (lambda (&rest _)
+              (when buffer-file-name (ignore-errors (recenter)))))
+
+;; Reversible C-x 1 (Purcell)
+(winner-mode +1)
+
+(defun toggle-delete-other-windows ()
+  "Delete other windows in frame if any, or restore previous window config."
+  (interactive)
+  (if (and winner-mode
+           (equal (selected-window) (next-window)))
+      (winner-undo)
+    (delete-other-windows)))
+
+(global-set-key (kbd "C-x 1") #'toggle-delete-other-windows)
+
 
 (setq line-number-display-limit-width 1000)
 
