@@ -52,6 +52,24 @@
          :skipFiles ["<node_internals>/**" "**/node_modules/**"]
          :name "Node :: Attach by PID"))
 
+  ;; Attach to a test process started with NODE_OPTIONS='--inspect-brk=9229'
+  ;; Usage:
+  ;;   1. Set breakpoints in your .ts file
+  ;;   2. go to the service directory and run mocha directly.
+  ;;    > TS_NODE_TRANSPILE_ONLY=true node --inspect-brk=9229 ./node_modules/.bin/mocha test/util/log.ts
+  ;;   3. M-x dap-debug → "Node :: Attach to Test (9229)"
+  (dap-register-debug-template
+   "Node :: Attach to Test (9229)"
+   (list :type "node"
+         :request "attach"
+         :port 9229
+         :address "127.0.0.1"
+         :restart nil
+         :sourceMaps t
+         :smartStep t
+         :skipFiles ["<node_internals>/**" "**/node_modules/**"]
+         :name "Node :: Attach to Test (9229)"))
+
   (define-key prog-mode-map (kbd "<f10>") #'dap-hydra))
 
 (provide 'mhs-dap)
