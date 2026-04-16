@@ -38,7 +38,7 @@
 
 
 (global-set-key [f9]              'gud-step) ; F9
-(global-set-key [f10]             'gud-refresh) ; F10
+
 (global-set-key [f11]             'gud-print) ; Stop
 (global-set-key [f12]             'repeat-complex-command) ; F12
 

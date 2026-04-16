@@ -70,7 +70,14 @@
          :skipFiles ["<node_internals>/**" "**/node_modules/**"]
          :name "Node :: Attach to Test (9229)"))
 
-  (define-key prog-mode-map (kbd "<f10>") #'dap-hydra))
+  (global-set-key (kbd "<f10>")    'dap-hydra) ; F10   ;; ORYX Debug Layer - Y
+  (add-hook 'dap-ui-repl-mode-hook
+            (lambda ()
+              (add-hook 'post-command-hook
+                        (lambda ()
+                          (when (fboundp 'dap-hydra/nil)
+                            (dap-hydra/nil)))
+                        nil t))))
 
 (provide 'mhs-dap)
 ;;; mhs-dap.el ends here

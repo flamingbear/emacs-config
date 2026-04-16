@@ -507,7 +507,8 @@
 
 (use-package dotenv-mode
   :ensure t
-  :mode ("\\.env-.*\\'" . dotenv-mode))
+  :mode ("\\.env-.*\\'" . dotenv-mode)
+        ("env-defaults\\'" . dotenv-mode))
 
 (use-package terraform-mode :ensure t)
 (use-package hcl-mode :ensure t)
@@ -546,8 +547,11 @@
   ;; C-<escape> to toggle copy mode — natural "escape from a mode" key
   (define-key vterm-mode-map      (kbd "C-<escape>") #'vterm-copy-mode)
   (define-key vterm-copy-mode-map (kbd "C-<escape>") #'vterm-copy-mode)
-  ;; <f1> also?
+
+  ;; ORYX nav layer "C"
   (define-key vterm-mode-map      (kbd "<f1>") #'vterm-copy-mode)
+
+  ;; Debug
   (define-key vterm-copy-mode-map (kbd "<f1>") #'vterm-copy-mode))
 
 ;; Found in docs for use-package
