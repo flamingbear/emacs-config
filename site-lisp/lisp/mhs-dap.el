@@ -79,5 +79,61 @@
                             (dap-hydra/nil)))
                         nil t))))
 
+;; DAP prefix keymap at C-c C-d
+;; Mirrors the dap-hydra heads so all commands are reachable without the hydra.
+;; These will be added to a debug layer in ORYX on my moonlander.
+(defvar mhs-dap-map     (make-sparse-keymap) "DAP top-level commands.")
+(defvar mhs-dap-s-map   (make-sparse-keymap) "DAP session/stack commands (s prefix).")
+(defvar mhs-dap-b-map   (make-sparse-keymap) "DAP breakpoint commands (b prefix).")
+(defvar mhs-dap-d-map   (make-sparse-keymap) "DAP debug-launch commands (d prefix).")
+(defvar mhs-dap-e-map   (make-sparse-keymap) "DAP eval/expression commands (e prefix).")
+
+;; Attach sub-maps
+(define-key mhs-dap-map "s" mhs-dap-s-map)
+(define-key mhs-dap-map "b" mhs-dap-b-map)
+(define-key mhs-dap-map "d" mhs-dap-d-map)
+(define-key mhs-dap-map "e" mhs-dap-e-map)
+
+;; Direct stepping / control
+(define-key mhs-dap-map "n" 'dap-next)
+(define-key mhs-dap-map "i" 'dap-step-in)
+(define-key mhs-dap-map "o" 'dap-step-out)
+(define-key mhs-dap-map "c" 'dap-continue)
+(define-key mhs-dap-map "r" 'dap-restart-frame)
+(define-key mhs-dap-map "Q" 'dap-disconnect)
+
+;; Session / stack  (s*)
+(define-key mhs-dap-s-map "s" 'dap-switch-session)
+(define-key mhs-dap-s-map "t" 'dap-switch-thread)
+(define-key mhs-dap-s-map "f" 'dap-switch-stack-frame)
+(define-key mhs-dap-s-map "u" 'dap-up-stack-frame)
+(define-key mhs-dap-s-map "d" 'dap-down-stack-frame)
+(define-key mhs-dap-s-map "l" 'dap-ui-locals)
+(define-key mhs-dap-s-map "b" 'dap-ui-breakpoints)
+(define-key mhs-dap-s-map "S" 'dap-ui-sessions)
+
+;; Breakpoints  (b*)
+(define-key mhs-dap-b-map "b" 'dap-breakpoint-toggle)
+(define-key mhs-dap-b-map "a" 'dap-breakpoint-add)
+(define-key mhs-dap-b-map "d" 'dap-breakpoint-delete)
+(define-key mhs-dap-b-map "c" 'dap-breakpoint-condition)
+(define-key mhs-dap-b-map "h" 'dap-breakpoint-hit-condition)
+(define-key mhs-dap-b-map "l" 'dap-breakpoint-log-message)
+
+;; Debug launch  (d*)
+(define-key mhs-dap-d-map "d" 'dap-debug)
+(define-key mhs-dap-d-map "r" 'dap-debug-recent)
+(define-key mhs-dap-d-map "s" 'dap-debug-restart)
+(define-key mhs-dap-d-map "l" 'dap-debug-last)
+(define-key mhs-dap-d-map "e" 'dap-debug-edit-template)
+
+;; Eval / expressions  (e*)
+(define-key mhs-dap-e-map "e" 'dap-eval)
+(define-key mhs-dap-e-map "a" 'dap-ui-expressions-add)
+(define-key mhs-dap-e-map "r" 'dap-eval-region)
+(define-key mhs-dap-e-map "s" 'dap-eval-thing-at-point)
+
+(global-set-key (kbd "C-c C-d") mhs-dap-map)
+
 (provide 'mhs-dap)
 ;;; mhs-dap.el ends here
