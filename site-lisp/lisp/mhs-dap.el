@@ -39,7 +39,22 @@
          :sourceMaps t
          :smartStep t
          :skipFiles ["<node_internals>/**" "**/node_modules/**"]
+         :resolveSourceMapLocations ["!**/node_modules/**" "**"]
          :name "Attach to Harmony"))
+
+  (dap-register-debug-template
+   "Attach to Work Updater Service"
+   (list :type "node"
+         :request "attach"
+         :port 9303
+         :address "127.0.0.1"
+         :restart t
+         :sourceMaps t
+         :smartStep t
+         :skipFiles ["<node_internals>/**" "**/node_modules/**"]
+         :resolveSourceMapLocations ["!**/node_modules/**" "**"]
+         :name "Attach to Work Updater"))
+
 
   ;; Attach to any running Node process by PID
   (dap-register-debug-template
@@ -68,6 +83,7 @@
          :sourceMaps t
          :smartStep t
          :skipFiles ["<node_internals>/**" "**/node_modules/**"]
+         :resolveSourceMapLocations ["!**/node_modules/**" "**"]
          :name "Node :: Attach to Test (9229)"))
 
   (global-set-key (kbd "<f10>")    'dap-hydra) ; F10   ;; ORYX Debug Layer - Y
