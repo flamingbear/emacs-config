@@ -404,7 +404,16 @@ following the prefix character"
   (setq json-reformat:indent-width 2)
   (setq js2-indent-level 2)
   (setq js-indent-level 2)
-  :hook  (json-mode . hs-minor-mode)
+  (defun mhs/json-pretty-print-buffer ()
+    "Pretty print JSON buffer on open, leaving it unmodified."
+    (let ((inhibit-read-only t))
+      (json-pretty-print-buffer)
+      (set-buffer-modified-p nil)))
+  :hook
+  (json-mode . hs-minor-mode)
+  (json-mode . mhs/json-pretty-print-buffer)
+  (json-ts-mode . hs-minor-mode)
+  (json-ts-mode . mhs/json-pretty-print-buffer)
   :bind (:map json-mode-map
               ("C-c C-f" . json-mode-beautify)
               ("C-c C-h" . hs-hide-block)
