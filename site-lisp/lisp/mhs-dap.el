@@ -86,6 +86,12 @@
          :resolveSourceMapLocations ["!**/node_modules/**" "**"]
          :name "Node :: Attach to Test (9229)"))
 
+  (add-hook 'dap-ui-repl-mode-hook
+            (lambda ()
+              (company-mode -1)
+              (setq-local completion-at-point-functions
+                          (list (cape-company-to-capf #'dap-ui-repl-company)))))
+
   (global-set-key (kbd "<f10>")    'dap-hydra) ; F10   ;; ORYX Debug Layer - Y
   (add-hook 'dap-ui-repl-mode-hook
             (lambda ()
