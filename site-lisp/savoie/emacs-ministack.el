@@ -243,6 +243,7 @@
   (corfu-auto t)
   (corfu-auto-delay 0.2)
   (corfu-auto-prefix 2)
+  (corfu-exclude-modes '(dap-ui-repl-mode))
   ;; (corfu-separator ?\s)          ;; Orderless field separator
   ;; (corfu-quit-at-boundary nil)   ;; Never quit at completion boundary
   ;; (corfu-quit-no-match nil)      ;; Never quit, even if there is no match

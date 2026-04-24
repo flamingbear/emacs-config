@@ -32,8 +32,10 @@
 
   (setq lsp-ruff-lsp-server-command '("ruff" "server"))
 
-  ;; TypeScript-specific settings
-  (setq lsp-typescript-format-enable t)
+  ;; TypeScript-specific settings — ESLint must not also register as a formatter
+  ;; or both servers format the buffer and their edits corrupt each other
+  (setq lsp-typescript-format-enable t
+        lsp-eslint-format nil)
 
 
   ;; Corfu integration
