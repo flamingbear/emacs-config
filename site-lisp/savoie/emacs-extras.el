@@ -62,19 +62,6 @@
             (lambda (&rest _)
               (when buffer-file-name (ignore-errors (recenter)))))
 
-;; Reversible C-x 1 (Purcell)
-(winner-mode +1)
-
-(defun toggle-delete-other-windows ()
-  "Delete other windows in frame if any, or restore previous window config."
-  (interactive)
-  (if (and winner-mode
-           (equal (selected-window) (next-window)))
-      (winner-undo)
-    (delete-other-windows)))
-
-(global-set-key (kbd "C-x 1") #'toggle-delete-other-windows)
-
 
 (setq line-number-display-limit-width 1000)
 
