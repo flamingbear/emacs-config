@@ -457,6 +457,7 @@ following the prefix character"
     (let ((inhibit-read-only t))
       (ansi-color-apply-on-region (point-min) (point-max)))
     (set-buffer-modified-p nil))
+  )
 
 
 ;; found here https://stackoverflow.com/a/33456622/66100
