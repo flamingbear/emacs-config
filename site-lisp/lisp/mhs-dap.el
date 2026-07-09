@@ -22,6 +22,36 @@
          :request "launch"
          :name "Python :: Debug Run file (buffer)"))
 
+  ;; Attach to a running Python process (e.g. a Jupyter kernel) that has
+  ;; started a debugpy server with:
+  ;;   import debugpy; debugpy.listen(5678)   # ("0.0.0.0", 5678) in a container
+  ;; Usage:
+  ;;   1. Set breakpoints in your .py file (C-c C-d b b)
+  ;;   2. M-x dap-debug -> "Python :: Attach (debugpy 5678)"
+  ;;   3. Run the kernel cell that calls into your .py file; it will pause here.
+  ;; No :pathMappings here: a local kernel reports absolute paths that already
+  ;; match the buffer, so mapping only breaks breakpoint binding.  If the kernel
+  ;; runs in Docker, use the container template below instead.
+  (dap-register-debug-template
+   "Python :: Attach (debugpy 5678)"
+   (list :type "python"
+         :request "attach"
+         :connect (list :host "127.0.0.1" :port 5678)
+         :justMyCode :json-false
+         :name "Python :: Attach (debugpy 5678)"))
+
+  ;; Same, but for a kernel running inside Docker.  Adjust :remoteRoot to the
+  ;; container working directory where it sees your .py file (e.g. /workspace).
+  (dap-register-debug-template
+   "Python :: Attach (debugpy 5678, Docker)"
+   (list :type "python"
+         :request "attach"
+         :connect (list :host "127.0.0.1" :port 5678)
+         :pathMappings (vector (list :localRoot "${workspaceFolder}"
+                                     :remoteRoot "/workspace"))
+         :justMyCode :json-false
+         :name "Python :: Attach (debugpy 5678, Docker)"))
+
   ;; Node.js debugger
   (require 'dap-node)
   (dap-node-setup) ;; downloads vscode-node-debug2 adapter on first run
