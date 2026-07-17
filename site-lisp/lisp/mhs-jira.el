@@ -41,7 +41,7 @@
 
 (defun mhs-jira--update-url-base (ticket-number)
   "Handle multiple JIRA ticket locations based on ticket-number prefix."
-  (let ((earthdata-prefixes '("NDCUM" "CUMULUS" "DAS" "HARMONY" "TRT"))
+  (let ((earthdata-prefixes '("NDCUM" "CUMULUS" "DAS" "HARMONY" "TRT" "EPR"))
         (ticket-upper (upcase ticket-number)))
     (setq mhs-jira--url-base
           (if (seq-some (lambda (prefix) (string-prefix-p prefix ticket-upper))
@@ -93,7 +93,7 @@
              ;; Extract the string within the marked region.
              (selected-text (buffer-substring-no-properties start end))
              ;; Pattern to match DAS-#### or TRT-#### format.
-             (pattern "^\\(DAS\\|TRT\\|HARMONY\\)-\\([0-9]+\\)$"))
+             (pattern "^\\(DAS\\|TRT\\|HARMONY\\|EPR\\)-\\([0-9]+\\)$"))
         ;; Check if the selected text matches our pattern.
         (if (string-match pattern selected-text)
             (let ((prefix (match-string 1 selected-text))
@@ -115,7 +115,7 @@
     (let* ((start (region-beginning))
            (end (region-end))
            (ticket (buffer-substring-no-properties start end)))
-      (when (string-match "^\\(DAS\\|HARMONY\\|TRT\\)-[0-9]+$" ticket)
+      (when (string-match "^\\(DAS\\|HARMONY\\|TRT\\|EPR\\)-[0-9]+$" ticket)
         (delete-region start end)
         (insert (format "[%s](https://bugs.earthdata.nasa.gov/browse/%s)"
                         ticket ticket))))))
