@@ -2,7 +2,7 @@
 (defun mhs/set-pi ()
   "Set the current PI value in a persistent file."
   (interactive)
-  (let* ((current-pi (read-string "Enter Current PI [e.g. PI 24.2]: "))
+  (let* ((current-pi (read-string "Enter Current PI [e.g. 26.2]: "))
          (tmp-pi-file (expand-file-name ".current-pi" user-emacs-directory)))
     (with-temp-file tmp-pi-file
       (insert current-pi))

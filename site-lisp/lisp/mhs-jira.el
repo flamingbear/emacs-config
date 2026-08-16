@@ -71,6 +71,16 @@
   (browse-url (mhs-jira--ticket-uri))
   (message "Opening browser to ticket: %s" mhs-jira--current-ticket-number))
 
+(defun mhs-jira--browse-ticket-at-region ()
+  "Open a browser to the current ticket.
+If a region is active, set the current ticket to the region first."
+  (interactive)
+  (when (use-region-p)
+    (setq mhs-jira--current-ticket-number
+          (upcase (buffer-substring-no-properties (region-beginning) (region-end))))
+    (mhs-jira--update-url-base mhs-jira--current-ticket-number))
+  (mhs-jira--browse-current-ticket))
+
 
 (defun mhs-jira--replace-ticket-with-link ()
      (interactive)
@@ -146,7 +156,7 @@
   (define-key mhs-jira-map "s" 'mhs-jira--set-ticket-number)
   (define-key mhs-jira-map "t" 'mhs-jira--insert-ticket-number)
   (define-key mhs-jira-map "o" 'mhs-jira--insert-org-ticket-link)
-  (define-key mhs-jira-map "b" 'mhs-jira--browse-current-ticket))
+  (define-key mhs-jira-map "b" 'mhs-jira--browse-ticket-at-region))
 
 
 
