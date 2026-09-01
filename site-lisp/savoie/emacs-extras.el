@@ -462,10 +462,20 @@
 
 
 (defun mhs-create-dir-locals-file ()
-  "Create a new .dir-locals.el file in the current directory."
+  "Create a new .dir-locals.el file in the current directory.
+
+Rarely needed now: `mhs-python-activate-venv' (mhs-python.el) already
+activates a .venv or the pyenv/conda env named by .python-version on
+every Python buffer.  Use this only for a project that needs something
+those rules do not cover.
+
+The mode entry must be `python-base-mode', not `python-mode'.
+`python-ts-mode' is a sibling of `python-mode' -- both derive from
+`python-base-mode' -- so a `python-mode' entry never fires once
+`major-mode-remap-alist' sends Python buffers to tree-sitter."
   (interactive)
   (let ((file-path (expand-file-name ".dir-locals.el" default-directory))
-        (content "((python-mode\n  (eval . (let* ((python-version-file (locate-dominating-file default-directory \".python-version\"))\n                 (python-env (when python-version-file\n                               (with-temp-buffer\n                                 (insert-file-contents (expand-file-name \".python-version\" python-version-file))\n                                 (string-trim (buffer-string))))))\n             (when python-env\n               `(pyvenv-activate . ,(concat \"/Users/savoie/.pyenv/versions/\" python-env)))))))\n"))
+        (content "((python-base-mode\n  (eval . (let* ((python-version-file (locate-dominating-file default-directory \".python-version\"))\n                 (python-env (when python-version-file\n                               (with-temp-buffer\n                                 (insert-file-contents (expand-file-name \".python-version\" python-version-file))\n                                 (string-trim (buffer-string))))))\n             (when python-env\n               `(pyvenv-activate . ,(expand-file-name python-env \"~/.pyenv/versions/\")))))))\n"))
     (with-temp-file file-path
       (insert content))
     (message "Created .dir-locals.el file in current directory.")))

@@ -30,7 +30,11 @@
         lsp-pyright-auto-search-paths t
         lsp-pyright-use-library-code-for-types t)
 
-  (setq lsp-ruff-lsp-server-command '("ruff" "server"))
+  ;; The ruff and basedpyright server commands are resolved to absolute,
+  ;; non-shim paths by `mhs-python-refresh-lsp-tools' in mhs-python.el.  Note
+  ;; the variable lsp-mode actually reads is `lsp-ruff-server-command'; the old
+  ;; `lsp-ruff-lsp-server-command' name belonged to the retired ruff-lsp client
+  ;; and setting it here did nothing.
 
   ;; TypeScript-specific settings — ESLint must not also register as a formatter
   ;; or both servers format the buffer and their edits corrupt each other
