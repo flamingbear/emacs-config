@@ -489,6 +489,26 @@ following the prefix character"
 
 (global-set-key (kbd "C-x |") 'toggle-window-split)
 
+(defconst mhs/ipv4-regexp
+  (let ((octet "\\(?:25[0-5]\\|2[0-4][0-9]\\|1[0-9][0-9]\\|[1-9]?[0-9]\\)"))
+    (concat "\\b" octet "\\(?:\\." octet "\\)\\{3\\}\\b"))
+  "Regexp matching a dotted-quad IPv4 address with valid octets.")
 
+(defun mhs/redact-ip-addresses (&optional start end)
+  "Replace IPv4 addresses with [REDACTED].
+Operates on the region if one is active, otherwise the whole buffer."
+  (interactive (if (use-region-p)
+                   (list (region-beginning) (region-end))
+                 (list nil nil)))
+  (save-excursion
+    (let ((beg (or start (point-min)))
+          (fin (copy-marker (or end (point-max))))
+          (count 0))
+      (goto-char beg)
+      (while (re-search-forward mhs/ipv4-regexp fin t)
+        (replace-match "[REDACTED]" t t)
+        (setq count (1+ count)))
+      (set-marker fin nil)
+      (message "Redacted %d IP address%s" count (if (= count 1) "" "es")))))
 
 (provide 'mhs-extends)
