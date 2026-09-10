@@ -1,4 +1,4 @@
-;;; .EMACS-MAC.EL --- Emacs customizations for Mac only
+;;; .EMACS-MAC.EL --- Emacs customizations for Mac only  -*- lexical-binding: t; -*-
 ;; Copyright (C) 2011 Matt Savoie
 ;; Author: Matt Savoie <emacs@flamingbear.com>
 ;; Created: 21 Sep 2011

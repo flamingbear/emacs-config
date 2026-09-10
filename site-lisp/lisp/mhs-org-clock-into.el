@@ -1,3 +1,4 @@
+;;; mhs-org-clock-into.el --- clock into org PI sections  -*- lexical-binding: t; -*-
 (defun mhs/clock-into-section (section-name)
   "Show all items under current PI's SECTION-NAME and clock into selected one.
 Also offers option to create a new item."

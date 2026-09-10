@@ -1,4 +1,4 @@
-;;; mhs-jira.el --- interact with JIRA server via emacs
+;;; mhs-jira.el --- interact with JIRA server via emacs  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2014  Matt Savoie
 

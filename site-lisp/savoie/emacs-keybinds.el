@@ -1,4 +1,4 @@
-;; File for keybindings for emacs
+;; File for keybindings for emacs  -*- lexical-binding: t; -*-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (global-unset-key (kbd "C-z"))    	;; suspend-frame is crashy on osx.
 ;;;;;;;;

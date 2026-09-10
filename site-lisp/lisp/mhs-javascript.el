@@ -1,4 +1,4 @@
-;;; mhs-javascript.el --- Modern TypeScript/JavaScript configuration
+;;; mhs-javascript.el --- Modern TypeScript/JavaScript configuration  -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; 100% claude make javascript/typescript work
 

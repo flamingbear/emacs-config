@@ -1,4 +1,4 @@
-;; Add custom themes
+;; Add custom themes  -*- lexical-binding: t; -*-
 (setq custom-theme-directory (locate-user-emacs-file "themes"))
 (add-to-list 'custom-theme-load-path custom-theme-directory)
 

@@ -1,4 +1,4 @@
-;;; mhs-lsp.el --- Shared LSP Mode Configuration
+;;; mhs-lsp.el --- Shared LSP Mode Configuration  -*- lexical-binding: t; -*-
 
 ;; Need to install lsp in project you want to use this with.
 ;; pip install "python-lsp-server[all]" provides pylsp- options

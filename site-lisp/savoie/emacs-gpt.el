@@ -1,4 +1,4 @@
-;; Functions to get api keys
+;; Functions to get api keys  -*- lexical-binding: t; -*-
 (defun mhs/get-api-key (HOST)
   "Fetches the API key for the specified HOST."
   (auth-source-pick-first-password :host HOST))

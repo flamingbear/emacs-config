@@ -1,4 +1,4 @@
-;;; mhs-org-mode.el
+;;; mhs-org-mode.el  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2011 Matt Savoie
 

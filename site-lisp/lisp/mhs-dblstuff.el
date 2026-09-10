@@ -1,4 +1,4 @@
-;;; MHS-DBLSTUFF.EL --- smart inserting of double characters.
+;;; MHS-DBLSTUFF.EL --- smart inserting of double characters.  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 1997 Matthew H. Savoie
 

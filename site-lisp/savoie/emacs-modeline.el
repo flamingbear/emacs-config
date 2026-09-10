@@ -1,4 +1,4 @@
-;; This sets up fancy modelines on non-terminal displays.
+;; This sets up fancy modelines on non-terminal displays.  -*- lexical-binding: t; -*-
 
 ;; need to nerd-icons-install-fonts
 (use-package doom-modeline

@@ -1,3 +1,4 @@
+;;; mhs-map.el --- personal prefix keymap  -*- lexical-binding: t; -*-
 
 ;;;
 ;;;  This will define a keymap for my functions as I see fit.  So when I get

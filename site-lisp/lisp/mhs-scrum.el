@@ -1,4 +1,4 @@
-;; SaFE planning info
+;; SaFE planning info  -*- lexical-binding: t; -*-
 (defun mhs/set-pi ()
   "Set the current PI value in a persistent file."
   (interactive)

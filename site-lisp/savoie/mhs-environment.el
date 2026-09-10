@@ -1,6 +1,8 @@
-;; Set up some variables that you will use for different environments.
+;; Set up some variables that you will use for different environments.  -*- lexical-binding: t; -*-
 
-;; "Boolean to determine if we are running on a macintosh laptop"
+(defvar running-macos nil
+  "Boolean to determine if we are running on a macintosh laptop.")
+
 (setq running-macos
   (or (equal 'darwin system-type)
       (memq (window-system) '(mac ns))))

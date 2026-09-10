@@ -1,3 +1,4 @@
+;;; mhs-extends.el --- personal emacs extensions  -*- lexical-binding: t; -*-
 ;;;
 ;;; This is a file where I extend my current emacs into separate little
 ;;; functions.
@@ -264,7 +265,7 @@
     (fixup-whitespace)))
 
 (defun mhs-under-this-line (tok)
-  (let (beg end-com white first end line comstart comend comfinish ul)
+  (let (beg end-com white first end line comstart comend comfinish comlength ul)
     (save-excursion
       (beginning-of-line)
       (setq beg (point))
@@ -288,9 +289,9 @@
 1 and changing the other characters to be either `-' or the character
 following the prefix character"
 (interactive "p")
-(let (setq tok 'nil)
+(let ((tok nil))
   (if (null current-prefix-arg)
-      (setq tok '?-)
+      (setq tok ?-)
     (setq tok (read-char)))
   (mhs-under-this-line tok)))
 
@@ -363,8 +364,8 @@ following the prefix character"
 (defun camelize-method (s)
   "Convert under_score string S to camelCase string."
   (mapconcat 'identity (mapcar-head
-                        '(lambda (word) (downcase word))
-                        '(lambda (word) (capitalize (downcase word)))
+                        #'(lambda (word) (downcase word))
+                        #'(lambda (word) (capitalize (downcase word)))
                         (split-string s "_")) ""))
 
 
