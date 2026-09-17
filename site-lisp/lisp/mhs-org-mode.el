@@ -88,6 +88,8 @@
 	 "* %^{Meeting Name|}\n %? " :clock-in t :clock-keep t)
 	("t" "Task" entry (file+olp ,@task-path)
 	 "* %^{Task|}\n %? " :clock-in t :clock-keep t)
+	("T" "Task to remember" entry (file+olp ,@task-path)
+	 "* %^{Task|}\n %? ")
 	("v" "Vacation" entry (file+olp ,@tracking-timeoff)
 	 "* %^{Vacation?}\n:LOGBOOK:\nCLOCK: [%<%Y-%m-%d %a> 08:00]--[%<%Y-%m-%d %a> 17:00] => 09:00\n:END:\n")
 	)))
