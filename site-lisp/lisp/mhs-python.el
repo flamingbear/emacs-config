@@ -176,6 +176,28 @@ Run again after installing either tool; no Emacs restart needed."
   (mhs-python-refresh-lsp-tools))
 
 
+;;; ---------------------------------------------------------------------------
+;;; Modeline python version
+;;;
+;;; doom-modeline's python env segment asks `pyenv version-name' whenever a
+;;; pyenv executable exists -- before even considering the active virtualenv.
+;;; In a uv project that prints "system", even though pyvenv has already put
+;;; .venv/bin at the head of `exec-path' and a REPL would get the venv python.
+;;; Ask the interpreter the buffer will actually use instead.  This is also
+;;; right for pyenv projects: the shim resolves through .python-version.
+
+(defun mhs-python--modeline-env-command ()
+  "Version command for doom-modeline's python segment.
+Resolves `python-shell-interpreter' through `exec-path', so an active
+pyvenv virtualenv (uv .venv or pyenv env) reports its own version."
+  (list (or (executable-find python-shell-interpreter)
+            python-shell-interpreter)
+        "--version"))
+
+(with-eval-after-load 'doom-modeline-env
+  (setq doom-modeline-env-python-command #'mhs-python--modeline-env-command))
+
+
 (use-package python-pytest
   :ensure t
   :after python
