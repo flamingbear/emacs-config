@@ -15,7 +15,8 @@
 (when (display-graphic-p)
   ;; If we're not running NX set the fonts like I like them.  Otherwise, we
   ;; default to 10x20
-  (cond (running-macos (progn (mhs-use-inconsolata)))
+  (cond (running-macos (progn (mhs-use-inconsolata)
+                              (mhs-use-nerd-font-fallback)))
         (t (mhs-use-normal-face))))
 
 

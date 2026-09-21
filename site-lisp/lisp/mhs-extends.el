@@ -307,6 +307,18 @@ following the prefix character"
   (interactive)
   (progn (set-face-attribute 'default nil :height 220 :family "Inconsolata")))
 
+(defun mhs-use-nerd-font-fallback (&optional family)
+  "Draw Nerd Font glyphs with FAMILY while leaving the default face alone.
+FAMILY defaults to \"Inconsolata Nerd Font Mono\"."
+  (interactive)
+  (let ((family (or family "Inconsolata Nerd Font Mono")))
+    (when (find-font (font-spec :family family))
+      ;; Private Use Areas, where the Nerd Font icons and powerline glyphs live.
+      (dolist (range '((#xe000 . #xf8ff) (#xf0000 . #xfffff)))
+        (set-fontset-font t range family))
+      ;; Anything else the default font is missing.
+      (set-fontset-font t nil family nil 'append))))
+
 (defun mhs-use-meslo ()
   (interactive)
   (progn (set-face-attribute 'default nil  :height 190 :font "MesloLGS NF")))
