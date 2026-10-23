@@ -198,12 +198,15 @@ pyvenv virtualenv (uv .venv or pyenv env) reports its own version."
   (setq doom-modeline-env-python-command #'mhs-python--modeline-env-command))
 
 
+
 (use-package python-pytest
   :ensure t
   :after python
   :bind (:map python-base-mode-map
-              ("C-c y" . python-pytest-dispatch)))
-
+              ("C-c y" . python-pytest-dispatch))
+  :config
+  (transient-append-suffix 'python-pytest-dispatch "-q"
+    '("-R" "show output of passing tests" "-rfEP")))
 
 (use-package pyvenv
   :ensure t

@@ -1,4 +1,4 @@
-;;-*-coding: utf-8;-*-
+;; -*- coding: utf-8; lexical-binding: t -*-
 (define-abbrev-table 'awk-mode-abbrev-table
   '(
     ("else" "else" c-electric-continued-statement :count 0)
@@ -163,20 +163,14 @@
 
 (define-abbrev-table 'global-abbrev-table
   '(
-    ("Hsl2g" "Harmony-SMAP-L2-gridder" nil :count 0)
-    ("geotiff" "GeoTIFF" nil :count 2)
     ("gh" "GitHub" nil :count 2)
-    ("github" "GitHub" nil :count 5)
     ("gt" "GeoTIFF" nil :count 4)
     ("hb" "HyBIG" nil :count 26)
-    ("hiab" "Harmony-In-A-Box" nil :count 8)
+    ("hiab" "Harmony-In-A-Box" nil :count 12)
     ("hrt" "Harmony-Regression-Test" nil :count 2)
     ("hsl" "harmony-service-lib" nil :count 1)
-    ("hsl2g" "harmony-smap-l2-gridder" nil :count 2)
-    ("hsl2gs" "Harmony SMAP L2 gridding service" nil :count 8)
-    ("netcdf" "NetCDF" nil :count 7)
-    ("sl2g" "harmony-smap-l2-gridder" nil :count 11)
-    ("varaible" "variable" nil :count 1)
+    ("varaible" "variable" nil :count 3)
+    ("vfo" "variable_fan_out" nil :count 0)
    ))
 
 (define-abbrev-table 'gnus-article-edit-mode-abbrev-table
