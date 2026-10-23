@@ -17,55 +17,39 @@
 ;;; ---------------------------------------------------------------------------
 ;;; Language server executables
 ;;;
-;;; basedpyright and ruff are tools, not project dependencies.  `pip install'ing
-;;; them into a pyenv version creates a shim in ~/.pyenv/shims that shadows every
-;;; other copy on PATH, and that shim only resolves for the pyenv version it was
-;;; installed under.  In any other project it dies with:
-;;;
-;;;   pyenv: basedpyright-langserver: command not found
-;;;   The `basedpyright-langserver' command exists in these Python versions: ...
-;;;
-;;; Install them once, outside pyenv, so there is a copy that every project can
-;;; reach:
+;;; basedpyright and ruff are tools, not project dependencies.  Install them
+;;; once, outside any project env, so there is a copy every project can reach:
 ;;;
 ;;;   uv tool install basedpyright
 ;;;   uv tool install ruff
 ;;;
 ;;; Lookup order is: the project virtualenv (pyvenv puts it at the head of
-;;; `exec-path' on activation), then the standalone install.  A shim is only
-;;; reached by falling through to lsp-mode's own `executable-find' -- which is
-;;; exactly the behaviour you had before, so nothing gets worse if neither of
-;;; the first two is present.
+;;; `exec-path' on activation), then the standalone install.
 
 (defcustom mhs-python-tool-bin (expand-file-name "~/.local/bin")
   "Directory holding standalone Python tools (`uv tool install', pipx)."
   :type 'directory
   :group 'mhs)
 
-(defcustom mhs-pyenv-versions-directory (expand-file-name "~/.pyenv/versions/")
-  "Directory pyenv keeps its versions and virtualenvs in."
-  :type 'directory
+(defcustom mhs-conda-envs-directories
+  (list "/opt/homebrew/Caskroom/miniforge/base/envs/"
+        (expand-file-name "~/.conda/envs/"))
+  "Directories conda/mamba keep named environments in.
+The first is where `brew install --cask miniforge' puts them; check
+`conda info --envs' if yours differ."
+  :type '(repeat directory)
   :group 'mhs)
 
-(defun mhs-python--shim-p (path)
-  "Return non-nil when PATH is a pyenv shim."
-  (and path (string-match-p "/\\.pyenv/shims/" path)))
-
 (defun mhs-python-tool-path (name)
-  "Absolute path to Python tool NAME, or nil if the only copy is a pyenv shim.
+  "Absolute path to Python tool NAME, or nil if it cannot be found.
 
 Checks `exec-path' first, so an active virtualenv\='s own copy wins and a
-project can still pin its own version.  A shim found there is rejected in
-favour of `mhs-python-tool-bin\=', because a shim resolves against whichever
-pyenv version is selected and fails in every project that does not have
-NAME installed.
-
-`mhs-python-tool-bin\=' is checked directly rather than through
-`exec-path\=', so it works whether or not it is on PATH."
-  (let ((found (executable-find name))
-        (standalone (expand-file-name name mhs-python-tool-bin)))
-    (cond ((and found (not (mhs-python--shim-p found))) found)
-          ((file-executable-p standalone) standalone))))
+project can still pin its own version.  `mhs-python-tool-bin\=' is checked
+directly rather than through `exec-path\=', so it works whether or not it
+is on PATH."
+  (let ((standalone (expand-file-name name mhs-python-tool-bin)))
+    (or (executable-find name)
+        (and (file-executable-p standalone) standalone))))
 
 
 ;;; ---------------------------------------------------------------------------
@@ -83,32 +67,61 @@ NAME installed.
               (venv (expand-file-name ".venv" dir)))
     (and (file-executable-p (expand-file-name "bin/python" venv)) venv)))
 
-(defun mhs-python--pyenv-env ()
-  "Pyenv virtualenv named by the nearest .python-version file, or nil."
+(defun mhs-python--conda-env-dir (name)
+  "Directory of the conda env called NAME, or nil if it has no python."
+  (seq-some (lambda (root)
+              (let ((env (expand-file-name name root)))
+                (and (file-executable-p (expand-file-name "bin/python" env))
+                     env)))
+            mhs-conda-envs-directories))
+
+(defun mhs-python--environment-yml-name ()
+  "The `name:' from the nearest environment.yml (or .yaml), or nil."
+  (when-let* ((dir (locate-dominating-file
+                    default-directory
+                    (lambda (d)
+                      (or (file-exists-p (expand-file-name "environment.yml" d))
+                          (file-exists-p (expand-file-name "environment.yaml" d))))))
+              (file (seq-find #'file-exists-p
+                              (list (expand-file-name "environment.yml" dir)
+                                    (expand-file-name "environment.yaml" dir)))))
+    (with-temp-buffer
+      (insert-file-contents file)
+      (when (re-search-forward "^name:[ \t]*['\"]?\\([^'\"# \t\n]+\\)" nil t)
+        (match-string 1)))))
+
+(defun mhs-python--python-version-env-name ()
+  "Env name from the nearest .python-version, or nil for a bare version.
+
+Left over from pyenv, which kept env names here; old files may hold a
+path like \"miniforge3-26.1.1-3/envs/papermill-hoss\", so only the last
+component is used.  `uv python pin' writes a bare version (\"3.12\") into
+this same file, and that is not an env name, so it is skipped."
   (when-let* ((dir (locate-dominating-file default-directory ".python-version"))
               (name (string-trim
                      (with-temp-buffer
                        (insert-file-contents
                         (expand-file-name ".python-version" dir))
                        (buffer-string)))))
-    ;; `uv python pin' writes a bare version ("3.12") into this same file.
-    ;; ~/.pyenv/versions/3.12 can exist and is a bare interpreter carrying none
-    ;; of the project's dependencies, so activating it fails silently -- every
-    ;; import breaks with no error pointing at the environment.  Bare versions
-    ;; are not env names; skip them.
-    (unless (string-match-p "\\`[0-9]+\\(\\.[0-9]+\\)*\\'" name)
-      (let ((env (expand-file-name name mhs-pyenv-versions-directory)))
-        (and (file-executable-p (expand-file-name "bin/python" env)) env)))))
+    (unless (or (string-empty-p name)
+                (string-match-p "\\`[0-9]+\\(\\.[0-9]+\\)*\\'" name))
+      (file-name-nondirectory (directory-file-name name)))))
+
+(defun mhs-python--conda-env ()
+  "Conda env for this project, named by environment.yml or .python-version."
+  (seq-some (lambda (name) (and name (mhs-python--conda-env-dir name)))
+            (list (mhs-python--environment-yml-name)
+                  (mhs-python--python-version-env-name))))
 
 (defun mhs-python-activate-venv ()
   "Activate the virtualenv belonging to this buffer's project.
 
-Prefers a `.venv' directory (uv, `python -m venv'), then the pyenv
-virtualenv or conda env named by the nearest `.python-version'.  Silent
-no-op when neither is found, so projects driven some other way are left
-alone."
+Prefers a `.venv' directory (uv, `python -m venv'), then the miniforge
+conda env named by the nearest environment.yml or .python-version.
+Silent no-op when neither is found, so projects driven some other way
+are left alone."
   (interactive)
-  (when-let ((venv (or (mhs-python--dot-venv) (mhs-python--pyenv-env))))
+  (when-let ((venv (or (mhs-python--dot-venv) (mhs-python--conda-env))))
     (unless (and (bound-and-true-p pyvenv-virtual-env)
                  (file-equal-p venv pyvenv-virtual-env))
       (pyvenv-activate venv))))
@@ -122,7 +135,7 @@ alone."
 ;;; LSP clients
 
 (defun mhs-python-refresh-lsp-tools ()
-  "Point the ruff and basedpyright clients at real, non-shim executables.
+  "Point the ruff and basedpyright clients at absolute executable paths.
 Run again after installing either tool; no Emacs restart needed."
   (interactive)
   (let ((ruff (mhs-python-tool-path "ruff"))
@@ -146,16 +159,13 @@ Run again after installing either tool; no Emacs restart needed."
   "Report how the Python LSP tooling resolves in the current buffer."
   (interactive)
   (message
-   (concat "venv: %s\npython: %s\nruff: %s\nbasedpyright-langserver: %s%s")
+   "venv: %s\npython: %s\nruff: %s\nbasedpyright-langserver: %s"
    (or (bound-and-true-p pyvenv-virtual-env) "none active")
    (or (executable-find "python") "not found")
    (or (mhs-python-tool-path "ruff")
-       "no standalone copy -- lsp will fall back to PATH")
+       "not found -- `uv tool install ruff'")
    (or (mhs-python-tool-path "basedpyright-langserver")
-       "no standalone copy -- lsp will fall back to PATH")
-   (if (mhs-python--shim-p (executable-find "basedpyright-langserver"))
-       "\nnote: PATH resolves this to a pyenv shim; `uv tool install basedpyright'"
-     "")))
+       "not found -- `uv tool install basedpyright'")))
 
 
 (use-package lsp-pyright
@@ -179,17 +189,14 @@ Run again after installing either tool; no Emacs restart needed."
 ;;; ---------------------------------------------------------------------------
 ;;; Modeline python version
 ;;;
-;;; doom-modeline's python env segment asks `pyenv version-name' whenever a
-;;; pyenv executable exists -- before even considering the active virtualenv.
-;;; In a uv project that prints "system", even though pyvenv has already put
-;;; .venv/bin at the head of `exec-path' and a REPL would get the venv python.
-;;; Ask the interpreter the buffer will actually use instead.  This is also
-;;; right for pyenv projects: the shim resolves through .python-version.
+;;; doom-modeline's python env segment otherwise asks whatever `python' it
+;;; finds first, which need not be the one pyvenv activated.  Ask the
+;;; interpreter the buffer will actually use instead.
 
 (defun mhs-python--modeline-env-command ()
   "Version command for doom-modeline's python segment.
 Resolves `python-shell-interpreter' through `exec-path', so an active
-pyvenv virtualenv (uv .venv or pyenv env) reports its own version."
+pyvenv virtualenv (uv .venv or conda env) reports its own version."
   (list (or (executable-find python-shell-interpreter)
             python-shell-interpreter)
         "--version"))
