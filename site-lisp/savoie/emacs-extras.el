@@ -599,7 +599,7 @@ The mode entry must be `python-base-mode', not `python-mode'.
   (treesit-auto-install nil) ;; Don't auto-install, it's slow
   :config
 
-  (setq treesit-auto-langs '(python javascript typescript tsx json yaml toml))
+  (setq treesit-auto-langs '(python javascript typescript tsx json toml))
 
   ;; Build the alist once at init, not on every file open
   (treesit-auto-add-to-auto-mode-alist treesit-auto-langs))
